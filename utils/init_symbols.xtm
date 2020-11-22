@@ -1,0 +1,504 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  author: michele pasin
+;;
+;;
+;; helper functions for generatic musical structures 
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+;; ARGS: root chord-sym notes_number 
+; DEFAULTS: sym='^ / chord-notes = 3
+(define-macro (:mkchord . args)
+  ;;(println args)
+   (cond ((length-equal? args 1) ;; just root 
+         `(pc:make-chord-fixed ,(car args) 3 (pc:chord ,(car args) '^)))
+         ((length-equal? args 2) ; root and chord-sym
+         `(pc:make-chord-fixed ,(car args) 4 (pc:chord ,(car args) ,(cadr args))))
+         ((length-equal? args 3) ;; also notes_number
+         `(pc:make-chord-fixed ,(car args) ,(caddr args) (pc:chord ,(car args) ,(cadr args))))         
+         (else (print 'Error: 'arguments 'could 'not 'be 'resolved.))))
+(if #f
+   (println (:mkchord 60 '- 8)))
+
+
+
+;; ARGS: root chord-sym notes_number upper_limit
+; DEFAULTS: chord-sym='^ / notes_number = 3 / upper_limit=120
+; updated on 2020-10-04
+(define-macro (:mkchordrandom . args)
+  ;;(println args)
+   (cond ((length-equal? args 1) ;; just root 
+         `(pc:make-chord ,(car args) 120 3 (pc:chord ,(car args) '^)))
+         ((length-equal? args 2) ; root and chord-sym
+         `(pc:make-chord ,(car args) 120 4 (pc:chord ,(car args) ,(cadr args))))
+         ((length-equal? args 3) ;; also notes_number
+         `(pc:make-chord ,(car args) 120 ,(caddr args) (pc:chord ,(car args) ,(cadr args))))  
+         ((length-equal? args 4) ;; also upper-limit
+         `(pc:make-chord ,(car args) ,(cadddr args) ,(caddr args) (pc:chord ,(car args) ,(cadr args))))         
+         (else (print 'Error: 'arguments 'could 'not 'be 'resolved.))))
+(if #t
+   (println (:mkchordrandom 60 '- 8)))
+
+
+
+
+
+;; helper function: from a list, extend it by adding 12 to all elements (one octave)
+(define multiply_octaves 
+  (lambda (scale octaves)
+    (if (= octaves 1)
+      scale)
+    (dotimes (i octaves)
+      (if (> i 0)
+        (set! scale (append scale (add (* 12 i) scale)))))
+        scale))
+
+(if #f
+  (multiply_octaves (pc:scale 0 'ionian) 2)) ;;=> retuns 2 octaves of the scale
+
+
+
+;; ARGS: root / mode / octaves
+; DEFAULTS: root=60 /  mode=ionian / octaves=1
+(define-macro (:mkscale . args)
+  ; (println args)
+   (cond ((null? args) ;; all default!
+          `(map (lambda (x) 
+            (+ 60 x))
+            (pc:scale 0 'ionian)))
+          ((length-equal? args 1) ;; just root 
+                    `(map (lambda (x)
+                            (+ ,(car args)  x))
+                        (pc:scale 0 'ionian)))            
+          ((length-equal? args 2) ;;  root and scale-mode
+                    `(map (lambda (x)
+                            (+ ,(car args) x))
+                        (pc:scale 0 ,(cadr args))))      
+          ((length-equal? args 3) ;;  root and scale-mode and octaves
+                    `(map (lambda (x)
+                            (+ ,(car args) x))
+                        (multiply_octaves (pc:scale 0 ,(cadr args)) ,(caddr args))))           
+          (else (print 'Error: 'arguments 'could 'not 'be 'resolved.))))   
+
+(if #f
+  (:mkscale 60 'aeolian 2))
+
+
+
+
+;; LEGACY
+; wrapper on pc:make-chord-fixed 
+(define mu:chord
+   (lambda (root chord-sym)
+      (pc:make-chord-fixed root 4 (pc:chord root chord-sym))))
+(if #f
+   (println (mu:chord 60 '-7)))
+
+
+
+;; LEGACY
+;; wrapping the pc:scale so that we can pass any note and obtain the relative scale
+(define mu:scale
+   (lambda (base mode)
+      (map (lambda (x)
+              (+ (- base (modulo base 12)) x))
+           (pc:scale (modulo base 12) mode))))
+(when #f
+      (pc:scale 2 'ionian)
+      (mu:scale 62 'ionian))
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ADD
+;; 
+; increase a result atom/list, using a value atom/list 
+; if lengths don't match, adjust them automatically by slicing/repeating elements
+;
+
+; (:add 4 2) ;; 6
+; (:add '(4 5) 2) ;; 6
+; (:add '(4) '(2)) ;; '(6)
+; (:add 4 '(2 10 22)) ;; '(6 14 26) 
+; (:add '(4 2) '(2)) ;; '(6)
+; (:add '(4) '(2 4 6)) ;; '(6 8 10)
+; (:add '(5 4) '(g3 c4 g4 e3)) ;; '(72 76 83 68)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+;; helper: add two numbers or symbols (standing for numbers, eg d5)
+(define inner-add-helper
+  (lambda (x y)
+    (+ (eval x) (eval y))))
+
+;; inner fn with cases
+(define inner-add
+  (lambda (l1 l2)
+    (cond ((= (length l1) (length l2))
+            (map (lambda (x y) (inner-add-helper x y)) l1 l2))
+          ((> (length l1) (length l2))
+            (map (lambda (x y) (inner-add-helper x y)) 
+            (cl:slice-left l1 (length l2)) l2))
+          ((< (length l1) (length l2))
+            (map (lambda (x y) (inner-add-helper x y)) 
+            (cl:expand-list2 l1 (length l2)) l2))
+    )))
+
+;; main
+(define add
+  (lambda (val res)
+    (cond ((and (list? val) (list? res)) 
+            (inner-add val res))
+          ((and (atom? val)  (list? res))
+            (inner-add (make-list (length res) val) res))
+          ((and (atom? val) (atom? res))
+            (+ val (eval res)))
+          ((and (list? val) (atom? res))
+            (+ (car val) (eval res)))
+          (else '()))))
+
+
+
+
+
+
+;; ===============
+;; OLDER, weaker implemenation of 'add'
+;; plus selected intervals shortcuts 
+;; ===============
+
+(define-macro (offset o plist)
+   `(if (list? ,plist)
+        (map (lambda (p)
+                (+ ,o (eval p)))
+             ,plist)
+        (+ ,o ,plist)))
+
+(define-macro (octave plist)
+   `(offset 12 ,plist))
+(define-macro (seventhdom plist)
+ `(offset 10 ,plist))
+(define-macro (seventhmaj plist)
+ `(offset 11 ,plist))
+(define-macro (sixth plist)
+ `(offset 9 ,plist))
+(define-macro (fourth plist)
+  `(offset 5 ,plist))
+(define-macro (fifth plist)
+   `(offset 7 ,plist))
+(define-macro (thirdmaj plist)
+  `(offset 4 ,plist))
+(define-macro (thirdmin plist)
+  `(offset 3 ,plist))
+
+
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; RULLATE FOR KITS
+;; 
+; (let ((beat (*metro* 'get-beat)))
+;    (rollup 38 6 1/2))
+;
+;  +TODO+ allow passing MIDI ch via variable num of arguments
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(define-macro (rollup pitch)
+   `(let loop ((i 0))
+         (kit (* i 1/10) ,pitch (+ 50 (expt 4 i)))
+         (if (< i 3) (loop (+ i 1)))))
+
+(define-macro (rolldown pitch)
+   `(let loop ((i 0))
+         (kit (* i 1/10) ,pitch (- 110 (expt 4 i)))
+         (if (< i 3) (loop (+ i 1)))))
+
+(define-macro (roll pitch hits spacing)
+      `(let loop ((i 0))
+         (kit (* i ,spacing) ,pitch (+ 60 (expt 2 i)))
+         (if (< i (- ,hits 1)) (loop (+ i 1)))))
+
+
+
+
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;; 
+;;
+;;
+;;  notes:
+;;  symbols of notes and chords
+;;
+;;
+;; IMPORTANT Pitch has been set up so that it matches Ableton Live :: 2019-02-22
+;;
+;; c3 = 60
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;
+;;;;;; English notation
+;;;
+
+
+
+(define c0 24) ;;;;;
+(define c0# 25)
+(define d0 26)
+(define d0# 27)
+(define e0 28)
+(define f0 29)
+(define f0# 30)
+(define g0 31)
+(define g0# 32)
+(define a0 33)
+(define a0# 34)
+(define b0 35)
+(define c1 36) ;;;;;
+(define c1# 37)
+(define d1 38)
+(define d1# 39)
+(define e1 40)
+(define f1 41)
+(define f1# 42)
+(define g1 43)
+(define g1# 44)
+(define a1 45)
+(define a1# 46)
+(define b1 47)
+(define c2 48) ;;;;;
+(define c2# 49)
+(define d2 50)
+(define d2# 51)
+(define e2 52)
+(define f2 53)
+(define f2# 54)
+(define g2 55)
+(define g2# 56)
+(define a2 57)
+(define a2# 58)
+(define b2 59)
+(define c3 60) ;;;;;
+(define c3# 61)
+(define d3 62)
+(define d3# 63)
+(define e3 64)
+(define f3 65)
+(define f3# 66)
+(define g3 67)
+(define g3# 68)
+(define a3 69)
+(define a3# 70)
+(define b3 71)
+(define c4 72) ;;;;;
+(define c4# 73)
+(define d4 74)
+(define d4# 75)
+(define e4 76)
+(define f4 77)
+(define f4# 78)
+(define g4 79)
+(define g4# 80)
+(define a4 81)
+(define a4# 82)
+(define b4 83)
+(define c5 84) ;;;;;
+(define c5# 85)
+(define d5 86)
+(define d5# 87)
+(define e5 88)
+(define f5 89)
+(define f5# 90)
+(define g5 91)
+(define g5# 92)
+(define a5 93)
+(define a5# 94)
+(define b5 95)
+(define c6 96) ;;;;;
+(define c6# 97)
+(define d6 98)
+(define d6# 99)
+(define e6 100)
+(define f6 101)
+(define f6# 102)
+(define g6 103)
+(define g6# 104)
+(define a6 105)
+(define a6# 106)
+(define b6 107)
+(define c7 108) ;;;;;
+(define c7# 109)
+(define d7 110)
+(define d7# 111)
+(define e7 112)
+(define f7 113)
+(define f7# 114)
+(define g7 115)
+(define g7# 116)
+(define a7 117)
+(define a7# 118)
+(define b7 119)
+(define c8 120) ;;;;;
+(define c8# 121)
+(define d8 122)
+(define d8# 123)
+(define e8 124)
+(define f8 125)
+(define f8# 126)
+(define g8 127)
+(define g8# 128)
+(define a8 129)
+(define a8# 130)
+(define b8 131)
+(define c9 132) ;;;;;
+
+
+;;;
+;;;;;; Romance notation
+;;;
+
+
+
+(define do0 24) ;;;;;
+(define do0# 25)
+(define re0 26)
+(define re0# 27)
+(define mi0 28)
+(define fa0 29)
+(define fa0# 30)
+(define sol0 31)
+(define sol0# 32)
+(define la0 33)
+(define la0# 34)
+(define si0 35)
+(define do1 36) ;;;;;
+(define do1# 37)
+(define re1 38)
+(define re1# 39)
+(define mi1 40)
+(define fa1 41)
+(define fa1# 42)
+(define sol1 43)
+(define sol1# 44)
+(define la1 45)
+(define la1# 46)
+(define si1 47)
+(define do2 48) ;;;;;
+(define do2# 49)
+(define re2 50)
+(define re2# 51)
+(define mi2 52)
+(define fa2 53)
+(define fa2# 54)
+(define sol2 55)
+(define sol2# 56)
+(define la2 57)
+(define la2# 58)
+(define si2 59)
+(define do3 60) ;;;;;
+(define do3# 61)
+(define re3 62)
+(define re3# 63)
+(define mi3 64)
+(define fa3 65)
+(define fa3# 66)
+(define sol3 67)
+(define sol3# 68)
+(define la3 69)
+(define la3# 70)
+(define si3 71)
+(define do4 72) ;;;;;
+(define do4# 73)
+(define re4 74)
+(define re4# 75)
+(define mi4 76)
+(define fa4 77)
+(define fa4# 78)
+(define sol4 79)
+(define sol4# 80)
+(define la4 81)
+(define la4# 82)
+(define si4 83)
+(define do5 84) ;;;;;
+(define do5# 85)
+(define re5 86)
+(define re5# 87)
+(define mi5 88)
+(define fa5 89)
+(define fa5# 90)
+(define sol5 91)
+(define sol5# 92)
+(define la5 93)
+(define la5# 94)
+(define si5 95)
+(define do6 96) ;;;;;
+(define do6# 97)
+(define re6 98)
+(define re6# 99)
+(define mi6 100)
+(define fa6 101)
+(define fa6# 102)
+(define sol6 103)
+(define sol6# 104)
+(define a6 105)
+(define a6# 106)
+(define si6 107)
+(define do7 108) ;;;;;
+(define do7# 109)
+(define re7 110)
+(define re7# 111)
+(define mi7 112)
+(define fa7 113)
+(define fa7# 114)
+(define sol7 115)
+(define sol7# 116)
+(define la7 117)
+(define la7# 118)
+(define si7 119)
+(define do8 120) ;;;;;
+(define do8# 121)
+(define re8 122)
+(define re8# 123)
+(define mi8 124)
+(define fa8 125)
+(define fa8# 126)
+(define sol8 127)
+(define sol8# 128)
+(define la8 129)
+(define la8# 130)
+(define si8 131)
+(define do9 132) ;;;;;
+
+
+; shortcut // implicit pitch
+
+(define do 60) ;;;;;
+(define do# 61)
+(define re 62)
+(define re# 63)
+(define mi 64)
+(define fa 65)
+(define fa# 66)
+(define sol 67)
+(define sol# 68)
+(define la 69)
+(define la# 70)
+(define si 71)

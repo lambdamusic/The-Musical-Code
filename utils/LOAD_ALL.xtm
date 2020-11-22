@@ -1,0 +1,22 @@
+
+(define load_verbose
+  (lambda (path)
+    (println 'Loading '* path '*)
+    (sys:load path)
+    ))
+
+(define *myutils* "/path/to/the-musical-code/utils/")
+(load_verbose  "libs/core/pc_ivl.xtm")  ;; pitch classes lib
+(load_verbose "libs/external/portmidi.xtm")  ;; midi
+(pm_initialize)
+
+
+(load_verbose (string-append *myutils* "init_utils.xtm"))
+(load_verbose (string-append *myutils* "init_symbols.xtm"))
+(load_verbose (string-append *myutils* "init_play.xtm"))
+(load_verbose (string-append *myutils* "init_steps.xtm"))
+
+
+(println '**************')
+(println '* 'STARTUP 'LOADER 'COMPLETED '*)
+(println '**************')
