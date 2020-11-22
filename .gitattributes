@@ -1,0 +1,3 @@
+*.xtm linguist-language=Scheme
+
+# http://stackoverflow.com/questions/13597892/how-to-change-the-language-of-a-repository-on-github
