@@ -4,5 +4,6 @@ This repo has a counterpart [YouTube channel](https://www.youtube.com/channel/UC
 
 See also:
 
+-   Extempore: https://extemporelang.github.io/
 -   Extempore github: https://github.com/digego/extempore
 -   Language docs (unofficial): http://hacks.michelepasin.org/extempore/

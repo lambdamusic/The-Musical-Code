@@ -1,0 +1,34 @@
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 2020-11-dexed-ambient.xtm -- 
+;; 
+;; https://www.youtube.com/watch?v=OcPwwMrcZuI&t=456s
+;; 
+;; ambient sounds improvisation // made with https://extemporelang.github.io
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(pm_print_devices)
+(define *mididevice* (pm_create_output_stream 1)) 
+
+
+;; Live / Dexed set
+(define x
+  (lambda (beat note durx ch)
+    (let ((dur (cosrfloor durx (/ durx 2) 1/120)))
+      (println dur)
+      (playchord  
+        (:mkchordnotfixed note '^ 
+          (cosrfloor 5 3 1/120)) 
+          40 (- dur 1/4) ch)
+      (callback (*metro* (+ beat (* 1/2 dur))) 'x 
+        (+ beat dur) 
+          note 
+          durx 
+          ch))))
+
+(x (*metro* 'get-beat 1) c3 12 4) ;; strings
+(x (*metro* 'get-beat 1) g3 6 1) ;; piano chords
+(x (*metro* 'get-beat 1) c2 8 2) ;; bass
+(x (*metro* 'get-beat 1) f2 10 5) ;; zebra

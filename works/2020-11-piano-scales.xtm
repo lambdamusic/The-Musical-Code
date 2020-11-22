@@ -1,0 +1,60 @@
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 2020-11-piano-scales.xtm -- 
+;; 
+;; https://www.youtube.com/watch?v=Qix3tbpb9V4&t=217s
+;; 
+;; piano scales progressions // made with https://extemporelang.github.io
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(pm_print_devices)
+(define *mididevice* (pm_create_output_stream 1))
+
+
+
+(define xsc
+  (lambda (beat vel scale)
+    (let ((dur (cosratio 4 2 1/128)))
+
+      ;; piano
+      (play (car scale) vel dur 1)
+      (play 5 (+ 12 (car scale)) 1 (* dur 2) 1)
+      (play (oneof 3/2 2) (+ 24 (car scale)) 1 (* dur 2) 1)
+
+      ;; bass
+      (play 5 (car scale) 90 (* dur 2) 2)
+      (:chance .8 (play 6 (+ (car scale) 2) 90 (* dur 2) 2))
+
+      ; ; ; trumpet
+      (play 1 (+ 0 (car scale)) 1 dur 3) ;; 
+      (:chance .2 (play 3/2 (+ 12 (cadr scale)) 1 dur 3))
+
+      ; ;; synth
+      (play (add 12 (car scale)) vel dur 4)
+      (play (add 24 (cadddr scale)) vel (* dur 2) 4)
+
+      ;; repeat
+      (set! scale (rotate scale -1))
+      (set! vel (- vel 1))
+
+      (println 'vel= vel 'dur= dur)
+      (if (> vel 0)
+        (callback (*metro* (+ beat (* 1/2 dur))) 'xsc 
+          (+ beat dur)
+          vel
+          scale)))))
+
+
+;; set scale to play so that scales overlap with each other
+
+(xsc (*metro* 'get-beat 1) 
+  50 ; vol 
+  ;  (:mkscale g2 'ionian 2))
+  ;  (:mkscale a2 'aeolian 2))
+  ; (:mkscale c1 'aeolian 2))
+  ; (:mkscale g1 'pentatonic 2))
+  (:mkscale c1 'pentatonic 2))
+
+
+
