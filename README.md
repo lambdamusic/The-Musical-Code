@@ -2,6 +2,9 @@
 
 Listen to the code:  https://www.youtube.com/channel/UCanqSICbxzRNEZGMlu8qfyw
 
+[![Watch the video](https://img.youtube.com/vi/Qix3tbpb9V4/maxresdefault.jpg)](https://www.youtube.com/watch?v=Qix3tbpb9V4)
+
+
 ## What is this repo
 
 This repository contains experimental musical algorithms using the amazing [Extempore](https://extemporelang.github.io/) programming language (as well as it precursor [Impromptu](http://impromptu.moso.com.au)).
