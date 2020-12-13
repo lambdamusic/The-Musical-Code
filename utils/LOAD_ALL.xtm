@@ -1,3 +1,12 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LOAD_ALL.xtm -- 
+;; 
+;; utility to load various buffers at startup
+;; 
+;; 
+;; author: @lambdamusic
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 (define load_verbose
   (lambda (path)
@@ -5,16 +14,27 @@
     (sys:load path)
     ))
 
-(define *myutils* "/path/to/the-musical-code/utils/")
+;; SET AS NEEDED
+
+(define *myutils* "/YOUR//path/to/utils/")
+
+;; LOAD STANDARD LIBS
+
 (load_verbose  "libs/core/pc_ivl.xtm")  ;; pitch classes lib
+
 (load_verbose "libs/external/portmidi.xtm")  ;; midi
 (pm_initialize)
 
 
+;; MY UTILS
+
+
 (load_verbose (string-append *myutils* "init_utils.xtm"))
 (load_verbose (string-append *myutils* "init_symbols.xtm"))
-(load_verbose (string-append *myutils* "init_play.xtm"))
+(load_verbose (string-append *myutils* "init_chords.xtm"))
+(load_verbose (string-append *myutils* "init_midi.xtm"))
 (load_verbose (string-append *myutils* "init_steps.xtm"))
+(load_verbose (string-append *myutils* "init_beats.xtm"))
 
 
 (println '**************')

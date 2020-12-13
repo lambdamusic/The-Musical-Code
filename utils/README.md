@@ -1,16 +1,18 @@
-# Util libraries 
+# Extempore init libraries 
 
-This folder contains 
-
-* functions and helpers preloaded at startup time of extempore
+This folder contains functions and helpers I load by default with Extempore. 
 
 Files 
 
-* `init_play` functions for making music; beat utils
-* `init_step` step sequencer 
-* `init_symbols` musical symbols and functions for generating them
+* `init_midi` midi macros eg for playing instruments
+* `init_beats` metro beat utils
+* `init_chords` utils to generate chord structures
+* `init_steps` midi step sequencer 
+* `init_symbols` notes symbols 
 * `init_utils` lisp and scheme utils 
 
+
+## How to load
 
 One can load them at startup like this
 

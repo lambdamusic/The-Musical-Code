@@ -1,11 +1,72 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;; michele pasin
+;;;;;;;;;;;;;;;;;;;;;;;;;; 
 ;;
 ;;
-;;  cl:
 ;;  generic common lisp / scheme utils 
 ;;
 ;;
+;; author: @lambdamusic
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ADD
+;; 
+; increase a result atom/list, using a value atom/list 
+; if lengths don't match, adjust them automatically by slicing/repeating elements
+;
+
+; (:add 4 2) ;; 6
+; (:add '(4 5) 2) ;; 6
+; (:add '(4) '(2)) ;; '(6)
+; (:add 4 '(2 10 22)) ;; '(6 14 26) 
+; (:add '(4 2) '(2)) ;; '(6)
+; (:add '(4) '(2 4 6)) ;; '(6 8 10)
+; (:add '(5 4) '(g3 c4 g4 e3)) ;; '(72 76 83 68)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+;; helper: add two numbers or symbols (standing for numbers, eg d5)
+(define inner-add-helper
+  (lambda (x y)
+    (+ (eval x) (eval y))))
+
+;; inner fn with cases
+(define inner-add
+  (lambda (l1 l2)
+    (cond ((= (length l1) (length l2))
+            (map (lambda (x y) (inner-add-helper x y)) l1 l2))
+          ((> (length l1) (length l2))
+            (map (lambda (x y) (inner-add-helper x y)) 
+            (cl:slice-left l1 (length l2)) l2))
+          ((< (length l1) (length l2))
+            (map (lambda (x y) (inner-add-helper x y)) 
+            (cl:expand-list2 l1 (length l2)) l2))
+    )))
+
+;; main
+(define add
+  (lambda (val res)
+    (cond ((and (list? val) (list? res)) 
+            (inner-add val res))
+          ((and (atom? val)  (list? res))
+            (inner-add (make-list (length res) val) res))
+          ((and (atom? val) (atom? res))
+            (+ val (eval res)))
+          ((and (list? val) (atom? res))
+            (+ (car val) (eval res)))
+          (else '()))))
+
+
+;; legacy name
+(define offset add)
+
+
 
 
 
@@ -372,7 +433,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;
-;MACROS 
+;MISC MACROS 
 ;;;;;;;;;;;;;;;;;;;
 
 

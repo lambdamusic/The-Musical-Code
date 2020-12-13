@@ -1,0 +1,153 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;
+;; helper functions for generatic musical structures 
+;;
+;;
+;; author: @lambdamusic
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+; :mkchord
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Args:
+; root 
+; chord-sym [default: '^]
+; notes_number [default: 3]
+;
+; Example:
+; (println (:mkchord 60 '- 8))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define-macro (:mkchord . args)
+  ;;(println args)
+   (cond ((length-equal? args 1) ;; just root 
+         `(pc:make-chord-fixed ,(car args) 3 (pc:chord ,(car args) '^)))
+         ((length-equal? args 2) ; root and chord-sym
+         `(pc:make-chord-fixed ,(car args) 3 (pc:chord ,(car args) ,(cadr args))))
+         ((length-equal? args 3) ;; also notes_number
+         `(pc:make-chord-fixed ,(car args) ,(caddr args) (pc:chord ,(car args) ,(cadr args))))         
+         (else (print 'Error: 'arguments 'could 'not 'be 'resolved.))))
+
+
+
+
+; :mkchordrandom
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; wrapper around non-deterministic pc:make-chord (updated on 2020-10-04)
+;
+; Args:
+; root 
+; chord-sym [default: '^]
+; notes_number [default: 4]
+; upper_limit [default: 120]
+;
+; Example:
+; (println (:mkchordrandom 60 '- 3 120))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define-macro (:mkchordrandom . args)
+  ;;(println args)
+   (cond ((length-equal? args 1) ;; just root 
+         `(pc:make-chord ,(car args) 120 3 (pc:chord ,(car args) '^)))
+         ((length-equal? args 2) ; root and chord-sym
+         `(pc:make-chord ,(car args) 120 3 (pc:chord ,(car args) ,(cadr args))))
+         ((length-equal? args 3) ;; also notes_number
+         `(pc:make-chord ,(car args) 120 ,(caddr args) (pc:chord ,(car args) ,(cadr args))))  
+         ((length-equal? args 4) ;; also upper-limit
+         `(pc:make-chord ,(car args) ,(cadddr args) ,(caddr args) (pc:chord ,(car args) ,(cadr args))))         
+         (else (print 'Error: 'arguments 'could 'not 'be 'resolved.))))
+
+
+
+
+
+; __multiply_octaves
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; helper function: from a list, extend it by adding 12 to all elements (one octave)
+;
+; Args:
+;
+; Example:
+; (_multiply_octaves (pc:scale 0 'ionian) 2)) 
+;; => retuns 2 octaves of the scale
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define _multiply_octaves 
+  (lambda (scale octaves)
+    (if (= octaves 1)
+      scale)
+    (dotimes (i octaves)
+      (if (> i 0)
+        (set! scale (append scale (add (* 12 i) scale)))))
+        scale))
+
+
+
+
+
+; :mkscale
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Args:
+; root    [default: 60]
+; mode    [default: 'ionian]
+; octaves [default: 1]
+;
+;
+; Example:
+; (:mkscale 60 'aeolian 2)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-macro (:mkscale . args)
+  ; (println args)
+   (cond ((null? args) ;; all default!
+          `(map (lambda (x) 
+            (+ 60 x))
+            (pc:scale 0 'ionian)))
+          ((length-equal? args 1) ;; just root 
+                    `(map (lambda (x)
+                            (+ ,(car args)  x))
+                        (pc:scale 0 'ionian)))            
+          ((length-equal? args 2) ;;  root and scale-mode
+                    `(map (lambda (x)
+                            (+ ,(car args) x))
+                        (pc:scale 0 ,(cadr args))))      
+          ((length-equal? args 3) ;;  root and scale-mode and octaves
+                    `(map (lambda (x)
+                            (+ ,(car args) x))
+                        (_multiply_octaves (pc:scale 0 ,(cadr args)) ,(caddr args))))           
+          (else (print 'Error: 'arguments 'could 'not 'be 'resolved.))))   
+
+
+
+
+
+
+; octave, sixth etc..
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Shortcuts for incrementing pitch using intervals
+;
+; Example:
+; (octave '(c3 g3 a4))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-macro (octave plist)
+   `(offset 12 ,plist))
+(define-macro (seventhdom plist)
+ `(offset 10 ,plist))
+(define-macro (seventhmaj plist)
+ `(offset 11 ,plist))
+(define-macro (sixth plist)
+ `(offset 9 ,plist))
+(define-macro (fourth plist)
+  `(offset 5 ,plist))
+(define-macro (fifth plist)
+   `(offset 7 ,plist))
+(define-macro (thirdmaj plist)
+  `(offset 4 ,plist))
+(define-macro (thirdmin plist)
+  `(offset 3 ,plist))
+
+
+
