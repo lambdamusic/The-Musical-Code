@@ -1,0 +1,81 @@
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 2020-12-ozric-island.xtm -- 
+;; 
+;; https://youtu.be/sCnzplYl9xw
+;; 
+;; ambient landscape music // made with https://extemporelang.github.io
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(pm_print_devices)
+(define *mididevice* (pm_create_output_stream 1))
+
+
+
+
+;; vols master
+
+(let ((beat (*metro* 'get-beat)))
+    (:mcc 1 0)
+    (:mcc 2 70)
+    (:mcc 3 0)
+    (:mcc 4 0)
+    (:mcc 5 0)
+    (:mcc 6 0)
+)
+
+
+;; main instruments
+(define fun
+   (lambda (beat) 
+      (let ((dur 1/16))
+        (:mcc 60 (cosr 50 40 1/64)) ;; zebra filter cutoff
+        (onbeat 1 0 
+            (play2 (random '(1/2 0 0 0)) 
+                (pc:random 60 80 (add 0 '(3 5 7))) 60 1))
+        (onbeat 16 (- 4 1/2) 
+          (play2 c2 80 1))
+        (onbeat 2 0 
+          (play2 c3 80 1))
+        (onbeat 2 1 ``
+          (play2 f3 80 1))
+
+        (onbeat 16 '(0 5) 
+          (play3 (random 36 43) (random 20 60) 8))
+        (:mcc 60 (cosr 50 40 1/64))
+         
+     (callback (*metro* (+ beat (* 1/2 dur))) 'fun (+ beat dur)))))
+
+(fun (*metro* 'get-beat 1))
+
+
+
+
+;; drums
+(define drkit
+  (lambda (beat)
+    (let ((dur  1/16))
+
+      ;; kicks
+      (onbeat 32 1/2 (play1 c1# 110 1)) 
+      (onbeat 16 (cosrfloor 5 3 1/132) 
+        (play1 d1 90 1/8)) 
+      
+      ;; snare
+      (onbeat 32 (cosrfloor 11 2 1/64) 
+        (play1 1/2 (oneof e1 ) 5 1/8)) 
+        (:steps 1 1/2  '(c2) 30 1/8 1)
+
+      ;; toms
+      (onbeat 32 15  
+        (dotimes (i (oneof 3 4))
+          (play1 (* i (oneof 1/2 1/4)) e2 50 1/8))) 
+      
+      ;hh
+      (:steps 2 1/2 (list 47 '(47 47)) 1 1/8 1)
+      
+      (callback (*metro* (+ beat (* 1/2 dur))) 'drkit (+ beat dur)))))
+
+
+(drkit (*metro* 'get-beat 1))
