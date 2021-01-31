@@ -46,6 +46,23 @@
 
 
 
+;;;;;;;
+;; UTILITY TO ALLOW PASSING NEGATIVE VALUES TO ONBEAT FUNCTIONS
+;
+
+; (handle_negatives_beats 4 -1/4) => 15/4
+; (handle_negatives_beats 4 -1/2) => 7/2
+; (handle_negatives_beats 4 -5) => -1
+
+(define handle_negatives_beats
+  (lambda (x y)
+    (if (< y 0)
+      (+ x y)
+      y)
+    ))
+
+
+
 
 ;; ONBEAT X Y
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -56,6 +73,8 @@
 ; Y = the NUMERATOR (0 BASED)
 ; Y Accepts both single numbers and lists
 ;
+; Note
+; Pass '0' as denominator to bypass execution (ie to mute while playing)
 
 ; Example:
 ;; (let ((beat (*metro* 'get-beat)))
@@ -67,12 +86,14 @@
 
 (impc:aot:do-or-emit
     (define-macro (onbeat x y . args)
-    `(for-each (lambda (step)
-                    (if (equal? (modulo beat ,x) step)
-                        (begin ,@args)))
-                (if (list? ,y)
-                    ,y
-                    (list ,y))))
+    (if (> x 0)
+      `(for-each (lambda (step)
+                      (if (equal? (modulo beat ,x) (handle_negatives_beats ,x step))
+                          (begin ,@args)))
+                  (if (list? ,y)
+                      ,y
+                      (list ,y))))
+    )
 )
 
 
@@ -90,13 +111,15 @@
 
 (impc:aot:do-or-emit
     (define-macro (ifbeat x y args . elseargs)
+    (if (> x 0)
     `(for-each (lambda (step)
-                    (if (equal? (modulo beat ,x) ,y)
+                    (if (equal? (modulo beat ,x) (handle_negatives_beats ,x step))
                         ,args
                         ,@elseargs))
                 (if (list? ,y)
                     ,y
                     (list ,y))))
+    )
 )
 
 
@@ -152,3 +175,29 @@
             ,args
             ,@elseargs))
 )
+
+
+
+
+
+
+
+;; EVERY N loops, do X, ELSE Y
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Requires LC symbol to be defined
+;
+; (let ((LC 4))
+;   (every 2 (list 4 5) 'no)
+;   )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+(define-macro (every . args)
+  ;;(println args)
+   `(if (= (modulo LC ,(car args)) 0)
+        ,(cadr args)
+        ,(caddr args)))
+
+

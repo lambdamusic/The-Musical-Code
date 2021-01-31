@@ -1,13 +1,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
 ;
 ; 'steps'  =  PlayPattern function for MIDI - like a step sequencer
-; Adapted from original implementation in Extempore. 
-; Defaults: certain arguments eg midi inst are automatically inferred
+; Adapted from the original implementation in Extempore:
+; https://groups.google.com/g/extemporelang/c/pOXxoLjO1ug/m/b6m5UY8UBgAJ
 ;
 ;
-;; author: @lambdamusic
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; author: @lambdamusic
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -57,7 +56,7 @@
 ;
 ; inner patterns are not resolved correctly
 ; eg '(60 (67 65) 63)
-; => look at original playp implementation
+; => review original playp implementation
 ; 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -11,6 +11,15 @@
 
 
 
+; (caddddr '(1 2 3 4 5 6 7 8)) ;; => 5
+; (nth 5   '(1 2 3 4 5 6 7 8))  ;; => 6  // 0 based!
+
+(define caddddr
+   (lambda (l)
+      (car (cddddr l))))
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADD
 ;; 
@@ -66,6 +75,7 @@
 ;; legacy name
 (define offset add)
 
+(define :add add)
 
 
 
@@ -86,6 +96,7 @@
 (define rest cdr)
 (define cl:count length)
 (define count length)
+(define len length)
 
 ;; added on 21/1/11 cause the default one wasn't working!
 (define cl:last (lambda (lista)
@@ -125,6 +136,7 @@
 
 (define (1+ n) (+ n 1))
 (define (1- n) (- n 1))
+
 
 
 ;; (subst 9 7 '(5 (5 6 7(6 7))))    =>  (5 (5 6 9 (6 9)))      
@@ -202,7 +214,12 @@
 (define list-flatten cl:list-flatten)
 
 
-;; given a list returns a new one with the last element duplicated N times (thus increasing the length of the initial list!)
+;;;;;; extend a list with the last element duplicated
+;;;;;; original version
+;; add extra N elements to list (or turn atom into list of N elements)
+; (cl:expand-list 50 3) ;; (50 50 50)
+; (cl:expand-list '(50 51) 3) ;; (50 51 51 51 51)
+
 (define cl:expand-list
    (lambda (l n)
       (if (list? l)
@@ -211,9 +228,11 @@
           (let ((xx (make-list n l)))
              xx))))
 
-;;;;;; better version ==> 
-;; given a list or atom replicates the last el all the times needed reach N length
-;;(cl:expand-list2 '(50 30) 5)
+;;;;;; new version 
+;; add extra elements so that list has total len N
+; (cl:expand-list2 50 3) ;; (50 50 50)
+; (cl:expand-list2 '(50 30) 5) ;; (50 30 30 30 30)
+
 (define cl:expand-list2 
    (lambda (l n)
       (if (list? l)
@@ -245,15 +264,26 @@
 
 
 ; slice a list from beginning, returns a list
-(when #f (cl:slice-left '(1 2 3 4) 2))
+(when #f (cl:slice-left '(1 2 3 4) 2)) ;; => (1 2)
+(when #f (cl:slice-left '(1 2 3 4) 7)) ;; => (1 2 3 4)
 
 (define cl:slice-left
     (lambda (lst num)
        (if (< (length lst) num)
-           (print "Error: list slicing index too big!")
-           (if (> num 0)
-               (cons (car lst) (cl:slice-left (cdr lst) (- num 1)))
-               '())))) ;'
+           (begin (println "Warning: list slicing index too big!")
+                  (set! num (length lst))))
+      (if (> num 0)
+         (cons (car lst) (cl:slice-left (cdr lst) (- num 1)))
+         '())))
+
+      
+;; simpler version, with more natural args order
+(when #f (slice 2 '(1 2 3 4))) ;; => (1 2)
+(when #f (slice 7 '(1 2 3 4))) ;; => (1 2 3 4)
+
+(define slice
+   (lambda (at lst)
+      (cl:slice-left lst at)))
 
 
 ; slice a list from specified position, returns a list
@@ -541,3 +571,31 @@
 	   (- cnt 1))))))
 
 
+
+(define-macro (:mkchordrandom . args)
+  ;;(println args)
+   (cond ((length-equal? args 1) ;; just root 
+         `(pc:make-chord ,(car args) 120 3 (pc:chord ,(car args) '^)))
+         ((length-equal? args 2) ; root and chord-sym
+         `(pc:make-chord ,(car args) 120 3 (pc:chord ,(car args) ,(cadr args))))
+         ((length-equal? args 3) ;; also notes_number
+         `(pc:make-chord ,(car args) 120 ,(caddr args) (pc:chord ,(car args) ,(cadr args))))  
+         ((length-equal? args 4) ;; also upper-limit
+         `(pc:make-chord ,(car args) ,(cadddr args) ,(caddr args) (pc:chord ,(car args) ,(cadr args))))         
+         (else (print 'Error: 'arguments 'could 'not 'be 'resolved.))))
+
+
+; -- (:mklist (function))
+;; (:mklist 4 (oneof 50 60))
+;; (:mklist 4 (oneof (:mkscale 50 'pentatonic 10)))
+(define-macro (:mklist . args)
+   `(make-list-with-proc ,(car args) (lambda (x) ,(cadr args) )))
+
+
+
+
+;; relies on http://hacks2019.michelepasin.org/extempore/1563
+
+(define sum_list
+  (lambda (lst)
+    (foldl (lambda (a b) (+ a b)) 0 lst)))

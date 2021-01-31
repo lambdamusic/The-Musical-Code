@@ -40,7 +40,7 @@
 ; Args:
 ; root 
 ; chord-sym [default: '^]
-; notes_number [default: 4]
+; notes_number [default: 3]
 ; upper_limit [default: 120]
 ;
 ; Example:
@@ -78,13 +78,10 @@
   (lambda (scale octaves)
     (if (= octaves 1)
       scale)
-    (dotimes (i octaves)
-      (if (> i 0)
-        (set! scale (append scale (add (* 12 i) scale)))))
-        scale))
-
-
-
+      (dotimes (i octaves)
+        (if (> i 0)
+          (set! scale (append scale (add (* 12 i) scale)))))
+          scale))
 
 
 ; :mkscale
@@ -93,32 +90,65 @@
 ; Args:
 ; root    [default: 60]
 ; mode    [default: 'ionian]
+; num-notes [default: 1 octave]
 ; octaves [default: 1]
 ;
 ;
 ; Example:
-; (:mkscale 60 'aeolian 2)
+; (:mkscale 60 'aeolian 5) => 5 notes
+; (:mkscale 60 'aeolian 0 3) => 3 octaves (num notes is ignored)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-macro (:mkscale . args)
-  ; (println args)
-   (cond ((null? args) ;; all default!
-          `(map (lambda (x) 
-            (+ 60 x))
-            (pc:scale 0 'ionian)))
-          ((length-equal? args 1) ;; just root 
-                    `(map (lambda (x)
-                            (+ ,(car args)  x))
-                        (pc:scale 0 'ionian)))            
-          ((length-equal? args 2) ;;  root and scale-mode
-                    `(map (lambda (x)
-                            (+ ,(car args) x))
-                        (pc:scale 0 ,(cadr args))))      
-          ((length-equal? args 3) ;;  root and scale-mode and octaves
-                    `(map (lambda (x)
-                            (+ ,(car args) x))
-                        (_multiply_octaves (pc:scale 0 ,(cadr args)) ,(caddr args))))           
-          (else (print 'Error: 'arguments 'could 'not 'be 'resolved.))))   
 
+
+
+(define :mkscale
+  (lambda (root . args)
+  ; (println args)
+   (cond ((null? args) ;; default
+          (add root (pc:scale 0 'ionian)))   
+
+          ((length-equal? args 1) 
+           ;; 1 arg = scale symbol only  
+           (add root (pc:scale 0 (car args))))
+          ((length-equal? args 2) 
+            ;; 2 args: scale, num-notes 
+            ;; factor: calc how big the scale before slicing. 5 is the min lenght of a scale. We double that based on on the num-notes parameter
+            (let* ((factor (+ (real->integer (/ (cadr args) 5)) 1)) 
+                   (s1 (_multiply_octaves (pc:scale 0 (car args)) factor)))
+              (slice (cadr args) (add root s1))))
+
+          ((length-equal? args 3) 
+            ;; 3 args: scale, num-notes (ignored), octaves 
+            ;; added for backward compatibility
+            (add root (_multiply_octaves (pc:scale 0 (car args)) (caddr args))))
+
+          (else (print 'Error: 'arguments 'could 'not 'be 'resolved.))              
+      )
+    )          
+)            
+
+
+; :mkscalerel
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Combines :mkscale and pc:relative
+;
+; Args:
+; root    [eg: 60]
+; reldegree    [eg: int, positive or negative]
+; mode    [eg: 'ionian]
+; num-notes [eg: 1]
+;
+;
+; Example:
+; (:mkscalerel 60 -2 'pentatonic 3) ;; '(55 57 59)
+; (:mkscalerel 60 0 'pentatonic 3) ;; '(60 62 64)
+; (:mkscale 60 'pentatonic 3)     ;; '(60 62 64)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define :mkscalerel
+  (lambda (root reldegree mode num-notes)
+    (:mkscale (pc:relative root reldegree (pc:scale 0 mode)) mode num-notes)))
 
 
 

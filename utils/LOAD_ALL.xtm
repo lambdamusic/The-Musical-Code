@@ -3,7 +3,8 @@
 ;; 
 ;; utility to load various buffers at startup
 ;; 
-;; 
+;; `./extempore --run LOAD_ALL.xtm`
+;;
 ;; author: @lambdamusic
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -14,29 +15,58 @@
     (sys:load path)
     ))
 
-;; SET AS NEEDED
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; STANDARD LIBS
+;; load here the libraries you use normally
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define *myutils* "/YOUR//path/to/utils/")
-
-;; LOAD STANDARD LIBS
-
+;; (load_verbose "libs/core/instruments.xtm")  ;;soft synths
+;; (load_verbose "libs/external/instruments_ext.xtm")  ;;sampler
 (load_verbose  "libs/core/pc_ivl.xtm")  ;; pitch classes lib
-
 (load_verbose "libs/external/portmidi.xtm")  ;; midi
 (pm_initialize)
 
 
-;; MY UTILS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UTILS PATH - pls update as needed
+;; with this folder full path
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define *myutils* "/Users/me/extempore/utils/")
 
 
-(load_verbose (string-append *myutils* "init_utils.xtm"))
-(load_verbose (string-append *myutils* "init_symbols.xtm"))
-(load_verbose (string-append *myutils* "init_chords.xtm"))
-(load_verbose (string-append *myutils* "init_midi.xtm"))
-(load_verbose (string-append *myutils* "init_steps.xtm"))
-(load_verbose (string-append *myutils* "init_beats.xtm"))
+(define load_my_utils
+  (lambda (subpath)
+    (load_verbose (string-append *myutils* subpath))
+    ))
 
 
-(println '**************')
-(println '* 'STARTUP 'LOADER 'COMPLETED '*)
-(println '**************')
+(load_my_utils "init_utils.xtm")
+(load_my_utils "init_symbols.xtm")
+(load_my_utils "init_music.xtm")
+(load_my_utils "init_midi.xtm")
+(load_my_utils "init_steps.xtm")
+(load_my_utils "init_beats.xtm")
+
+
+
+(log-info '**************)
+(log-info '* 'STARTUP 'LOADER 'COMPLETED '*)
+(log-info '**************)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; MIDI SETUP 
+;; update as needed by providing
+;; the midi output device name you'd normally use
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define DEFAULT_DEVICE_NAME "IAC Driver Extempore Bus")
+
+(pm_print_devices)
+(log-info "**************\nSETTING *mididevice* to output stream:")
+(println DEFAULT_DEVICE_NAME)
+
+(define *mididevice* (pm_create_output_stream 
+  (pm_output_device_with_name DEFAULT_DEVICE_NAME)))
+(log-info "**************\nDone") 
