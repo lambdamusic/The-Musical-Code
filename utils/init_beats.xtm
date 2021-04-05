@@ -86,8 +86,8 @@
 
 (impc:aot:do-or-emit
     (define-macro (onbeat x y . args)
-    (if (> x 0)
-      `(for-each (lambda (step)
+    `(if (> ,x 0)
+      (for-each (lambda (step)
                       (if (equal? (modulo beat ,x) (handle_negatives_beats ,x step))
                           (begin ,@args)))
                   (if (list? ,y)
@@ -111,8 +111,8 @@
 
 (impc:aot:do-or-emit
     (define-macro (ifbeat x y args . elseargs)
-    (if (> x 0)
-    `(for-each (lambda (step)
+    `(if (> ,x 0)
+     (for-each (lambda (step)
                     (if (equal? (modulo beat ,x) (handle_negatives_beats ,x step))
                         ,args
                         ,@elseargs))

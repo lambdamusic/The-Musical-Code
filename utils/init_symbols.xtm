@@ -1,12 +1,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;; 
 ;;
 ;;
-;;  notes and other midi symbols
+;;  notes symbols
 ;;
-;;  PS: c3 = 48
+;;  c3 = 48
 ;;
 ;; author: @lambdamusic
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 
 
 
@@ -120,6 +122,8 @@
 
 
 
+
+
 ;;;
 ;;;;;; English notation
 ;;;
@@ -129,6 +133,117 @@
 ; /extempore/libs/core/pc_ivl.xtm
 
 ;; NOTE c0 is 12 in Andrews file!! 
+
+; (define c0 24) ;;;;;
+; (define c0# 25)
+; (define d0 26)
+; (define d0# 27)
+; (define e0 28)
+; (define f0 29)
+; (define f0# 30)
+; (define g0 31)
+; (define g0# 32)
+; (define a0 33)
+; (define a0# 34)
+; (define b0 35)
+; (define c1 36) ;;;;;
+; (define c1# 37)
+; (define d1 38)
+; (define d1# 39)
+; (define e1 40)
+; (define f1 41)
+; (define f1# 42)
+; (define g1 43)
+; (define g1# 44)
+; (define a1 45)
+; (define a1# 46)
+; (define b1 47)
+; (define c2 48) ;;;;;
+; (define c2# 49)
+; (define d2 50)
+; (define d2# 51)
+; (define e2 52)
+; (define f2 53)
+; (define f2# 54)
+; (define g2 55)
+; (define g2# 56)
+; (define a2 57)
+; (define a2# 58)
+; (define b2 59)
+; (define c3 60) ;;;;;
+; (define c3# 61)
+; (define d3 62)
+; (define d3# 63)
+; (define e3 64)
+; (define f3 65)
+; (define f3# 66)
+; (define g3 67)
+; (define g3# 68)
+; (define a3 69)
+; (define a3# 70)
+; (define b3 71)
+; (define c4 72) ;;;;;
+; (define c4# 73)
+; (define d4 74)
+; (define d4# 75)
+; (define e4 76)
+; (define f4 77)
+; (define f4# 78)
+; (define g4 79)
+; (define g4# 80)
+; (define a4 81)
+; (define a4# 82)
+; (define b4 83)
+; (define c5 84) ;;;;;
+; (define c5# 85)
+; (define d5 86)
+; (define d5# 87)
+; (define e5 88)
+; (define f5 89)
+; (define f5# 90)
+; (define g5 91)
+; (define g5# 92)
+; (define a5 93)
+; (define a5# 94)
+; (define b5 95)
+; (define c6 96) ;;;;;
+; (define c6# 97)
+; (define d6 98)
+; (define d6# 99)
+; (define e6 100)
+; (define f6 101)
+; (define f6# 102)
+; (define g6 103)
+; (define g6# 104)
+; (define a6 105)
+; (define a6# 106)
+; (define b6 107)
+; (define c7 108) ;;;;;
+; (define c7# 109)
+; (define d7 110)
+; (define d7# 111)
+; (define e7 112)
+; (define f7 113)
+; (define f7# 114)
+; (define g7 115)
+; (define g7# 116)
+; (define a7 117)
+; (define a7# 118)
+; (define b7 119)
+; (define c8 120) ;;;;;
+; (define c8# 121)
+; (define d8 122)
+; (define d8# 123)
+; (define e8 124)
+; (define f8 125)
+; (define f8# 126)
+; (define g8 127)
+; (define g8# 128)
+; (define a8 129)
+; (define a8# 130)
+; (define b8 131)
+; (define c9 132) ;;;;;
+
 
 ;;;
 ;;;;;; Romance notation

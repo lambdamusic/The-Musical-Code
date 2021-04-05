@@ -41,7 +41,7 @@
     ))
 
 
-(load_my_utils "init_utils.xtm")
+(load_my_utils "init_lisp.xtm")
 (load_my_utils "init_symbols.xtm")
 (load_my_utils "init_music.xtm")
 (load_my_utils "init_midi.xtm")

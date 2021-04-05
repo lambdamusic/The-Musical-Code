@@ -11,15 +11,6 @@
 
 
 
-; (caddddr '(1 2 3 4 5 6 7 8)) ;; => 5
-; (nth 5   '(1 2 3 4 5 6 7 8))  ;; => 6  // 0 based!
-
-(define caddddr
-   (lambda (l)
-      (car (cddddr l))))
-
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADD
 ;; 
@@ -98,6 +89,17 @@
 (define count length)
 (define len length)
 
+
+
+
+; (caddddr '(1 2 3 4 5 6 7 8)) ;; => 5
+; (nth 5   '(1 2 3 4 5 6 7 8))  ;; => 6  // 0 based!
+
+(define caddddr
+   (lambda (l)
+      (car (cddddr l))))
+
+
 ;; added on 21/1/11 cause the default one wasn't working!
 (define cl:last (lambda (lista)
                    (list-ref lista (- (length lista) 1))))
@@ -116,10 +118,20 @@
    (lambda (obj lst)
       (reverse (cons obj (reverse lst)))))
 
-;; dont know why but I like it reversed..
+;; nth, reversed args 
 (define cl:nth (lambda (index_0_based lst)
-               (list-ref lst index_0_based)))
+      (list-ref lst index_0_based)))
 (define nth cl:nth)
+
+;; nth reversed and 1-based
+; (take 9 (:mkscalerel 62 1 'dorian 8))
+(define take (lambda (index_1_based lst)
+    (if (< (length lst) index_1_based)
+        (log-info "List too short for take")
+        (list-ref lst (- index_1_based 1)))))
+
+
+
 
 ;; OLD implemetation: mind that I was taking 1 as lowest index (while now nth takes 0)
 ;;; the scheme equivalent is list-ref
@@ -281,9 +293,20 @@
 (when #f (slice 2 '(1 2 3 4))) ;; => (1 2)
 (when #f (slice 7 '(1 2 3 4))) ;; => (1 2 3 4)
 
+
+;; March 20, 2021
+;; slice index can be in any position
 (define slice
-   (lambda (at lst)
-      (cl:slice-left lst at)))
+   (lambda (arg1 arg2)
+        (if (list? arg1)
+            (cl:slice-left arg1 arg2 )
+            (cl:slice-left arg2 arg1)
+            )))
+
+(define sl slice)
+
+
+
 
 
 ; slice a list from specified position, returns a list
@@ -520,15 +543,18 @@
 
 (define ifchance if-random)
 (define :ifchance if-random)
+(define ifr if-random)
+(define chance if-random) ; 2021-03-07
+(define :chance if-random)
+
 
 ;; (when (> (random) .1) (print 'ca) (print 'ciao))
 (define-macro (when-random x . args )
    `(when (> (random) ,x)
         (begin ,@args)))
 
-(define chance when-random)
-(define :chance when-random)
-
+; (define chance when-random)
+; (define :chance when-random)
 
 
 
@@ -572,23 +598,12 @@
 
 
 
-(define-macro (:mkchordrandom . args)
-  ;;(println args)
-   (cond ((length-equal? args 1) ;; just root 
-         `(pc:make-chord ,(car args) 120 3 (pc:chord ,(car args) '^)))
-         ((length-equal? args 2) ; root and chord-sym
-         `(pc:make-chord ,(car args) 120 3 (pc:chord ,(car args) ,(cadr args))))
-         ((length-equal? args 3) ;; also notes_number
-         `(pc:make-chord ,(car args) 120 ,(caddr args) (pc:chord ,(car args) ,(cadr args))))  
-         ((length-equal? args 4) ;; also upper-limit
-         `(pc:make-chord ,(car args) ,(cadddr args) ,(caddr args) (pc:chord ,(car args) ,(cadr args))))         
-         (else (print 'Error: 'arguments 'could 'not 'be 'resolved.))))
 
 
-; -- (:mklist (function))
-;; (:mklist 4 (oneof 50 60))
-;; (:mklist 4 (oneof (:mkscale 50 'pentatonic 10)))
-(define-macro (:mklist . args)
+; -- (mklist (function))
+;; (mklist 4 (oneof 50 60))
+;; (mklist 4 (oneof (:mkscale 50 'pentatonic 10)))
+(define-macro (mklist . args)
    `(make-list-with-proc ,(car args) (lambda (x) ,(cadr args) )))
 
 
@@ -599,3 +614,14 @@
 (define sum_list
   (lambda (lst)
     (foldl (lambda (a b) (+ a b)) 0 lst)))
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; COMPATIBILITY MODE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define :mklist mklist)

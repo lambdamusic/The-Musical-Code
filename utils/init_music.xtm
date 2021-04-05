@@ -8,7 +8,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-; :mkchord
+; mkchord
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; Args:
@@ -17,10 +17,10 @@
 ; notes_number [default: 3]
 ;
 ; Example:
-; (println (:mkchord 60 '- 8))
+; (println (mkchord 60 '- 8))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define-macro (:mkchord . args)
+(define-macro (mkchord . args)
   ;;(println args)
    (cond ((length-equal? args 1) ;; just root 
          `(pc:make-chord-fixed ,(car args) 3 (pc:chord ,(car args) '^)))
@@ -44,10 +44,10 @@
 ; upper_limit [default: 120]
 ;
 ; Example:
-; (println (:mkchordrandom 60 '- 3 120))
+; (println (mkchordrandom 60 '- 3 120))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define-macro (:mkchordrandom . args)
+(define-macro (mkchordrandom . args)
   ;;(println args)
    (cond ((length-equal? args 1) ;; just root 
          `(pc:make-chord ,(car args) 120 3 (pc:chord ,(car args) '^)))
@@ -84,7 +84,7 @@
           scale))
 
 
-; :mkscale
+; mkscale
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; Args:
@@ -95,13 +95,13 @@
 ;
 ;
 ; Example:
-; (:mkscale 60 'aeolian 5) => 5 notes
-; (:mkscale 60 'aeolian 0 3) => 3 octaves (num notes is ignored)
+; (mkscale 60 'aeolian 5) => 5 notes
+; (mkscale 60 'aeolian 0 3) => 3 octaves (num notes is ignored)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 
-(define :mkscale
+(define mkscale
   (lambda (root . args)
   ; (println args)
    (cond ((null? args) ;; default
@@ -128,10 +128,12 @@
 )            
 
 
-; :mkscalerel
+
+
+; mkrelscale
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
-; Combines :mkscale and pc:relative
+; Combines mkscale and pc:relative
 ;
 ; Args:
 ; root    [eg: 60]
@@ -141,15 +143,37 @@
 ;
 ;
 ; Example:
-; (:mkscalerel 60 -2 'pentatonic 3) ;; '(55 57 59)
-; (:mkscalerel 60 0 'pentatonic 3) ;; '(60 62 64)
-; (:mkscale 60 'pentatonic 3)     ;; '(60 62 64)
+; (mkrelscale 60 -2 'pentatonic 3) ;; '(55 57 59)
+; (mkrelscale 60 0 'pentatonic 3) ;; '(60 62 64)
+; (mkscale 60 'pentatonic 3)     ;; '(60 62 64)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define :mkscalerel
+(define mkrelscale
   (lambda (root reldegree mode num-notes)
-    (:mkscale (pc:relative root reldegree (pc:scale 0 mode)) mode num-notes)))
+    (mkscale (pc:relative root reldegree (pc:scale 0 mode)) mode num-notes)))
 
+
+
+
+
+
+; mkrel
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Shortcut for pc:relative / returns a single note
+;
+; Args:
+; root    [eg: 60]
+; reldegree    [eg: int, positive or negative]
+; mode    [eg: 'ionian]
+;
+;
+; Example:
+; (mkrel 60 0 'pentatonic) ;; 60
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define mkrel
+  (lambda (root degree mode)
+        (car (mkrelscale root degree mode 1))))
 
 
 
@@ -181,3 +205,36 @@
 
 
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; MONITOR values 
+;; shortcut for printing out variables while in loops , using beat // default on 1/4
+;;
+;; Example
+;
+; (let ((beat (*metro* 'get-beat))
+;         (v1 2) (v2 4)) 
+;     (monitor v1 v2))
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define-macro (monitor . args)
+    (if (number? (car args))
+        `(onbeat ,(car args) 0 (println ,@(cdr args)))
+        `(onbeat 1/4 0 (println ,@args))
+    ))
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; COMPATIBILITY MODE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define :mkchord mkchord)
+(define :mkchordrandom mkchordrandom)
+(define :mkscalerel mkrelscale)
+(define :mkscale mkscale)
+(define :mkrel mkrel)
