@@ -1,0 +1,73 @@
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 2021-04-rhytmic-cycles-part-1.xtm -- 
+;; 
+;; https://youtu.be/m3v8gRzROkU
+;; 
+;; // made with https://extemporelang.github.io
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+(define notes (list c3 g3 bb3))
+
+(define times (:mklist 8 (oneof 1/2 1/4)))
+
+(define inc
+    (lambda (alist)
+        (map (lambda (x)
+                (if (< x 1) 
+                    (ifr .7 (add 1/4 x) x) 0)
+                )
+            alist)
+    ))
+
+
+(define lp1
+    (lambda (beat)
+        (let ((dur 1/16)
+              (v1 (cosr (cosr 50 18 1/64) 30 1/64))
+              (v2 (cosr (cosr 50 18 1/150) 30 1/40))
+              (fc 8))
+
+            (println v1 v2)
+
+            (onbeat 4 0 
+                (set! times (inc times)))
+
+            (onbeat 32 0
+                (if (< v1 40)  
+                    (set! notes (rotate notes -1))))
+
+            (onbeat 32 0
+                (if (< v1 20)  
+                    (:arp 
+                        (:mkchord (car notes) '-9 7) 
+                        (list 5 5 4 4 3 3) 
+                        90 
+                        5)))
+
+            (onbeat 32 16
+                (if (< v2 40)  
+                    (:arp 
+                        (:mkchord (car notes) '-7 7) 
+                        (list 2 4 1 5 2 3) 
+                        90 
+                        6)))
+
+            (map (lambda (x y z)
+                  (onbeat x 0 (play y z (* dur .9) 1))
+                  (onbeat x 0 (play y z (* dur .9) 3))
+                    )
+                (slice fc times)
+                (slice fc  (:mkchord (car notes) '-6 8))
+                (slice fc  (list v1 v2 v1 v2 v1 v2 v1 v2))
+                )
+
+            (callback (*metro* (+ beat (* 1/2 dur))) 
+                'lp1 (+ beat dur)))))
+
+(lp1 (*metro* 'get-beat 1))
