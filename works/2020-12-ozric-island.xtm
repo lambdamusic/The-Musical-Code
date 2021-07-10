@@ -1,6 +1,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 2020-12-ozric-island.xtm -- 
+;; 2021-07-ozric-islands.xtm -- 
 ;; 
 ;; https://youtu.be/sCnzplYl9xw
 ;; 
@@ -8,72 +8,103 @@
 ;; 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(pm_print_devices)
-(define *mididevice* (pm_create_output_stream 1))
+;;;;
+;; instruments
+;;;
+
+(define kit 1)
+(define syn 2)
+(define fx 3)
+
+;; drumkit 
+(define bd1 36)
+(define bd2 37)
+(define bd3 38)
+
+
+(define sn1 40)
+(define sn2 41)
+(define sn3 48)
+
+(define hh1 44)
+(define hh2 46)
+(define hh3 47)
+(define cy1 45)
+(define cy2 49)
+(define cy3 51)
+(define tam1 50)
+
+(define tom1 39)
+(define tom2 42)
+(define tom3 43)
 
 
 
 
-;; vols master
-
-(let ((beat (*metro* 'get-beat)))
-    (:mcc 1 0)
-    (:mcc 2 70)
-    (:mcc 3 0)
-    (:mcc 4 0)
-    (:mcc 5 0)
-    (:mcc 6 0)
-)
 
 
-;; main instruments
-(define fun
-   (lambda (beat) 
-      (let ((dur 1/16))
-        (:mcc 60 (cosr 50 40 1/64)) ;; zebra filter cutoff
-        (onbeat 1 0 
-            (play2 (random '(1/2 0 0 0)) 
-                (pc:random 60 80 (add 0 '(3 5 7))) 60 1))
-        (onbeat 16 (- 4 1/2) 
-          (play2 c2 80 1))
-        (onbeat 2 0 
-          (play2 c3 80 1))
-        (onbeat 2 1 ``
-          (play2 f3 80 1))
-
-        (onbeat 16 '(0 5) 
-          (play3 (random 36 43) (random 20 60) 8))
-        (:mcc 60 (cosr 50 40 1/64))
-         
-     (callback (*metro* (+ beat (* 1/2 dur))) 'fun (+ beat dur)))))
-
-(fun (*metro* 'get-beat 1))
+(mixer-all 0)
 
 
+(define main
+  (lambda (beat dur)
+
+      (at 1 0 
+        ;; change as needed
+        (mixer 1 1)
+        )
+
+      (at 1 0
+        (play syn (pc:random 60 80 '(3 5 7)
+          90 1)))
+
+        (at 16 7/2 
+          (play syn c3 80 1)) 
+
+        (at 2 0 
+          (play syn c4 80 1)) 
+
+        (at 2 1 
+          (play syn f3 80 1)) 
 
 
-;; drums
-(define drkit
+        (at 16 '(0 5)
+           (play fx (random 36 43) (random 20 60) 8 )
+        )
+
+    (callback (*metro* (+ beat (* 1/2 dur))) 
+        'main (+ beat dur) dur)))
+
+(main (*metro* 'get-beat 1) 1/16)
+
+
+
+
+(define drkit)
   (lambda (beat)
     (let ((dur  1/16))
-
-      ;; kicks
-      (onbeat 32 1/2 (play1 c1# 110 1)) 
-      (onbeat 16 (cosrfloor 5 3 1/132) 
-        (play1 d1 90 1/8)) 
       
-      ;; snare
-      (onbeat 32 (cosrfloor 11 2 1/64) 
-        (play1 1/2 (oneof e1 ) 5 1/8)) 
-        (:steps 1 1/2  '(c2) 30 1/8 1)
+      ;; bd - sn
 
-      ;; toms
-      (onbeat 32 15  
-        (dotimes (i (oneof 3 4))
-          (play1 (* i (oneof 1/2 1/4)) e2 50 1/8))) 
-      
+      (:steps 4 5/2  '(sn1) 30 1/8 1)
+      (:steps 8 0 '(bd3) 90 1/8 1)
+      (:steps 16 (- 16 1/2) '(bd3) 70 1/8 1)
+
+      ; ;; toms
+
+      (onbeat 12 0 
+        (for-each (lambda (t p)
+            (play t kit p (cosr 30 20 1/2) (* dur .9) ))
+          (list 0 (oneof 3/2 5/2) (oneof 7/2 9/2))
+          (list tom1 tom1 tom3)
+          )
+      )
+
       ;hh
-      (:steps 2 1/2 (list 47 '(47 47)) 1 1/8 1)
+      (:steps 2 1/2 (list hh3 '(hh1 hh1)) 1 1/8 1)
+      (onbeat 16 1/2 (play kit cy2 110 1)) 
+      (onbeat 16 (cosrfloor 5 3 1/132) 
+        (play kit tam1 90 1/8)) 
       
       (callback (*metro* (+ beat (* 1/2 dur))) 'drkit (+ beat dur)))))
 
