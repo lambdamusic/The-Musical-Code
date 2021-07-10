@@ -18,46 +18,91 @@
 
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Changed the 'play' signature 
+;; first argument is always the MIDI channel
+;; 
+;; To revert back: 
+;; (load_my_utils "init_midi_legacy.xtm")
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+
+
+
 ;; PLAY 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; overrides standard play with a midi version + implicit *mididevice*
 ;
 ; Args:
 ; - offset [default = 0]
-; - pitch
-; - velocity/vol
-; - dur 
 ; - channel (1-based)
+; - pitch
+; - velocity/vol [default = 90]
+; - dur  [default = 1/2]
 ;
 ;
 ; Example:
 ; (define *mididevice* (pm_create_output_stream 1))
+; (define sampler 1)
 ; (let ((beat (*metro* 'get-beat)))
-;     (play c3 90 1/2 1)
+;     (play sampler c3 90 1/2)
 ;     ))
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
 (impc:aot:do-or-emit
     (define-macro (play . args)
-                (if (length-equal? args 4) 
-                    ; 4 args, no offset
-                    `(play-midi-note (*metro* beat) 
-                                    *mididevice*
-                                    (real->integer ,(car args)) ;; pitch
-                                    (real->integer ,(cadr args)) ;; vol
-                                    (*metro* 'dur ,(car (cddr args))) ;; dur
-                                    ;; channel // 0based in xtm, but here it is 1-based
-                                    (- (real->integer ,(car (cdddr args))) 1)
-                                    )
-                    ; 5 args, then we have an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))         
-                                    *mididevice*
-                                    (real->integer ,(cadr args))
-                                    (real->integer ,(car (cddr args)))
-                                    (*metro* 'dur ,(cadr (cddr args)))
-                                    (- (real->integer ,(cadr (cdddr args))) 1))))
-    )
+        (cond	((length-equal? args 2)
+                ; 2 args: instrument // pitch [defaults: 90, 1/2]
+              `(play-midi-note (*metro* beat) 
+                              *mididevice*
+                              (real->integer ,(cadr args)) ;; pitch
+                              90 ;; vol
+                              (*metro* 'dur 1/2) ;; dur
+                              ;; channel // 0based in xtm, but here it is 1-based
+                              (- (real->integer ,(car args)) 1)
+                              ))   
+              ((length-equal? args 3)
+                ; 3 args: instrument // pitch // vol [defaults: 1/2]
+              `(play-midi-note (*metro* beat) 
+                              *mididevice*
+                              (real->integer ,(cadr args)) ;; pitch
+                              (real->integer ,(caddr args)) ;; vol
+                              (*metro* 'dur 1/2) ;; dur
+                              ;; channel // 0based in xtm, but here it is 1-based
+                              (- (real->integer ,(car args)) 1)
+                              ))  
+              ((length-equal? args 4) 
+                ; 4 args: instrument // pitch // vol // dur 
+              `(play-midi-note (*metro* beat) 
+                              *mididevice*
+                              (real->integer ,(cadr args)) ;; pitch
+                              (real->integer ,(caddr args)) ;; vol
+                              (*metro* 'dur ,(cadddr args)) ;; dur
+                              ;; channel // 0based in xtm, but here it is 1-based
+                              (- (real->integer ,(car args)) 1)
+                              ))                                
+              ((length-equal? args 5) ; [defaults: 90, 1/2, 1]
+                ; 4 args: *offset* // instrument // pitch // vol // dur
+              `(play-midi-note (*metro* (+ beat ,(car args)))         
+                              *mididevice*
+                              (real->integer ,(caddr args))
+                              (real->integer ,(cadddr args))
+                              (*metro* 'dur ,(cadr (cdddr args)))
+                              (- (real->integer ,(cadr  args)) 1)
+                            ))
+
+              (else (println 'Too 'many 'arguments)) 
+        )))
+    
 
 
 
@@ -91,16 +136,13 @@
                                     (*metro* 'dur 1/16) ;; dur 1/8
                                     8) ;; midi always 8 == 9 in LIVE
                     ; 3 args, = it's an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))                *mididevice*
+                    `(play-midi-note (*metro* (+ beat ,(car args)))                
+                                    *mididevice*
                                     (real->integer ,(cadr args))
                                     (real->integer ,(car (cddr args)))
                                     (*metro* 'dur 1/16)
                                     8)))
 )
-
-
-
-
 
 
 
@@ -113,21 +155,23 @@
 ; ++ Uses default *mididevice* symbol 
 ;
 ; Args:
+; - ch midi
 ; - plist 
 ; - vol-or-vol-list (if single vol, it's duplicated for all notes)
 ; - dur
-; - ch midi
 ;
 ; Example:
 ; (define *mididevice* (pm_create_output_stream 1))
+; (define piano 1)
 ; (let ((beat (*metro* 'get-beat)))
-;     (playchord '(60 64 67) 60 4 1)
+;     (playchord piano '(60 64 67) 60 4)
 ;     ))
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
 (impc:aot:do-or-emit
-    (define-macro (playchord plist vol len ch)
+    (define-macro (playchord ch plist vol len)
         `(if (list? ,vol)
             ; list of volumes: ensure it's the right length
             (let ((volumes (cl:expand-list ,vol (- (length ,plist) (length ,vol)))))
@@ -169,10 +213,10 @@
 ; Args:
 ; ----
 ; offset (opt)
+; channel 
 ; notes
-; durs (opt:default=2)
-; vols (opt:default=90)
-; channel (opt:default=1)
+; durs 
+; vols 
 ; 
 ; durst & vols: if an atom is passed, it's 'expanded' into a list (= same for all notes)
 ; (durs => the dur of each note, before the following one kicks in)
@@ -186,13 +230,11 @@
 ; 
 ; Example:
 ; --------
+; (define piano 1) ;; midi ch
 ; (let ((beat (*metro* 'get-beat)))
-;   (arp '(60 67)) 
-;   (arp 2 '(60 67)) ;; 2 = offset
-;   (arp '(60 67) 4 ) ;; 4=dur
-;   (arp '(60 67) '(4 2) 90 )
-;   (arp '(60 67) 4 90 3)
-;   (arp (:mkchord c4 '^ 4) (:mklist 4 (oneof 1 2 3)) 90 3)
+;   (arp piano '(60 67) 4 90) 
+;   (arp 2 piano '(60 67) 4 90)  ;; 2 = offset
+;   (arp piano (:mkchord c4 '^ 4) (:mklist 4 (oneof 1 2 3)) 90)
 ; )
 ;
 ;
@@ -208,6 +250,13 @@
 
 
 ;; inner function
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; eg 
+; (_arpeggio (*metro* 'get-beat) 0 
+;   '(c4 f4 g4 c5) 3 90 3) ;; durs/vols do not need to be a list
+; (_arpeggio (*metro* 'get-beat) 0
+;   '(c4 f4 g4 c5) '(3) '(90) 3) ;; a list works too
+
 (define _arpeggio
   (lambda (beat offset notes durations volumes ch)
     (let* ((durs (cl:expand-list2 durations (len notes)))
@@ -216,7 +265,7 @@
           (wait (car durs)))
 
       (when #f (println notes durs))
-      (play (eval offset) (eval (car notes)) (car vols) total_dur ch)
+      (play (eval offset) ch (eval (car notes)) (car vols) total_dur )
 
       (if (not (null? (cdr notes)))
         (callback (*metro* (+ beat (* 1/2 wait))) 
@@ -224,47 +273,24 @@
           (rest notes) (rest durs) (rest vols) ch))))) 
 
 
-;;; eg inner function
-; (arpeggio (*metro* 'get-beat) 0 
-;   '(c4 f4 g4 c5) 3 90 3) ;; durs/vols do not need to be a list
-; (arpeggio (*metro* 'get-beat) 0
-;   '(c4 f4 g4 c5) '(3) '(90) 3) ;; a list works too
-
 
 
 
 ;; outer macro
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (impc:aot:do-or-emit
   (define-macro (arp . args)
-      (let (  (default_dur 2)
-              (default_vol 90)
-              (default_ch 1)  )
     ; (println (car args) (len args))
-    (if (list? (car args)) 
-        ;; LIST=NOTEs // no offset 
-        (cond ((length-equal? args 1) ;; notes 
-              `(_arpeggio beat 0 ,(car args) ,default_dur ,default_vol ,default_ch))
-              ((length-equal? args 2) ;; notes + durs 
-              `(_arpeggio beat 0 ,(car args) ,(cadr args) ,default_vol ,default_ch))
-              ((length-equal? args 3) ;; notes + durs + vols
-              `(_arpeggio beat 0 ,(car args) ,(cadr args) ,(caddr args) ,default_ch))
-              ((length-equal? args 4) ;; notes + durs + vols + ch
-              `(_arpeggio beat 0 ,(car args) ,(cadr args) ,(caddr args) ,(cadddr args)))
-              (else (log-error 'arp: 'arguments 'could 'not 'be 'resolved.)))
-        ;; ATOM = Offset      
-        (cond ((length-equal? args 2) ;; notes 
-              `(_arpeggio beat ,(car args) ,(cadr args) ,default_dur ,default_vol ,default_ch))
-              ((length-equal? args 3) ;; notes + durs 
-              `(_arpeggio beat ,(car args) ,(cadr args) ,(caddr args) ,default_vol ,default_ch))
-              ((length-equal? args 4) ;; notes + durs + vols
-              `(_arpeggio beat ,(car args) ,(cadr args) ,(caddr args) ,(cadddr args) ,default_ch))
-              ((length-equal? args 5) ;; notes + durs + vols + ch
-              `(_arpeggio beat ,(car args) ,(cadr args) ,(caddr args) ,(cadddr args) ,(caddddr args)))
-              (else (log-error 'arp: 'arguments 'could 'not 'be 'resolved.)))
-    ))))
+    (cond ((length-equal? args 4)
+        ;; 4 args: ch // plist // tlist // vols
+        ;; ==> memo: _arpeggio takes: beat offset notes durations volumes ch
+          `(begin (println ,@args) (_arpeggio beat 0 ,(cadr args) ,(caddr args) ,(cadddr args) ,(car args) )))
 
-
-
+           ((length-equal? args 5)
+        ;; 5 args: offset // ch // plist // tlist // vols
+          `(_arpeggio beat ,(car args) ,(caddr args) ,(cadddr args) ,(caddddr args) ,(cadr args) )) 
+          (else (log-error 'arp: 'arguments 'could 'not 'be 'resolved.))))) 
+    
 
 
 
@@ -429,266 +455,6 @@
 
 
 
-; RULLATE FOR KITS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Legacy implentation of simple drum progressions. 
-;; Dependency: 'kit' function
-;
-;
-; Example
-; (let ((beat (*metro* 'get-beat)))
-;    (rollup 38 6 1/2))
-;
-; TODO 
-; Allow passing MIDI ch (now relies on `kit` hence default is ch-9 )
-;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-(define-macro (rollup pitch)
-   `(let loop ((i 0))
-         (kit (* i 1/10) ,pitch (+ 50 (expt 4 i)))
-         (if (< i 3) (loop (+ i 1)))))
-
-(define-macro (rolldown pitch)
-   `(let loop ((i 0))
-         (kit (* i 1/10) ,pitch (- 110 (expt 4 i)))
-         (if (< i 3) (loop (+ i 1)))))
-
-(define-macro (roll pitch hits spacing)
-      `(let loop ((i 0))
-         (kit (* i ,spacing) ,pitch (+ 60 (expt 2 i)))
-         (if (< i (- ,hits 1)) (loop (+ i 1)))))
-
-
-; test midi version -- December 31, 2020
-
-
-; (define-macro (roll pitch hits spacing)
-;       `(let loop ((i 0))
-;          (play (* i ,spacing) ,pitch (+ 50 (expt 2 i)) 1/8 1)
-;          (if (< i (- ,hits 1)) (loop (+ i 1)))))
-
-
-
-
-
-
-
-
-;;;
-;;; PLAY with HARDCODED MIDI CHANNEL 1 - 9
-;;;
-;;;
-
-
-(impc:aot:do-or-emit
-    (define-macro (play1 . args)
-                (if (length-equal? args 3) 
-                    ; 3 args, no offset
-                    `(play-midi-note (*metro* beat) 
-                                    *mididevice*
-                                    (real->integer ,(car args)) ;; pitch
-                                    (real->integer ,(cadr args)) ;; vol
-                                    (*metro* 'dur ,(car (cddr args))) ;; dur
-                                    ;; channel // 0based in xtm, but here it is 1-based
-                                    0
-                                    )
-                    ; 4 args, then we have an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))         
-                                    *mididevice*
-                                    (real->integer ,(cadr args))
-                                    (real->integer ,(car (cddr args)))
-                                    (*metro* 'dur ,(cadr (cddr args)))
-                                    0)))
-    )
-
-
-(impc:aot:do-or-emit
-    (define-macro (play2 . args)
-                (if (length-equal? args 3) 
-                    ; 3 args, no offset
-                    `(play-midi-note (*metro* beat) 
-                                    *mididevice*
-                                    (real->integer ,(car args)) ;; pitch
-                                    (real->integer ,(cadr args)) ;; vol
-                                    (*metro* 'dur ,(car (cddr args))) ;; dur
-                                    ;; channel // 0based in xtm, but here it is 1-based
-                                    1
-                                    )
-                    ; 4 args, then we have an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))         
-                                    *mididevice*
-                                    (real->integer ,(cadr args))
-                                    (real->integer ,(car (cddr args)))
-                                    (*metro* 'dur ,(cadr (cddr args)))
-                                    1)))
-    )
-
-
-(impc:aot:do-or-emit
-    (define-macro (play3 . args)
-                (if (length-equal? args 3) 
-                    ; 3 args, no offset
-                    `(play-midi-note (*metro* beat) 
-                                    *mididevice*
-                                    (real->integer ,(car args)) ;; pitch
-                                    (real->integer ,(cadr args)) ;; vol
-                                    (*metro* 'dur ,(car (cddr args))) ;; dur
-                                    ;; channel // 0based in xtm, but here it is 1-based
-                                    2
-                                    )
-                    ; 4 args, then we have an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))         
-                                    *mididevice*
-                                    (real->integer ,(cadr args))
-                                    (real->integer ,(car (cddr args)))
-                                    (*metro* 'dur ,(cadr (cddr args)))
-                                    2)))
-    )
-
-
-
-(impc:aot:do-or-emit
-    (define-macro (play4 . args)
-                (if (length-equal? args 3) 
-                    ; 3 args, no offset
-                    `(play-midi-note (*metro* beat) 
-                                    *mididevice*
-                                    (real->integer ,(car args)) ;; pitch
-                                    (real->integer ,(cadr args)) ;; vol
-                                    (*metro* 'dur ,(car (cddr args))) ;; dur
-                                    ;; channel // 0based in xtm, but here it is 1-based
-                                    3
-                                    )
-                    ; 4 args, then we have an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))         
-                                    *mididevice*
-                                    (real->integer ,(cadr args))
-                                    (real->integer ,(car (cddr args)))
-                                    (*metro* 'dur ,(cadr (cddr args)))
-                                    3)))
-    )
-
-
-
-
-(impc:aot:do-or-emit
-    (define-macro (play5 . args)
-                (if (length-equal? args 3) 
-                    ; 3 args, no offset
-                    `(play-midi-note (*metro* beat) 
-                                    *mididevice*
-                                    (real->integer ,(car args)) ;; pitch
-                                    (real->integer ,(cadr args)) ;; vol
-                                    (*metro* 'dur ,(car (cddr args))) ;; dur
-                                    ;; channel // 0based in xtm, but here it is 1-based
-                                    4
-                                    )
-                    ; 4 args, then we have an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))         
-                                    *mididevice*
-                                    (real->integer ,(cadr args))
-                                    (real->integer ,(car (cddr args)))
-                                    (*metro* 'dur ,(cadr (cddr args)))
-                                    4)))
-    )
-
-
-
-(impc:aot:do-or-emit
-    (define-macro (play6 . args)
-                (if (length-equal? args 3) 
-                    ; 3 args, no offset
-                    `(play-midi-note (*metro* beat) 
-                                    *mididevice*
-                                    (real->integer ,(car args)) ;; pitch
-                                    (real->integer ,(cadr args)) ;; vol
-                                    (*metro* 'dur ,(car (cddr args))) ;; dur
-                                    ;; channel // 0based in xtm, but here it is 1-based
-                                    5
-                                    )
-                    ; 4 args, then we have an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))         
-                                    *mididevice*
-                                    (real->integer ,(cadr args))
-                                    (real->integer ,(car (cddr args)))
-                                    (*metro* 'dur ,(cadr (cddr args)))
-                                    5)))
-    )
-
-
-
-
-(impc:aot:do-or-emit
-    (define-macro (play7 . args)
-                (if (length-equal? args 3) 
-                    ; 3 args, no offset
-                    `(play-midi-note (*metro* beat) 
-                                    *mididevice*
-                                    (real->integer ,(car args)) ;; pitch
-                                    (real->integer ,(cadr args)) ;; vol
-                                    (*metro* 'dur ,(car (cddr args))) ;; dur
-                                    ;; channel // 0based in xtm, but here it is 1-based
-                                    6
-                                    )
-                    ; 4 args, then we have an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))         
-                                    *mididevice*
-                                    (real->integer ,(cadr args))
-                                    (real->integer ,(car (cddr args)))
-                                    (*metro* 'dur ,(cadr (cddr args)))
-                                    6)))
-    )
-
-
-
-
-(impc:aot:do-or-emit
-    (define-macro (play8 . args)
-                (if (length-equal? args 3) 
-                    ; 3 args, no offset
-                    `(play-midi-note (*metro* beat) 
-                                    *mididevice*
-                                    (real->integer ,(car args)) ;; pitch
-                                    (real->integer ,(cadr args)) ;; vol
-                                    (*metro* 'dur ,(car (cddr args))) ;; dur
-                                    ;; channel // 0based in xtm, but here it is 1-based
-                                    7
-                                    )
-                    ; 4 args, then we have an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))         
-                                    *mididevice*
-                                    (real->integer ,(cadr args))
-                                    (real->integer ,(car (cddr args)))
-                                    (*metro* 'dur ,(cadr (cddr args)))
-                                    7)))
-    )
-
-
-(impc:aot:do-or-emit
-    (define-macro (play9 . args)
-                (if (length-equal? args 3) 
-                    ; 3 args, no offset
-                    `(play-midi-note (*metro* beat) 
-                                    *mididevice*
-                                    (real->integer ,(car args)) ;; pitch
-                                    (real->integer ,(cadr args)) ;; vol
-                                    (*metro* 'dur ,(car (cddr args))) ;; dur
-                                    ;; channel // 0based in xtm, but here it is 1-based
-                                    8
-                                    )
-                    ; 4 args, then we have an offset
-                    `(play-midi-note (*metro* (+ beat ,(car args)))         
-                                    *mididevice*
-                                    (real->integer ,(cadr args))
-                                    (real->integer ,(car (cddr args)))
-                                    (*metro* 'dur ,(cadr (cddr args)))
-                                    8)))
-    )
-
-
-
 
 
 ; MIXER FOR ABLETON LIVE 
@@ -697,30 +463,37 @@
 ; Args:
 ; -----
 ; ch: the CC channel to use
-; val: the fader value, 0 to 127
-; increment: [OPT] the step-value up/down to the fader value
+; increment: the value up/down for the fader 
+; boundary: the min or max fader value
 ;
-;
-; CHANNEL 10 is a special case
-; the MASTER vol in ABLETON
-; happes in real-time using now() // [not beat]
-;
+; Notes:
+; ------
+; CHANNEL 10 => the MASTER vol in ABLETON
+; setting values happens in real-time using now() // [not beat]
+; IMPORTANT: communication is one-way only XTM=>DAW (not back-synced from DAW)
 ;
 ; Example:
 ; --------
 
-;; (mixer 1)            -- 1 args: show current (cached, not backward synced from DAW) value for channel 
+;; (mixer)           -- show current cached values for all mixers
 ;;
-;; (mixer 1 90)         -- 2 args: channel and fader value set
+;; (mixer 1)          -- [1 arg]: show current cached value for channel 1 
 ;;
-;; (mixer 1 90 1)      -- 3 args: ch, val and increment
+;; (mixer 1 10)       -- [2 args]: increment channel 1 by 10 (up to DEFAULT MAX)
+;; (mixer 1 -10)       -- [2 args]: decrement channel 1 by -10 (up to DEFAULT MIN)
 ;;
-;; (mixer 1 0 -1)      -- 3 args ch, val and increment (negative)
+;; (mixer 1 10 50)    -- [3 args]: increment channel 1 by 10, up to 50
+;; (mixer 1 -1 10)      -- [3 args]: decrement channel 1 by -1, up to 10 
 ;
-;
+; DEFAULT MIN = 0 
+; DEFAULT MAX = 90 
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;; val to be used when incrementing without specifying where to stop
+(define *mixer-default-upper-limit* 90)
+(define *mixer-default-lower-limit* 0)
 
 
 ;; vals caches /  0 to 127
@@ -752,77 +525,94 @@
     ))
 
 
+;; boundaries
+(define *mixer-upper-limit* 127)
+(define *mixer-lower-limit* 0)
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; helper 
 
+;; pretty print mixer val
+; <status>: 'changed' => stronger color  
+; <status>: default => regular print  
+(define print-mixer
+    (lambda (ch val status)
+        (if (equal? status 'changed)
+            (print-with-colors 'cyan 'default #f 
+                (println 'MIXER ch '=> val))
+            ;; else: monitor value only
+            (println 'MIXER ch '== val)
+        )
+    )) 
 
+
+;; pretty print all mixers
+(define print-mixers-all
+    (lambda ()
+    (println '---*Mixers 'cache*---)
+    (for-each (lambda (p)
+            (print-mixer (car p) (eval (cadr p)) 'show))
+        *mixers*)
+    (println )
+        ))   
+
+
+(define *debug* #f)
 (define inner_mixer
-    (lambda (ch val min-limit max-limit)
-        (let 
-            ((oldval (eval (cadr (assoc ch *mixers*))))
-            (newval 0))
-            
-            (if (not (integer? min-limit)) ;; flag for just print cache case
-                (log-info 'mixer: ch '= newval)
-                (begin 
+    (lambda (ch increment min-limit max-limit)
+        (if (equal? ch 'show)
+            (print-mixers-all)
+            (let 
+                ((oldval (eval (cadr (assoc ch *mixers*))))
+                (newval 0)) 
+                
+                (if *debug*
+                    (log-info ch increment min-limit max-limit oldval)
+                    )
 
-                    (if (< min-limit 0)
-                        (set! min-limit 0)) 
-                    (if (> max-limit 127)
-                        (set! max-limit 127))
-                    (set! newval (+ oldval val))
-                    (if (< newval min-limit)
-                        (set! newval min-limit))
-                    (if (> newval max-limit)
-                        (set! newval max-limit))
-
-                    (if (= newval oldval)
-                        (log-info 'mixer: ch '= newval)    
+                (if (not (integer? min-limit)) 
+                    ;; trick to show specific channel: 'none is passed by macro 
+                    (print-mixer ch oldval 'show) 
+                    (if (and (negative? increment) 
+                             (>= min-limit oldval))
+                        ;; when decreasing, min-limit can't be higher than old value
+                        (print-mixer ch oldval 'show)
+                    
                         (begin 
-                            ;;set cache
-                            (eval `(set! ,(cadr (assoc ch *mixers*)) newval))
-                            ;;mcc
-                            (send-midi-cc (now) *mididevice* 
-                                (real->integer ch) 
-                                (real->integer newval) 
-                                0)
-                            (log-info 'mixer: ch '=> newval)
-                        )
-                )
-    )))))
+
+                            ;; check max boundaries
+                            (if (< min-limit *mixer-lower-limit*)
+                                (set! min-limit *mixer-lower-limit*)) 
+                            (if (> max-limit *mixer-upper-limit*)
+                                (set! max-limit *mixer-upper-limit*))
+
+                            ;; test increment
+                            (set! newval (+ oldval increment))
+                            (if (< newval min-limit)
+                                (set! newval min-limit))
+                            (if (> newval max-limit)
+                                (set! newval max-limit))
+
+                            (if (= newval oldval)
+                                (print-mixer ch newval 'show)
+                                (begin 
+                                    ;;set cache
+                                    (eval `(set! ,(cadr (assoc ch *mixers*)) newval))
+                                    ;;mcc
+                                    (send-midi-cc (now) *mididevice* 
+                                        (real->integer ch) 
+                                        (real->integer newval) 
+                                        0)
+                                    (print-mixer ch newval 'changed)
+                                ))
+                            )
+    ))))))
 
 
 
-; (define inner_mixer
-;     (lambda (ch val min-limit max-limit)
-;         (let ((newval (+ val (eval (cadr (assoc ch *mixers*))))))
-            
-;             (when (integer? min-limit) ;; flag for just print cache case
 
-;                 (if (< min-limit 0)
-;                     (set! min-limit 0)) 
-;                 (if (> max-limit 127)
-;                     (set! max-limit 127))
-            
-;                 (if (< newval min-limit)
-;                     (set! newval min-limit))
-
-;                 (if (> newval max-limit)
-;                     (set! newval max-limit))
-
-;                 ;;set cache
-;                 (eval `(set! ,(cadr (assoc ch *mixers*)) newval))
-;                 ;;mcc
-;                 (send-midi-cc (now) *mididevice* 
-;                     (real->integer ch) 
-;                     (real->integer newval) 
-;                     0)
-;                 )   
-
-;             (log-info 'mixer: ch '=> newval)             
-;             )
-        
-;         ))  
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -832,35 +622,90 @@
 (impc:aot:do-or-emit
    (define-macro (mixer . args)
       (cond ((length-equal? args 1) 
-            `(inner_mixer ,(car args) 0 'just 'show))
+                ;; eg (mixer 5)
+            `(inner_mixer ,(car args) 0 'none 'none)) ;; trick to show specific channel
             ((length-equal? args 2) 
-            `(inner_mixer ,(car args) ,(cadr args) 0 ,(cadr args)))
+                ;; eg (mixer 5 10) => increment by '10' (min/max=default)
+            `(inner_mixer ,(car args) ,(cadr args) *mixer-default-lower-limit* *mixer-default-upper-limit*)) 
             ((length-equal? args 3)  
-             `(if (negative? ,(caddr args)) 
-                (inner_mixer ,(car args) ,(caddr args) ,(cadr args) 127)
-                (inner_mixer ,(car args) ,(caddr args) 0 ,(cadr args))
+                ;; eg (mixer 5 1 20) => increment by '1' till 20
+                ;; eg (mixer 5 -1 20) => increment by '-1' till 20
+             `(if (negative? ,(cadr args)) 
+                (inner_mixer ,(car args) ,(cadr args) ,(caddr args) *mixer-upper-limit*)
+                (inner_mixer ,(car args) ,(cadr args) *mixer-lower-limit* ,(caddr args))
                 ))
-            (#t (print 'Error: '1, '2 'or '3 'args' 'max))))
+            (#t (print-mixers-all))))
 )
-
 
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UTIL: set all 9 mixers to the same val
-;;
+;; TODO => turn into (mixer 'all 90) or similar
 (define mixer-all
     (lambda (val)
-        (mixer 1 val)
-        (mixer 2 val)
-        (mixer 3 val)
-        (mixer 4 val)
-        (mixer 5 val)
-        (mixer 6 val)
-        (mixer 7 val)
-        (mixer 8 val)
-        (mixer 9 val)
+        (println '---*Mixers 'Reset*---)
+        (mixer 1 val val) ;;ARGS: ch+inc+maxval
+        (mixer 2 val val)
+        (mixer 3 val val)
+        (mixer 4 val val)
+        (mixer 5 val val)
+        (mixer 6 val val)
+        (mixer 7 val val)
+        (mixer 8 val val)
+        (mixer 9 val val)
         ))
+
+
+
+
+
+
+
+; RULLATE FOR KITS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Legacy implentation of simple drum progressions. 
+;; Dependency: 'kit' function
+;
+;
+; Example
+; (let ((beat (*metro* 'get-beat)))
+;    (rollup 38 6 1/2))
+;
+; TODO 
+; Allow passing MIDI ch (now relies on `kit` hence default is ch-9 )
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(define-macro (rollup pitch)
+   `(let loop ((i 0))
+         (play 9 (* i 1/10) ,pitch (+ 50 (expt 4 i)))
+         (if (< i 3) (loop (+ i 1)))))
+
+(define-macro (rolldown pitch)
+   `(let loop ((i 0))
+         (play 9 (* i 1/10) ,pitch (- 110 (expt 4 i)))
+         (if (< i 3) (loop (+ i 1)))))
+
+(define-macro (roll pitch hits spacing)
+      `(let loop ((i 0))
+         (play 9 (* i ,spacing) ,pitch (+ 60 (expt 2 i)))
+         (if (< i (- ,hits 1)) (loop (+ i 1)))))
+
+
+; test midi version -- December 31, 2020
+
+
+; (define-macro (roll pitch hits spacing)
+;       `(let loop ((i 0))
+;          (play (* i ,spacing) ,pitch (+ 50 (expt 2 i)) 1/8 1)
+;          (if (< i (- ,hits 1)) (loop (+ i 1)))))
+
+
+
+
+
 
 
 
