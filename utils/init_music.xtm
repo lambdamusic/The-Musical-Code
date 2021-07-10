@@ -228,6 +228,53 @@
 
 
 
+
+
+
+; pcq
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; wrapper around pc:quantize
+;;
+;; Allows passing any list of pitches instead of a 0-11 pitch class list 
+;; Then quantizes a given note to it
+;;
+;; Returns always the closet value
+;;  (pcq 60 (list 1 11)) => 61
+;;  (pcq 60 (list 63 59)) => 59
+;;
+
+(define pcq 
+    (lambda (pitch-in pitch-list)
+        (pc:quantize pitch-in 
+            (map (lambda (x)
+                    (modulo x 12))
+                pitch-list)      
+            )))
+
+
+; pcran
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; wrapper around pc:random 
+;;
+;; Allows passing any list of pitches instead of a 0-11 pitch class list 
+;;
+
+(define pcran
+    (lambda (lower upper pitch-list)
+        (pc:random lower upper 
+            (map (lambda (x)
+                    (modulo x 12))
+                pitch-list)
+            )))
+
+
+
+
+
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; COMPATIBILITY MODE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
