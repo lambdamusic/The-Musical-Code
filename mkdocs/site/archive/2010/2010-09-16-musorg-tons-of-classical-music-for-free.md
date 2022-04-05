@@ -1,0 +1,26 @@
+---
+template: blog.html
+author: Michele Pasin
+title: "Musorg : tons of classical music for free"
+date: 2010-09-16
+categories: 
+  - "justblogging"
+tags: 
+  - "classical"
+  - "free"
+  - "sheetmusic"
+---
+
+[![Screen shot 2010-09-16 at 22.13.14.png](/img/Screen-shot-2010-09-16-at-22.13.14.png)](http://www.michelepasin.org/blog/wp-content/uploads/2010/09/Screen-shot-2010-09-16-at-22.13.14.png)
+
+I found out about this via o'reilly radar's [blog](http://radar.oreilly.com/2010/09/freeing-the-great-classical-mu.html)..
+
+> [Musopen](http://www.musopen.com/) is an **online music library of copyright free (public domain) music**. We want to give the world access to music without the legal hassles so common today. There is a great deal of music that has expired copyrights, but almost no recordings of this music is in the public domain. We aim to record or obtain recordings that have no copyrights so that our visitors may listen, re-use, or in any way enjoy music. Put simply, our mission is to set music free.
+
+The amount of [music available is not too bad](http://www.musopen.com/music.php) (and constantly improving):
+
+[Albéniz, Isaac](www.musopen.com/music.php?type=composer&id=50) [Albinoni, Tomaso](www.musopen.com/music.php?type=composer&id=197) [Anderson, James](www.musopen.com/music.php?type=composer&id=177) [Bach, Johann Sebastian](www.musopen.com/music.php?type=composer&id=30) [Beethoven, Ludwig van](www.musopen.com/music.php?type=composer&id=23) [Berlin, Irving](www.musopen.com/music.php?type=composer&id=179) [Berlioz, Hector](www.musopen.com/music.php?type=composer&id=38) [Bettinelli, Bruno](www.musopen.com/music.php?type=composer&id=161) [Borodin, Alexander](www.musopen.com/music.php?type=composer&id=69) [Brahms, Johannes](www.musopen.com/music.php?type=composer&id=22) [Brubeck, Dave](www.musopen.com/music.php?type=composer&id=176) [Bruch, Max](www.musopen.com/music.php?type=composer&id=97) [Bryars, Gavin](www.musopen.com/music.php?type=composer&id=162) [Chopin, Frédéric](www.musopen.com/music.php?type=composer&id=25) [Clementi, Muzio](www.musopen.com/music.php?type=composer&id=27) [Copland, Aaron](www.musopen.com/music.php?type=composer&id=195) [Croce, Giovanni](www.musopen.com/music.php?type=composer&id=131) [Debussy, Claude](www.musopen.com/music.php?type=composer&id=136) [Dunn, Aaron](www.musopen.com/music.php?type=composer&id=85) [Dupre, Marcel](www.musopen.com/music.php?type=composer&id=184) [Dvořák, Antonín](www.musopen.com/music.php?type=composer&id=140) [Elgar, Edward](www.musopen.com/music.php?type=composer&id=138) [Franck, Cesar](www.musopen.com/music.php?type=composer&id=194) [Glazunov, Alexander](www.musopen.com/music.php?type=composer&id=171) [Gluck, Adolph](www.musopen.com/music.php?type=composer&id=144) [Granados, Enrique](www.musopen.com/music.php?type=composer&id=51) [Grieg, Edvard](www.musopen.com/music.php?type=composer&id=37) [Handel, George Frideric](www.musopen.com/music.php?type=composer&id=41) [Haydn, Joseph](www.musopen.com/music.php?type=composer&id=150) [Holst, Gustav](www.musopen.com/music.php?type=composer&id=48) [Jr, Johann Strauss](www.musopen.com/music.php?type=composer&id=120) [Laforge, Agathe](www.musopen.com/music.php?type=composer&id=147) [Lavallee, Calixa](www.musopen.com/music.php?type=composer&id=141) [Liszt, Franz](www.musopen.com/music.php?type=composer&id=65) [Lotti, Antonio](www.musopen.com/music.php?type=composer&id=130) [Mardirosian, Haig](www.musopen.com/music.php?type=composer&id=188) [Mendelssohn, Felix](www.musopen.com/music.php?type=composer&id=92) [Mendelssohn, Felix](www.musopen.com/music.php?type=composer&id=40) [Miguez, Leopoldo](www.musopen.com/music.php?type=composer&id=153) [Monteverdi, Claudio](www.musopen.com/music.php?type=composer&id=165) [Mozart, Wolfgang Amadeus](www.musopen.com/music.php?type=composer&id=11) [Mussorgsky, Modest](www.musopen.com/music.php?type=composer&id=20) [Part, Arvo](www.musopen.com/music.php?type=composer&id=160) [Pascucci, Massimiliano](www.musopen.com/music.php?type=composer&id=159) [pergolesi, g.b.](www.musopen.com/music.php?type=composer&id=167) [Perotinus, Magister](www.musopen.com/music.php?type=composer&id=164) [Premrl, Stanko](www.musopen.com/music.php?type=composer&id=133) [Prokofiev, Sergei](www.musopen.com/music.php?type=composer&id=172) [Purcell, Henry](www.musopen.com/music.php?type=composer&id=94) [Rachmaninoff, Sergei](www.musopen.com/music.php?type=composer&id=21) [Ravel, Maurice](www.musopen.com/music.php?type=composer&id=152) [Richards, Goff](www.musopen.com/music.php?type=composer&id=181) [Rimsky-Korsakov, Nikolai](www.musopen.com/music.php?type=composer&id=108) [Root, George F.](www.musopen.com/music.php?type=composer&id=132) [Rossini, Gioachino](www.musopen.com/music.php?type=composer&id=139) [Russell, Alexander](www.musopen.com/music.php?type=composer&id=190) [Saint-Saëns, Camille](www.musopen.com/music.php?type=composer&id=39) [Satie, Erik](www.musopen.com/music.php?type=composer&id=29) [Scarlatti, Domenico](www.musopen.com/music.php?type=composer&id=196) etc....
+
+Also, they have a growing collection of [sheet](http://musopen.com/sheetmusic.php) music, eg:
+
+<iframe width="390" height="117" src="http://www.musopen.com/sembed.php?id=333&amp;keepThis=true&amp;"></iframe>
