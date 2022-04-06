@@ -23,6 +23,8 @@ Why? Well it just feels good to be able to open up Spotify and _listen to your o
 [![](/img/Kryos-Noise-Cover.jpg)](https://distrokid.com/hyperfollow/kryosproject/the-kryos-noise)
 
 
+![Screenshot](../../img/Kryos-Noise-Cover.jpg)
+
 ### Cool. How do I get my band too on Spotify? 
 
 It was surprisingly easy actually, if you don't mind spending a little money (around 20 dollars per year).
