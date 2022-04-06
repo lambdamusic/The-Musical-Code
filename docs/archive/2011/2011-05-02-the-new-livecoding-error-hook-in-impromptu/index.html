@@ -1797,7 +1797,7 @@
 <p>The interpreter will now throw to an error hook providing you with greater control over exception handling. You initiate the livecoding error hook by calling (sys:livecoding-error-hook #t). Errors are then passed to the *livecoding-error-hook* function - which you may rebind. By default the function simply returns 1 but can be modified for more specialised behaviour.</p>
 </blockquote>
 <p>This is extremely useful, to say the least, if you are performing live and want to avoid situations in which a (stupid) typo or parenthesis error will mess up your entire gig. The error hook in many cases will prevent your looping function from crashing, giving you time to fix the error. Really neat.</p>
-<p><a href="http://www.flickr.com/photos/mikele/6619819815/" title="Impromptu: livecoding error hook by MagIcReBirth, on Flickr"><img alt="Impromptu: livecoding error hook" src="/img/6619819815_240eaf85dd_z.jpg" /></a></p>
+<p><a href="http://www.flickr.com/photos/mikele/6619819815/" title="Impromptu: livecoding error hook by MagIcReBirth, on Flickr"><img alt="Impromptu: livecoding error hook" src="../../../img/6619819815_240eaf85dd_z.jpg" /></a></p>
 <p>Here's an example from the official release notes:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">;; turn on livecoding error hook</span>
 <span class="p">(</span><span class="nf">sys:livecoding-error-hook</span> <span class="no">#t</span><span class="p">)</span>

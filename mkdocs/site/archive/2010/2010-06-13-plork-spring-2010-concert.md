@@ -18,17 +18,17 @@ Some of the performances I liked:
 - N. 5. Middle Passage, by Anne Hege:
 \[[video](http://www.music.princeton.edu/~nbritt/PLOrk-Spring2010/video/Middle_Passage.mov)\]
 
-[![Picture 1.png](/img/Picture-1.png)](http://www.michelepasin.org/blog/wp-content/uploads/2010/06/Picture-1.png)
+[![Picture 1.png](../../img/Picture-1.png)](http://www.michelepasin.org/blog/wp-content/uploads/2010/06/Picture-1.png)
 
 - N. 4. alskdjalskdjalskdj, by Konrad Kaczmarek:
 \[[video](http://www.music.princeton.edu/~nbritt/PLOrk-Spring2010/video/alskdjalskdjalskdj.mov)\]
 
-[![Picture 2.png](/img/Picture-2.png)](http://www.michelepasin.org/blog/wp-content/uploads/2010/06/Picture-2.png)
+[![Picture 2.png](../../img/Picture-2.png)](http://www.michelepasin.org/blog/wp-content/uploads/2010/06/Picture-2.png)
 
 - N. 6. LOLC, by Akito Van Troyer and Jason Freeman (more info about the livecoding environment [here](http://jasonfreeman.net/lolc/)):
 \[[video](http://www.music.princeton.edu/~nbritt/PLOrk-Spring2010/video/LOLC.mov)\]
 
-[![Picture 3.png](/img/Picture-3.png)](http://www.michelepasin.org/blog/wp-content/uploads/2010/06/Picture-3.png)
+[![Picture 3.png](../../img/Picture-3.png)](http://www.michelepasin.org/blog/wp-content/uploads/2010/06/Picture-3.png)
 
 \*\*\*\*\*\*\*\*\*
 

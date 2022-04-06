@@ -18,7 +18,7 @@ tags:
 
 [LilyPond is a free piece of software](http://lilypond.org/web/index) for generating nice musical sheets from specifications written on a text file. Here's a screenshot of the resulting _pdf_ file:
 
-[![Picture 1](/img/picture-12.png "Picture 1")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/picture-12.png)
+[![Picture 1](../../img/picture-12.png "Picture 1")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/picture-12.png)
 
 ...
 
@@ -26,10 +26,10 @@ Pretty cool uh?
 
 I tried Lilypond for a little, it's pretty impressive, and the language used for creating the tablatures didn't seem too hard to master (it'd be really cool to create that on-the-fly while using Impromptu). The [how-to page](http://lilypond.org/web/switch/howto) gives a crash course on how to create good-looking music, such as how to express notes and durations:
 
-[![Picture 2](/img/picture-23.png "Picture 2")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/picture-23.png)
+[![Picture 2](../../img/picture-23.png "Picture 2")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/picture-23.png)
 
 ...
 
 You can also work directly with chords:
 
-[![Picture 3](/img/picture-3.png "Picture 3")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/picture-3.png)
+[![Picture 3](../../img/picture-3.png "Picture 3")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/picture-3.png)

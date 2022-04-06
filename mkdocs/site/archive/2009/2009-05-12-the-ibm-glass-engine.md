@@ -10,7 +10,7 @@ tags:
   - "visualization"
 ---
 
-[![Picture 1](/img/picture-13.png "Picture 1")](http://www.dunvagen.com/glassengine/#)
+[![Picture 1](../../img/picture-13.png "Picture 1")](http://www.dunvagen.com/glassengine/#)
 
 The [IBM Glass Engine](http://www.dunvagen.com/glassengine/#) enables deep navigation of the **music of [Philip Glass](http://www.philipglass.com/)**. Personal interests, associations, and impulses guide the listener through an expanding selection of over sixty Glass works.
 

@@ -18,7 +18,7 @@ Background: I have accumulated *so much* musical-code ideas over the years... so
 
 [Github](https://github.com/lambdamusic/The-Musical-Code) seemed the best option, these days.
 
-[![](/img/TheMusicalCodeGithub-1024x757.jpg)](https://github.com/lambdamusic/The-Musical-Code)
+[![](../../img/TheMusicalCodeGithub-1024x757.jpg)](https://github.com/lambdamusic/The-Musical-Code)
 
 ## Code + Video 
 
@@ -26,5 +26,5 @@ I soon realised that just **the code by itself won't do it**. Especially conside
 
 Hence there's a [YouTube channel](https://www.youtube.com/channel/UCanqSICbxzRNEZGMlu8qfyw) as well, where one can find a screencast recording of each of the 'musical codes'.
 
-[![](/img/YouTubeMusicalCode-1024x679.jpg)](https://www.youtube.com/channel/UCanqSICbxzRNEZGMlu8qfyw)
+[![](../../img/YouTubeMusicalCode-1024x679.jpg)](https://www.youtube.com/channel/UCanqSICbxzRNEZGMlu8qfyw)
 

@@ -1822,11 +1822,11 @@
 <p>I didn't know anything about <a href="http://www.apple.com/pro/techniques/aggregateaudio/">Aggregate Audio</a>, it's really really nice. For example it lets you manage your audio-input ports in such a way that you can use more than one at the same time, e.g. <a href="http://www.thegaragedoor.com/tutorials/agg.html">recording more than one instrument at the same time with Garage Band</a>.</p>
 <p>So I tried to <strong>create a 'virtual' audio device</strong> using the Aggregate Device menu-option in the Audio-Midi-Setup utility (<strong>update 22/11/09:</strong> if you're on SnowLeopard the Audio-Midi-Setup app looks a bit different, but what follows is till valid!). Unfortunately it didn't let me do that - every time I was making some changes to <strong>these settings they were not stored properly</strong> (on SnowLeopard the newly created device flashes and disappears every time). Some more googling, <a href="http://discussions.apple.com/static/discussionsbacksoon.html?messageID=8223201">got an answer here</a>. It's an <strong>issue with unix privileges</strong> on the <em>.GlobalSettings.plist</em> file (in <em>/Library/Preferences</em>). Even if I'm an admin user, for some reasons the system doens't let me change that file, so I can't change the Aggregate Device options too.</p>
 <p>After trying various options suggested in <a href="http://discussions.apple.com/static/discussionsbacksoon.html?messageID=8223201">this</a> apple forum, I discovered that the <strong>only solution that worked for me was changing the privileges</strong> on the Preferences folder.</p>
-<p><img alt="Change_privileges" src="/img/picture-11.png" title="Change_privileges" /></p>
+<p><img alt="Change_privileges" src="../../../img/picture-11.png" title="Change_privileges" /></p>
 <p>I know, <strong>it's not really advisable to allow any user to change those prefs</strong> - but I took he risk.. I'm usually the only one using this mac. So if this is not the case for you, better look for another option..</p>
 <p>That's it - now all you have to do is <strong>change the settings in GuitarRig</strong>:</p>
-<p><img alt="picture-21" src="/img/picture-21.png" title="picture-21" /></p>
-<p><img alt="picture-31" src="/img/picture-31.png" title="picture-31" /></p>
+<p><img alt="picture-21" src="../../img/picture-21.png" title="picture-21" /></p>
+<p><img alt="picture-31" src="../../img/picture-31.png" title="picture-31" /></p>
 <p><strong>GUITAR RIG ROCKS!!!!!!!!!!</strong></p>
 <p>Seriously thinking about buying the whole package!!!</p>
 

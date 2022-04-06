@@ -21,7 +21,7 @@ I'm going to play a new livecoded song called '**Fjords**'. During the last days
 
 Btw I'll try to take videos of the various performances, so stay tuned!        
 
-[![](/img/5906464358_a5a45afa02_z.jpg)](http://www.flickr.com/photos/danstowell/5906464358/ "Untitled by danstowell, on Flickr")
+[![](../../img/5906464358_a5a45afa02_z.jpg)](http://www.flickr.com/photos/danstowell/5906464358/ "Untitled by danstowell, on Flickr")
 
 \[**Update 11/7/11**\] Here's a recording of the **Paris** gig:
 

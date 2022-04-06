@@ -20,8 +20,8 @@ I've been having so much fun using Impromptu with the [Zebra](http://www.u-he.co
 > 
 > Zebra can be ordered online for only 199$ (USD)!
 
-[![Screen shot 2009-10-18 at 19.43.34](/img/screen-shot-2009-10-18-at-19-43-34.png "Screen shot 2009-10-18 at 19.43.34")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/screen-shot-2009-10-18-at-19-43-34.png)
+[![Screen shot 2009-10-18 at 19.43.34](../../img/screen-shot-2009-10-18-at-19-43-34.png "Screen shot 2009-10-18 at 19.43.34")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/screen-shot-2009-10-18-at-19-43-34.png)
 
 ...
 
-[![Screen shot 2009-10-18 at 19.48.24](/img/screen-shot-2009-10-18-at-19-48-241.png "Screen shot 2009-10-18 at 19.48.24")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/screen-shot-2009-10-18-at-19-48-241.png)
+[![Screen shot 2009-10-18 at 19.48.24](../../img/screen-shot-2009-10-18-at-19-48-241.png "Screen shot 2009-10-18 at 19.48.24")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/screen-shot-2009-10-18-at-19-48-241.png)

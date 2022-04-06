@@ -15,7 +15,7 @@ tags:
 
 The other day I went to a concert at the Southbank Centre in London, as part of the Leonard Bernstein [season](http://bernstein.southbankcentre.co.uk/). Its the [Mass](http://en.wikipedia.org/wiki/Mass_%28Bernstein%29) by [Leonard Bernstein](http://en.wikipedia.org/wiki/Leonard_Bernstein). 
 
-[![Picture 1.png](/img/Picture-1.png)](http://www.flickr.com/photos/southbankcentre/4776980747/)
+[![Picture 1.png](../../img/Picture-1.png)](http://www.flickr.com/photos/southbankcentre/4776980747/)
 
 A bit hard to follow, maybe because of the mix of latin and english in the lyrics, but the musics and the theatrical bits were quite entertaining. (wikipedia [link](http://en.wikipedia.org/wiki/Mass_%28Bernstein%29)):
 

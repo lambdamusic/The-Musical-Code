@@ -20,6 +20,6 @@ A full description of the contents of the DVD is available [here](http://muse.jh
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8GHclRJAoE0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-[![CMJ dvd - front](/img/6688959507_ea2797cc1f.jpg)](http://www.flickr.com/photos/mikele/6688959507/ "CMJ dvd - front by MagIcReBirth, on Flickr")
+[![CMJ dvd - front](../../img/6688959507_ea2797cc1f.jpg)](http://www.flickr.com/photos/mikele/6688959507/ "CMJ dvd - front by MagIcReBirth, on Flickr")
 
-[![CMJ dvd - back](/img/6688959057_6aa2de5fbc.jpg)](http://www.flickr.com/photos/mikele/6688959057/ "CMJ dvd - back by MagIcReBirth, on Flickr")
+[![CMJ dvd - back](../../img/6688959057_6aa2de5fbc.jpg)](http://www.flickr.com/photos/mikele/6688959057/ "CMJ dvd - back by MagIcReBirth, on Flickr")

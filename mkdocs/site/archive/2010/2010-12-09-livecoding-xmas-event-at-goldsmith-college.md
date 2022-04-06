@@ -12,7 +12,7 @@ tags:
   - "london"
 ---
 
-[![Screen shot 2010-12-09 at 20.27.01.png](/img/Screen-shot-2010-12-09-at-20.27.01.png)](http://www.michelepasin.org/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-20.27.01.png)
+[![Screen shot 2010-12-09 at 20.27.01.png](../../img/Screen-shot-2010-12-09-at-20.27.01.png)](http://www.michelepasin.org/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-20.27.01.png)
 
 Thursday Club Xmas party \[ [event-site](http://toplap.org/uk/event/thursd/) | [facebook](http://www.facebook.com/event.php?eid=131290450261616) | [flier](http://toplap.org/media/thursday.pdf) | [map](http://maps.google.co.uk/?ie=UTF8&ll=51.474597,-0.037993&spn=0.000433,0.000983&t=h&z=20) \]
 

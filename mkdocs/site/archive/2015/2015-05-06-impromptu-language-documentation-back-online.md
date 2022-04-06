@@ -15,7 +15,7 @@ For all Impromptu aficionados: a little online application that can be used to s
 
 As part of its original website, Impromptu included a **wiki** containing documentation and examples. Unfortunately the wiki isn't available online anymore, which is a real shame so the other day I've decided to replace it with a simple searchable index of the programming language functions. This is based on the documentation file coming with the latest Impromptu release (2.5); so, in theory, it shouldn't be too different from the original wiki site.
 
-[![Screen Shot 2015 05 06 at 23 15 36](/img/Screen-Shot-2015-05-06-at-23.15.36.png)](http://hacks.michelepasin.org/impromptu/744)
+[![Screen Shot 2015 05 06 at 23 15 36](../../img/Screen-Shot-2015-05-06-at-23.15.36.png)](http://hacks.michelepasin.org/impromptu/744)
 
 For those of you who are new to all of this, it's worth mentioning that Impromptu is now being superseded by the [Extempore](http://extempore.moso.com.au/) programming language.
 

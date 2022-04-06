@@ -61,15 +61,15 @@ So I tried to **create a 'virtual' audio device** using the Aggregate Device men
 
 After trying various options suggested in [this](http://discussions.apple.com/static/discussionsbacksoon.html?messageID=8223201) apple forum, I discovered that the **only solution that worked for me was changing the privileges** on the Preferences folder.
 
-![Change_privileges](/img/picture-11.png "Change_privileges")
+![Change_privileges](../../img/picture-11.png "Change_privileges")
 
 I know, **it's not really advisable to allow any user to change those prefs** - but I took he risk.. I'm usually the only one using this mac. So if this is not the case for you, better look for another option..
 
 That's it - now all you have to do is **change the settings in GuitarRig**:
 
-![picture-21](/img/picture-21.png "picture-21")
+![picture-21](../../img/picture-21.png "picture-21")
 
-![picture-31](/img/picture-31.png "picture-31")
+![picture-31](../../img/picture-31.png "picture-31")
 
 **GUITAR RIG ROCKS!!!!!!!!!!**
 

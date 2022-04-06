@@ -7,7 +7,7 @@ categories:
   - "justblogging"
 ---
 
-![](/img/desktop_095.png)
+![](../../img/desktop_095.png)
 
 **In one word? SUPER COOL!!!**
 

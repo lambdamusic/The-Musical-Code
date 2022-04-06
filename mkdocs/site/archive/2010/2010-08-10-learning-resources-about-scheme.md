@@ -12,7 +12,7 @@ tags:
   - "scheme"
 ---
 
-[![3eangz5w.jpg](/img/3eangz5w.jpg)](http://www.michelepasin.org/blog/wp-content/uploads/2010/08/3eangz5w.jpg) ...
+<!-- [![3eangz5w.jpg](../../img/3eangz5w.jpg)](http://www.michelepasin.org/blog/wp-content/uploads/2010/08/3eangz5w.jpg) ... -->
 
 So you've decided to know everything about scheme and rock the world using fast-paced programming environments like [Impromptu](http://impromptu.moso.com.au/). Well, I confess I did think that on several occasions, but still I haven't made it even half way through the _schemer pilgmim's path_. But I've collected quite a few useful resources in the process, and those I can certainly share!
 

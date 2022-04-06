@@ -15,7 +15,7 @@ tags:
 
 I've started reading "[Notes from the Metalevel: An Introduction to Computer Composition](http://www.routledge.com/books/details/9789026519758/)", by Heinrich Taube, and realised I should have done that a long time ago!
 
-![](/img/9789026519758.jpg)
+![](../../img/9789026519758.jpg)
 
 > Notes From the Metalevel is a practical introduction to computer composition. It is primarily intended for student composers interested in learning how computation can provide them with a new paradigm for musical composition.
 

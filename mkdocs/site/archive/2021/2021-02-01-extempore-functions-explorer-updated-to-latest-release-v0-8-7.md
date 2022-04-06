@@ -24,7 +24,7 @@ The Extempore functions explorer has been updated with the latest version of the
 
 The Extempore functions explorer is a little webapp I built [a while ago](http://www.michelepasin.org/projects/impromptudocs/) in order to make it easier to browse (and learn about) the Extempore programming language. The [source code](https://github.com/lambdamusic/xtm-docs) is available on Github.
 
-[![demo](/img/xtm-explorer.gif)](/img/xtm-explorer.gif)
+[![demo](../../img/xtm-explorer.gif)](../../img/xtm-explorer.gif)
 
 
 ### What is Extempore?

@@ -14,4 +14,4 @@ News for all the guitarists and music technology lovers: the [Source Audio](http
 
 The Hot Handâ„¢ system is a patent pending technology that uses micro-machined motion sensors to translate movement and position into control signals for use in guitar effects. The system provides an unprecedented level of control and expressiveness and offers the artist a new way of manipulating effects.
 
-[![Picture 1.png](/img/Picture%201.png)](http://www.sourceaudio.net/videos/video_hh-jam.php)
+[![Picture 1.png](../../img/Picture%201.png)](http://www.sourceaudio.net/videos/video_hh-jam.php)

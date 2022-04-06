@@ -20,7 +20,7 @@ If you're coming from Lisp, and then start using Scheme (or the other way around
 
 So, since I recently found online a [succinct table](http://www.cs.utexas.edu/~novak/schemevscl.html) that sums up the differences, I thought I'd pass it on to posterity here too.
 
-[![schemeVSlisp.jpg](/img/schemeVSlisp.jpg)](https://www.cs.utexas.edu/~novak/schemevscl.html)
+[![schemeVSlisp.jpg](../../img/schemeVSlisp.jpg)](https://www.cs.utexas.edu/~novak/schemevscl.html)
 
 By the way, on the same site the authors report of a small scheme library ([initdr.scm](ftp://ftp.cs.utexas.edu/pub/novak/cs307/initdr.scm)) that implements a few very common Lisp functions. Including \[dotimes dolist intersection, union set-difference copy-list subset every some copy-tree subst sublis nconc nreverse\]... Quite useful too!
 

@@ -14,7 +14,7 @@ tags:
 
 I haven't realized that Chrome has a whole bunch of invisible **experimental settings** that you can turn on just by going to "`about:flags`".
 
-[](http://farm3.static.flickr.com/2534/5850209770_0f4d19240c.jpg)[![Chrome about:flags options view](/img/5850209770_0f4d19240c.jpg)](http://www.flickr.com/photos/76186999@N00/5850209770 "View 'Chrome about:flags options view' on Flickr.com")
+[](http://farm3.static.flickr.com/2534/5850209770_0f4d19240c.jpg)[![Chrome about:flags options view](../../img/5850209770_0f4d19240c.jpg)](http://www.flickr.com/photos/76186999@N00/5850209770 "View 'Chrome about:flags options view' on Flickr.com")
 
 Some of them will open up the musical capabilities of html5, which are pretty cool. Example, once you switch on the '**web-audio**' setting on Chrome, if you use a suitable musical musical library you could play a note just by issuing these javascript commands:
 

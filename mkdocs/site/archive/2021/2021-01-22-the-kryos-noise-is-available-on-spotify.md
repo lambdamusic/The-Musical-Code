@@ -20,10 +20,8 @@ Why? Well it just feels good to be able to open up Spotify and _listen to your o
 
 > Check out [The Kryos' Noise on Spotify](https://open.spotify.com/album/1uCLwvX24IFPp9g9SVoHqh).
 
-[![](/img/Kryos-Noise-Cover.jpg)](https://distrokid.com/hyperfollow/kryosproject/the-kryos-noise)
+[![](../../img/Kryos-Noise-Cover.jpg)](https://distrokid.com/hyperfollow/kryosproject/the-kryos-noise)
 
-
-![Screenshot](../../img/Kryos-Noise-Cover.jpg)
 
 ### Cool. How do I get my band too on Spotify? 
 
