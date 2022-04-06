@@ -67,9 +67,9 @@ I know, **it's not really advisable to allow any user to change those prefs** - 
 
 That's it - now all you have to do is **change the settings in GuitarRig**:
 
-![picture-21](../../img/picture-21.png "picture-21")
+<!-- ![picture-21](../../img/picture-21.png "picture-21")
 
-![picture-31](../../img/picture-31.png "picture-31")
+![picture-31](../../img/picture-31.png "picture-31") -->
 
 **GUITAR RIG ROCKS!!!!!!!!!!**
 

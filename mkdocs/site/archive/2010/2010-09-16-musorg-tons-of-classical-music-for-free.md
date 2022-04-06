@@ -15,8 +15,6 @@ I found out about this via o'reilly radar's [blog](http://radar.oreilly.com/2010
 
 > [Musopen](http://www.musopen.com/) is an **online music library of copyright free (public domain) music**. We want to give the world access to music without the legal hassles so common today. There is a great deal of music that has expired copyrights, but almost no recordings of this music is in the public domain. We aim to record or obtain recordings that have no copyrights so that our visitors may listen, re-use, or in any way enjoy music. Put simply, our mission is to set music free.
 
-[![Screen shot 2010-09-16 at 22.13.14.png](../../img/Screen-shot-2010-09-16-at-22.13.14.png)](http://www.michelepasin.org/blog/wp-content/uploads/2010/09/Screen-shot-2010-09-16-at-22.13.14.png)
-
 The amount of [music available is not too bad](http://www.musopen.com/music.php) (and constantly improving):
 
 Also, they have a growing collection of [sheet](http://musopen.com/sheetmusic.php) music, eg:

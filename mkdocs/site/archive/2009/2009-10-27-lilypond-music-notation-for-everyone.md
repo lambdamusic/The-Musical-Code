@@ -18,7 +18,7 @@ tags:
 
 [LilyPond is a free piece of software](http://lilypond.org/web/index) for generating nice musical sheets from specifications written on a text file. Here's a screenshot of the resulting _pdf_ file:
 
-[![Picture 1](../../img/picture-12.png "Picture 1")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/picture-12.png)
+<!-- [![Picture 1](../../img/picture-12.png "Picture 1")](http://magicrebirth.webfactional.com/blog/wp-content/uploads/2009/10/picture-12.png) -->
 
 ...
 
