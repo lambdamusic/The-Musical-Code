@@ -4,21 +4,16 @@ author: Michele Pasin
 template: blog.html
 title: "Livecoding: 'Rhythmic Cycles' with Extempore"
 author: <your name>
-description: A very interesting description.
-date: 2021-04-10
----
-
-<!-- 
----
-title: "Livecoding: 'Rhythmic Cycles' with Extempore"
+description: "A new livecoding composition using Extempore and Ableton Live: 'Rhythmic Cycles'."
 date: 2021-04-10
 categories: 
   - "computermusic"
 tags: 
   - "algorithmiccomposition"
   - "extempore"
-review: true
---- -->
+---
+
+
 
 A new livecoding composition using Extempore and Ableton Live: 'Rhythmic Cycles'. 
 
@@ -26,7 +21,7 @@ A new livecoding composition using Extempore and Ableton Live: 'Rhythmic Cycles'
 
 ## Using 'map' to generate rapid musical patterns
 
-The full source code on [Github](https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2021-04-rhytmic-cycles.xtm.
+The full source code on [Github](https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2021-04-rhytmic-cycles.xtm).
 
 ```lisp
 
