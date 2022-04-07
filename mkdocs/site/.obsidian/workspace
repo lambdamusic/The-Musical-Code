@@ -9,9 +9,9 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "drafts/index.md",
+            "file": "archive/2021/2021-02-01-extempore-functions-explorer-updated-to-latest-release-v0-8-7.md",
             "mode": "source",
-            "source": false
+            "source": true
           }
         }
       }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "drafts/index.md",
+                "file": "archive/2021/2021-02-01-extempore-functions-explorer-updated-to-latest-release-v0-8-7.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "44f86e8ea2a157b6",
   "lastOpenFiles": [
+    "archive/2021/2021-02-01-extempore-functions-explorer-updated-to-latest-release-v0-8-7.md",
     "drafts/index.md",
     "archive/drafts/2021-04-10-livecoding-rhythmic-cycles.md",
     "drafts/draft1.md",

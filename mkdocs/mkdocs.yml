@@ -44,13 +44,13 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/lambdamusic
     - icon: material/email
-      link: mailto:michele.pasin@gmail.com
+      link: https://docs.google.com/forms/d/e/1FAIpQLSc5YTPeA3LzK75sWqHYYZCXciwILDcI_sbAorM-v5sPTQmQjQ/viewform?embedded=true
   blog:
     dir: archive
     author: Michele Pasin
     # author_image: https://avatars.githubusercontent.com/u/93479011
     words_read_per_minute: 200
-    list_length: 5
+    list_length: 10
     extended_preview: false
 
 markdown_extensions:
