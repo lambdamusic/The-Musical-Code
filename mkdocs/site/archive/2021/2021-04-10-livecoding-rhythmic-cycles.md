@@ -1,9 +1,7 @@
 ---
 template: blog.html
 author: Michele Pasin
-template: blog.html
-title: "Livecoding: 'Rhythmic Cycles' with Extempore"
-author: <your name>
+title: "New livecoding composition: 'Rhythmic Cycles' with Extempore"
 description: "A new livecoding composition using Extempore and Ableton Live: 'Rhythmic Cycles'."
 date: 2021-04-10
 categories: 
@@ -15,13 +13,42 @@ tags:
 
 
 
-A new livecoding composition using Extempore and Ableton Live: 'Rhythmic Cycles'. 
+A new livecoding composition using [Extempore](https://extemporelang.github.io/) and Ableton Live: 'Rhythmic Cycles'. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/m3v8gRzROkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Using 'map' to generate rapid musical patterns
+## Using 'map' to trigger repeated notes
 
-The full source code on [Github](https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2021-04-rhytmic-cycles.xtm).
+The gist of this experiment rotates around the `map` function. 
+
+A seed list of notes, and one of offsets , is used to generate musical `play` sequences:
+
+```scheme
+(map (lambda (x y z)
+	  (onbeat x 0 (play y z (* dur .9) 1))
+		)
+	times
+	notes
+	volumes
+	)
+```
+
+This technique generates a texture of sounds with a touch of randomness. 
+
+If the pattern above gets repeated, changing the input parameters periodically leads to the generation of very interesting musical patterns. 
+
+For example:
+
+- times can be shifted up or down by 1/4 beat or so
+- notes can be transposed using different chord structures
+- volumes can use cyclical variations eg a cosine function
+
+The end result reminds me of a hypnotical tune that keeps repeating but it's never exactly the same. Similar to 8-bit video game music patterns, but obviously when using more interesting sounds/instruments to begin with, the end result is more engaging too. 
+
+
+## Source code
+
+The full source code can be found on [Github](https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2021-04-rhytmic-cycles.xtm).
 
 ```lisp
 
@@ -71,34 +98,4 @@ The full source code on [Github](https://github.com/lambdamusic/The-Musical-Code
 ```
 
 
-The gist of this experiment rotates around the `map` function. 
-
-A seed list of notes, and one of 'delays' , is used to generate play sequences like this
-
-```
-(map (lambda (x y z)
-	  (onbeat x 0 (play y z (* dur .9) 1))
-		)
-	times
-	notes
-	volumes
-	)
-```
-
-This basically generates a texture of sounds with a touch of randomness. 
-
-If the pattern above gets repeated, changing the input parameters periodically allows to generate very interesting musical patterns. 
-
-Eg
-- times can be shifted up or down by 1/4 beat or so
-- notes can be transposed using another chord
-- volumes can use cyclical variations eg a cosine
-
-The end result sembra una sorta di nenia tintinnante che si ripete ma non e' mai uguale a se stessa. Simile a certe musiche da video gioco a 8 bits, se vuoi. Ma ovviamente con strumenti piu interessanti il risultato e' molto piu coinvolgente. 
-
-
-
-### What is Extempore?
-
-[Extempore](https://extemporelang.github.io/) is a programming language and runtime environment designed by [Andrew Sorensen](https://twitter.com/digego?lang=en) to support livecoding and cyberphysical programming, where a human programmer operates as an active agent in the world.
 

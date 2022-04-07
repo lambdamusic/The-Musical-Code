@@ -1,4 +1,9 @@
-# How to blog with [Material MkDocs](https://squidfunk.github.io/mkdocs-material/)
+# MKdocs blogging site
 
-## [Demo](https://material-mkdocs-blog.4kelly.com/) | [Instructions](https://material-mkdocs-blog.4kelly.com/setup/)
+Markdown content used to generate livecoding.michelepasin.org
+
+Credits
+
+* [Material MkDocs](https://squidfunk.github.io/mkdocs-material/)
+* [Blogging extensions](https://material-mkdocs-blog.4kelly.com/)
 

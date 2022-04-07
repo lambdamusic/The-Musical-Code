@@ -7,18 +7,17 @@ description: A description
 
 This site is devoted to the art of livecoding and algorithmic composition. 
 
-## About me
-
-My name is [Michele Pasin](https://www.michelepasin.org) and I love tinkering with real-time computer languages that can produce music, mostly using the **Impromptu** and its successor **Extempore** languages. 
-
-In this blog I report on musical compositions and experiments I've made, interesting livecoding resources and occasionally other inspiring stuff from the creative world. 
-
 ## About Livecoding
 
 > Live coding (sometimes referred to as 'on-the-fly programming', 'just in time programming' and related term 'live programming') is a programming practice centred upon the use of improvised interactive programming. Live coding is often used to create sound and image based digital media, and is particularly prevalent in computer music, combining algorithmic composition with improvisation.
 
 -- Wikipedia [*https://en.wikipedia.org/wiki/Live_coding*](https://en.wikipedia.org/wiki/Live_coding)
 
+## About me
+
+My name is [Michele Pasin](https://www.michelepasin.org) and I love tinkering with real-time computer languages that can produce music, mostly using the **Impromptu** and its successor **Extempore** languages. 
+
+In this blog I report on musical compositions and experiments I've made, interesting livecoding resources and occasionally other inspiring stuff from the creative world. 
 
 ## The Extempore language
 
