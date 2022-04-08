@@ -1,0 +1,145 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;; Simplifies working with tempo
+;
+; Requires a metronome previously set, so that it's possible to do (*metro* 'set-tempo 120)
+;
+;; author: @lambdamusic
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+;; val to be used when incrementing without specifying where to stop
+(define *tempo* 120)
+;; init
+(*metro* 'set-tempo *tempo*)
+(define *debug* #f)
+
+;;
+;; boundaries
+(define *tempo-upper-limit* 200)
+(define *tempo-lower-limit* 30)
+
+
+
+
+;
+; helper:print-tempo
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; pretty print the current tempo
+(define helper:print-tempo
+    (lambda (val status)
+        (if (equal? status 'changed)
+            (print-with-colors 'cyan 'default #f 
+                (println 'TEMPO '=> val))
+            ;; else: monitor value only
+            (println 'TEMPO '== val)
+        )
+    )) 
+
+
+
+
+
+;;
+;; The helper:tempo inner function  
+;;
+;; - handle max/min cases 
+;; - handle values memory 
+;; - call metro object methods
+;;
+(define helper:tempo
+    (lambda (increment min-limit max-limit)
+    (let 
+        ((oldval *tempo*)
+        (newval 0)) 
+        ;
+        (if *debug*
+            (log-info increment min-limit max-limit oldval)
+            )
+        ;
+        (if (and (negative? increment) 
+                    (>= min-limit oldval))
+            ;; when decreasing, min-limit can't be higher than old value
+            (helper:print-tempo oldval 'show)
+        
+            (begin 
+                ;
+                ;; check max boundaries
+                (if (< min-limit *tempo-lower-limit*)
+                    (set! min-limit *tempo-lower-limit*)) 
+                (if (> max-limit *tempo-upper-limit*)
+                    (set! max-limit *tempo-upper-limit*))
+                ;
+                ;; test increment
+                (set! newval (+ oldval increment))
+                (if (< newval min-limit)
+                    (set! newval min-limit))
+                (if (> newval max-limit)
+                    (set! newval max-limit))
+                ;
+                (if (= newval oldval)
+                    (helper:print-tempo newval 'show)
+                    (begin 
+                        ;;set cache
+                        (set! *tempo* newval)
+                        ;;mcc
+                        (*metro* 'set-tempo newval)
+                        (helper:print-tempo newval 'changed)
+                    ))
+                )
+    ))))
+
+
+;
+;; :tempo - control metro-beat 'global' tempo
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Args:
+; -----
+; action: +/- for increment/decrement 
+; value: the tempo beats per minute 
+; boundary: the min or max value where to stop
+;
+; DEFAULT MIN = @TODO
+; DEFAULT MAX = @TODO
+;
+; Example:
+; --------
+;; (:tempo)           -- show current
+;; (:tempo 60)       -- [1 args]: set tempo to 60 (up to DEFAULT MAX)
+;; (:tempo + 1)       -- [2 args]: increment by 1 (up to DEFAULT MAX)
+;; (:tempo '- 1)       -- [2 args]: decrement by -1 (up to DEFAULT MIN)
+;; (:tempo '+ 1 50)    -- [3 args]: increment by 1, up to 50
+;; (:tempo '- 1 10)    -- [4 args]: decrement by -1, up to 10 
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(impc:aot:do-or-emit
+   (define-macro (:tempo . args)
+      (cond ((length-equal? args 0)
+              ;; eg (:tempo)
+              (helper:print-tempo *tempo* 'show))
+            ((length-equal? args 1) 
+                ;; eg (:tempo 5) ;; Set val
+            `(helper:tempo ,(car args) ,(car args) ,(car args) )) 
+            ((length-equal? args 2)  
+                ;; eg (:tempo '+ 1) => increment by '1' (min/max=default)
+                ;; eg (:tempo '- 1) => decrement by '1' (min/max=default)
+             `(if (equal? ,(car args) '-) 
+                (helper:tempo (- 0 ,(cadr args)) *tempo-lower-limit* *tempo-upper-limit*)
+                (helper:tempo ,(cadr args) *tempo-lower-limit* *tempo-upper-limit*)
+                ))
+            ((length-equal? args 3)  
+                ;; eg (:tempo '+ 1 20) => increment by '1' till 20
+                ;; eg (:tempo '- 1 20) => decrement by '1' till 20
+             `(if (equal? ,(car args) '-)
+                (helper:tempo  (- 0 ,(cadr args)) ,(caddr args) *tempo-upper-limit*)
+                (helper:tempo  ,(cadr args) *tempo-lower-limit* ,(caddr args))
+                ))
+            (#t (println "Not enough arguments"))))
+)
+
+

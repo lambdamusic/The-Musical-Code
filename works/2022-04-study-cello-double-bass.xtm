@@ -1,26 +1,18 @@
----
-template: blog.html
-author: Michele Pasin
-title: "Study for Cello and Double-bass"
-description: "A new livecoding composition using Extempore and Ableton Live."
-date: 2022-04-07
-categories: 
-  - "computermusic"
-tags: 
-  - "algorithmiccomposition"
-  - "extempore"
----
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 2022-04-study-cello-double-bass.xtm -- 
+;; 
+;; https://www.youtube.com/watch?v=VR6lMsECEQc&t=94s
+;; 
+;; made with https://extemporelang.github.io
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-A new livecoding composition using [Extempore](https://extemporelang.github.io/) and Ableton Live: 'Study for Cello and Double-bass'. 
+(define pluck 1)
+(define strings 3)
+(define cello 4)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VR6lMsECEQc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-## Source code
-
-Here is the main function / loop: 
-
-```scheme
 
 (define *melody* (mkchord 48 '-))
 (define *durs* (list 1/2 1/2 1 1/2))
@@ -57,5 +49,3 @@ Here is the main function / loop:
         (cdr-or-else durs *durs*)))))
 
 (loop (*metro* 'get-beat 1) *melody* *durs*)
-
-```

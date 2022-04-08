@@ -9,21 +9,36 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(define load_verbose
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Load a local file and print out some info
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define sys:load_verbose
   (lambda (path)
-    (println 'Loading '* path '*)
+    (log-info 'Loading path)
     (sys:load path)
     ))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; utility function
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define sys:load_my_utils
+  (lambda (subpath)
+    (sys:load_verbose (string-append *myutils* subpath))
+    ))
+
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; STANDARD LIBS
 ;; load here the libraries you use normally
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (load_verbose "libs/core/instruments.xtm")  ;;soft synths
-;; (load_verbose "libs/external/instruments_ext.xtm")  ;;sampler
-(load_verbose  "libs/core/pc_ivl.xtm")  ;; pitch classes lib
-(load_verbose "libs/external/portmidi.xtm")  ;; midi
+;; (sys:load_verbose "libs/core/instruments.xtm")  ;;soft synths
+;; (sys:load_verbose "libs/external/instruments_ext.xtm")  ;;sampler
+
+(sys:load_verbose  "libs/core/pc_ivl.xtm")  ;; pitch classes lib
+(sys:load_verbose "libs/external/portmidi.xtm")  ;; midi
 (pm_initialize)
 
 
@@ -32,27 +47,45 @@
 ;; with this folder full path
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define *myutils* "/Users/me/extempore/utils/")
+(define *myutils* "/Users/michele.pasin/Dropbox/code/extempore/xtm-hacking/init-extempore/")
 
 
-(define load_my_utils
+
+
+(sys:load_my_utils "init_lisp.xtm")
+(sys:load_my_utils "init_symbols.xtm")
+(sys:load_my_utils "init_music.xtm")
+(sys:load_my_utils "init_midi.xtm")
+(sys:load_my_utils "init_mixer.xtm")
+(sys:load_my_utils "init_steps.xtm")
+(sys:load_my_utils "init_beats.xtm")
+(sys:load_my_utils "init_tempo.xtm")
+(sys:load_my_utils "init_aliases.xtm")
+
+;; To revert back: 
+;; (sys:load_my_utils "init_midi_legacy.xtm")
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DRUMRACKS SYMBOLS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(define *drumracks* "/Users/michele.pasin/Dropbox/code/extempore/xtm-hacking/init-extempore/drum-rack-creation/")
+
+;; utility to load midi mappings from a default location
+;; used for drumracks symbols definition 
+(define load_drum_mappings
   (lambda (subpath)
-    (load_verbose (string-append *myutils* subpath))
+    (sys:load_verbose (string-append *drumracks* subpath))
     ))
-
-
-(load_my_utils "init_lisp.xtm")
-(load_my_utils "init_symbols.xtm")
-(load_my_utils "init_music.xtm")
-(load_my_utils "init_midi.xtm")
-(load_my_utils "init_steps.xtm")
-(load_my_utils "init_beats.xtm")
-
 
 
 (log-info '**************)
 (log-info '* 'STARTUP 'LOADER 'COMPLETED '*)
 (log-info '**************)
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -61,12 +94,12 @@
 ;; the midi output device name you'd normally use
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define DEFAULT_DEVICE_NAME "IAC Driver Extempore Bus")
+(define *DEFAULT_DEVICE_NAME* "IAC Driver Extempore Bus")
 
 (pm_print_devices)
 (log-info "**************\nSETTING *mididevice* to output stream:")
-(println DEFAULT_DEVICE_NAME)
+(println *DEFAULT_DEVICE_NAME*)
 
 (define *mididevice* (pm_create_output_stream 
-  (pm_output_device_with_name DEFAULT_DEVICE_NAME)))
+  (pm_output_device_with_name *DEFAULT_DEVICE_NAME*)))
 (log-info "**************\nDone") 

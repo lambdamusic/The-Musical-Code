@@ -24,21 +24,20 @@
 ;; first argument is always the MIDI channel
 ;; 
 ;; To revert back: 
-;; (load_my_utils "init_midi_legacy.xtm")
+;; (sys:load_my_utils "init_midi_legacy.xtm")
 ;;
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 
-
-
-
-
-
-;; PLAY 
+;    
+;    
+;    
+;; PLAY MIDI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; overrides standard play with a midi version + implicit *mididevice*
+; overrides standard play with a midi version based on scoped *mididevice* symbol
+; first argument is always the MIDI channel (or optional offset)
 ;
 ; Args:
 ; - offset [default = 0]
@@ -56,12 +55,10 @@
 ;     ))
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 (impc:aot:do-or-emit
     (define-macro (play . args)
         (cond	((length-equal? args 2)
-                ; 2 args: instrument // pitch [defaults: 90, 1/2]
+                ; 2 args: instrument // pitch [defaults: vol:90, dur:1/2]
               `(play-midi-note (*metro* beat) 
                               *mididevice*
                               (real->integer ,(cadr args)) ;; pitch
@@ -71,7 +68,7 @@
                               (- (real->integer ,(car args)) 1)
                               ))   
               ((length-equal? args 3)
-                ; 3 args: instrument // pitch // vol [defaults: 1/2]
+                ; 3 args: instrument // pitch // vol [defaults: dur:1/2]
               `(play-midi-note (*metro* beat) 
                               *mididevice*
                               (real->integer ,(cadr args)) ;; pitch
@@ -102,15 +99,15 @@
 
               (else (println 'Too 'many 'arguments)) 
         )))
-    
 
 
 
 
+;
+;
 ;; KIT 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; play version with defaults: 
-; dur = 1/16 , midi = 9  -- eg for drum kits 
+; MIDI Play with defaults: dur = 1/16 , midi = 9  -- eg for drum kits 
 ;
 ; Args:
 ; - offset [default = 0]
@@ -124,7 +121,6 @@
 ;     ))
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (impc:aot:do-or-emit
     (define-macro (kit . args)
                 (if (length-equal? args 2) 
@@ -148,7 +144,92 @@
 
 
 
+;
+;
+;; SAMPLE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Play MIDI for Ableton Live Drumkits 
+; Goal is to make it easier to access kits as normally organized in Live, using 1-16 numbers 
+; Defaults to channel 9
+; Pitch start at 36 (ie 1 == 36, 2 == 37) 
+; Kit samples go left to right, bottom to top
+; eg 36 . . 39 (1st row), 40 . . 43 (2nd row)
+;
+;
+; Args:
+; - offset [default = 0]
+; - pitch
+; - velocity/ vol
+; - dur in beats
+;
+; Example:
+; (define *mididevice* (pm_create_output_stream 1))
+; (let ((beat (*metro* 'get-beat)))
+;     (sample 1 90 1/2)     ;; no offset
+;     (sample 1/2 1 90 1/2) ;; offset 1/2
+;     (sample 1/2 1 90 1/2 3) ;; override midi channel => 3
+;     ))
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(impc:aot:do-or-emit
+    (define-macro (sample . args)
+        (cond 
+             ((length-equal? args 1)
+                ; 1 arg: pitch
+                `(play-midi-note 
+                                (*metro* beat) 
+                                *mididevice*  ;; constant
+                                (+ 35 (real->integer ,(car args)))  ;; pitch
+                                90  ;; vol
+                                (*metro* 'dur 1/2) ;; dur default
+                                8)) ;; midi always 8 == 9 in LIVE  
+              ((length-equal? args 2)
+                ; 2 args: pitch, vol
+                `(play-midi-note 
+                                (*metro* beat) 
+                                *mididevice*  ;; constant
+                                (+ 35 (real->integer ,(car args)))  ;; pitch
+                                (real->integer ,(cadr args))  ;; vol
+                                (*metro* 'dur 1/2) ;; dur default
+                                8)) ;; midi always 8 == 9 in LIVE   
+              ((length-equal? args 3)
+                ; 3 args => pitch, vol, dur
+                `(play-midi-note 
+                                (*metro* beat) 
+                                *mididevice*  ;; constant
+                                (+ 35 (real->integer ,(car args)))  ;; pitch
+                                (real->integer ,(cadr args))  ;; vol
+                                (*metro* 'dur ,(caddr args)) ;; dur / requires beat defined
+                                8)) ;; midi always 8 == 9 in LIVE 
+              ((length-equal? args 4) 
+                ; 4 args => offset, pitch, vol, dur
+                `(play-midi-note (*metro* (+ beat ,(car args)))                
+                                *mididevice*
+                                (+ 35 (real->integer ,(cadr args)))  ;; pitch
+                                (real->integer ,(caddr args))  ;; vol
+                                (*metro* 'dur ,(cadddr args)) ;; dur / requires beat defined
+                                8))                               
+              ((length-equal? args 5) 
+                ; 5 args => offset, pitch, vol, dur, midi channel
+                `(play-midi-note (*metro* (+ beat ,(car args)))                
+                                *mididevice*
+                                (+ 35 (real->integer ,(cadr args)))  ;; pitch
+                                (real->integer ,(caddr args))  ;; vol
+                                (*metro* 'dur ,(cadddr args)) ;; dur / requires beat defined
+                                (- (real->integer ,(caddddr args)) 1))) ;; ch, 0-based in xtm
 
+              (else (println 'Too 'many 'arguments)) 
+        ))
+)
+
+
+
+
+
+
+
+;
+;
 ;; PLAYCHORD 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; (playchord plist vol-or-vol-list len ch)
@@ -168,8 +249,6 @@
 ;     ))
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 (impc:aot:do-or-emit
     (define-macro (playchord ch plist vol len)
         `(if (list? ,vol)
@@ -203,6 +282,35 @@
 
 
 
+
+
+;
+;
+;; inner function for :arp
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; eg 
+; (helper:arpeggio (*metro* 'get-beat) 0 
+;   '(c4 f4 g4 c5) 3 90 3) ;; durs/vols do not need to be a list
+; (helper:arpeggio (*metro* 'get-beat) 0
+;   '(c4 f4 g4 c5) '(3) '(90) 3) ;; a list works too
+(define helper:arpeggio
+  (lambda (beat offset notes durations volumes ch)
+    (let* ((durs (cl:expand-list2 durations (len notes)))
+          (vols (cl:expand-list2 volumes (len notes)))
+          (total_dur (sum_list durs))
+          (wait (car durs)))
+      (when #f (println notes durs))
+      (play (eval offset) ch (eval (car notes)) (car vols) total_dur )
+      (if (not (null? (cdr notes)))
+        (callback (*metro* (+ beat (* 1/2 wait))) 
+          'helper:arpeggio (+ beat wait) offset
+          (rest notes) (rest durs) (rest vols) ch))))) 
+
+
+
+
+;
+;
 ; :ARP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Play notes in sequence by adding them on top of each other, like an arpeggio.
@@ -238,64 +346,28 @@
 ; )
 ;
 ;
-; Implementation Dependencies:
+; Dependencies:
 ; -------------------------------
-; * _arpeggio
+; * helper:arpeggio
 ; * play (midi version)
-;
-;
-;
-;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;; inner function
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; eg 
-; (_arpeggio (*metro* 'get-beat) 0 
-;   '(c4 f4 g4 c5) 3 90 3) ;; durs/vols do not need to be a list
-; (_arpeggio (*metro* 'get-beat) 0
-;   '(c4 f4 g4 c5) '(3) '(90) 3) ;; a list works too
-
-(define _arpeggio
-  (lambda (beat offset notes durations volumes ch)
-    (let* ((durs (cl:expand-list2 durations (len notes)))
-          (vols (cl:expand-list2 volumes (len notes)))
-          (total_dur (sum_list durs))
-          (wait (car durs)))
-
-      (when #f (println notes durs))
-      (play (eval offset) ch (eval (car notes)) (car vols) total_dur )
-
-      (if (not (null? (cdr notes)))
-        (callback (*metro* (+ beat (* 1/2 wait))) 
-          '_arpeggio (+ beat wait) offset
-          (rest notes) (rest durs) (rest vols) ch))))) 
-
-
-
-
-
-;; outer macro
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;    
 (impc:aot:do-or-emit
-  (define-macro (arp . args)
+  (define-macro (:arp . args)
     ; (println (car args) (len args))
     (cond ((length-equal? args 4)
         ;; 4 args: ch // plist // tlist // vols
-        ;; ==> memo: _arpeggio takes: beat offset notes durations volumes ch
-          `(begin (println ,@args) (_arpeggio beat 0 ,(cadr args) ,(caddr args) ,(cadddr args) ,(car args) )))
-
+        ;; ==> memo: helper:arpeggio takes: beat offset notes durations volumes ch
+          `(begin (println ,@args) (helper:arpeggio beat 0 ,(cadr args) ,(caddr args) ,(cadddr args) ,(car args) )))
            ((length-equal? args 5)
         ;; 5 args: offset // ch // plist // tlist // vols
-          `(_arpeggio beat ,(car args) ,(caddr args) ,(cadddr args) ,(caddddr args) ,(cadr args) )) 
+          `(helper:arpeggio beat ,(car args) ,(caddr args) ,(cadddr args) ,(caddddr args) ,(cadr args) )) 
           (else (log-error 'arp: 'arguments 'could 'not 'be 'resolved.))))) 
-    
 
 
 
 
-
+;
+;
 ;; MU:TEST and MU:TESTCHORD 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; simple functions usable for *testing* sounds/instruments
@@ -310,8 +382,6 @@
 ; (mu:testchord '(60 63 67) )
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 (impc:aot:do-or-emit
    (define-macro (mu:test . args)
       (cond ((length-equal? args 1) ;; just note
@@ -324,6 +394,25 @@
 )
 
 
+
+
+
+;
+;
+;; MU:TEST and MU:TESTCHORD 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; simple functions usable for *testing* sounds/instruments
+;; both with/without time abstractions
+;; Variable num of args
+;; MIDI channel is 1-based
+;; IMPORTANT need *mididevice*  to be predefined 
+;
+; Example:
+; (define *mididevice* (pm_create_output_stream 1))
+; (mu:test 38) ; MIDI channel defaults to 1
+; (mu:testchord '(60 63 67) )
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (impc:aot:do-or-emit
    (define-macro (mu:testchord . args)
       (cond ((length-equal? args 1) ;; just notes list
@@ -342,33 +431,98 @@
 
 
 
-;; MIDI CONTROL CHANGE  
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; midi control change with implicit beat & *mididevice*
-; (mcc cc|40 val|90 {ch|0})  # channel is optional
-; ++ Uses default *mididevice* symbol 
 ;
-; Args:
-; - control change 
-; - value
-; - ch midi [optional - default is 0]
 ;
-; Example:
-; (define *mididevice* (pm_create_output_stream 1))
+; rollup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Legacy implentation of simple drum progressions. 
+;; Dependency: 'kit' function
+;
+;
+; Example
 ; (let ((beat (*metro* 'get-beat)))
-;     (mcc 49 127) 
-;     ))
+;    (rollup 38 ))
 ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; TODO 
+; Allow passing MIDI ch (now relies on `kit` hence default is ch-9 )
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-macro (rollup pitch)
+   `(let loop ((i 0))
+         (play 9 (* i 1/10) ,pitch (+ 50 (expt 4 i)))
+         (if (< i 3) (loop (+ i 1)))))
+
+
+;
+;
+; rolldown
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Legacy implentation of simple drum progressions. 
+;; Dependency: 'kit' function
+;
+;
+; Example
+; (let ((beat (*metro* 'get-beat)))
+;    (rolldown 38 ))
+;
+; TODO 
+; Allow passing MIDI ch (now relies on `kit` hence default is ch-9 )
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-macro (rolldown pitch)
+   `(let loop ((i 0))
+         (play 9 (* i 1/10) ,pitch (- 110 (expt 4 i)))
+         (if (< i 3) (loop (+ i 1)))))
+
+
+;
+;
+; roll
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Legacy implentation of simple drum progressions. 
+;; Dependency: 'kit' function
+;
+;
+; Example
+; (let ((beat (*metro* 'get-beat)))
+;    (roll 38 6 1/2))
+;
+; TODO 
+; Allow passing MIDI ch (now relies on `kit` hence default is ch-9 )
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-macro (roll pitch hits spacing)
+      `(let loop ((i 0))
+         (play 9 (* i ,spacing) ,pitch (+ 60 (expt 2 i)))
+         (if (< i (- ,hits 1)) (loop (+ i 1)))))
 
 
 
-; prerequisite 
-; see https://github.com/digego/extempore/blob/master/libs/external/portmidi.xtm#L877
-; (not loaded with xtm by default)
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  MIDI CONTROL CHANGE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
  
 (define *mcc-verbose* #f)
 
+;; channel used to send CC messages
+; PS default channel is 0 / ensure there is no conflict with Ableton mixer function that are 
+; on a different channel *ableton-default-cc-channel*
+(define *mcc-default-channel* 0)
+
+
+
+;
+; midi control change
+;  see https://github.com/digego/extempore/blob/master/libs/external/portmidi.xtm#L877
+; (not loaded with xtm by default)
 (impc:aot:do-or-emit
  (define send-midi-cc
    (lambda (time device cc val channel)
@@ -377,19 +531,37 @@
 
 
 
+;
+;; :mcc MIDI CONTROL CHANGE SHORTCUT
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ++ Uses default *mididevice* symbol 
+;; Values are set in real-time using now() // [not beat]
+;;
+;; Args:
+; - control change 
+; - value
+; - ch midi [optional - default is *mcc-default-channel*]
+;
+;; Example:
+; (mcc 49 127) 
+; 
+;
+;; In order to set up mappings in Live:
+ ; 1 - turn on midi learn in Live, select a control 
+ ; 2 - send :mcc signal to store mapping
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (impc:aot:do-or-emit
-    (define-macro (mcc . args)
+    (define-macro (:mcc . args)
                 (if (length-equal? args 2) 
-                    ; 2 args = no channel, default=0  ==> good for Ableton LIVE
-                    `(send-midi-cc (*metro* beat) 
+                    ; 2 args = no channel default=0  ==> good for Ableton LIVE
+                    `(send-midi-cc (now) ;;(*metro* beat) 
                         *mididevice*
                         (real->integer ,(car args))    ;; control change
                         (real->integer ,(cadr args))   ;; value
-                        0
+                        *mcc-default-channel* ;; channel
                         )
-                
                     ; 3 args = then we have a channel number 0-based
-                    `(send-midi-cc (*metro* beat)  
+                    `(send-midi-cc (now) ;;(*metro* beat)  
                         *mididevice*
                         (real->integer ,(car args))            ;; control change
                         (real->integer ,(cadr args))           ;; value
@@ -397,325 +569,6 @@
                         )))
     )
 
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Tips about with mcc in Ableton Live 
-;
-; -- channel is 0 by default
-; -- value go from 0 to 127 
-; -- program change has some defaults 
-;
-;; https://forum.ableton.com/viewtopic.php?t=140489
-;; => ~/Library/Preferences/Ableton/Live 9.2.3/User Remote Scripts/extempore/UserConfiguration.txt
-;
-;; https://help.ableton.com/hc/en-us/articles/360010389480-Using-MIDI-CC-in-Live
-;
-;; RUNDOWN
-;; some basic cc mappings have defaults, 1 to 26 (see below)
-;;;; eg volume and send effect knobs can be stored in settings file
-;
-; VolumeSlider1: 1
-; VolumeSlider2: 2
-; VolumeSlider3: 3
-; VolumeSlider4: 4
-; VolumeSlider5: 5
-; VolumeSlider6: 6
-; VolumeSlider7: 7
-; VolumeSlider8: 8
-;;
-; Send1Knob1: 11
-; Send1Knob2: 12
-; Send1Knob3: 13
-; Send1Knob4: 14
-; Send1Knob5: 15
-; Send1Knob6: 16
-; Send1Knob7: 17
-; Send1Knob8: 18
-; Send2Knob1: 19
-; Send2Knob2: 20
-; Send2Knob3: 21
-; Send2Knob4: 22
-; Send2Knob5: 23
-; Send2Knob6: 24
-; Send2Knob7: 25
-; Send2Knob8: 26
-;;
-;
-;; Other mappings how to:
- ; 1 - turn on midi learn, select a control 
- ; 2 - send signal to store mapping
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- 
-
-
-
-
-
-
-
-
-; MIXER FOR ABLETON LIVE 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; Args:
-; -----
-; ch: the CC channel to use
-; increment: the value up/down for the fader 
-; boundary: the min or max fader value
-;
-; Notes:
-; ------
-; CHANNEL 10 => the MASTER vol in ABLETON
-; setting values happens in real-time using now() // [not beat]
-; IMPORTANT: communication is one-way only XTM=>DAW (not back-synced from DAW)
-;
-; Example:
-; --------
-
-;; (mixer)           -- show current cached values for all mixers
-;;
-;; (mixer 1)          -- [1 arg]: show current cached value for channel 1 
-;;
-;; (mixer 1 10)       -- [2 args]: increment channel 1 by 10 (up to DEFAULT MAX)
-;; (mixer 1 -10)       -- [2 args]: decrement channel 1 by -10 (up to DEFAULT MIN)
-;;
-;; (mixer 1 10 50)    -- [3 args]: increment channel 1 by 10, up to 50
-;; (mixer 1 -1 10)      -- [3 args]: decrement channel 1 by -1, up to 10 
-;
-; DEFAULT MIN = 0 
-; DEFAULT MAX = 90 
-;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;; val to be used when incrementing without specifying where to stop
-(define *mixer-default-upper-limit* 90)
-(define *mixer-default-lower-limit* 0)
-
-
-;; vals caches /  0 to 127
-(define *mix1val* 90)
-(define *mix2val* 90)
-(define *mix3val* 90)
-(define *mix4val* 90)
-(define *mix5val* 90)
-(define *mix6val* 90)
-(define *mix7val* 90)
-(define *mix8val* 90)
-(define *mix9val* 90)
-(define *mix10val* 90)  ;; CH 10 - MASTER VOLUME IN ABLETON LIVE
-
-
-
-;; structure  
-(define *mixers* '(
-        (1 *mix1val*)
-        (2 *mix2val*)
-        (3 *mix3val*)
-        (4 *mix4val*)
-        (5 *mix5val*)
-        (6 *mix6val*)
-        (7 *mix7val*)
-        (8 *mix8val*)
-        (9 *mix9val*)
-        (10 *mix10val*)
-    ))
-
-
-;; boundaries
-(define *mixer-upper-limit* 127)
-(define *mixer-lower-limit* 0)
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; helper 
-
-;; pretty print mixer val
-; <status>: 'changed' => stronger color  
-; <status>: default => regular print  
-(define print-mixer
-    (lambda (ch val status)
-        (if (equal? status 'changed)
-            (print-with-colors 'cyan 'default #f 
-                (println 'MIXER ch '=> val))
-            ;; else: monitor value only
-            (println 'MIXER ch '== val)
-        )
-    )) 
-
-
-;; pretty print all mixers
-(define print-mixers-all
-    (lambda ()
-    (println '---*Mixers 'cache*---)
-    (for-each (lambda (p)
-            (print-mixer (car p) (eval (cadr p)) 'show))
-        *mixers*)
-    (println )
-        ))   
-
-
-(define *debug* #f)
-(define inner_mixer
-    (lambda (ch increment min-limit max-limit)
-        (if (equal? ch 'show)
-            (print-mixers-all)
-            (let 
-                ((oldval (eval (cadr (assoc ch *mixers*))))
-                (newval 0)) 
-                
-                (if *debug*
-                    (log-info ch increment min-limit max-limit oldval)
-                    )
-
-                (if (not (integer? min-limit)) 
-                    ;; trick to show specific channel: 'none is passed by macro 
-                    (print-mixer ch oldval 'show) 
-                    (if (and (negative? increment) 
-                             (>= min-limit oldval))
-                        ;; when decreasing, min-limit can't be higher than old value
-                        (print-mixer ch oldval 'show)
-                    
-                        (begin 
-
-                            ;; check max boundaries
-                            (if (< min-limit *mixer-lower-limit*)
-                                (set! min-limit *mixer-lower-limit*)) 
-                            (if (> max-limit *mixer-upper-limit*)
-                                (set! max-limit *mixer-upper-limit*))
-
-                            ;; test increment
-                            (set! newval (+ oldval increment))
-                            (if (< newval min-limit)
-                                (set! newval min-limit))
-                            (if (> newval max-limit)
-                                (set! newval max-limit))
-
-                            (if (= newval oldval)
-                                (print-mixer ch newval 'show)
-                                (begin 
-                                    ;;set cache
-                                    (eval `(set! ,(cadr (assoc ch *mixers*)) newval))
-                                    ;;mcc
-                                    (send-midi-cc (now) *mididevice* 
-                                        (real->integer ch) 
-                                        (real->integer newval) 
-                                        0)
-                                    (print-mixer ch newval 'changed)
-                                ))
-                            )
-    ))))))
-
-
-
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; MAIN MACRO MIXER
-
-
-(impc:aot:do-or-emit
-   (define-macro (mixer . args)
-      (cond ((length-equal? args 1) 
-                ;; eg (mixer 5)
-            `(inner_mixer ,(car args) 0 'none 'none)) ;; trick to show specific channel
-            ((length-equal? args 2) 
-                ;; eg (mixer 5 10) => increment by '10' (min/max=default)
-            `(inner_mixer ,(car args) ,(cadr args) *mixer-default-lower-limit* *mixer-default-upper-limit*)) 
-            ((length-equal? args 3)  
-                ;; eg (mixer 5 1 20) => increment by '1' till 20
-                ;; eg (mixer 5 -1 20) => increment by '-1' till 20
-             `(if (negative? ,(cadr args)) 
-                (inner_mixer ,(car args) ,(cadr args) ,(caddr args) *mixer-upper-limit*)
-                (inner_mixer ,(car args) ,(cadr args) *mixer-lower-limit* ,(caddr args))
-                ))
-            (#t (print-mixers-all))))
-)
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; UTIL: set all 9 mixers to the same val
-;; TODO => turn into (mixer 'all 90) or similar
-(define mixer-all
-    (lambda (val)
-        (println '---*Mixers 'Reset*---)
-        (mixer 1 val val) ;;ARGS: ch+inc+maxval
-        (mixer 2 val val)
-        (mixer 3 val val)
-        (mixer 4 val val)
-        (mixer 5 val val)
-        (mixer 6 val val)
-        (mixer 7 val val)
-        (mixer 8 val val)
-        (mixer 9 val val)
-        ))
-
-
-
-
-
-
-
-; RULLATE FOR KITS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Legacy implentation of simple drum progressions. 
-;; Dependency: 'kit' function
-;
-;
-; Example
-; (let ((beat (*metro* 'get-beat)))
-;    (rollup 38 6 1/2))
-;
-; TODO 
-; Allow passing MIDI ch (now relies on `kit` hence default is ch-9 )
-;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-(define-macro (rollup pitch)
-   `(let loop ((i 0))
-         (play 9 (* i 1/10) ,pitch (+ 50 (expt 4 i)))
-         (if (< i 3) (loop (+ i 1)))))
-
-(define-macro (rolldown pitch)
-   `(let loop ((i 0))
-         (play 9 (* i 1/10) ,pitch (- 110 (expt 4 i)))
-         (if (< i 3) (loop (+ i 1)))))
-
-(define-macro (roll pitch hits spacing)
-      `(let loop ((i 0))
-         (play 9 (* i ,spacing) ,pitch (+ 60 (expt 2 i)))
-         (if (< i (- ,hits 1)) (loop (+ i 1)))))
-
-
-; test midi version -- December 31, 2020
-
-
-; (define-macro (roll pitch hits spacing)
-;       `(let loop ((i 0))
-;          (play (* i ,spacing) ,pitch (+ 50 (expt 2 i)) 1/8 1)
-;          (if (< i (- ,hits 1)) (loop (+ i 1)))))
-
-
-
-
-
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; COMPATIBILITY MODE
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(define :arp arp)
-(define :mcc mcc)
 
 
 

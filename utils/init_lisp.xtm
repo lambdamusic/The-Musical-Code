@@ -11,13 +11,40 @@
 
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+;+
+;
+;; helper: add two numbers or symbols (standing for numbers, eg d5)
+(define helper:inner-do-add
+  (lambda (x y)
+    (+ (eval x) (eval y))))
+
+;+
+;
+;; inner fn with cases to support :add
+(define helper:inner-add
+  (lambda (l1 l2)
+    (cond ((= (length l1) (length l2))
+            (map (lambda (x y) (helper:inner-do-add x y)) l1 l2))
+          ((> (length l1) (length l2))
+            (map (lambda (x y) (helper:inner-do-add x y)) 
+            (cl:slice-left l1 (length l2)) l2))
+          ((< (length l1) (length l2))
+            (map (lambda (x y) (helper:inner-do-add x y)) 
+            (cl:expand-list2 l1 (length l2)) l2))
+    )))
+
+
+;+
+;
 ;; ADD
 ;; 
 ; increase a result atom/list, using a value atom/list 
 ; if lengths don't match, adjust them automatically by slicing/repeating elements
 ;
-
+; examples
 ; (:add 4 2) ;; 6
 ; (:add '(4 5) 2) ;; 6
 ; (:add '(4) '(2)) ;; '(6)
@@ -25,37 +52,13 @@
 ; (:add '(4 2) '(2)) ;; '(6)
 ; (:add '(4) '(2 4 6)) ;; '(6 8 10)
 ; (:add '(5 4) '(g3 c4 g4 e3)) ;; '(72 76 83 68)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-
-;; helper: add two numbers or symbols (standing for numbers, eg d5)
-(define inner-add-helper
-  (lambda (x y)
-    (+ (eval x) (eval y))))
-
-;; inner fn with cases
-(define inner-add
-  (lambda (l1 l2)
-    (cond ((= (length l1) (length l2))
-            (map (lambda (x y) (inner-add-helper x y)) l1 l2))
-          ((> (length l1) (length l2))
-            (map (lambda (x y) (inner-add-helper x y)) 
-            (cl:slice-left l1 (length l2)) l2))
-          ((< (length l1) (length l2))
-            (map (lambda (x y) (inner-add-helper x y)) 
-            (cl:expand-list2 l1 (length l2)) l2))
-    )))
-
-;; main
-(define add
+(define :add
   (lambda (val res)
     (cond ((and (list? val) (list? res)) 
-            (inner-add val res))
+            (helper:inner-add val res))
           ((and (atom? val)  (list? res))
-            (inner-add (make-list (length res) val) res))
+            (helper:inner-add (make-list (length res) val) res))
           ((and (atom? val) (atom? res))
             (+ val (eval res)))
           ((and (list? val) (atom? res))
@@ -63,72 +66,114 @@
           (else '()))))
 
 
-;; legacy name
-(define offset add)
-
-(define :add add)
 
 
 
 
+
+;+
 ; repeat
-(define (R x y)
+; eg (rep 2 4) => (2 2 2 2)
+(define (rep x y)
   (if (zero? y)
       '()
       (cons x
             (R x (- y 1)))))
-; eg (R 2 4) => (2 2 2 2)
-(define repeat R)
+
+
+
 
 
 (define cl:first car)
+
 (define first car)
+
 (define cl:rest cdr)
+
 (define rest cdr)
+
 (define cl:count length)
+
 (define count length)
+
 (define len length)
 
 
 
 
+;
 ; (caddddr '(1 2 3 4 5 6 7 8)) ;; => 5
 ; (nth 5   '(1 2 3 4 5 6 7 8))  ;; => 6  // 0 based!
-
 (define caddddr
    (lambda (l)
       (car (cddddr l))))
 
 
-;; added on 21/1/11 cause the default one wasn't working!
+
+;; added on 21/1/11 cause the default one wasn't working
 (define cl:last (lambda (lista)
                    (list-ref lista (- (length lista) 1))))
+
+
 (define last cl:last)
 
-;; tip for shuffling a list
+;
+; trick for shuffling a list
 (define (cl:shuffle l)
   (cl:sort l
         (lambda (x y)
           (equal? 0 (random 2)))))
+
+
 (define shuffle cl:shuffle)
 
 
+;
 ;; reverse of cons: (cons 'b '(a))
 (define cl:l-put
    (lambda (obj lst)
       (reverse (cons obj (reverse lst)))))
 
+;
 ;; nth, reversed args 
 (define cl:nth (lambda (index_0_based lst)
       (list-ref lst index_0_based)))
+
+;; nth, reversed args 
 (define nth cl:nth)
 
+
+;
 ;; nth reversed and 1-based
 ; (take 9 (:mkscalerel 62 1 'dorian 8))
 (define take (lambda (index_1_based lst)
     (if (< (length lst) index_1_based)
         (log-info "List too short for take")
         (list-ref lst (- index_1_based 1)))))
+
+
+
+;
+; takelist - take one or more elements from a list and return a list
+;
+; (takel 1 '(10 20 30 40)) ; +> (10) 
+; (takel '(1 4) '(10 20 30 40)) ; +> (10 40) 
+; (takel '(1 5) '(10 20 30 40)) ; +> (10 #f) 
+(define takel (lambda (indices lst)
+    (let ((els (if (list? indices) 
+                    indices
+                    (list indices))))   
+        (map (lambda (x)
+                (if (< (length lst) x)
+                    (begin (log-info "List too short for take") #f)
+                    (list-ref lst (if (> x 0) (- x 1) 0))))  ;; 0 == 1 / trick to make it easier to work with sin functions
+            els)))) 
+
+
+
+
+
+
 
 
 
@@ -145,13 +190,19 @@
 ;          (cl:nth (- index 1) (cdr ls) ))))
 
 
-
+;
+; add 1 to n
 (define (1+ n) (+ n 1))
+
+;
+; remove 1 from n
 (define (1- n) (- n 1))
 
 
 
-;; (subst 9 7 '(5 (5 6 7(6 7))))    =>  (5 (5 6 9 (6 9)))      
+
+;
+;; (subst 9 7 '(5 (5 6 7 (6 7))))    =>  (5 (5 6 9 (6 9)))  
 (define (cl:subst new old tree)
   (if (pair? tree)
       (let ((left (subst new old (car tree)))
@@ -165,7 +216,7 @@
           tree)))
 
 
-
+;
 ;; (sublis '((6 . 9) (7 . 10)) '(5 (5 6 7 (6 7)))))  => (5 (5 9 10 (9 10)))
 (define (cl:sublis alist tree)
   (if (pair? tree)
@@ -180,7 +231,7 @@
             (cdr new)
             tree) ) ) )
 
-
+;   
 ;;(cl:copy-tree '(5 (5 6 7(6 7))))
 (define (cl:copy-tree x)
   (if (pair? x)
@@ -189,6 +240,7 @@
       x))
 
 
+;
 ; Convert a floating-point number to a string of sign and at most 4 characters.
 ; Rounds the number so that 1.999 will come out as 2.00 , very small as 0.0 .
 ; numstring is written assuming that num is not too large or too small,
@@ -213,9 +265,8 @@
 
 
 
-
+;
 ;(list-flatten '(9 9 (9 9 9 ))))  = (9 9 9 9 9)
-
 (define cl:list-flatten 
    (lambda (l)
       (cond ((null? l)
@@ -223,15 +274,18 @@
             ((atom? l)
              (list l))
             (#t (append (cl:list-flatten  (car l)) (cl:list-flatten  (cdr l)))))))
+
+
+;(list-flatten '(9 9 (9 9 9 ))))  = (9 9 9 9 9)
 (define list-flatten cl:list-flatten)
 
 
+;
 ;;;;;; extend a list with the last element duplicated
 ;;;;;; original version
 ;; add extra N elements to list (or turn atom into list of N elements)
 ; (cl:expand-list 50 3) ;; (50 50 50)
 ; (cl:expand-list '(50 51) 3) ;; (50 51 51 51 51)
-
 (define cl:expand-list
    (lambda (l n)
       (if (list? l)
@@ -240,11 +294,14 @@
           (let ((xx (make-list n l)))
              xx))))
 
+
+
+
+;
 ;;;;;; new version 
 ;; add extra elements so that list has total len N
 ; (cl:expand-list2 50 3) ;; (50 50 50)
 ; (cl:expand-list2 '(50 30) 5) ;; (50 30 30 30 30)
-
 (define cl:expand-list2 
    (lambda (l n)
       (if (list? l)
@@ -256,6 +313,7 @@
 
 
 
+;
 ;; (list-to-string '(5 6 7))
 ;; from a list returns a string equivalent  - similar to atom->string..
 ;; there is list->string too, but I don't know how to use it!
@@ -275,10 +333,11 @@
 
 
 
-; slice a list from beginning, returns a list
-(when #f (cl:slice-left '(1 2 3 4) 2)) ;; => (1 2)
-(when #f (cl:slice-left '(1 2 3 4) 7)) ;; => (1 2 3 4)
 
+;
+; slice a list from beginning, returns a list
+; (cl:slice-left '(1 2 3 4) 2) ;; => (1 2)
+; (cl:slice-left '(1 2 3 4) 7) ;; => (1 2 3 4)
 (define cl:slice-left
     (lambda (lst num)
        (if (< (length lst) num)
@@ -289,13 +348,15 @@
          '())))
 
       
-;; simpler version, with more natural args order
-(when #f (slice 2 '(1 2 3 4))) ;; => (1 2)
-(when #f (slice 7 '(1 2 3 4))) ;; => (1 2 3 4)
+
 
 
 ;; March 20, 2021
+;
+;; simpler version of slice, with more natural args order
 ;; slice index can be in any position
+; (slice 2 '(1 2 3 4)) ;; => (1 2)
+; (slice 7 '(1 2 3 4)) ;; => (1 2 3 4)
 (define slice
    (lambda (arg1 arg2)
         (if (list? arg1)
@@ -303,15 +364,16 @@
             (cl:slice-left arg2 arg1)
             )))
 
-(define sl slice)
 
 
 
 
 
+
+
+;
 ; slice a list from specified position, returns a list
-(when #f (cl:slice '(1 2 3 4) 2 2))
-
+; (when #f (cl:slice '(1 2 3 4) 2 2))
 (define cl:slice
     (lambda (lst start count)
         (if (> start 1)
@@ -362,7 +424,6 @@
              (print "i can match only single characters for now")))))
 
 
-
 ;; makes a string upper case
 (define cl:string-capitalize
    (lambda (s)
@@ -406,11 +467,12 @@
 
 
 
-(if #f (cl:string-find-char "M 3.4, Central California" "M"))
 
 
 
+;
 ;; hack for checking is a string exists in another string
+; (if #f (cl:string-find-char "M 3.4, Central California" "M"))
 (define cl:string-find
    (lambda (s find)
       (if (> (string-length s)
@@ -422,9 +484,12 @@
 
 
 
+
+;
 ;; divides a string on a selected char, left or right side
 ;; returns false if the singlechar is not found
 ;; the singlechar is excluded from the resulting string
+; (cl:string-split "M 3.4, Central California" "," 'right)
 (define cl:string-split 
    (lambda (z singlechar left-or-right)
       (if (> (string-length singlechar) 1)
@@ -437,10 +502,9 @@
                         (substring z pos (string-length z))))
                  #f)))))
 
-(if #f (cl:string-split "M 3.4, Central California" "," 'right))
 
 
-
+; (cl:string-chunk "M 3.4, Central California" "M" ",")
 (define cl:string-chunk
    (lambda (z char_left char_right)
       (if (or (> (string-length char_left) 1) (> (string-length char_right) 1))
@@ -450,7 +514,6 @@
                  (cl:string-split left_half char_right 'left)
                  #f)))))
 
-(if #f (cl:string-chunk "M 3.4, Central California" "M" ","))
 
 
 
@@ -470,14 +533,12 @@
       (cl:string-split s " ")))
 
 
-
-;; convoluted way to check if a ratio is a perfect integer. (un intero)
+;; convoluted way to check if a ratio is a perfect integer
 ;; (todo: improve?)
 ;; essenzialmente creo una stringa (from the ratio) , poi la splitto, poi controllo che la seconda parte sia uguale a 0 trasformandola in numero di nuovo
 (define cl:ratio_is_perfect
    (lambda (f)
       (equal? 0 (string->number (cadr (cl:string-split (number->string (rational->real f)) "." ))))))
-
 
 
 
@@ -495,13 +556,17 @@
 
 (define-macro (cl:sort-asc l)
    `(cl:sort ,l <))
+
 (define-macro (cl:sort-desc l)
    `(cl:sort ,l >))
 
 (define sorta cl:sort-asc)
+
 (define sortd cl:sort-desc)
 
 
+;
+;
 ; shortcut for determining lists of equal length: takes both a list or a number for comparison
 (define-macro (length-equal? x y)
    `(cond ((and (list? ,x) (list? ,y))
@@ -512,14 +577,13 @@
 
 
 
+;
 ; ONEOF: like random, but doesn't requires parenthesis :  (oneof c5 c6 c7)
 ; (oneof 5 6)  => 5 or 6
 ; (oneof 5)  => 5 
 ; (oneof '(5 6))  => 5 or 6 
 ; (oneof c5 c6)   => 72 or 84
 ; (oneof (--domaggiore 45 8)) ==> a note in the scale
-
-
 (define-macro (oneof . args)
    (cond ((length-equal? args 0)
           (print 'please 'provide 'arguments))
@@ -533,6 +597,7 @@
 
 
 
+;
 ;; http://download.plt-scheme.org/doc/372/html/t-y-scheme/t-y-scheme-Z-H-10.html#node_chap_8
 ;; ----------------------
 ;; (if-random .6 (print 'ciao) (print 'baby))
@@ -541,11 +606,8 @@
         ,args 
         ,@elseargs))
 
-(define ifchance if-random)
-(define :ifchance if-random)
+
 (define ifr if-random)
-(define chance if-random) ; 2021-03-07
-(define :chance if-random)
 
 
 ;; (when (> (random) .1) (print 'ca) (print 'ciao))
@@ -553,31 +615,46 @@
    `(when (> (random) ,x)
         (begin ,@args)))
 
-; (define chance when-random)
-; (define :chance when-random)
 
 
-
-
-;; if you can apply cdr to arg1, do it and return that, otherwise return arg2
-(define-macro (if-cdr-notnull list1 list2)
+;
+;; try to apply cdr to arg1, do it and return that, otherwise return arg2
+;; if the arg1 list still has elements => True
+;; used in temporal recursions to loop through a list, and eventually go back to a seed list
+;;
+;; example
+;; (cdr-or-else '(a) '(a b)) ; => '(a b)
+(define-macro (cdr-or-else list1 list2)
    `(if (null? (cdr ,list1))
         ,list2
         (cdr ,list1)))
 
+;;
+;; if the cdr of the list-condition exists, then proceed / else alternaive
+;;
+;; example
+; (if-cdr-notnull2 '(a)
+;   (log-info 'good-cdr)
+;   (log-info 'bad-cdr))  ;; => true
+;;
+(define-macro (if-cdr-notnull list1 args . elseargs)
+   `(if (not (null? (cdr ,list1)))
+        ,args
+        ,@elseargs)) 
 
 
 (define pi 3.14159265358979323846)
 (define 2pi (* 2.0 pi))
 
-; enhanced version of cors that also floors the value (eg useful for generating notes, or precise beats)
+;
+; enhanced version of cosr that also floors the value (eg useful for generating notes, or precise beats)
 (macro (cosrfloor args)
    (if (> (length args) 5)
        `(floor (+ ,(caddr args) (* ,(cadddr args) (cos (* 2pi (+ beat ,(cadr args)) ,(car (cddddr args)))))))
        `(floor (+ ,(cadr args) (* ,(caddr args) (cos (* 2pi beat ,(cadddr args))))))))
 
-
-;; same but with ratios
+;
+; enhanced version of cosr that also floors the value - for ratios
 (macro (cosratio args)
    (if (> (length args) 5)
        `(real->rational (+ ,(caddr args) (* ,(cadddr args) (cos (* 2pi (+ beat ,(cadr args)) ,(car (cddddr args)))))))
@@ -585,7 +662,7 @@
 
 
 
-
+;
 ;; rotate list  [July 26, 2014]
 (define rotate
   (lambda (lst amt)
@@ -600,16 +677,14 @@
 
 
 
-; -- (mklist (function))
-;; (mklist 4 (oneof 50 60))
-;; (mklist 4 (oneof (:mkscale 50 'pentatonic 10)))
-(define-macro (mklist . args)
+;
+; :mklist
+;; (:mklist 4 (oneof 50 60))
+;; (:mklist 4 (oneof (:mkscale 50 'pentatonic 10)))
+(define-macro (:mklist . args)
    `(make-list-with-proc ,(car args) (lambda (x) ,(cadr args) )))
 
 
-
-
-;; relies on http://hacks2019.michelepasin.org/extempore/1563
 
 (define sum_list
   (lambda (lst)
@@ -618,10 +693,92 @@
 
 
 
+;
+; range (like in Python)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;
+; Example:
+; --------
+; (range 1 10) => '(1 2 3 4 5 6 7 8 9 10)
+; (range 1 10 2) => '(1 3 5 7 9)
+;
+;
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define range
+  (lambda (min max . step)
+   ;  (println min max step)
+    (if (null? step)
+        (set! step '(1))) 
+    (when (<= min max)
+      (cons min (range (+ min (car step)) max (car step)))))) 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; COMPATIBILITY MODE
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define :mklist mklist)
+
+
+
+
+;; split a list when input element is found
+;; remaining part of the list is returned
+;
+; (list-split-at 'b '(a b c)) ;; +> (b c)
+(define list-split-from
+    (lambda (element lst)
+        (if (member element lst)
+            (let ((a (list-position element lst))) 
+                a
+                (cl:nthcdr a lst)
+        ))))  
+
+
+;; split a list after input element is found
+;; remaining part of the list is returned
+;
+; (list-split-at 'b '(a b c)) ;; +> (c)
+(define list-split-after
+    (lambda (element lst)
+        (if (member element lst)
+            (let ((a (list-position element lst))) 
+                a
+                (cl:nthcdr (+ a 1) lst)
+        )))) 
+
+
+
+
+;
+; oo:make-object
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  Basic structure for OO programming
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define oo:make-object
+   (lambda ()
+      (let* ((klassname '<object>)
+             (super #f)
+             (isa (lambda (t)
+                     (if (equal? t klassname)
+                         #t
+                         (if super
+                             (super 'isa t)
+                             #f))))
+             (dispatch (lambda (msg methods)
+                          (if (assoc msg methods)
+                              (cdr (assoc msg methods))
+                              (begin (print-error 'No 'such 'method) (error "")))))
+             (get-method (lambda (msg) (cdr (assoc msg methods))))
+             (add-method (lambda (name closure) ;; for mixings
+                            (set! methods (cons (cons name closure) methods)) #t))
+             (get-methods (lambda () methods))
+             (printer (lambda () (print "object")))
+             (methods (list (cons 'isa isa)
+                            (cons 'get-method get-method) (cons 'add-method add-method)
+                            (cons 'dispatch dispatch) (cons 'get-methods get-methods)))
+             (self (lambda (msg . args)
+                      (apply sys:dynamic-call
+                             ((cdr (assoc 'dispatch methods)) msg methods)
+                             args))))
+         self)))
+
+
