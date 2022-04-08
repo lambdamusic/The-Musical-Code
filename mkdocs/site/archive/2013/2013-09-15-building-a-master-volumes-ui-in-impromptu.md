@@ -12,6 +12,8 @@ tags:
 
 Based on one of the examples packaged with [Impromptu](http://impromptu.moso.com.au/), I wrote a simple function that uses the objc bridge to create a bare-bones user interface for adjusting your audio instruments master volumes.
 
+## Using the `objc` bridge
+
 The script assumes that your audio graph includes a mixer object called \*mixer\*. The UI controllers are tied to that mixer's input buses gain value.
 
 The objc bridge commands are based on the **silly-synth example** that comes with the default impromptu package.

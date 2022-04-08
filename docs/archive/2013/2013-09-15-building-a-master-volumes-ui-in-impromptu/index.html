@@ -62,6 +62,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#using-the-objc-bridge" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -317,8 +322,6 @@
         
           
         
-          
-        
       
       
         <label class="md-nav__link" for="__nav_3_1">
@@ -353,22 +356,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2007/2007-02-22-songbird-makes-a-big-difference/" class="md-nav__link">
-        Songbird makes a big difference
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../2007/2007-05-12-impromptu-scheme-based-music-and-video/" class="md-nav__link">
-        Impromptu : scheme-based music and video
+        Impromptu: scheme-based music and video
       </a>
     </li>
   
@@ -513,7 +502,7 @@
   
     <li class="md-nav__item">
       <a href="../../2009/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: exercise #1
+        Algorithmic music: first steps
       </a>
     </li>
   
@@ -569,7 +558,7 @@
   
     <li class="md-nav__item">
       <a href="../../2009/2009-10-27-lilypond-music-notation-for-everyone/" class="md-nav__link">
-        LilyPond ... music notation for everyone
+        LilyPond: music notation for everyone
       </a>
     </li>
   
@@ -1591,9 +1580,40 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Building a master volumes UI with impromptu
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Building a master volumes UI with impromptu
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-objc-bridge" class="md-nav__link">
+    Using the objc bridge
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1690,8 +1710,6 @@
         
           
         
-          
-        
       
       
         <label class="md-nav__link" for="__nav_3_8">
@@ -1728,20 +1746,6 @@
     <li class="md-nav__item">
       <a href="../../2020/2020-11-23-a-new-livecoding-project-the-musical-code/" class="md-nav__link">
         'The Musical Code' on GitHub
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../2020/2020-12-12-extempore-and-ableton-live/" class="md-nav__link">
-        2020 12 12 extempore and ableton live
       </a>
     </li>
   
@@ -1824,7 +1828,7 @@
   
     <li class="md-nav__item">
       <a href="../../2021/2021-04-10-livecoding-rhythmic-cycles/" class="md-nav__link">
-        New livecoding composition: 'Rhythmic Cycles' with Extempore
+        Composition: 'Rhythmic Cycles' with Extempore
       </a>
     </li>
   
@@ -1902,6 +1906,39 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-objc-bridge" class="md-nav__link">
+    Using the objc bridge
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -1977,6 +2014,7 @@
 </aside>
   <hr>
   <p>Based on one of the examples packaged with <a href="http://impromptu.moso.com.au/">Impromptu</a>, I wrote a simple function that uses the objc bridge to create a bare-bones user interface for adjusting your audio instruments master volumes.</p>
+<h2 id="using-the-objc-bridge">Using the <code>objc</code> bridge<a class="headerlink" href="#using-the-objc-bridge" title="Permanent link">&para;</a></h2>
 <p>The script assumes that your audio graph includes a mixer object called *mixer*. The UI controllers are tied to that mixer's input buses gain value.</p>
 <p>The objc bridge commands are based on the <strong>silly-synth example</strong> that comes with the default impromptu package.</p>
 <p><img alt="VolumeSLider" src="../../../img/volumeSLider1.png" /></p>

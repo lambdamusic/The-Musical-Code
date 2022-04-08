@@ -13,6 +13,8 @@ tags:
 
 Metronome: _a device used by musicians that marks time at a selected rate by giving a regular tick_. If you ever felt that you missed a metronome in [Impromptu](http://impromptu.moso.com.au/), here is a little scheme object that can do that job for you.
 
+## Function: `make-metroclick `
+
 The make-metroclick function returns a closure that can be called with a specific time in beats, so that it plays a sound for each beat and marks the downbeat using a different sound.
 
 Possibly useful in order to keep track of the downbeats while you compose, or just to experiment a little with some rhythmic figures before composing a more complex drum kit section.

@@ -62,6 +62,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#implementing-if-mod" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -317,8 +322,6 @@
         
           
         
-          
-        
       
       
         <label class="md-nav__link" for="__nav_3_1">
@@ -353,22 +356,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2007/2007-02-22-songbird-makes-a-big-difference/" class="md-nav__link">
-        Songbird makes a big difference
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../2007/2007-05-12-impromptu-scheme-based-music-and-video/" class="md-nav__link">
-        Impromptu : scheme-based music and video
+        Impromptu: scheme-based music and video
       </a>
     </li>
   
@@ -515,7 +504,7 @@
   
     <li class="md-nav__item">
       <a href="../2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: exercise #1
+        Algorithmic music: first steps
       </a>
     </li>
   
@@ -571,7 +560,7 @@
   
     <li class="md-nav__item">
       <a href="../2009-10-27-lilypond-music-notation-for-everyone/" class="md-nav__link">
-        LilyPond ... music notation for everyone
+        LilyPond: music notation for everyone
       </a>
     </li>
   
@@ -591,9 +580,40 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Impromptu: If-mod macro
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Impromptu: If-mod macro
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-if-mod" class="md-nav__link">
+    Implementing if-mod
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1690,8 +1710,6 @@
         
           
         
-          
-        
       
       
         <label class="md-nav__link" for="__nav_3_8">
@@ -1728,20 +1746,6 @@
     <li class="md-nav__item">
       <a href="../../2020/2020-11-23-a-new-livecoding-project-the-musical-code/" class="md-nav__link">
         'The Musical Code' on GitHub
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../2020/2020-12-12-extempore-and-ableton-live/" class="md-nav__link">
-        2020 12 12 extempore and ableton live
       </a>
     </li>
   
@@ -1824,7 +1828,7 @@
   
     <li class="md-nav__item">
       <a href="../../2021/2021-04-10-livecoding-rhythmic-cycles/" class="md-nav__link">
-        New livecoding composition: 'Rhythmic Cycles' with Extempore
+        Composition: 'Rhythmic Cycles' with Extempore
       </a>
     </li>
   
@@ -1902,6 +1906,39 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-if-mod" class="md-nav__link">
+    Implementing if-mod
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -1971,52 +2008,54 @@
       <!--Min reading time is 1 minute-->
       
       
-      2 min read
+      7 min read
     </span>
   </p>
 </aside>
   <hr>
   <p>Hey there - this morning I checked out a nice <a href="http://www.vimeo.com/7196155">screencast by Ben Swift</a> and was struck by the <em>if-mod</em> construct he's using. It's a really useful shortcut that saves you from writing a few (possibly distracting) parenthesis, so I tried to recreate it myself.</p>
-<p>To recap.. normally with <a href="http://impromptu.moso.com.au/">Impromptu</a> if you want to play notes at some specific time expressed in beats with you'd have to <strong>set up a metronome</strong> first [have a look <a href="http://impromptu.moso.com.au/tutorials/making_music/Beat%20%26%20Tempo.html">here</a> for more info about how to use *metro*] and then <strong>check for the right beat</strong> using the <em>modulo</em> function. For example, something like this will play a central C every first beat of a 4/4 measure:</p>
-<div class="highlight"><pre><span></span><code>(define *metro* (make-metro 100))
+<h2 id="implementing-if-mod">Implementing <code>if-mod</code><a class="headerlink" href="#implementing-if-mod" title="Permanent link">&para;</a></h2>
+<p>To recap.. normally with <a href="http://impromptu.moso.com.au/">Impromptu</a> if you want to play notes at some specific time expressed in beats with you'd have to <strong>set up a metronome</strong> first [have a look <a href="http://impromptu.moso.com.au/tutorials/making_music/Beat%20%26%20Tempo.html">here</a> for more info about how to use *metro*] and then <strong>check for the right beat</strong> using the <em>modulo</em> function. </p>
+<p>For example, something like this will play a central C every first beat of a 4/4 measure:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">*metro*</span> <span class="p">(</span><span class="nf">make-metro</span> <span class="mi">100</span><span class="p">))</span>
 
-(define test
-   (lambda (beat)
-      (if (equal? (modulo beat 4) 0)
-          (play dls 60 60 3))
-      (callback (*metro* (+ beat (* 1/2 1/4))) &#39;test (+ beat 1/4))))
+<span class="p">(</span><span class="k">define </span><span class="nv">test</span>
+   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">equal? </span><span class="p">(</span><span class="nb">modulo </span><span class="nv">beat</span> <span class="mi">4</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="p">(</span><span class="nf">play</span> <span class="nv">dls</span> <span class="mi">60</span> <span class="mi">60</span> <span class="mi">3</span><span class="p">))</span>
+      <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">)))</span> <span class="ss">&#39;test</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">))))</span>
 
-(test (*metro* &#39;get-beat 4))
+<span class="p">(</span><span class="nf">test</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
 <p>Another way of doing this is by using <em>case</em>. Same approach, but probably faster to code, as it lets you specify 'multiple beats' very easily:</p>
-<div class="highlight"><pre><span></span><code>(define test2
-   (lambda (beat)
-      (case (modulo beat 4)
-            ((0)
-             (play dls 60 60 3))
-            ((2 5/2)
-             (play dls 67 60 1/2)))
-      (callback (*metro* (+ beat (* 1/2 1/4))) &#39;test2 (+ beat 1/4))))
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">test2</span>
+   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">case </span><span class="p">(</span><span class="nb">modulo </span><span class="nv">beat</span> <span class="mi">4</span><span class="p">)</span>
+            <span class="p">((</span><span class="mi">0</span><span class="p">)</span>
+             <span class="p">(</span><span class="nf">play</span> <span class="nv">dls</span> <span class="mi">60</span> <span class="mi">60</span> <span class="mi">3</span><span class="p">))</span>
+            <span class="p">((</span><span class="mi">2</span> <span class="mi">5</span><span class="nv">/2</span><span class="p">)</span>
+             <span class="p">(</span><span class="nf">play</span> <span class="nv">dls</span> <span class="mi">67</span> <span class="mi">60</span> <span class="mi">1</span><span class="nv">/2</span><span class="p">)))</span>
+      <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">)))</span> <span class="ss">&#39;test2</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">))))</span>
 
-(test2 (*metro* &#39;get-beat 4))
+<span class="p">(</span><span class="nf">test2</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
 <p>Still quite a few parenthesis though... which, especially when playing live, might mean more chances to mess up! So when I saw Ben's video I realized that a <strong>macro</strong> usable to facilitate the creation of <em>case/modulo</em> expressions would be quite useful.. Here is how it can be done:</p>
-<div class="highlight"><pre><span></span><code>(define-macro (if-mod x y args)
-   `(for-each (lambda (step)
-                 (if (equal? (modulo beat ,x) step)
-                     ,args))
-              (if (list? ,y)
-                  ,y
-                  (list ,y))))
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">if-mod</span> <span class="nv">x</span> <span class="nv">y</span> <span class="nv">args</span><span class="p">)</span>
+   <span class="o">`</span><span class="p">(</span><span class="nb">for-each </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">step</span><span class="p">)</span>
+                 <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">equal? </span><span class="p">(</span><span class="nb">modulo </span><span class="nv">beat</span> <span class="o">,</span><span class="nv">x</span><span class="p">)</span> <span class="nv">step</span><span class="p">)</span>
+                     <span class="o">,</span><span class="nv">args</span><span class="p">))</span>
+              <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">list? </span><span class="o">,</span><span class="nv">y</span><span class="p">)</span>
+                  <span class="o">,</span><span class="nv">y</span>
+                  <span class="p">(</span><span class="nb">list </span><span class="o">,</span><span class="nv">y</span><span class="p">))))</span>
 </code></pre></div>
 <p>Now, by using the if-mod macro we've just created we can re-write the second example above much more concisely:</p>
-<div class="highlight"><pre><span></span><code>(define test2-new
-   (lambda (beat)
-      (if-mod 4 0 (play dls 60 60 3))
-      (if-mod 4 &#39;(2 5/2) (play dls 67 60 1/2))
-      (callback (*metro* (+ beat (* 1/2 1/4))) &#39;test2-new (+ beat 1/4))))
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">test2-new</span>
+   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">if-mod</span> <span class="mi">4</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">play</span> <span class="nv">dls</span> <span class="mi">60</span> <span class="mi">60</span> <span class="mi">3</span><span class="p">))</span>
+      <span class="p">(</span><span class="nf">if-mod</span> <span class="mi">4</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">5</span><span class="nv">/2</span><span class="p">)</span> <span class="p">(</span><span class="nf">play</span> <span class="nv">dls</span> <span class="mi">67</span> <span class="mi">60</span> <span class="mi">1</span><span class="nv">/2</span><span class="p">))</span>
+      <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">)))</span> <span class="ss">&#39;test2-new</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">))))</span>
 
-(test2-new (*metro* &#39;get-beat 4))
+<span class="p">(</span><span class="nf">test2-new</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
 <p>That's all! Notice also that the <em>if-mod</em> construct can take either a list of beats or a single one.</p>
 
@@ -2031,7 +2070,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../2009-10-27-lilypond-music-notation-for-everyone/" class="md-footer__link md-footer__link--prev" aria-label="Previous: LilyPond ... music notation for everyone" rel="prev">
+        <a href="../2009-10-27-lilypond-music-notation-for-everyone/" class="md-footer__link md-footer__link--prev" aria-label="Previous: LilyPond: music notation for everyone" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2040,7 +2079,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              LilyPond ... music notation for everyone
+              LilyPond: music notation for everyone
             </div>
           </div>
         </a>

@@ -17,6 +17,8 @@ tags:
 
 Initially this song was called '**Voices Slowly Talk To Me**' - then.. as usual.. I lost control of its direction! So I don't know anymore how much the title would apply. Anyways, it's my second experiment with recording an [Impromptu](http://impromptu.moso.com.au/) performance (by the way I also played it live the other night at the [Shunt](http://www.shunt.co.uk/) in London, with various mistakes and delays, but somehow I got to the end - thanks to the [toplap crew](http://toplap.org/uk/) for their support!).
 
+## Livecoding practice: lessons learned
+
 Somehow I'm becoming wiser with doing this type of stuff, you know, just trying to learn from past experiences. So here're a few tips I matured in the last weeks:
 
 - **keep it simple**. Especially when playing live. Long and convoluted functions are a giant source of errors especially when you're a bit tense

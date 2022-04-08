@@ -11,6 +11,8 @@ tags:
 
 For all Impromptu aficionados: a little online application that can be used to search&browse the language documentation: [http://hacks.michelepasin.org/impromptu/](http://hacks.michelepasin.org/impromptu/)
 
+## Why the docs
+
 [Impromptu](http://impromptu.moso.com.au/) is a [scheme](http://en.wikipedia.org/wiki/Scheme_%28programming_language%29)\-based **OSX programming language** and environment for composers, sound artists, VJ’s and graphic artists with an interest in live or interactive programming.
 
 As part of its original website, Impromptu included a **wiki** containing documentation and examples. Unfortunately the wiki isn't available online anymore, which is a real shame so the other day I've decided to replace it with a simple searchable index of the programming language functions. This is based on the documentation file coming with the latest Impromptu release (2.5); so, in theory, it shouldn't be too different from the original wiki site.

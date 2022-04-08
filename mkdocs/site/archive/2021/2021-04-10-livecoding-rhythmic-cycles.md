@@ -1,7 +1,7 @@
 ---
 template: blog.html
 author: Michele Pasin
-title: "New livecoding composition: 'Rhythmic Cycles' with Extempore"
+title: "Composition: 'Rhythmic Cycles' with Extempore"
 description: "A new livecoding composition using Extempore and Ableton Live: 'Rhythmic Cycles'."
 date: 2021-04-10
 categories: 
@@ -10,8 +10,6 @@ tags:
   - "algorithmiccomposition"
   - "extempore"
 ---
-
-
 
 A new livecoding composition using [Extempore](https://extemporelang.github.io/) and Ableton Live: 'Rhythmic Cycles'. 
 

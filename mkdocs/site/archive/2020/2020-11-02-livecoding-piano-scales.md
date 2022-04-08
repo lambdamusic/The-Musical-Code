@@ -14,30 +14,23 @@ tags:
 review: false
 ---
 
-<!-- ---
-title: "Livecoding composition: 'Piano Scales' (Extempore + Ableton Live)"
-date: 2020-11-02
-categories: 
-  - "computermusic"
-tags: 
-  - "algorithmiccomposition"
-  - "extempore"
-review: false
---- -->
 
-A new livecoding composition using Extempore and Ableton Live: 'Piano Scales'. 
-
-[Algorithmic compositions](https://en.wikipedia.org/wiki/Algorithmic_composition) using piano instruments always strike me for their captivating simplicity. 
-
-So here's a new little experiment, titled ['Piano Scales](https://www.youtube.com/watch?v=Qix3tbpb9V4)'.
+In general, [algorithmic compositions](https://en.wikipedia.org/wiki/Algorithmic_composition) using piano instruments always strike me for their captivating simplicity. So here's a new little experiment, titled ['Piano Scales](https://www.youtube.com/watch?v=Qix3tbpb9V4)'.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Qix3tbpb9V4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### Repeated scales with a touch of randomness
+
+## Repeated scales with a touch of randomness
 
 The gist of this musical algorithm is amazingly simple. 
 
 Pick a scale. You play it using a variable time-interval between its notes, which is determined by a cosine function ([`cosr`](https://extempore.michelepasin.org/1030.html)). The variable interval gives the final result a touch of suspense and makes it less computer-like. 
+
+```scheme
+(define xsc 
+	(lambda (beat vel scale) 
+		(let ((dur (cosratio 4 2 1/128)))
+```
 
 After each note, more notes are played programmatically, after brief (random) intervals of half a beat, or 3/2 of a beat. Fifths, octaves, minor sevenths... as you please.
 
@@ -78,7 +71,7 @@ This whole thing repeating itself, at each iteration of the loop though the soun
 
 The full source code on [GitHub](https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2020-11-piano-scales.xtm).
 
-### About Extempore
+## About Extempore
 
 > [Extempore](https://extemporelang.github.io/) is a programming language and runtime environment designed by [Andrew Sorensen](https://twitter.com/digego?lang=en) to support livecoding and cyberphysical programming, where a human programmer operates as an active agent in the world. 
 > 

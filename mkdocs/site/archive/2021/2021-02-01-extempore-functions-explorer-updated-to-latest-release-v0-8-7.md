@@ -14,14 +14,13 @@ tags:
 ---
 
 
-The Extempore functions explorer has been updated with the latest version of the Extempore programming language: [v0.8.9](https://github.com/digego/extempore/tree/v0.8.9)
+The [Extempore functions explorer](https://extempore.michelepasin.org/) has been updated with the latest version of the Extempore programming language: [v0.8.9](https://github.com/digego/extempore/tree/v0.8.9)
 
-> Try it out at: [https://extempore.michelepasin.org/](https://extempore.michelepasin.org/)
-
-
-# About the explorer app
+## About the explorer
 
 The Extempore functions explorer is a little Django webapp I built [a while ago](http://www.michelepasin.org/projects/impromptudocs/) in order to make it easier to browse (and learn about) the Extempore programming language. 
+
+> Try it out at: [https://extempore.michelepasin.org/](https://extempore.michelepasin.org/)
 
 The [source code](https://github.com/lambdamusic/xtm-docs) is available on Github.
 

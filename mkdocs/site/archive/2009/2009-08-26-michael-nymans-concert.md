@@ -14,6 +14,8 @@ tags:
 
 I went to the BBC proms last night, to see [Michael Nyman](http://www.last.fm/music/Michael+Nyman)'s performance. It's been a delightful hour, such **inspiring and intriguing melodies**, really worth it! I really love the way [minimalistic](http://en.wikipedia.org/wiki/Minimalist_music) ideas crop up all the time, but always with a dense and emotional touch. And the **Royal Albert Hall** is an outstanding venue too..
 
+## Background
+
 > [After more than 40 years](http://www.michaelnyman.com/info/news/article/nymans-music-honoured-at-bbc-proms-2009) in the vanguard of British music as a composer, pianist, librettist and musicologist, Michael Nyman has been **honoured with his first BBC Proms concert**.
 > 
 > The concert, part of the 115th Proms season, will take place at the Albert Hall, London on Aug 25 and features the World Premiere of a new piece entitled The Musicologist Scores commissioned by the BBC and music from Draughtman’s Contract, Celan Songs and Memorial with guest soloist Anu Komsi in a programme that will commemorate two key dates in musical history - the 350th anniversary of Purcell’s birth and the 250th anniversary of the death of Handel.
@@ -24,10 +26,11 @@ I went to the BBC proms last night, to see [Michael Nyman](http://www.last.fm/mu
 > 
 > “A concert combining the music I have composed directly their work - the Purcell-based ‘The Draughtsman’s Contract’ and ‘The Cook, The Thief, His Wife and Her Lover’ and the Handel-based ‘The Musicologist Scores’ seems entirely appropriate.’‘
 
-This is the **list of songs played** last night: The Draughtsman’s Contract – selection 23’ The Musicologist Scores c20’ BBC commission: world premiere Six Celan Songs – Blume; Psalm 10’ The Cook, The Thief, His Wife and Her Lover – Memorial 12’
+This is the **list of songs they played** last night: 
 
-ANd the lineup:
-
-Anu Komsi soprano Michael Nyman Band Michael Nyman director/piano
-
-...
+- The Draughtsman’s Contract – selection
+- The Musicologist Scores 
+- BBC commission: world premiere Six Celan Songs 
+- Blume; Psalm 
+- The Cook, The Thief, His Wife and Her Lover 
+- Memorial 

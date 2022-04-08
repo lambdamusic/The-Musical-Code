@@ -12,13 +12,18 @@ tags:
   - "visualization"
 ---
 
+Andrew Sorensen [posted some code in the Impromptu mailing list](http://lists.moso.com.au/pipermail/impromptu/2009-October/000414.html) showing **how to add graphics (and various other things) on top of a code 'image'**. 
+
+## Quick tests
+
+As usual I regret not having a whole free day to play with this, but just by messing around a bit with some parameters it's easy to achieve some interesting effects...
+
 <iframe src="http://player.vimeo.com/video/7434643?autoplay=1" width="400" height="300" frameborder="0"></iframe>
 
-Andrew Sorensen [posted some code in the Impromptu mailing list](http://lists.moso.com.au/pipermail/impromptu/2009-October/000414.html) showing **how to add graphics (and various other things) on top of a code 'image'**. As usual I regret not having a whole free day to play with this, but just by messing around a bit with some parameters it's easy to achieve some interesting effects...
 
 Here's the source code from Andrew:
 
-```
+```scheme
 
 (gfx:start-live-video)
 

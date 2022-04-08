@@ -322,8 +322,6 @@
         
           
         
-          
-        
       
       
         <label class="md-nav__link" for="__nav_3_1">
@@ -358,22 +356,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../2007/2007-02-22-songbird-makes-a-big-difference/" class="md-nav__link">
-        Songbird makes a big difference
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../2007/2007-05-12-impromptu-scheme-based-music-and-video/" class="md-nav__link">
-        Impromptu : scheme-based music and video
+        Impromptu: scheme-based music and video
       </a>
     </li>
   
@@ -518,7 +502,7 @@
   
     <li class="md-nav__item">
       <a href="../../2009/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: exercise #1
+        Algorithmic music: first steps
       </a>
     </li>
   
@@ -574,7 +558,7 @@
   
     <li class="md-nav__item">
       <a href="../../2009/2009-10-27-lilypond-music-notation-for-everyone/" class="md-nav__link">
-        LilyPond ... music notation for everyone
+        LilyPond: music notation for everyone
       </a>
     </li>
   
@@ -1687,8 +1671,6 @@
         
           
         
-          
-        
       
       
         <label class="md-nav__link" for="__nav_3_8">
@@ -1777,20 +1759,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2020-12-12-extempore-and-ableton-live/" class="md-nav__link">
-        2020 12 12 extempore and ableton live
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -1867,7 +1835,7 @@
   
     <li class="md-nav__item">
       <a href="../../2021/2021-04-10-livecoding-rhythmic-cycles/" class="md-nav__link">
-        New livecoding composition: 'Rhythmic Cycles' with Extempore
+        Composition: 'Rhythmic Cycles' with Extempore
       </a>
     </li>
   
@@ -2059,25 +2027,16 @@
   </p>
 </aside>
   <hr>
-  <!-- ---
-title: "Livecoding composition: 'Piano Scales' (Extempore + Ableton Live)"
-date: 2020-11-02
-categories: 
-  - "computermusic"
-tags: 
-  - "algorithmiccomposition"
-  - "extempore"
-review: false
---- -->
-
-<p>A new livecoding composition using Extempore and Ableton Live: 'Piano Scales'. </p>
-<p><a href="https://en.wikipedia.org/wiki/Algorithmic_composition">Algorithmic compositions</a> using piano instruments always strike me for their captivating simplicity. </p>
-<p>So here's a new little experiment, titled <a href="https://www.youtube.com/watch?v=Qix3tbpb9V4">'Piano Scales</a>'.</p>
+  <p>In general, <a href="https://en.wikipedia.org/wiki/Algorithmic_composition">algorithmic compositions</a> using piano instruments always strike me for their captivating simplicity. So here's a new little experiment, titled <a href="https://www.youtube.com/watch?v=Qix3tbpb9V4">'Piano Scales</a>'.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Qix3tbpb9V4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<h3 id="repeated-scales-with-a-touch-of-randomness">Repeated scales with a touch of randomness<a class="headerlink" href="#repeated-scales-with-a-touch-of-randomness" title="Permanent link">&para;</a></h3>
+<h2 id="repeated-scales-with-a-touch-of-randomness">Repeated scales with a touch of randomness<a class="headerlink" href="#repeated-scales-with-a-touch-of-randomness" title="Permanent link">&para;</a></h2>
 <p>The gist of this musical algorithm is amazingly simple. </p>
 <p>Pick a scale. You play it using a variable time-interval between its notes, which is determined by a cosine function (<a href="https://extempore.michelepasin.org/1030.html"><code>cosr</code></a>). The variable interval gives the final result a touch of suspense and makes it less computer-like. </p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">xsc</span> 
+    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">vel</span> <span class="nv">scale</span><span class="p">)</span> 
+        <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="p">(</span><span class="nf">cosratio</span> <span class="mi">4</span> <span class="mi">2</span> <span class="mi">1</span><span class="nv">/128</span><span class="p">)))</span>
+</code></pre></div>
 <p>After each note, more notes are played programmatically, after brief (random) intervals of half a beat, or 3/2 of a beat. Fifths, octaves, minor sevenths... as you please.</p>
 <p>This whole thing repeating itself, at each iteration of the loop though the sound volume gets quieter by a fixed amount. Eventually, when the volume goes to 0, the repetition stops. </p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">xsc</span>
@@ -2112,7 +2071,7 @@ review: false
   <span class="c1">;; run again with &#39;ionian, &#39;aeolian etc.. for interesting harmonic effects</span>
 </code></pre></div>
 <p>The full source code on <a href="https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2020-11-piano-scales.xtm">GitHub</a>.</p>
-<h3 id="about-extempore">About Extempore<a class="headerlink" href="#about-extempore" title="Permanent link">&para;</a></h3>
+<h2 id="about-extempore">About Extempore<a class="headerlink" href="#about-extempore" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p><a href="https://extemporelang.github.io/">Extempore</a> is a programming language and runtime environment designed by <a href="https://twitter.com/digego?lang=en">Andrew Sorensen</a> to support livecoding and cyberphysical programming, where a human programmer operates as an active agent in the world. </p>
 <p><a href="https://en.wikipedia.org/wiki/Algorithmic_composition">Algorithmic composition</a> is the technique of using algorithms to create music.</p>
