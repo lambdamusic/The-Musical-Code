@@ -16,9 +16,27 @@ A new livecoding composition using [Extempore](https://extemporelang.github.io/)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VR6lMsECEQc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Source code
+## Creating chords using a cosine function
 
-Here is the main function / loop: 
+The main technique used in this piece is to generate chord/harmonic variations using a cosine functions. 
+
+```scheme
+(at 8 0 
+  (set! *melody* 
+    (:mkchord (:mkint 48 (cosrfloor 7 7 1/30) 'M)   
+    'M (cosrfloor 7 3 1/5))
+  )
+```
+
+Every 8 beats the root chord (used by all instruments in order to generate musical patterns) gets updated. Two cosine functions are used to simultaneously: 
+
+A. Determine the *amplitude* of the interval (major or minor, starting from C3) that generates the root note of the chord.
+B. Determine the number of notes in the chord. 
+
+The two cosine functions have different frequencies, leading to a variety of combinations of chord shapes that keep cycling around. 
+
+
+## Full source code
 
 ```scheme
 
@@ -59,3 +77,5 @@ Here is the main function / loop:
 (loop (*metro* 'get-beat 1) *melody* *durs*)
 
 ```
+
+Also available on [GitHub](https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2022-04-study-cello-double-bass.xtm).
