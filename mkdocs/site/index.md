@@ -7,6 +7,17 @@ description: A description
 
 This site is devoted to the art of livecoding and algorithmic composition. 
 
+!!! info
+
+    This site is under development
+
+
+
+![image](img/shunt-2009.png){width=70%}
+
+
+
+
 ## About Livecoding
 
 > Live coding (sometimes referred to as 'on-the-fly programming', 'just in time programming' and related term 'live programming') is a programming practice centred upon the use of improvised interactive programming. Live coding is often used to create sound and image based digital media, and is particularly prevalent in computer music, combining algorithmic composition with improvisation.
