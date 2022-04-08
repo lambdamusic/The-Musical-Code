@@ -1,8 +1,8 @@
 ---
 template: blog.html
 author: Michele Pasin
-title: "Study for Cello and Double-bass"
-description: "A new livecoding composition using Extempore and Ableton Live."
+title: "Composition: 'Study for Cello and Double-bass'"
+description: "A new livecoding piece using Extempore and Ableton Live."
 date: 2022-04-07
 categories: 
   - "computermusic"
@@ -30,8 +30,8 @@ The main technique used in this piece is to generate chord/harmonic variations u
 
 Every 8 beats the root chord (used by all instruments in order to generate musical patterns) gets updated. Two cosine functions are used to simultaneously: 
 
-A. Determine the *amplitude* of the interval (major or minor, starting from C3) that generates the root note of the chord.
-B. Determine the number of notes in the chord. 
+1. Determine the *amplitude* of the interval (major or minor, starting from C3) that generates the root note of the chord.
+2. Determine the number of notes in the chord. 
 
 The two cosine functions have different frequencies, leading to a variety of combinations of chord shapes that keep cycling around. 
 

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A new livecoding composition using Extempore and Ableton Live.">
+        <meta name="description" content="A new livecoding piece using Extempore and Ableton Live.">
       
       
         <meta name="author" content="Michele Pasin">
@@ -17,7 +17,7 @@
     
     
       
-        <title>Study for Cello and Double-bass - livecoding.michelepasin.org</title>
+        <title>Composition: 'Study for Cello and Double-bass' - livecoding.michelepasin.org</title>
       
     
     
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Study for Cello and Double-bass
+              Composition: 'Study for Cello and Double-bass'
             
           </span>
         </div>
@@ -1879,12 +1879,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Study for Cello and Double-bass
+          Composition: 'Study for Cello and Double-bass'
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Study for Cello and Double-bass
+        Composition: 'Study for Cello and Double-bass'
       </a>
       
         
@@ -1989,9 +1989,9 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>Study for Cello and Double-bass</h1>
+  <h1>Composition: 'Study for Cello and Double-bass'</h1>
   <p>
-    <b>A new livecoding composition using Extempore and Ableton Live.</b>
+    <b>A new livecoding piece using Extempore and Ableton Live.</b>
   </p>
   <aside class="mdx-author">
   
@@ -2071,8 +2071,10 @@
   <span class="p">)</span>
 </code></pre></div>
 <p>Every 8 beats the root chord (used by all instruments in order to generate musical patterns) gets updated. Two cosine functions are used to simultaneously: </p>
-<p>A. Determine the <em>amplitude</em> of the interval (major or minor, starting from C3) that generates the root note of the chord.
-B. Determine the number of notes in the chord. </p>
+<ol>
+<li>Determine the <em>amplitude</em> of the interval (major or minor, starting from C3) that generates the root note of the chord.</li>
+<li>Determine the number of notes in the chord. </li>
+</ol>
 <p>The two cosine functions have different frequencies, leading to a variety of combinations of chord shapes that keep cycling around. </p>
 <h2 id="full-source-code">Full source code<a class="headerlink" href="#full-source-code" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">*melody*</span> <span class="p">(</span><span class="nf">mkchord</span> <span class="mi">48</span> <span class="ss">&#39;-</span><span class="p">))</span>
