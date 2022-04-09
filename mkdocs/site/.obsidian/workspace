@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "44f86e8ea2a157b6",
+        "id": "a2ae6cfe57298e9d",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "archive/2012/2012-03-09-composing-at-the-metalevel.md",
+            "file": "archive/2019/2019-04-25-vscode-override-snippets.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "archive/2012/2012-03-09-composing-at-the-metalevel.md",
+                "file": "archive/2019/2019-04-25-vscode-override-snippets.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,17 +87,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "44f86e8ea2a157b6",
+  "active": "a2ae6cfe57298e9d",
   "lastOpenFiles": [
+    "archive/2019/2019-04-25-vscode-override-snippets.md",
+    "archive/2021/2021-01-22-the-kryos-noise-is-available-on-spotify.md",
+    "archive/2022/2022-04-07-cellos-livecoding.md",
+    "archive/2020/2020-11-23-a-new-livecoding-project-the-musical-code.md",
     "archive/2012/2012-03-09-composing-at-the-metalevel.md",
     "archive/2012/2012-01-13-special-issue-of-cmj-dvd-on-livecoding.md",
     "archive/2013/2013-11-27-new-livecoding-screencast-ziggurat-51.md",
     "archive/2013/2013-09-15-building-a-master-volumes-ui-in-impromptu.md",
     "archive/2013/2013-02-20-a-metronome-object-for-impromptu.md",
-    "archive/2015/2015-05-06-impromptu-language-documentation-back-online.md",
-    "archive/2020/2020-11-02-livecoding-piano-scales.md",
-    "archive/2020/2020-11-23-a-new-livecoding-project-the-musical-code.md",
-    "drafts/2020-12-12-extempore-and-ableton-live.md",
-    "archive/2021/2021-02-01-extempore-functions-explorer-updated-to-latest-release-v0-8-7.md"
+    "archive/2015/2015-05-06-impromptu-language-documentation-back-online.md"
   ]
 }
