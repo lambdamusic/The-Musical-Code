@@ -1,6 +1,6 @@
 ---
 title: Welcome
-description: A description
+description: Welcome
 ---
 
 # Welcome
@@ -12,10 +12,11 @@ This site is devoted to the art of livecoding and algorithmic composition.
     This site is under development
 
 
+## About me
 
-![image](img/shunt-2009.png){width=70%}
+My name is [Michele Pasin](https://www.michelepasin.org) and I love tinkering with real-time computer languages that can produce music, mostly using the **Impromptu** and its successor **Extempore** languages. 
 
-
+In this blog I report on musical compositions and experiments I've made, interesting livecoding resources and occasionally other inspiring stuff from the creative world. 
 
 
 ## About Livecoding
@@ -24,13 +25,13 @@ This site is devoted to the art of livecoding and algorithmic composition.
 
 -- Wikipedia [*https://en.wikipedia.org/wiki/Live_coding*](https://en.wikipedia.org/wiki/Live_coding)
 
-## About me
+![image](img/shunt-2009.png){width=70%}
 
-My name is [Michele Pasin](https://www.michelepasin.org) and I love tinkering with real-time computer languages that can produce music, mostly using the **Impromptu** and its successor **Extempore** languages. 
 
-In this blog I report on musical compositions and experiments I've made, interesting livecoding resources and occasionally other inspiring stuff from the creative world. 
 
 ## The Extempore language
+
+I've been using mainly Extempore to create musical algorithms. 
 
 [Extempore](https://extemporelang.github.io/) is a programming language and runtime environment designed by [Andrew Sorensen](https://twitter.com/digego?lang=en) to support livecoding and cyberphysical programming, where a human programmer operates as an active agent in the world.
 
@@ -39,7 +40,7 @@ In this blog I report on musical compositions and experiments I've made, interes
 
 ## The Impromptu language
 
-Impromptu was the OSX-only predecessor of Extempore. 
+Impromptu was the OSX-only predecessor of Extempore.
 
 > [Impromptu](http://impromptu.moso.com.au/) is an OSX programming language and environment for composers, sound artists, VJ's and graphic artists with an interest in live or interactive programming. Impromptu is a Scheme language environment, a member of the Lisp family of languages. Impromptu is used by artist-programmers in livecoding performances around the globe.
 
