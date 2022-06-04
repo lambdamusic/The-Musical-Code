@@ -26,7 +26,7 @@ Yes, that's a rather unconvential way of making music. But it's also fun and (in
 
 ## See also
 
-- Official Extempore language [github](https://github.com/digego/extempore) homepage
-- [Functions index explorer](https://extempore.michelepasin.org/) 
+- [Extempore language project](https://github.com/digego/extempore)
+- Unofficial Extempore [Functions Explorer](https://extempore.michelepasin.org/) 
 - [My livecoding blog](https://www.michelepasin.org/words/index.html%3Ftag=algorithmiccomposition.html) 
-- [Toplap](https://toplap.org/about/), an organisation whose mission is to explore and promote live coding.
+- Livecoding community: [TOPLAP](https://toplap.org/about/)
