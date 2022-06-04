@@ -16,13 +16,9 @@ This repo has a counterpart [YouTube channel](https://www.youtube.com/channel/UC
 Yes, that's a rather unconvential way of making music. But it's also fun and (in its own way) spectacularly unique. You can also do that *live* too, in front of an audience sitting or dancing: it goes by the name of  [livecoding](https://en.wikipedia.org/wiki/Live_coding).  
 
 
-## This repo structure
+## Extempore Extensions
 
-```
-- works  # Extempore source for musical compositions
-- utils  # Extempore source for utility functions
-```
-
+The [Extempore Extensions](https://github.com/lambdamusic/extempore-extensions) repo contains a bunch of (mainly MIDI) scheme extensions that I developed in order to create Extempore musical algorithms more efficiently and more naturally. 
 
 ## See also
 
