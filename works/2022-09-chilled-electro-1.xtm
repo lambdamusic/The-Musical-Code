@@ -1,0 +1,49 @@
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 2022-09-chilled-electro-1.xtm -- 
+;; 
+;; https://www.youtube.com/watch?v=oaT6FsS2Xvw
+;; 
+;; made with https://extemporelang.github.io
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+(define aphex22
+  (lambda (beat notes durs)
+    (let ((dur (car durs)) 
+        (p (caar notes)))
+
+      (play syn3 p 40 (* dur .9))
+
+      (ifr .5 
+        (play syn1 p 50 (* dur 2))
+      )
+
+      (playkit (oneof k1 k4 k5) 30)
+
+      (ifr .5 
+        (dotimes (i (random 1 6))
+          (playkit (* i 1/4) (oneof k3 k6 k7) 30)
+          )
+      )
+
+      (ifr .5 
+        (play syn2 p 40 (* dur 2) )
+      )
+
+  (callback (*metro* (+ beat (* 1/2 dur))) 
+        'aphex22 (+ beat dur)
+        (rotatedeep notes -1) (rotate durs -1)))))
+
+;; first line
+(aphex22 (*metro* 'get-beat 1) 
+  '((60 67 69) (48 52)) '(4 2 1))
+
+
+;; second line: start on 1st beat of first line for best harmonic results
+(aphex22 (*metro* 'get-beat 1) 
+  (list (add 5 '(60 67 69)) (add 5 '(48 52))) '(2 2 3))
