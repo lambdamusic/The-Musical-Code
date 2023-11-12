@@ -1,0 +1,95 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 2023-10-100-watts-the-self -- 
+;; 
+;; performance only, export to audio via Live
+;; https://www.youtube.com/watch?v=oaT6FsS2Xvw
+;; 
+;; made with https://extemporelang.github.io
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+(define piano1 1) ; grand piano
+(define piano2 2) ; electric piano
+(define sy 3) ; atmo zebra: An Enoding patch
+(define drums 9) ; 505 kit
+
+;; zebra cc cutoff and resonance via Live
+(:midicc 11 10)
+(:midicc 12 10)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; part 1 - repeated atmo synths
+
+(define *melody* (mkchord C5 '- (oneof  4 5)))
+(define *durs* (mklist 4 (oneof 4 6 8)))
+
+(define lp1
+  (lambda (beat melody durs)
+    (let ((dur (car durs)) 
+          (p (car melody)))
+
+        (play sy p 40 dur )
+        (log-info (cosr 60 60 0.001))
+        ; (:mix 3 '+ 1 90)
+
+        (:midicc 11 (cosr 60 60 0.001))
+        (:midicc 12 (cosr 60 60 0.002))
+
+      (callback (*metro* (+ beat (* 1/2 dur))) 
+        'lp1 (+ beat dur)
+        (cdr-or-else melody (mkchord C5 '- (oneof  4 5)))
+        (cdr-or-else durs (mklist 4 (oneof 4 6 8)))))))
+
+(lp1 (*metro* 'get-beat 1) *melody* *durs*)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; part 2 - duplicates part 1, plus random pianos
+
+(define *melody2* (:mkchordrandom G2 'm6 (oneof 3 4 5) 80))
+(define *durs2* (mklist 4 (oneof 2 1/2 3)))
+
+(define lp2)
+  (lambda (beat melody durs)
+    (let ((dur (car durs)) 
+          (p (car melody)))
+
+        (play sy p (random 1 30) dur )
+        (play (oneof piano1 piano2) p (random 1 2) dur )
+
+      (callback (*metro* (+ beat (* 1/2 dur))) 
+        'lp2 (+ beat dur)
+        (cdr-or-else melody (:mkchordrandom G2 'm7 (oneof 3 4 5) 80))
+        (cdr-or-else durs (mklist 4 (oneof 2 1/2 3)))))))
+
+(lp2 (*metro* 'get-beat 1) *melody2* *durs2*)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; part 3 - drums
+
+(define lp3)
+  (lambda (beat dur)
+  
+      (playkp 8 '(x41 0 x43 0) 1 )
+      (playkp 1 '(0 x33) 1 )
+      (playkp 14 '(0 x23 ) 1 )
+      (playkp (cosrfloor 4 1 .01 ) (list x22 0 (oneof x31 x21 0) 0 ) 1 )
+
+    (callback (*metro* (+ beat (* 1/2 dur))) 
+        'lp3 (+ beat dur) dur)))
+
+(lp3 (*metro* 'get-beat 1) 1/8)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; part 4 - voice sample 
+
+(let ((beat (*metro* 'get-beat)))
+  (play 4 C 90 250 )
+  )
