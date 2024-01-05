@@ -13,7 +13,7 @@ This repo has a counterpart [YouTube channel](https://www.youtube.com/channel/UC
 
 > Algorithmic composition is the technique of using algorithms to create music -- [Wikipedia](https://en.wikipedia.org/wiki/Algorithmic_composition)
 
-Yes, that's a rather unconvential way of making music. But it's also fun and (in its own way) spectacularly unique. You can also do that *live* too, in front of an audience sitting or dancing: it goes by the name of  [livecoding](https://en.wikipedia.org/wiki/Live_coding).  
+Admittedly, that's a rather unconventional way of making music. But it's also fun and (in its own way) spectacularly unique. You can also do that *live* too, in front of an audience sitting or dancing: it goes by the name of  [livecoding](https://en.wikipedia.org/wiki/Live_coding).  
 
 
 ## Extempore Extensions
