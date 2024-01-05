@@ -24,5 +24,5 @@ The [Extempore Extensions](https://github.com/lambdamusic/extempore-extensions) 
 
 - [Extempore language project](https://github.com/digego/extempore)
 - Unofficial Extempore [Functions Explorer](https://extempore.michelepasin.org/) 
-- [My livecoding blog](https://www.michelepasin.org/words/index.html%3Ftag=algorithmiccomposition.html) 
+- [My livecoding blog](https://www.michelepasin.org/words/index.html%3Ftag=algorithmiccomposition&type=all.html)
 - Livecoding community: [TOPLAP](https://toplap.org/about/)
