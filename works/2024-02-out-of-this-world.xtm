@@ -1,0 +1,106 @@
+
+;; 2024-02-11 - Out of this world 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;; Ambient (another dreamy riff on Alan Watts words)
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(define voices 1) ;; Ableton: Sliced melodies
+(define piano 2) ;; Arturia Rom1A--11-EPiano Mallets
+(define metal 3) ;; ZebraHZ: Punching Metal
+(define syn1 4) ;; ZebraHZ: Beano
+(define syn2 5) ;; ZebraHZ: Bouncer
+(define syn3 6) ;; ZebraHZ: Electro Morpher
+(define kit 9)  ;; Live: Battu Kit
+(define watts 10) ;; Watts sample
+
+
+
+(let ((beat (*metro* 'get-beat)))
+        (play watts C4 110 400)
+        )
+
+
+(define *chord* (mkchord c2 '-9 14 ))
+(define *times* (list 4 2 2 3 1 4))
+
+(define voci
+  (lambda (beat notes durs)
+    (let ((dur (car durs)) 
+          (p (car notes)))
+
+        (play voices p (random 10 40) dur)
+
+        (play metal (- p 12) (cosr 90 20 1/4) dur)
+        (play 3/2 metal p (cosr 90 20 1/2) (* 1/2 dur))
+        (play 5/2 metal (+ p 12) (cosr 90 20 7/3) (* 1/2 dur))
+
+
+      (callback (*metro* (+ beat (* 1/2 dur))) 
+        'voci (+ beat dur)
+        (if-cdr-else notes *chord*) (if-cdr-else durs *times*)))))
+
+(voci (*metro* 'get-beat 1) '(60 67 69) '(4 2))
+
+
+
+(define *kits* (list x41 x43 x44))
+
+(define drums
+  (lambda (beat notes durs)
+    (let ((dur (car durs)) 
+          (p (car notes)))
+
+        (playk p 90)
+        (playk 1/2 (+ p 1) 90)
+        (playk 3/2 (+ p (random 2 10)) 90)
+        (ifr .5 (playk 1 (+ p (cosrfloor 5 3 1/40)) 90))
+
+        (at 4 0 (playkr p (oneof 4 5) (oneof 1/4 1/8) (random 40 70)))
+
+      (callback (*metro* (+ beat (* 1/2 dur))) 
+        'drums (+ beat dur)
+        (if-cdr-else notes *kits*) (if-cdr-else durs *times*)))))
+
+(drums (*metro* 'get-beat 1) *kits* *times*)
+
+
+
+
+(define highnotes
+  (lambda (beat mel)
+    (let ((dur 24) (p (car mel)))
+        
+      (play 7/2 syn1 (octave p 8) 90 (- dur 4))
+      (play 3/2 syn2 (octave p 8) 90 (+ dur 3/2))
+      (play (+ 3/2 (cosrfloor 5 2 5/120)) 
+        syn3 
+        (mkint (octave p 8) (cosr 5 3 1/8) 'm)
+        110 dur)
+
+      (pianotune beat 100)
+
+      (callback (*metro* (+ beat (* 1/2 dur))) 
+        'highnotes (+ beat dur) (rotate mel -1)))))
+
+(highnotes (*metro* 'get-beat 1) *chord*)
+
+
+
+
+
+(define pianotune
+  (lambda (beat vel)
+    (let ((dur 1/4))
+        
+      (play piano C3 (cosr vel 10 1/40) dur)
+      (at 4 0 (play piano C4 (cosr vel 10 1/4) dur))
+      (at 8 1/2 (play piano C5 (cosr vel 20 1/2) dur))
+
+    (if> vel 0 
+
+      (callback (*metro* (+ beat (* 1/2 dur))) 
+        'pianotune (+ beat dur) vel)))))
+

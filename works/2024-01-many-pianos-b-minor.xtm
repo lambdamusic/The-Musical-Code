@@ -1,0 +1,57 @@
+
+; ---------------------------------
+; piano cycles fun - B minor
+; using simple instrument variations
+
+
+(define piano 1) ;; ZebraHZ: HS Another Time Another Space
+(define piano2 2) ;; Zebra2: HS Rough Tongue Bass
+(define piano3 3) ;; Grand Piano
+(define piano4 4) ;; E Piano Rhodes
+(define piano5 5) ;; Analog Lab: Acid 2 Water Piano
+(define piano6 6) ;; Analog Lab: Japanese Home Clean
+(define strings 7) ;; LABS: Guitar Harmonics Gieger
+
+
+
+(define ROOT B4)
+(define MODE 'aeolian)
+
+
+
+(define pianoscales)
+  (lambda (beat dur)
+    
+    (at (rectr 1/2 1 1/28 ) 0 
+      (play piano3 
+      (mkrel (add -24 ROOT) (rectr 5 (cosr 5 5 1/30 ) 1/4 ) MODE) 
+      (cosr 40 30 1)
+      (rectr 1/2 1 1/28 ))
+    )
+
+    (at 1/2 0
+      (play piano 
+      (mkrel ROOT (cosr 5 (cosr 5 5 13/2 ) 1/64 ) MODE) 
+      (cosr 10 5 1/4)
+      1/4)
+    )
+
+    (at (rectr 1 1 1/32 ) 0 
+      (play piano2 
+      (mkrel (add -12 ROOT) (cosr 5 (cosr 5 5 13/2 ) 1/64 ) MODE) 
+      (cosr 25 15 1/4)
+      (rectr 20 15 1/32 ))
+    )
+
+    (at (rectr 1/2 1 1/9 ) 0 
+      (play piano4 
+      (mkrel (add -24 ROOT) (rectr 10 (cosr 7 5 1/60 ) 1/7 ) MODE) 
+      (cosr 60 30 1/2)
+      (rectr 1/2 1 1/35 ))
+    )
+
+
+    (callback (*metro* (+ beat (* 1/2 dur))) 
+        'pianoscales (+ beat dur) dur)))
+
+(pianoscales (*metro* 'get-beat 1) 1/16)
