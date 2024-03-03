@@ -1,0 +1,78 @@
+
+;; 2024-03-03 - Pongs delay
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;; Atmo, Ambient experiment
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+(define ping-instruments (list 1 2 3 4 5 6 7)) ;; Collision Mallets
+(define drone 8) ;; Collion Slow Pad
+(define eeries 8) ;; ZebraHZ Eeries High Mono
+(define *dronecc* 15)
+(define *pitch* C2)
+
+
+
+
+(define pings
+  (lambda (beat pitch vol dur inst)
+    (let ((dur dur))
+      
+      (play inst pitch (+ 10 (* dur 50)) dur )
+      
+      (if> dur 1/32
+           
+           (callback (*metro* (+ beat (* .5 dur))) 'pings (+ beat dur)
+                     pitch
+                     vol
+                     (- dur 1/32)
+                     inst)
+           
+           (begin
+             (set! dur 1)
+             (callback (*metro* (+ beat (* .5 4))) 'pings (+ beat 4)
+                       (mkint (octave *pitch*) (oneof 1 1 5 -5) 'm )
+                       vol
+                       dur
+                       (oneof ping-instruments)))))))
+
+
+(pings (*metro* 'get-beat 1) A3 80 1 1)
+
+
+
+(define droneline
+  (lambda (beat pitch vol dur inst)
+    (let ((dur dur))
+      
+      (mix 1 90)
+      (play inst *pitch* vol dur )
+      (play inst (oct *pitch*) vol dur )
+      (play inst (oct (oct *pitch*)) vol dur )
+      
+      ; (ifr .7 (play 9 (list C4) 90 10))
+      ; (ifr .6 (set! *pitch* C2))
+      
+      (callback (*metro* (+ beat (* .5 dur))) 'droneline (+ beat dur)
+                pitch
+                vol
+                dur
+                inst))))
+
+(droneline (*metro* 'get-beat 1) *pitch* 110 1 8)
+
+
+
+(define dronecx
+  (lambda (beat)
+    (let ((dur 1/16))
+      
+      (mcc *dronecc* (cosr 60 45 1/40))
+      
+      (callback (*metro* (+ beat (* 1/2 dur)))
+                'dronecx (+ beat dur)))))
+
+(dronecx (*metro* 'get-beat 1))
