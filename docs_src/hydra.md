@@ -1,0 +1,75 @@
+
+# Hydra Sketches
+
+April 2, 2021
+
+
+
+
+```js
+// ee_5 . FUGITIVE GEOMETRY VHS . audioreactive shapes and gradients
+// e_e // @eerie_ear
+// 
+s = () => shape(7.284).scrollX([-0.5, -0.2, 0.3, -0.1, -0.062].smooth(0.139).fast(0.049)).scrollY([0.25, -0.2, 0.3, -0.095, 0.2].smooth(0.453).fast(0.15));
+// 
+solid().add(gradient(3, 0.05).rotate(0.05, -0.2).posterize(0.56).contrast(0.016), [1, 0.541, 1, 0.5, 0.181, 0.6].smooth(0.9)).add(s()).mult(s().scale(0.8).scrollX(0.01).scrollY(-0.01).rotate(0.303, 0.06).add(gradient(4.573).contrast(0.008), [0.684, 0.118, 1, 0.43].smooth(1.496), 0.5).mult(src(o0).scale(0.142), () => a.fft[0] * 4.226)).diff(s().modulate(shape(644.351)).scale([1.7, 1.2].smooth(0.392).fast(0.05))).add(gradient(2).invert(), () => a.fft[2]).mult(gradient(() => a.fft[3] * 8)).blend(src(o0, () => a.fft[1] * 40)).add(voronoi(() => a.fft[1], () => a.fft[3], () => a.fft[0]).thresh(0.7).posterize(0.419, 4).luma(0.9).scrollY(1, () => a.fft[0] / 30).colorama(0.369).thresh(() => a.fft[1]).scale(() => a.fft[3] * 2), () => a.fft[0] / 2).out();
+// 
+speed = 1;
+```
+https://hydra.ojack.xyz/?sketch_id=eerie_ear_2
+
+```js
+// ee_5 . FUGITIVE GEOMETRY VHS . audioreactive shapes and gradients
+// e_e // @eerie_ear
+// 
+s = () => shape(7.284).scrollX([-0.5, -0.119, 0.3, -0.106, -0.062].smooth(0.139).fast(0.044)).scrollY([0.25, -0.2, 0.459, -0.186, 0.307].smooth(0.453).fast(0.299));
+// 
+solid().add(gradient(1.871, 0.05).rotate(0.05, -0.2).posterize(0.56).contrast(0.016), [1, 0.441, 1.779, 0.5, 0.181, 0.6].smooth(1.017)).add(s()).mult(s().scale(0.8).scrollX(0.01).scrollY(-0.005).rotate(0.303, 0.06).add(gradient(1.861).contrast(0.008), [0.021, 0.118, 1, 0.43].smooth(1.496), 0.5).mult(src(o0).scale(0.205), () => a.fft[0] * 4.226)).diff(s().modulate(shape(644.351)).scale([1.7, 1.2].smooth(0.215).fast(0.05))).add(gradient(2).invert(), () => a.fft[2]).mult(gradient(() => a.fft[3] * 8)).blend(src(o0, () => a.fft[1] * 40)).add(voronoi(() => a.fft[1], () => a.fft[3], () => a.fft[0]).thresh(1.177).posterize(0.419, 4).luma(0.9).scrollY(1, () => a.fft[0] / 30).colorama(0.369).thresh(() => a.fft[1]).scale(() => a.fft[3] * 2), () => a.fft[0] / 2).out();
+// 
+speed = 1.805;
+```
+
+
+```js
+//corrupted screensaver
+//by Ritchse
+//instagram.com/ritchse
+ 
+voronoi(350,0.15)
+  	.modulateScale(osc(8).rotate(Math.sin(time)),.5)
+  	.thresh(.8)
+	.modulateRotate(osc(7),.4)
+	.thresh(.7)
+  	.diff(src(o0).scale(1.8))
+	.modulateScale(osc(2).modulateRotate(o0,.74))
+	.diff(src(o0).rotate([-.012,.01,-.002,0]).scrollY(0,[-1/199800,0].fast(0.7)))
+	.brightness([-.02,-.17].smooth().fast(.5))
+	.out()
+```
+	
+	
+	
+	
+	
+https://hydra.ojack.xyz/?code=JTJGJTJGJTIwU3VtZXQlMEElMkYlMkYlMjBieSUyMFJhbmdnYSUyMFB1cm5hbWElMjBBamklMEElMkYlMkYlMjBodHRwcyUzQSUyRiUyRnJhbmdnYXB1cm5hbWFhamkxLndpeHNpdGUuY29tJTJGcG9ydGZvbGlvJTBBJTBBb3NjKDAuNSUyQzEuMjUpLm11bHQoc2hhcGUoMSUyQzAuMDkpLnJvdGF0ZSgxLjUpKSUwQSUyMCUyMC5kaWZmKGdyYWRpZW50KCkpJTBBJTIwJTIwLmFkZChzaGFwZSgyJTJDMikuYmxlbmQoZ3JhZGllbnQoMSkpKSUwQSUyMCUyMC5tb2R1bGF0ZShub2lzZSgpJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwLm1vZHVsYXRlKG5vaXNlKCkuc2Nyb2xsWSgxJTJDMC4wNjI1KSkpJTBBJTIwJTIwLmJsZW5kKG8wKSUwQSUyMCUyMC5jb2xvcigwLjIlMkMtMC4xJTJDLTAuNSklMEElMjAlMjAub3V0KCk=	
+	
+
+```js
+// Sumet
+// by Rangga Purnama Aji
+// https://ranggapurnamaaji1.wixsite.com/portfolio
+
+osc(0.5,1.25).mult(shape(1,0.09).rotate(1.5))
+  .diff(gradient())
+  .add(shape(2,2).blend(gradient(1)))
+  .modulate(noise()
+            .modulate(noise().scrollY(1,0.0625)))
+  .blend(o0)
+  .color(0.2,-0.1,-0.5)
+  .out()
+ ``` 
+  
+  
+  https://hydra.ojack.xyz/?code=JTJGJTJGJTIwUHVlcnRhcyUyMElJJTBBJTJGJTJGJTIwcG9yJTIwQ2VsZXN0ZSUyMEJldGFuY3VyJTBBJTJGJTJGJTIwaHR0cHMlM0ElMkYlMkZnaXRodWIuY29tJTJGZXNzdGViYW4lMEFvc2MoNC4yMjYlMkMlMjAwLjEyMiUyQyUyMDEpLmthbGVpZCgpLm1hc2soc2hhcGUoNCUyQyUyMDAuNTIzJTJDJTIwMS45MSkpLm1vZHVsYXRlUm90YXRlKHNoYXBlKDQlMkMlMjAwLjElMkMlMjAxKSkubW9kdWxhdGVSb3RhdGUoc2hhcGUoMS40MjglMkMlMjAwLjElMkMlMjAwLjYzMykpLm1vZHVsYXRlUm90YXRlKHNoYXBlKDUuMDIzJTJDJTIwMC4xNDMlMkMlMjAxLjAwMSkpLnNjYWxlKDAuMykuYWRkKHNoYXBlKDQlMkMlMjAwLjA2MiUyQyUyMDAuMDcxKS5jb2xvcigwLjQzMyUyQyUyMDElMkMlMjAxJTJDJTIwMC41KSkucm90YXRlKCgpJTIwJTNEJTNFJTIwdGltZSkub3V0KCklM0IlMEE=
+  
+  
