@@ -8,3 +8,10 @@ echo "=================="
 
 cd mkdocs
 mkdocs build --clean
+
+
+echo "=================="
+echo "Copying CNAME settings to '../docs' folder..."
+echo "=================="
+
+cp CNAME ../docs
