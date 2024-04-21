@@ -1,19 +1,29 @@
 #!/bin/bash
-# run mkdocs site in local
+# run mkdocs site in local and publish it on Github
 # prerequisites: chmod u+x <filename>
 
-echo "=================="
-echo "Building '/mkdocs/src' into '../docs' folder..."
-echo "=================="
 
-cd mkdocs
-mkdocs build --clean
+./tools/run-build.sh
+
 
 
 echo "=================="
-echo "Pushing to Github.."
+echo "Pushing to Github..."
 echo "=================="
 
-git add -A 
-git commit -m "mkdocs automated site-build-push"
+git add -A
+
+git commit -m "automated docs release"
+
 git push
+
+
+
+
+echo "=================="
+echo "Completed push to https://github.com/lambdamusic/The-Musical-Code"
+echo "=================="
+
+
+
+
