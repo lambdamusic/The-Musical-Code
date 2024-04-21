@@ -72,7 +72,3 @@ The only **requirement** is to have the `beat` and `*metro*` symbols defined. No
 * Original [callback function](https://extempore.michelepasin.org/def/callback.html)
 * Implementation of [make-metro function](https://github.com/digego/extempore/blob/v0.8.9/runtime/scheme.xtm)
 * [Extempore language](https://extemporelang.github.io/) homepage
-
-## Changelog
-
-* 2024-04-21: page created
