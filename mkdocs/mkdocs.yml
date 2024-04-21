@@ -1,0 +1,38 @@
+# awesome-pages copy of YAML settings
+# pages are loaded dynamically
+
+site_name: Experiments about algorithmic composition | The Musical Code
+docs_dir: docs
+site_dir: ../docs
+
+repo_url: https://github.com/lambdamusic/The-Musical-Code
+
+nav:
+    - Home: index.md
+    - ...
+
+theme:
+    name: material
+    favicon: assets/images/favicon.ico
+    logo: assets/images/logo.jpg
+    custom_dir: docs/assets/custom_theme/
+    palette:
+      scheme: slate
+      primary: purple
+      accent: deep orange
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.details
+plugins:
+    - search
+    - awesome-pages
+    - git-revision-date
+extra:
+  analytics:
+    provider: google
+    property: GA-302041842
+copyright: © Copyright 2023-2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a> 

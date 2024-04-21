@@ -7,4 +7,4 @@ echo "Running /mkdocs ..."
 echo "=================="
 
 cd mkdocs
-mkdocs serve
+mkdocs serve -a localhost:8001

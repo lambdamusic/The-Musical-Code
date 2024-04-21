@@ -65,4 +65,5 @@ target/
 *.als
 
 
+mkdocs/private
 README_PRIVATE.md
