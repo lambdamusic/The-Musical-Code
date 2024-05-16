@@ -323,8 +323,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-dur-as-a-function-argument" class="md-nav__link">
-    2. dur as a function argument
+  <a href="#2-loop-with-dur-as-a-function-argument" class="md-nav__link">
+    2. Loop with dur as a function argument
   </a>
   
 </li>
@@ -358,8 +358,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-loop-with-mapplay-pattern" class="md-nav__link">
-    7. Loop with map+play pattern
+  <a href="#7-loop-with-map-play-pattern" class="md-nav__link">
+    7. Loop with map + play pattern
   </a>
   
 </li>
@@ -723,30 +723,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../works/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../works/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../works/2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -879,6 +855,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1147,8 +1135,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-dur-as-a-function-argument" class="md-nav__link">
-    2. dur as a function argument
+  <a href="#2-loop-with-dur-as-a-function-argument" class="md-nav__link">
+    2. Loop with dur as a function argument
   </a>
   
 </li>
@@ -1182,8 +1170,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-loop-with-mapplay-pattern" class="md-nav__link">
-    7. Loop with map+play pattern
+  <a href="#7-loop-with-map-play-pattern" class="md-nav__link">
+    7. Loop with map + play pattern
   </a>
   
 </li>
@@ -1237,120 +1225,120 @@
 <p>A collection of <a href="https://extemporelang.github.io/">Extempore</a> code snippets for creating different types of musical outputs. </p>
 <h2 id="1-loop-with-inner-dur">1. Loop with inner <code>dur</code></h2>
 <p>The most basic version of the loop templates. <code>dur</code> as an inner variable is handy in case we want to change <code>dur</code> on the fly and derive other parameters from it in the function body. </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
- <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 
-     <span class="p">(</span><span class="nf">monitor</span> <span class="nv">beat</span> <span class="nv">dur</span><span class="p">)</span>
+<span class="w">     </span><span class="p">(</span><span class="nf">monitor</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
 
-     <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span> <span class="p">))))</span> 
+<span class="w">     </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span><span class="w"> </span><span class="p">))))</span><span class="w"> </span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 </code></pre></div>
-<h2 id="2-dur-as-a-function-argument">2. <code>dur</code> as a function argument</h2>
+<h2 id="2-loop-with-dur-as-a-function-argument">2. Loop with <code>dur</code> as a function argument</h2>
 <p>Takes <code>dur</code> as a loop argument. Useful when we want to change <code>dur</code> INSIDE the function - ie based on some other process that happens in the function, so the next iteration should receive a preprocessed <code>dur</code>. </p>
 <p>Clearly this is a special case - normally <code>dur</code> is either fixed or randomly assigned, hence it does not have to be an argument.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
- <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">dur</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
 
-   <span class="p">(</span><span class="nf">monitor</span> <span class="nv">beat</span> <span class="nv">dur</span><span class="p">)</span>
-   <span class="c1">;; EG change dur briefly every 8 beats</span>
-   <span class="p">(</span><span class="nf">if=</span> <span class="p">(</span><span class="nb">modulo </span><span class="nv">beat</span> <span class="mi">8</span><span class="p">)</span> <span class="mi">0</span>  
-    <span class="p">(</span><span class="k">set! </span><span class="nv">dur</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="k">set! </span><span class="nv">dur</span> <span class="mi">1</span><span class="p">)</span>
-   <span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="nf">monitor</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
+<span class="w">   </span><span class="c1">;; EG change dur briefly every 8 beats</span>
+<span class="w">   </span><span class="p">(</span><span class="nf">if=</span><span class="w"> </span><span class="p">(</span><span class="nb">modulo</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span>
+<span class="w">    </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">   </span><span class="p">)</span>
 
-   <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span> <span class="nv">dur</span><span class="p">)))</span>
+<span class="w">   </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="3-loop-with-all-play-arguments">3. Loop with all <code>play</code> arguments</h2>
 <p>I.e. the 'explicit' loop. Here we are passing all <code>play</code> args so that they can be changed at each iteration. </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
-    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">pitch</span> <span class="nv">vol</span> <span class="nv">dur</span> <span class="nv">inst</span><span class="p">)</span>
-        <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="nv">dur</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w">    </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="nv">vol</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">inst</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="nv">dur</span><span class="p">))</span>
 
-           <span class="p">(</span><span class="nf">monitor</span> <span class="nv">beat</span> <span class="nv">pitch</span> <span class="nv">vol</span> <span class="nv">dur</span> <span class="nv">inst</span><span class="p">)</span>
+<span class="w">           </span><span class="p">(</span><span class="nf">monitor</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="nv">vol</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">inst</span><span class="p">)</span>
 
-            <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span> 
-                <span class="nv">pitch</span>
-                <span class="nv">vol</span>
-                <span class="nv">dur</span>
-                <span class="nv">inst</span><span class="p">))))</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span><span class="w"> </span>
+<span class="w">                </span><span class="nv">pitch</span>
+<span class="w">                </span><span class="nv">vol</span>
+<span class="w">                </span><span class="nv">dur</span>
+<span class="w">                </span><span class="nv">inst</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">A3</span> <span class="mi">90</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nv">A3</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="4-rotating-melody-loop-external">4. Rotating melody loop, external</h2>
 <p>Using notes and durs patterns as arguments, which rotate and get reset to the original lists when all elements have been used.</p>
 <p>Note: since notes and durs are global variables, they can be easily changed outside the loop or reused by other functions etc..</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">*melody*</span> <span class="p">(</span><span class="nf">mkchord</span> <span class="mi">48</span> <span class="ss">&#39;-</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">*durs*</span> <span class="p">(</span><span class="nf">mklist</span> <span class="mi">4</span> <span class="p">(</span><span class="nf">oneof</span> <span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">*melody*</span><span class="w"> </span><span class="p">(</span><span class="nf">mkchord</span><span class="w"> </span><span class="mi">48</span><span class="w"> </span><span class="ss">&#39;-</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">*durs*</span><span class="w"> </span><span class="p">(</span><span class="nf">mklist</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">oneof</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
-    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">melody</span> <span class="nv">durs</span><span class="p">)</span>
-        <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="p">(</span><span class="nb">car </span><span class="nv">durs</span><span class="p">))</span> 
-              <span class="p">(</span><span class="nf">p</span> <span class="p">(</span><span class="nb">car </span><span class="nv">melody</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w">    </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">melody</span><span class="w"> </span><span class="nv">durs</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">durs</span><span class="p">))</span><span class="w"> </span>
+<span class="w">              </span><span class="p">(</span><span class="nf">p</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">melody</span><span class="p">)))</span>
 
-                <span class="p">(</span><span class="nf">monitor</span> <span class="nv">beat</span> <span class="nv">dur</span> <span class="nv">p</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="nf">monitor</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">p</span><span class="p">)</span>
 
-            <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span>
-                <span class="p">(</span><span class="nf">cdr-or-else</span> <span class="nv">melody</span> <span class="nv">*melody*</span><span class="p">)</span>
-                <span class="p">(</span><span class="nf">cdr-or-else</span> <span class="nv">durs</span> <span class="nv">*durs*</span><span class="p">)))))</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span>
+<span class="w">                </span><span class="p">(</span><span class="nf">cdr-or-else</span><span class="w"> </span><span class="nv">melody</span><span class="w"> </span><span class="nv">*melody*</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="nf">cdr-or-else</span><span class="w"> </span><span class="nv">durs</span><span class="w"> </span><span class="nv">*durs*</span><span class="p">)))))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">*melody*</span> <span class="nv">*durs*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nv">*melody*</span><span class="w"> </span><span class="nv">*durs*</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="5-rotating-melody-loop-internal">5. Rotating melody loop, internal</h2>
 <p>Similiar to the external melody version, but the pattern arguments are internal and rotated periodically. </p>
 <p>This allows for example to call the same function multiple times with different notes and durs arguments, without having to duplicate code, generating overlapping musical patterns.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
- <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">notes</span> <span class="nv">durs</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">p</span> <span class="p">(</span><span class="nb">car </span><span class="nv">notes</span><span class="p">))</span>
-         <span class="p">(</span><span class="nf">dur</span> <span class="p">(</span><span class="nb">car </span><span class="nv">durs</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">notes</span><span class="w"> </span><span class="nv">durs</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">p</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">notes</span><span class="p">))</span>
+<span class="w">         </span><span class="p">(</span><span class="nf">dur</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">durs</span><span class="p">)))</span>
 
-     <span class="p">(</span><span class="nf">monitor</span> <span class="nv">beat</span> <span class="nv">p</span> <span class="nv">dur</span><span class="p">)</span>
+<span class="w">     </span><span class="p">(</span><span class="nf">monitor</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
 
-     <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span>
-               <span class="p">(</span><span class="nf">rotate</span> <span class="nv">notes</span> <span class="mi">-1</span><span class="p">)</span>
-               <span class="p">(</span><span class="nf">rotate</span> <span class="nv">durs</span> <span class="mi">-1</span><span class="p">)))))</span>
+<span class="w">     </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span>
+<span class="w">               </span><span class="p">(</span><span class="nf">rotate</span><span class="w"> </span><span class="nv">notes</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="nf">rotate</span><span class="w"> </span><span class="nv">durs</span><span class="w"> </span><span class="mi">-1</span><span class="p">)))))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">60</span> <span class="mi">67</span> <span class="mi">69</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">60</span><span class="w"> </span><span class="mi">67</span><span class="w"> </span><span class="mi">69</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="6-rotating-melody-loop-internal-with-deep-rotation">6. Rotating melody loop, internal, with 'deep' rotation</h2>
 <p>A variation of the rotate loop that takes a nested list of plists and takes one value from each plist per cycle, while rotating them, generating a two-voices alternating structure.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">notes</span> <span class="nv">durs</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">p</span> <span class="p">(</span><span class="nb">caar </span><span class="nv">notes</span><span class="p">))</span> 
-        <span class="p">(</span><span class="nf">dur</span> <span class="p">(</span><span class="nb">car </span><span class="nv">durs</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">notes</span><span class="w"> </span><span class="nv">durs</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">p</span><span class="w"> </span><span class="p">(</span><span class="nb">caar</span><span class="w"> </span><span class="nv">notes</span><span class="p">))</span><span class="w"> </span>
+<span class="w">        </span><span class="p">(</span><span class="nf">dur</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">durs</span><span class="p">)))</span>
 
-        <span class="p">(</span><span class="nf">monitor</span> <span class="nv">beat</span> <span class="nv">p</span> <span class="nv">dur</span> <span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">monitor</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="p">)</span>
 
-  <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span> 
-        <span class="p">(</span><span class="nf">rotatedeep</span> <span class="nv">notes</span> <span class="mi">-1</span><span class="p">)</span> 
-        <span class="p">(</span><span class="nf">rotate</span> <span class="nv">durs</span> <span class="mi">-1</span><span class="p">)))))</span>
+<span class="w">  </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span><span class="w"> </span>
+<span class="w">        </span><span class="p">(</span><span class="nf">rotatedeep</span><span class="w"> </span><span class="nv">notes</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span>
+<span class="w">        </span><span class="p">(</span><span class="nf">rotate</span><span class="w"> </span><span class="nv">durs</span><span class="w"> </span><span class="mi">-1</span><span class="p">)))))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">60</span> <span class="mi">67</span> <span class="mi">69</span><span class="p">)</span> <span class="p">(</span><span class="mi">48</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="mi">60</span><span class="w"> </span><span class="mi">67</span><span class="w"> </span><span class="mi">69</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">48</span><span class="p">))</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
 <p>See also</p>
 <ul>
 <li><a href="https://extempore.michelepasin.org/def/rotatedeep.html">rotatedeep</a>  </li>
 </ul>
-<h2 id="7-loop-with-mapplay-pattern">7. Loop with map+play pattern</h2>
+<h2 id="7-loop-with-map-play-pattern">7. Loop with <code>map</code> + <code>play</code> pattern</h2>
 <p>A more complex pattern playing structure that maps over several lists. It's a terse structure that permits to generate many rythmic and harmonic variations by modifying the external <code>times</code>, <code>notes</code> and <code>vols</code> periodically.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">times</span> <span class="p">(</span><span class="nf">mklist</span> <span class="mi">4</span> <span class="p">(</span><span class="nf">oneof</span> <span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">)))</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">notes</span> <span class="p">(</span><span class="nf">mkchordrandom</span> <span class="nv">A3</span> <span class="ss">&#39;m6</span> <span class="mi">4</span> <span class="mi">100</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">vols</span> <span class="p">(</span><span class="nf">mklist</span> <span class="mi">4</span> <span class="p">(</span><span class="nf">oneof</span> <span class="mi">50</span> <span class="mi">90</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nb">times</span><span class="w"> </span><span class="p">(</span><span class="nf">mklist</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">oneof</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1/4</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">notes</span><span class="w"> </span><span class="p">(</span><span class="nf">mkchordrandom</span><span class="w"> </span><span class="nv">A3</span><span class="w"> </span><span class="ss">&#39;m6</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">100</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">vols</span><span class="w"> </span><span class="p">(</span><span class="nf">mklist</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">oneof</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">90</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="mi">1</span><span class="nv">/16</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="mi">1/16</span><span class="p">))</span>
 
-      <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">t</span> <span class="nv">p</span> <span class="nv">v</span><span class="p">)</span>
-          <span class="p">(</span><span class="nf">onbeat</span> <span class="nv">t</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">monitor</span> <span class="nv">p</span> <span class="nv">v</span> <span class="nv">dur</span> <span class="p">))</span>
-          <span class="p">)</span>
-        <span class="nv">times</span> <span class="nv">notes</span> <span class="nv">vols</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">t</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="w">          </span><span class="p">(</span><span class="nf">onbeat</span><span class="w"> </span><span class="nv">t</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">monitor</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="p">))</span>
+<span class="w">          </span><span class="p">)</span>
+<span class="w">        </span><span class="nb">times</span><span class="w"> </span><span class="nv">notes</span><span class="w"> </span><span class="nv">vols</span><span class="p">)</span>
 
-      <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span><span class="p">))))</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 </code></pre></div>
 <p>See also</p>
 <ul>
@@ -1358,15 +1346,15 @@
 </ul>
 <h2 id="8-loop-with-every">8. Loop with <code>every</code></h2>
 <p>Allows to express conditions in relation to the loop (iteration) count, by passing an extra parameter <code>lc</code>. </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">dur</span> <span class="nv">lc</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">lc</span><span class="p">)</span>
 
-    <span class="p">(</span><span class="nf">every</span> <span class="mi">2</span> <span class="p">(</span><span class="nf">monitor</span> <span class="nv">beat</span> <span class="nv">dur</span> <span class="nv">lc</span><span class="p">)</span> <span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="nb">every</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">(</span><span class="nf">monitor</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">lc</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
 
-    <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span> 
-        <span class="nv">dur</span> <span class="p">(</span><span class="mi">1</span><span class="nv">+</span> <span class="nv">lc</span><span class="p">))))</span>
+<span class="w">    </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span><span class="w"> </span>
+<span class="w">        </span><span class="nv">dur</span><span class="w"> </span><span class="p">(</span><span class="nb">1+</span><span class="w"> </span><span class="nv">lc</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <p>See also</p>
 <ul>
@@ -1375,49 +1363,49 @@
 <h2 id="9-loop-with-rect-downbeats">9. Loop with <code>rect</code> downbeats</h2>
 <p>Using a <code>rectr</code> function to oscillate downbeats between two states only. </p>
 <p>Note: <code>dur</code> is defined internally here, to make it easier to update the snippet at runtime.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="mi">1</span><span class="nv">/16</span><span class="p">)</span>
-          <span class="p">(</span><span class="nf">t</span> <span class="p">(</span><span class="nf">rectr</span> <span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span> <span class="mi">1</span><span class="nv">/16</span> <span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="mi">1/16</span><span class="p">)</span>
+<span class="w">          </span><span class="p">(</span><span class="nf">t</span><span class="w"> </span><span class="p">(</span><span class="nf">rectr</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1/16</span><span class="w"> </span><span class="p">)))</span>
 
-      <span class="p">(</span><span class="nf">at</span> <span class="nv">t</span> <span class="mi">0</span>
-        <span class="p">(</span><span class="nf">play</span> <span class="mi">1</span> <span class="nv">A2</span> <span class="mi">60</span> <span class="nv">t</span><span class="p">)</span>
-      <span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="nv">t</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nv">A2</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="nv">t</span><span class="p">)</span>
+<span class="w">      </span><span class="p">)</span>
 
-    <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span><span class="p">))))</span>
+<span class="w">    </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="10-loop-with-ping-pong-effect">10. Loop with 'ping pong' effect</h2>
 <p>Shorten the loop cycle duration by a fixed amount to achieve a ping pong effect. Reset the cycle duration when it gets too short.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">pitch</span> <span class="nv">dur</span> <span class="nv">inst</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">inst</span><span class="p">)</span>
 
-  <span class="p">(</span><span class="nf">play</span> <span class="nv">inst</span> <span class="nv">pitch</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">10</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="mi">100</span><span class="p">))</span> <span class="nv">dur</span> <span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">inst</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">100</span><span class="p">))</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="p">)</span>
 
-  <span class="p">(</span><span class="nf">if&gt;</span> <span class="nv">dur</span> <span class="mi">1</span><span class="nv">/32</span>
-      <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span> <span class="nv">pitch</span> <span class="p">(</span><span class="nb">- </span><span class="nv">dur</span> <span class="mi">1</span><span class="nv">/32</span><span class="p">)</span> <span class="nv">inst</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">callback-at</span> <span class="mi">2</span> <span class="ss">&#39;lp1</span> <span class="nv">pitch</span> <span class="mi">1</span> <span class="nv">inst</span><span class="p">))))</span>
+<span class="w">  </span><span class="p">(</span><span class="nf">if&gt;</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">1/32</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">1/32</span><span class="p">)</span><span class="w"> </span><span class="nv">inst</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="ss">&#39;lp1</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nv">inst</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">A3</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nv">A3</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="11-loop-with-diatonic-chord-progressions">11. Loop with diatonic chord progressions</h2>
 <p>Generates chords variations based on diatonic changes. </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">degree</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="mi">8</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">degree</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span>
 
-      <span class="p">(</span><span class="nb">for-each </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">p</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">play</span> <span class="mi">1</span> <span class="nv">p</span> <span class="mi">30</span> <span class="nv">dur</span><span class="p">))</span>
-      <span class="p">(</span><span class="nf">mkchordiatonicr</span> <span class="mi">36</span> <span class="ss">&#39;-</span> <span class="nv">degree</span> <span class="mi">3</span> <span class="mi">70</span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">for-each</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">p</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="nv">dur</span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">mkchordiatonicr</span><span class="w"> </span><span class="mi">36</span><span class="w"> </span><span class="ss">&#39;-</span><span class="w"> </span><span class="nv">degree</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">70</span><span class="p">))</span>
 
-    <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;lp1</span>
-        <span class="p">(</span><span class="nf">oneof</span> <span class="p">(</span><span class="nf">rest</span> <span class="p">(</span><span class="nb">assoc </span><span class="nv">degree</span>
-                      <span class="o">&#39;</span><span class="p">((</span><span class="nf">i</span> <span class="nv">iv</span><span class="p">)</span>
-                        <span class="p">(</span><span class="nf">iv</span> <span class="nv">i</span><span class="p">)</span>
-                      <span class="p">))))))))</span>
+<span class="w">    </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;lp1</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">oneof</span><span class="w"> </span><span class="p">(</span><span class="nf">rest</span><span class="w"> </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="nv">degree</span>
+<span class="w">                      </span><span class="o">&#39;</span><span class="p">((</span><span class="nf">i</span><span class="w"> </span><span class="nv">iv</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">(</span><span class="nf">iv</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span>
+<span class="w">                      </span><span class="p">))))))))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">8</span><span class="p">)</span> <span class="ss">&#39;i</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="ss">&#39;i</span><span class="p">)</span>
 </code></pre></div>
 <p>See also</p>
 <ul>

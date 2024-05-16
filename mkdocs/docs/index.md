@@ -1,10 +1,9 @@
-# Welcome to the Livecoding tips website
+# Welcome to the Musical Code website
 
 This site and its related [Github repository](https://github.com/lambdamusic/The-Musical-Code) contain a collection of tutorials and lessons learned on the topic of livecoding and Extempore. 
 
-!!! note "Note"
-    [Extempore](https://extemporelang.github.io/) is a programming language for musical livecoding and algorithmic composition. If you're new to Extempore, [YouTube](https://www.youtube.com/results?search_query=extempore+livecoding) has many videos that show it in action.
-
+!!! warning
+    Page under construction
 
 ## Algorithmic composition? 
 
@@ -12,10 +11,18 @@ This site and its related [Github repository](https://github.com/lambdamusic/The
 
 Admittedly, that's a rather unconventional way of making music. But it's also fun and (in its own way) spectacularly unique. You can also do that *live* too, in front of an audience sitting or dancing: it goes by the name of  [livecoding](https://en.wikipedia.org/wiki/Live_coding).  
 
+> Live coding is a new direction in electronic music and video, and is starting to get somewhere interesting. Live coders expose and rewire the innards of software while it generates improvised music and/or visuals. All code manipulation is projected for your pleasure. Live coding is inclusive and accessible to all. -- [toplap.org](http://toplap.org/)
 
-## Extempore Extensions
 
-The [Extempore Extensions](https://github.com/lambdamusic/extempore-extensions) repo contains a bunch of (mainly MIDI) scheme extensions that I developed in order to create Extempore musical algorithms more efficiently and more naturally. 
+
+## How this site is structured
+
+* Extempore
+* Impromptu
+* Livecoding
+* Works
+* Miscellaneous
+
 
 
 ## Video tutorials

@@ -617,30 +617,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -816,6 +792,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1113,42 +1101,42 @@
 <h2 id="repeated-scales-with-a-touch-of-randomness">Repeated scales with a touch of randomness</h2>
 <p>The gist of this musical algorithm is amazingly simple. </p>
 <p>Pick a scale. You play it using a variable time-interval between its notes, which is determined by a cosine function (<a href="https://extempore.michelepasin.org/1030.html"><code>cosr</code></a>). The variable interval gives the final result a touch of suspense and makes it less computer-like. </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">xsc</span> 
-    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">vel</span> <span class="nv">scale</span><span class="p">)</span> 
-        <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="p">(</span><span class="nf">cosratio</span> <span class="mi">4</span> <span class="mi">2</span> <span class="mi">1</span><span class="nv">/128</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">xsc</span><span class="w"> </span>
+<span class="w">    </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">vel</span><span class="w"> </span><span class="nv">scale</span><span class="p">)</span><span class="w"> </span>
+<span class="w">        </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="p">(</span><span class="nf">cosratio</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1/128</span><span class="p">)))</span>
 </code></pre></div>
 <p>After each note, more notes are played programmatically, after brief (random) intervals of half a beat, or 3/2 of a beat. Fifths, octaves, minor sevenths... as you please.</p>
 <p>This whole thing repeating itself, at each iteration of the loop though the sound volume gets quieter by a fixed amount. Eventually, when the volume goes to 0, the repetition stops. </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">xsc</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">vel</span> <span class="nv">scale</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="p">(</span><span class="nf">cosratio</span> <span class="mi">4</span> <span class="mi">2</span> <span class="mi">1</span><span class="nv">/128</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">xsc</span>
+<span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">vel</span><span class="w"> </span><span class="nv">scale</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="p">(</span><span class="nf">cosratio</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1/128</span><span class="p">)))</span>
 
-      <span class="c1">;; piano</span>
-      <span class="p">(</span><span class="nf">play</span> <span class="p">(</span><span class="nb">car </span><span class="nv">scale</span><span class="p">)</span> <span class="nv">vel</span> <span class="nv">dur</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">play</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">12</span> <span class="p">(</span><span class="nb">car </span><span class="nv">scale</span><span class="p">))</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">play</span> <span class="p">(</span><span class="nf">oneof</span> <span class="mi">3</span><span class="nv">/2</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">24</span> <span class="p">(</span><span class="nb">car </span><span class="nv">scale</span><span class="p">))</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="c1">;; piano</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">scale</span><span class="p">)</span><span class="w"> </span><span class="nv">vel</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">scale</span><span class="p">))</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="p">(</span><span class="nf">oneof</span><span class="w"> </span><span class="mi">3/2</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">scale</span><span class="p">))</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 
-      <span class="c1">;; bass</span>
-      <span class="p">(</span><span class="nf">play</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">car </span><span class="nv">scale</span><span class="p">)</span> <span class="mi">90</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">:chance</span> <span class="o">.</span><span class="mi">8</span> <span class="p">(</span><span class="nf">play</span> <span class="mi">6</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">car </span><span class="nv">scale</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">90</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">2</span><span class="p">))</span>
+<span class="w">      </span><span class="c1">;; bass</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">scale</span><span class="p">)</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">:chance</span><span class="w"> </span><span class="mf">.8</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">scale</span><span class="p">)</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
 
-      <span class="c1">;; repeat</span>
-      <span class="p">(</span><span class="k">set! </span><span class="nv">scale</span> <span class="p">(</span><span class="nf">rotate</span> <span class="nv">scale</span> <span class="mi">-1</span><span class="p">))</span>
-      <span class="p">(</span><span class="k">set! </span><span class="nv">vel</span> <span class="p">(</span><span class="nb">- </span><span class="nv">vel</span> <span class="mi">1</span><span class="p">))</span>
+<span class="w">      </span><span class="c1">;; repeat</span>
+<span class="w">      </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">scale</span><span class="w"> </span><span class="p">(</span><span class="nf">rotate</span><span class="w"> </span><span class="nv">scale</span><span class="w"> </span><span class="mi">-1</span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">vel</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="nv">vel</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 
-      <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">vel</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="nv">dur</span><span class="p">)))</span> <span class="ss">&#39;xsc</span> 
-          <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="nv">dur</span><span class="p">)</span>
-          <span class="nv">vel</span>
-          <span class="nv">scale</span><span class="p">)))))</span>
+<span class="w">      </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="nv">vel</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span><span class="w"> </span><span class="ss">&#39;xsc</span><span class="w"> </span>
+<span class="w">          </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
+<span class="w">          </span><span class="nv">vel</span>
+<span class="w">          </span><span class="nv">scale</span><span class="p">)))))</span>
 
 
 <span class="c1">;; set scale to play so that scales overlap with each other</span>
 
-<span class="p">(</span><span class="nf">xsc</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">)</span> 
-  <span class="mi">50</span> <span class="c1">; vol </span>
-  <span class="p">(</span><span class="nf">:mkscale</span> <span class="nv">c1</span> <span class="ss">&#39;pentatonic</span> <span class="mi">2</span><span class="p">))</span> 
-  <span class="c1">;; run again with &#39;ionian, &#39;aeolian etc.. for interesting harmonic effects</span>
+<span class="p">(</span><span class="nf">xsc</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span>
+<span class="w">  </span><span class="mi">50</span><span class="w"> </span><span class="c1">; vol </span>
+<span class="w">  </span><span class="p">(</span><span class="nf">:mkscale</span><span class="w"> </span><span class="nv">c1</span><span class="w"> </span><span class="ss">&#39;pentatonic</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span>
+<span class="w">  </span><span class="c1">;; run again with &#39;ionian, &#39;aeolian etc.. for interesting harmonic effects</span>
 </code></pre></div>
 <p>The full source code on <a href="https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2020-11-piano-scales.xtm">GitHub</a>.</p>
 <h2 id="about-extempore">About Extempore</h2>

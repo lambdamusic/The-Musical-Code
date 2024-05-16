@@ -651,30 +651,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../works/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../works/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../works/2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -807,6 +783,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1098,78 +1086,78 @@
 </blockquote>
 <p>The application relies on a bunch of XML processing functions that I found within Impromptu 'examples' folder (specifically, it's the example named <a href="http://impromptu.moso.com.au/examples_2.5/35_objc_xml_lib.html">35_objc_xml_lib</a>). I pruned that a bit so to fit my purposes and renamed it xml_lib.scm.</p>
 <p>By using that, I created a function that extracts title and url info from the guardian feed:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">load </span><span class="s">&quot;xml_lib.scm&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">feedurl</span> <span class="s">&quot;http://feeds.guardian.co.uk/theguardian/world/rss&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">load</span><span class="w"> </span><span class="s">&quot;xml_lib.scm&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">feedurl</span><span class="w"> </span><span class="s">&quot;http://feeds.guardian.co.uk/theguardian/world/rss&quot;</span><span class="p">)</span>
 
 <span class="c1">;;</span>
 <span class="c1">;; loads the feed and extracts title and url</span>
 <span class="c1">;;</span>
 
-<span class="p">(</span><span class="k">define </span><span class="nv">get-articles-online</span>
-     <span class="p">(</span><span class="k">lambda </span><span class="p">()</span>
-        <span class="p">(</span><span class="k">let* </span><span class="p">((</span><span class="nf">out</span> <span class="o">&#39;</span><span class="p">())</span>
-               <span class="p">(</span><span class="nf">feed</span> <span class="p">(</span><span class="nf">xml:load-url</span> <span class="nv">feedurl</span><span class="p">))</span>
-               <span class="p">(</span><span class="nf">titles</span> <span class="p">(</span><span class="nf">objc:nsarray-&gt;list</span> <span class="p">(</span><span class="nf">xml:xpath</span> <span class="p">(</span><span class="nf">xml:get-root-node</span> <span class="nv">feed</span><span class="p">)</span>
-                                                <span class="s">&quot;channel/item/title/text()&quot;</span><span class="p">)))</span>
-               <span class="p">(</span><span class="nf">urls</span> <span class="p">(</span><span class="nf">objc:nsarray-&gt;list</span> <span class="p">(</span><span class="nf">xml:xpath</span> <span class="p">(</span><span class="nf">xml:get-root-node</span> <span class="nv">feed</span><span class="p">)</span>
-                                                <span class="s">&quot;channel/item/link/text()&quot;</span><span class="p">))))</span>                                                 
-           <span class="p">(</span><span class="nb">for-each </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span><span class="p">)</span>
-                        <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">xx</span> <span class="p">(</span><span class="nf">objc:nsstring-&gt;string</span> <span class="nv">x</span><span class="p">))</span>
-                              <span class="p">(</span><span class="nf">yy</span> <span class="p">(</span><span class="nf">objc:nsstring-&gt;string</span> <span class="nv">y</span><span class="p">)))</span>
-                           <span class="p">(</span><span class="k">set! </span><span class="nv">out</span> <span class="p">(</span><span class="nb">append </span><span class="nv">out</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nb">list </span><span class="nv">xx</span> <span class="nv">yy</span><span class="p">))))))</span>
-                <span class="nv">titles</span> <span class="nv">urls</span><span class="p">)</span>
-           <span class="nv">out</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">get-articles-online</span>
+<span class="w">     </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">()</span>
+<span class="w">        </span><span class="p">(</span><span class="k">let*</span><span class="w"> </span><span class="p">((</span><span class="nf">out</span><span class="w"> </span><span class="o">&#39;</span><span class="p">())</span>
+<span class="w">               </span><span class="p">(</span><span class="nf">feed</span><span class="w"> </span><span class="p">(</span><span class="nf">xml:load-url</span><span class="w"> </span><span class="nv">feedurl</span><span class="p">))</span>
+<span class="w">               </span><span class="p">(</span><span class="nf">titles</span><span class="w"> </span><span class="p">(</span><span class="nf">objc:nsarray-&gt;list</span><span class="w"> </span><span class="p">(</span><span class="nf">xml:xpath</span><span class="w"> </span><span class="p">(</span><span class="nf">xml:get-root-node</span><span class="w"> </span><span class="nv">feed</span><span class="p">)</span>
+<span class="w">                                                </span><span class="s">&quot;channel/item/title/text()&quot;</span><span class="p">)))</span>
+<span class="w">               </span><span class="p">(</span><span class="nf">urls</span><span class="w"> </span><span class="p">(</span><span class="nf">objc:nsarray-&gt;list</span><span class="w"> </span><span class="p">(</span><span class="nf">xml:xpath</span><span class="w"> </span><span class="p">(</span><span class="nf">xml:get-root-node</span><span class="w"> </span><span class="nv">feed</span><span class="p">)</span>
+<span class="w">                                                </span><span class="s">&quot;channel/item/link/text()&quot;</span><span class="p">))))</span><span class="w">                                                 </span>
+<span class="w">           </span><span class="p">(</span><span class="nb">for-each</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">x</span><span class="w"> </span><span class="nv">y</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">xx</span><span class="w"> </span><span class="p">(</span><span class="nf">objc:nsstring-&gt;string</span><span class="w"> </span><span class="nv">x</span><span class="p">))</span>
+<span class="w">                              </span><span class="p">(</span><span class="nf">yy</span><span class="w"> </span><span class="p">(</span><span class="nf">objc:nsstring-&gt;string</span><span class="w"> </span><span class="nv">y</span><span class="p">)))</span>
+<span class="w">                           </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">out</span><span class="w"> </span><span class="p">(</span><span class="nb">append</span><span class="w"> </span><span class="nv">out</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="nv">xx</span><span class="w"> </span><span class="nv">yy</span><span class="p">))))))</span>
+<span class="w">                </span><span class="nv">titles</span><span class="w"> </span><span class="nv">urls</span><span class="p">)</span>
+<span class="w">           </span><span class="nv">out</span><span class="p">)))</span>
 </code></pre></div>
 <p>Some feed titles are a bit longish, so I added a utility function formattext that wraps the titles' text if they exceed a predefined length.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">formattext</span> 
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">maxlength</span> <span class="nv">txt</span> <span class="nv">posx</span> <span class="nv">posy</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">l</span> <span class="p">(</span><span class="nb">string-length </span><span class="nv">txt</span><span class="p">)))</span>      
-         <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">l</span> <span class="nv">maxlength</span><span class="p">)</span>
-             <span class="p">(</span><span class="k">let </span><span class="nv">loop</span> <span class="p">((</span><span class="nf">i</span> <span class="mi">0</span><span class="p">)</span>
-                        <span class="p">(</span><span class="nf">j</span> <span class="nv">maxlength</span><span class="p">)</span> <span class="c1">;; comparison value: it decreases at each recursion (except the first one) </span>
-                        <span class="p">(</span><span class="nf">topvalue</span> <span class="nv">maxlength</span><span class="p">))</span> <span class="c1">;; komodo value : must be equal to j at the beginning</span>
-                <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">equal? </span><span class="p">(</span><span class="nb">- </span><span class="nv">topvalue</span> <span class="nv">i</span><span class="p">)</span> <span class="nv">j</span><span class="p">)</span> <span class="c1">;; the first time</span>
-                    <span class="p">(</span><span class="nf">loop</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">i</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">j</span> <span class="nv">topvalue</span><span class="p">)</span>
-                    <span class="p">(</span><span class="k">begin </span>  <span class="c1">;(print (substring txt (- topvalue i) j))</span>
-                             <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">string=? </span><span class="p">(</span><span class="nb">substring </span><span class="nv">txt</span> <span class="p">(</span><span class="nb">- </span><span class="nv">topvalue</span> <span class="nv">i</span><span class="p">)</span> <span class="nv">j</span><span class="p">)</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
-                                 <span class="p">(</span><span class="nb">string-append </span><span class="p">(</span><span class="nb">substring </span><span class="nv">txt</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">- </span><span class="nv">topvalue</span> <span class="nv">i</span><span class="p">))</span> 
-                                                <span class="s">&quot;n&quot;</span> 
-                                                <span class="p">(</span><span class="nb">substring </span><span class="nv">txt</span> <span class="p">(</span><span class="nb">- </span><span class="nv">topvalue</span> <span class="nv">i</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-length </span><span class="nv">txt</span><span class="p">)))</span>
-                                 <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">i</span> <span class="nv">topvalue</span><span class="p">)</span> <span class="c1">;;avoid negative indexes in substring</span>
-                                     <span class="p">(</span><span class="nf">loop</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">i</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">- </span><span class="nv">j</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">topvalue</span><span class="p">))))))</span>
-             <span class="nv">txt</span><span class="p">))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">formattext</span><span class="w"> </span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">maxlength</span><span class="w"> </span><span class="nv">txt</span><span class="w"> </span><span class="nv">posx</span><span class="w"> </span><span class="nv">posy</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">l</span><span class="w"> </span><span class="p">(</span><span class="nb">string-length</span><span class="w"> </span><span class="nv">txt</span><span class="p">)))</span><span class="w">      </span>
+<span class="w">         </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="nv">l</span><span class="w"> </span><span class="nv">maxlength</span><span class="p">)</span>
+<span class="w">             </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="nv">loop</span><span class="w"> </span><span class="p">((</span><span class="nf">i</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">(</span><span class="nf">j</span><span class="w"> </span><span class="nv">maxlength</span><span class="p">)</span><span class="w"> </span><span class="c1">;; comparison value: it decreases at each recursion (except the first one) </span>
+<span class="w">                        </span><span class="p">(</span><span class="nf">topvalue</span><span class="w"> </span><span class="nv">maxlength</span><span class="p">))</span><span class="w"> </span><span class="c1">;; komodo value : must be equal to j at the beginning</span>
+<span class="w">                </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">equal?</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="nv">topvalue</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span><span class="w"> </span><span class="nv">j</span><span class="p">)</span><span class="w"> </span><span class="c1">;; the first time</span>
+<span class="w">                    </span><span class="p">(</span><span class="nf">loop</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nv">j</span><span class="w"> </span><span class="nv">topvalue</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">(</span><span class="k">begin</span><span class="w">   </span><span class="c1">;(print (substring txt (- topvalue i) j))</span>
+<span class="w">                             </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">string=?</span><span class="w"> </span><span class="p">(</span><span class="nb">substring</span><span class="w"> </span><span class="nv">txt</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="nv">topvalue</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span><span class="w"> </span><span class="nv">j</span><span class="p">)</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">)</span>
+<span class="w">                                 </span><span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="p">(</span><span class="nb">substring</span><span class="w"> </span><span class="nv">txt</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="nv">topvalue</span><span class="w"> </span><span class="nv">i</span><span class="p">))</span><span class="w"> </span>
+<span class="w">                                                </span><span class="s">&quot;n&quot;</span><span class="w"> </span>
+<span class="w">                                                </span><span class="p">(</span><span class="nb">substring</span><span class="w"> </span><span class="nv">txt</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="nv">topvalue</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">string-length</span><span class="w"> </span><span class="nv">txt</span><span class="p">)))</span>
+<span class="w">                                 </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="nv">topvalue</span><span class="p">)</span><span class="w"> </span><span class="c1">;;avoid negative indexes in substring</span>
+<span class="w">                                     </span><span class="p">(</span><span class="nf">loop</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="nv">j</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nv">topvalue</span><span class="p">))))))</span>
+<span class="w">             </span><span class="nv">txt</span><span class="p">))))</span>
 </code></pre></div>
 <p>And here's the <strong>main loop</strong>: it goes through all the feed items at a predefined speed, and displays it on the canvas using a cosine oscillator to vary the colours a bit. At the end of it I'm also updating 3 global variables that are used for the mouse-click-capturing routine.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">displayloop</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">feeds</span><span class="p">)</span> 
-      <span class="p">(</span><span class="k">let* </span><span class="p">((</span><span class="nf">dur</span> <span class="mi">5</span><span class="p">)</span>
-             <span class="p">(</span><span class="nf">posx</span>  <span class="p">(</span><span class="nf">random</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">- </span><span class="nv">*canvas_max_x*</span> <span class="mi">350</span><span class="p">)))</span>
-             <span class="p">(</span><span class="nf">posy</span>  <span class="p">(</span><span class="nf">random</span> <span class="mi">10</span> <span class="p">(</span><span class="nb">- </span><span class="nv">*canvas_max_y*</span> <span class="mi">150</span><span class="p">)))</span>
-             <span class="p">(</span><span class="nf">txt</span> <span class="p">(</span><span class="nf">formattext</span> <span class="mi">40</span> <span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nb">car </span><span class="nv">feeds</span><span class="p">))</span> <span class="nv">posx</span> <span class="nv">posy</span><span class="p">))</span>
-             <span class="p">(</span><span class="nf">dim</span> <span class="c1">;(+ (length feeds) 10))                  </span>
-                  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="p">(</span><span class="nb">length </span><span class="nv">feeds</span><span class="p">)</span> <span class="mi">29</span><span class="p">)</span>
-                      <span class="mi">60</span>  <span class="c1">;; if it&#39;s the first element of the feed list make it bigger</span>
-                      <span class="p">(</span><span class="nf">random</span> <span class="mi">25</span> <span class="mi">50</span><span class="p">)))</span>
-             <span class="p">(</span><span class="nf">fill</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="p">(</span><span class="nb">length </span><span class="nv">feeds</span><span class="p">)</span> <span class="mi">29</span><span class="p">)</span>
-                         <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">random</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1">;; if it&#39;s the first element of the feed list make it reddish</span>
-                         <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nf">random</span><span class="p">)</span> <span class="mi">1</span> <span class="p">(</span><span class="nf">random</span><span class="p">)</span> <span class="mi">1</span><span class="p">)))</span>
-             <span class="p">(</span><span class="nf">style</span> <span class="p">(</span><span class="nf">gfx:make-text-style</span> <span class="s">&quot;Arial&quot;</span> <span class="nv">dim</span> <span class="nv">fill</span><span class="p">)))</span>
-         <span class="p">(</span><span class="nf">gfx:clear-canvas</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="nv">beat</span><span class="p">)</span> <span class="nv">*canvas*</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nf">cosr</span> <span class="o">.</span><span class="mi">5</span> <span class="o">.</span><span class="mi">6</span> <span class="o">.</span><span class="mi">001</span><span class="p">)</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">cosr</span> <span class="o">.</span><span class="mi">5</span> <span class="o">.</span><span class="mi">6</span> <span class="o">.</span><span class="mi">001</span><span class="p">)</span> <span class="o">.</span><span class="mi">5</span> <span class="p">))</span>
-         <span class="p">(</span><span class="nf">gfx:draw-text</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="nv">beat</span><span class="p">)</span> <span class="nv">*canvas*</span> <span class="nv">txt</span> <span class="nv">style</span> <span class="p">(</span><span class="nb">list </span><span class="nv">posx</span> <span class="nv">posy</span><span class="p">))</span>
-         <span class="p">(</span><span class="k">set! </span><span class="nv">*pos_x*</span> <span class="nv">posx</span><span class="p">)</span>
-         <span class="p">(</span><span class="k">set! </span><span class="nv">*pos_y*</span> <span class="nv">posy</span><span class="p">)</span>
-         <span class="p">(</span><span class="k">set! </span><span class="nv">*current_url*</span> <span class="p">(</span><span class="nb">cadr </span><span class="p">(</span><span class="nb">car </span><span class="nv">feeds</span><span class="p">)))</span>
-     <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="nv">dur</span><span class="p">)))</span> <span class="ss">&#39;displayloop</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="nv">dur</span><span class="p">)</span>
-               <span class="p">(</span><span class="nf">if-cdr-notnull</span> <span class="nv">feeds</span> 
-                               <span class="p">(</span><span class="nf">get-articles-online</span><span class="p">))))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">displayloop</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">feeds</span><span class="p">)</span><span class="w"> </span>
+<span class="w">      </span><span class="p">(</span><span class="k">let*</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">posx</span><span class="w">  </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="nv">*canvas_max_x*</span><span class="w"> </span><span class="mi">350</span><span class="p">)))</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">posy</span><span class="w">  </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="nv">*canvas_max_y*</span><span class="w"> </span><span class="mi">150</span><span class="p">)))</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">txt</span><span class="w"> </span><span class="p">(</span><span class="nf">formattext</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">feeds</span><span class="p">))</span><span class="w"> </span><span class="nv">posx</span><span class="w"> </span><span class="nv">posy</span><span class="p">))</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">dim</span><span class="w"> </span><span class="c1">;(+ (length feeds) 10))                  </span>
+<span class="w">                  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="p">(</span><span class="nb">length</span><span class="w"> </span><span class="nv">feeds</span><span class="p">)</span><span class="w"> </span><span class="mi">29</span><span class="p">)</span>
+<span class="w">                      </span><span class="mi">60</span><span class="w">  </span><span class="c1">;; if it&#39;s the first element of the feed list make it bigger</span>
+<span class="w">                      </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="mi">50</span><span class="p">)))</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">fill</span><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="p">(</span><span class="nb">length</span><span class="w"> </span><span class="nv">feeds</span><span class="p">)</span><span class="w"> </span><span class="mi">29</span><span class="p">)</span>
+<span class="w">                         </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">  </span><span class="c1">;; if it&#39;s the first element of the feed list make it reddish</span>
+<span class="w">                         </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">style</span><span class="w"> </span><span class="p">(</span><span class="nf">gfx:make-text-style</span><span class="w"> </span><span class="s">&quot;Arial&quot;</span><span class="w"> </span><span class="nv">dim</span><span class="w"> </span><span class="nv">fill</span><span class="p">)))</span>
+<span class="w">         </span><span class="p">(</span><span class="nf">gfx:clear-canvas</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="nv">beat</span><span class="p">)</span><span class="w"> </span><span class="nv">*canvas*</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="mf">.6</span><span class="w"> </span><span class="mf">.001</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="mf">.6</span><span class="w"> </span><span class="mf">.001</span><span class="p">)</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="p">))</span>
+<span class="w">         </span><span class="p">(</span><span class="nf">gfx:draw-text</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="nv">beat</span><span class="p">)</span><span class="w"> </span><span class="nv">*canvas*</span><span class="w"> </span><span class="nv">txt</span><span class="w"> </span><span class="nv">style</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="nv">posx</span><span class="w"> </span><span class="nv">posy</span><span class="p">))</span>
+<span class="w">         </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">*pos_x*</span><span class="w"> </span><span class="nv">posx</span><span class="p">)</span>
+<span class="w">         </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">*pos_y*</span><span class="w"> </span><span class="nv">posy</span><span class="p">)</span>
+<span class="w">         </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">*current_url*</span><span class="w"> </span><span class="p">(</span><span class="nb">cadr</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">feeds</span><span class="p">)))</span>
+<span class="w">     </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span><span class="w"> </span><span class="ss">&#39;displayloop</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="nf">if-cdr-notnull</span><span class="w"> </span><span class="nv">feeds</span><span class="w"> </span>
+<span class="w">                               </span><span class="p">(</span><span class="nf">get-articles-online</span><span class="p">))))))</span>
 </code></pre></div>
 <p>In order to capture the clicks on the feed titles I simply create a rectangle path based on the x,y coordinates randomly assigned when displaying the title on the canvas. These coordinates are stored in global variables so that they can be updated constantly.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">io:register-mouse-events</span> <span class="nv">*canvas*</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">io:mouse-down</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">print</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">when</span> <span class="p">(</span><span class="nf">gfx:point-in-path?</span> <span class="p">(</span><span class="nf">gfx:make-rectangle</span> <span class="nv">*pos_x*</span> <span class="nv">*pos_y*</span> <span class="mi">200</span> <span class="mi">200</span><span class="p">)</span> <span class="nv">x</span> <span class="nv">y</span> <span class="p">)</span>
-            <span class="p">(</span><span class="nf">util:open-url</span> <span class="nv">*current_url*</span><span class="p">))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">io:register-mouse-events</span><span class="w"> </span><span class="nv">*canvas*</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">io:mouse-down</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">x</span><span class="w"> </span><span class="nv">y</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">print</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="nv">y</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="nf">gfx:point-in-path?</span><span class="w"> </span><span class="p">(</span><span class="nf">gfx:make-rectangle</span><span class="w"> </span><span class="nv">*pos_x*</span><span class="w"> </span><span class="nv">*pos_y*</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="p">)</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">util:open-url</span><span class="w"> </span><span class="nv">*current_url*</span><span class="p">))))</span>
 </code></pre></div>
 <p>Finally, the util:open-url opens up a url string in your browser (I've already talked about it <a href="http://www.michelepasin.org/blog/2010/02/15/impromptu-function-to-access-wiki-docs-from-the-editor/">here</a>).</p>
 <p>You can see all of this code in action by <a href="http://www.box.com/s/oprvyybridp0gtij8j5d">downloading the app</a> and taking a look its contents (all the files are under Contents/Resources/app).</p>

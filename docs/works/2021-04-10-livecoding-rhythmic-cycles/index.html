@@ -617,30 +617,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -816,6 +792,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1113,13 +1101,13 @@
 <h2 id="using-map-to-generate-musical-textures">Using 'map' to generate musical textures</h2>
 <p>The gist of this experiment relies on the <code>map</code> function. </p>
 <p>Using <code>map</code> and lists of notes and offsets, it is possible to schedule repeated calls to the <code>play</code> note function:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span> <span class="nv">z</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">onbeat</span> <span class="nv">x</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">play</span> <span class="nv">y</span> <span class="nv">z</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="o">.</span><span class="mi">9</span><span class="p">)</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="p">)</span>
-    <span class="nv">times</span>
-    <span class="nv">notes</span>
-    <span class="nv">volumes</span>
-    <span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">x</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">z</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">onbeat</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">z</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mf">.9</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="nb">times</span>
+<span class="w">    </span><span class="nv">notes</span>
+<span class="w">    </span><span class="nv">volumes</span>
+<span class="w">    </span><span class="p">)</span>
 </code></pre></div>
 <p>When the <code>map</code>  pattern above gets repeated via a loop, changing the input parameters generates a texture of sounds with a touch of randomness. </p>
 <p>For example, some parameters to experiment with:</p>
@@ -1132,49 +1120,49 @@
 <p>Rendered using a simple sine-wave synth it may sound similar to 8-bit video game music patterns.. but when using more interesting sounds/instruments, the end result is much more interesting too. </p>
 <h2 id="source-code">Source code</h2>
 <p>The full source code can be found on <a href="https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2021-04-rhytmic-cycles.xtm">Github</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">notes</span> <span class="p">(</span><span class="nb">list </span><span class="nv">c3</span> <span class="nv">g3</span> <span class="nv">bb3</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">notes</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="nv">c3</span><span class="w"> </span><span class="nv">g3</span><span class="w"> </span><span class="nv">bb3</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="nv">times</span> <span class="p">(</span><span class="nf">:mklist</span> <span class="mi">8</span> <span class="p">(</span><span class="nf">oneof</span> <span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nb">times</span><span class="w"> </span><span class="p">(</span><span class="nf">:mklist</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">(</span><span class="nf">oneof</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1/4</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="nv">inc</span>
-    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">alist</span><span class="p">)</span>
-        <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
-                <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)</span> 
-                    <span class="p">(</span><span class="nf">ifr</span> <span class="o">.</span><span class="mi">7</span> <span class="p">(</span><span class="nf">add</span> <span class="mi">1</span><span class="nv">/4</span> <span class="nv">x</span><span class="p">)</span> <span class="nv">x</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-                <span class="p">)</span>
-            <span class="nv">alist</span><span class="p">)</span>
-    <span class="p">))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">inc</span>
+<span class="w">    </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">alist</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span>
+<span class="w">                    </span><span class="p">(</span><span class="nf">ifr</span><span class="w"> </span><span class="mf">.7</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">1/4</span><span class="w"> </span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">                </span><span class="p">)</span>
+<span class="w">            </span><span class="nv">alist</span><span class="p">)</span>
+<span class="w">    </span><span class="p">))</span>
 
 
-<span class="p">(</span><span class="k">define </span><span class="nv">lp1</span>
-    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
-        <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="mi">1</span><span class="nv">/16</span><span class="p">)</span>
-              <span class="p">(</span><span class="nf">v1</span> <span class="p">(</span><span class="nf">cosr</span> <span class="p">(</span><span class="nf">cosr</span> <span class="mi">50</span> <span class="mi">18</span> <span class="mi">1</span><span class="nv">/64</span><span class="p">)</span> <span class="mi">30</span> <span class="mi">1</span><span class="nv">/64</span><span class="p">))</span>
-              <span class="p">(</span><span class="nf">v2</span> <span class="p">(</span><span class="nf">cosr</span> <span class="p">(</span><span class="nf">cosr</span> <span class="mi">50</span> <span class="mi">18</span> <span class="mi">1</span><span class="nv">/150</span><span class="p">)</span> <span class="mi">30</span> <span class="mi">1</span><span class="nv">/40</span><span class="p">))</span>
-              <span class="p">(</span><span class="nf">fc</span> <span class="mi">8</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">lp1</span>
+<span class="w">    </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="mi">1/16</span><span class="p">)</span>
+<span class="w">              </span><span class="p">(</span><span class="nf">v1</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">18</span><span class="w"> </span><span class="mi">1/64</span><span class="p">)</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">1/64</span><span class="p">))</span>
+<span class="w">              </span><span class="p">(</span><span class="nf">v2</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">18</span><span class="w"> </span><span class="mi">1/150</span><span class="p">)</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">1/40</span><span class="p">))</span>
+<span class="w">              </span><span class="p">(</span><span class="nf">fc</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span>
 
-            <span class="p">(</span><span class="nf">println</span> <span class="nv">v1</span> <span class="nv">v2</span><span class="p">)</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">println</span><span class="w"> </span><span class="nv">v1</span><span class="w"> </span><span class="nv">v2</span><span class="p">)</span>
 
-            <span class="p">(</span><span class="nf">onbeat</span> <span class="mi">4</span> <span class="mi">0</span> 
-                <span class="p">(</span><span class="k">set! </span><span class="nv">times</span> <span class="p">(</span><span class="nf">inc</span> <span class="nv">times</span><span class="p">)))</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">onbeat</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span>
+<span class="w">                </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nb">times</span><span class="w"> </span><span class="p">(</span><span class="nf">inc</span><span class="w"> </span><span class="nb">times</span><span class="p">)))</span>
 
-            <span class="p">(</span><span class="nf">onbeat</span> <span class="mi">32</span> <span class="mi">0</span>
-                <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">v1</span> <span class="mi">40</span><span class="p">)</span>  
-                    <span class="p">(</span><span class="k">set! </span><span class="nv">notes</span> <span class="p">(</span><span class="nf">rotate</span> <span class="nv">notes</span> <span class="mi">-1</span><span class="p">))))</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">onbeat</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="nv">v1</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w">  </span>
+<span class="w">                    </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">notes</span><span class="w"> </span><span class="p">(</span><span class="nf">rotate</span><span class="w"> </span><span class="nv">notes</span><span class="w"> </span><span class="mi">-1</span><span class="p">))))</span>
 
-            <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span> <span class="nv">z</span><span class="p">)</span>
-                  <span class="p">(</span><span class="nf">onbeat</span> <span class="nv">x</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">play</span> <span class="nv">y</span> <span class="nv">z</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="o">.</span><span class="mi">9</span><span class="p">)</span> <span class="mi">1</span><span class="p">))</span>
-                  <span class="p">(</span><span class="nf">onbeat</span> <span class="nv">x</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">play</span> <span class="nv">y</span> <span class="nv">z</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="o">.</span><span class="mi">9</span><span class="p">)</span> <span class="mi">3</span><span class="p">))</span>
-                    <span class="p">)</span>
-                <span class="p">(</span><span class="nf">slice</span> <span class="nv">fc</span> <span class="nv">times</span><span class="p">)</span>
-                <span class="p">(</span><span class="nf">slice</span> <span class="nv">fc</span>  <span class="p">(</span><span class="nf">:mkchord</span> <span class="p">(</span><span class="nb">car </span><span class="nv">notes</span><span class="p">)</span> <span class="ss">&#39;-6</span> <span class="mi">8</span><span class="p">))</span>
-                <span class="p">(</span><span class="nf">slice</span> <span class="nv">fc</span>  <span class="p">(</span><span class="nb">list </span><span class="nv">v1</span> <span class="nv">v2</span> <span class="nv">v1</span> <span class="nv">v2</span> <span class="nv">v1</span> <span class="nv">v2</span> <span class="nv">v1</span> <span class="nv">v2</span><span class="p">))</span>
-                <span class="p">)</span>
+<span class="w">            </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">x</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">z</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">(</span><span class="nf">onbeat</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">z</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mf">.9</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="w">                  </span><span class="p">(</span><span class="nf">onbeat</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">z</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mf">.9</span><span class="p">)</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="nf">slice</span><span class="w"> </span><span class="nv">fc</span><span class="w"> </span><span class="nb">times</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="nf">slice</span><span class="w"> </span><span class="nv">fc</span><span class="w">  </span><span class="p">(</span><span class="nf">:mkchord</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">notes</span><span class="p">)</span><span class="w"> </span><span class="ss">&#39;-6</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span>
+<span class="w">                </span><span class="p">(</span><span class="nf">slice</span><span class="w"> </span><span class="nv">fc</span><span class="w">  </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="nv">v1</span><span class="w"> </span><span class="nv">v2</span><span class="w"> </span><span class="nv">v1</span><span class="w"> </span><span class="nv">v2</span><span class="w"> </span><span class="nv">v1</span><span class="w"> </span><span class="nv">v2</span><span class="w"> </span><span class="nv">v1</span><span class="w"> </span><span class="nv">v2</span><span class="p">))</span>
+<span class="w">                </span><span class="p">)</span>
 
-            <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="nv">dur</span><span class="p">)))</span> 
-                <span class="ss">&#39;lp1</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="nv">dur</span><span class="p">)))))</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span><span class="w"> </span>
+<span class="w">                </span><span class="ss">&#39;lp1</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))))</span>
 
-<span class="p">(</span><span class="nf">lp1</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">lp1</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 </code></pre></div>
                 
                   

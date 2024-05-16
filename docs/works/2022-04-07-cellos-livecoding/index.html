@@ -617,30 +617,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -823,6 +799,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1126,11 +1114,11 @@
 
 <h2 id="creating-chords-using-a-cosine-function">Creating chords using a cosine function</h2>
 <p>The main technique used in this piece is to generate chord/harmonic variations using a cosine functions. </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">at</span> <span class="mi">8</span> <span class="mi">0</span> 
-  <span class="p">(</span><span class="k">set! </span><span class="nv">*melody*</span> 
-    <span class="p">(</span><span class="nf">:mkchord</span> <span class="p">(</span><span class="nf">:mkint</span> <span class="mi">48</span> <span class="p">(</span><span class="nf">cosrfloor</span> <span class="mi">7</span> <span class="mi">7</span> <span class="mi">1</span><span class="nv">/30</span><span class="p">)</span> <span class="ss">&#39;M</span><span class="p">)</span>   
-    <span class="ss">&#39;M</span> <span class="p">(</span><span class="nf">cosrfloor</span> <span class="mi">7</span> <span class="mi">3</span> <span class="mi">1</span><span class="nv">/5</span><span class="p">))</span>
-  <span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span>
+<span class="w">  </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">*melody*</span><span class="w"> </span>
+<span class="w">    </span><span class="p">(</span><span class="nf">:mkchord</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkint</span><span class="w"> </span><span class="mi">48</span><span class="w"> </span><span class="p">(</span><span class="nf">cosrfloor</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">1/30</span><span class="p">)</span><span class="w"> </span><span class="ss">&#39;M</span><span class="p">)</span><span class="w">   </span>
+<span class="w">    </span><span class="ss">&#39;M</span><span class="w"> </span><span class="p">(</span><span class="nf">cosrfloor</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1/5</span><span class="p">))</span>
+<span class="w">  </span><span class="p">)</span>
 </code></pre></div>
 <p>Every 8 beats the root chord (used by all instruments in order to generate musical patterns) gets updated. Two cosine functions are used to simultaneously: </p>
 <ol>
@@ -1148,41 +1136,41 @@
 <p><img alt="cellos-live1.png" src="/media/static/blog_img/cellos-live1.png" /></p>
 <p><img alt="cellos-live2.png" src="/media/static/blog_img/cellos-live2.png" /></p>
 <h2 id="full-source-code">Full source code</h2>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">*melody*</span> <span class="p">(</span><span class="nf">mkchord</span> <span class="mi">48</span> <span class="ss">&#39;-</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">*durs*</span> <span class="p">(</span><span class="nb">list </span><span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span> <span class="mi">1</span><span class="nv">/2</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">*melody*</span><span class="w"> </span><span class="p">(</span><span class="nf">mkchord</span><span class="w"> </span><span class="mi">48</span><span class="w"> </span><span class="ss">&#39;-</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">*durs*</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1/2</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="nv">loop</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">melody</span> <span class="nv">durs</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="p">(</span><span class="nb">car </span><span class="nv">durs</span><span class="p">))</span> 
-          <span class="p">(</span><span class="nf">p</span> <span class="p">(</span><span class="nb">car </span><span class="nv">melody</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">loop</span>
+<span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">melody</span><span class="w"> </span><span class="nv">durs</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">durs</span><span class="p">))</span><span class="w"> </span>
+<span class="w">          </span><span class="p">(</span><span class="nf">p</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">melody</span><span class="p">)))</span>
 
-        <span class="p">(</span><span class="nf">at</span> <span class="mi">8</span> <span class="mi">0</span> 
-          <span class="p">(</span><span class="k">set! </span><span class="nv">*melody*</span> 
-            <span class="p">(</span><span class="nf">:mkchord</span> <span class="p">(</span><span class="nf">:mkint</span> <span class="mi">48</span> <span class="p">(</span><span class="nf">cosrfloor</span> <span class="mi">7</span> <span class="mi">7</span> <span class="mi">1</span><span class="nv">/30</span><span class="p">)</span> <span class="ss">&#39;M</span><span class="p">)</span>   
-            <span class="ss">&#39;M</span> <span class="p">(</span><span class="nf">cosrfloor</span> <span class="mi">7</span> <span class="mi">3</span> <span class="mi">1</span><span class="nv">/5</span><span class="p">))</span>
-          <span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span>
+<span class="w">          </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">*melody*</span><span class="w"> </span>
+<span class="w">            </span><span class="p">(</span><span class="nf">:mkchord</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkint</span><span class="w"> </span><span class="mi">48</span><span class="w"> </span><span class="p">(</span><span class="nf">cosrfloor</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">1/30</span><span class="p">)</span><span class="w"> </span><span class="ss">&#39;M</span><span class="p">)</span><span class="w">   </span>
+<span class="w">            </span><span class="ss">&#39;M</span><span class="w"> </span><span class="p">(</span><span class="nf">cosrfloor</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1/5</span><span class="p">))</span>
+<span class="w">          </span><span class="p">)</span>
 
-          <span class="p">(</span><span class="nf">play</span> <span class="nv">cello</span> <span class="p">(</span><span class="nf">octave</span> <span class="p">(</span><span class="nb">car </span><span class="nv">*melody*</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="mi">60</span> <span class="mi">8</span> <span class="p">)</span>
-          <span class="p">(</span><span class="nf">play</span> <span class="mi">2</span> <span class="nv">strings</span> <span class="p">(</span><span class="nf">octave</span> <span class="p">(</span><span class="nf">:mkint</span> <span class="p">(</span><span class="nb">car </span><span class="nv">*melody*</span><span class="p">)</span> <span class="mi">3</span> <span class="ss">&#39;M</span><span class="p">)</span> <span class="mi">7</span> <span class="mi">9</span><span class="p">)</span> <span class="mi">50</span> <span class="mi">8</span> <span class="p">)</span>
-          <span class="p">(</span><span class="nf">play</span> <span class="mi">5</span><span class="nv">/2</span> <span class="nv">strings</span> <span class="p">(</span><span class="nf">octave</span> <span class="p">(</span><span class="nf">:mkint</span> <span class="p">(</span><span class="nb">car </span><span class="nv">*melody*</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)</span> <span class="mi">40</span> <span class="mi">6</span> <span class="p">)</span>
-          <span class="p">(</span><span class="nf">play</span> <span class="mi">4</span> <span class="nv">strings</span> <span class="p">(</span><span class="nf">octave</span> <span class="p">(</span><span class="nf">:mkint</span> <span class="p">(</span><span class="nb">car </span><span class="nv">*melody*</span><span class="p">)</span> <span class="mi">12</span><span class="p">)</span> <span class="mi">7</span> <span class="mi">9</span><span class="p">)</span> <span class="mi">30</span> <span class="mi">4</span> <span class="p">)</span>
-        <span class="p">)</span> 
+<span class="w">          </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">cello</span><span class="w"> </span><span class="p">(</span><span class="nf">octave</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">*melody*</span><span class="p">)</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="nv">strings</span><span class="w"> </span><span class="p">(</span><span class="nf">octave</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkint</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">*melody*</span><span class="p">)</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="ss">&#39;M</span><span class="p">)</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">5/2</span><span class="w"> </span><span class="nv">strings</span><span class="w"> </span><span class="p">(</span><span class="nf">octave</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkint</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">*melody*</span><span class="p">)</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="nv">strings</span><span class="w"> </span><span class="p">(</span><span class="nf">octave</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkint</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">*melody*</span><span class="p">)</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">)</span><span class="w"> </span>
 
 
-        <span class="p">(</span><span class="nf">play</span> <span class="nv">pluck</span> <span class="nv">p</span> <span class="mi">60</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="o">.</span><span class="mi">9</span><span class="p">)</span> <span class="p">)</span>
-        <span class="p">(</span><span class="nf">play</span> <span class="mi">3</span><span class="nv">/2</span> <span class="nv">pluck</span> <span class="p">(</span><span class="nf">add</span> <span class="mi">-12</span> <span class="nv">p</span><span class="p">)</span> <span class="mi">60</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="o">.</span><span class="mi">9</span><span class="p">)</span> <span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">pluck</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mf">.9</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">3/2</span><span class="w"> </span><span class="nv">pluck</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">-12</span><span class="w"> </span><span class="nv">p</span><span class="p">)</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mf">.9</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
 
-      <span class="p">(</span><span class="nf">at</span> <span class="mi">4</span> <span class="mi">0</span> 
-        <span class="p">(</span><span class="nf">play</span> <span class="nv">pluck</span> <span class="p">(</span><span class="nf">:mkint</span> <span class="nv">p</span> <span class="p">(</span><span class="nf">oneof</span> <span class="mi">12</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="p">)</span> <span class="mi">50</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
-        <span class="p">(</span><span class="nf">play</span> <span class="p">(</span><span class="nf">oneof</span> <span class="mi">1</span> <span class="mi">1</span><span class="nv">/2</span><span class="p">)</span> <span class="nv">pluck</span> <span class="p">(</span><span class="nf">:mkint</span> <span class="nv">p</span> <span class="mi">24</span> <span class="p">)</span> <span class="mi">40</span> <span class="p">(</span><span class="nb">* </span><span class="nv">dur</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
-      <span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span>
+<span class="w">        </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">pluck</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkint</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="p">(</span><span class="nf">oneof</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="p">(</span><span class="nf">oneof</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1/2</span><span class="p">)</span><span class="w"> </span><span class="nv">pluck</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkint</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="p">)</span>
 
-      <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="nv">dur</span><span class="p">)))</span> 
-        <span class="ss">&#39;loop</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="nv">dur</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">cdr-or-else</span> <span class="nv">melody</span> <span class="nv">*melody*</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">cdr-or-else</span> <span class="nv">durs</span> <span class="nv">*durs*</span><span class="p">)))))</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span><span class="w"> </span>
+<span class="w">        </span><span class="ss">&#39;loop</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">cdr-or-else</span><span class="w"> </span><span class="nv">melody</span><span class="w"> </span><span class="nv">*melody*</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">cdr-or-else</span><span class="w"> </span><span class="nv">durs</span><span class="w"> </span><span class="nv">*durs*</span><span class="p">)))))</span>
 
-<span class="p">(</span><span class="nf">loop</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">*melody*</span> <span class="nv">*durs*</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">loop</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nv">*melody*</span><span class="w"> </span><span class="nv">*durs*</span><span class="p">)</span>
 </code></pre></div>
 <p>Also available on <a href="https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2022-04-study-cello-double-bass.xtm">GitHub</a>.</p>
                 

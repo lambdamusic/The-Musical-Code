@@ -623,30 +623,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../works/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../works/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../works/2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -779,6 +755,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1063,24 +1051,24 @@ Click on the automation arm button to ensure it's selected. </p>
 <h2 id="send-midi">Send Midi</h2>
 <p>From Extempore</p>
 <p>Eg</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">channel</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">channel</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1">; first set up the mapping as usual</span>
 <span class="c1">; (:midicc 15 (random 1 100))</span>
 
 
-<span class="p">(</span><span class="k">define </span><span class="nv">testmidicc</span>
-    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span> <span class="nv">dur</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">testmidicc</span>
+<span class="w">    </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
 
-        <span class="c1">;; play a note at each beat</span>
-        <span class="p">(</span><span class="nf">at</span> <span class="mi">1</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">play</span> <span class="nv">channel</span> <span class="nv">C3</span> <span class="mi">20</span> <span class="nv">dur</span> <span class="p">))</span>
-        <span class="c1">;; change CC every time the function runs</span>
-        <span class="p">(</span><span class="nf">:midicc</span> <span class="mi">15</span> <span class="p">(</span><span class="nf">cosr</span> <span class="p">(</span><span class="nf">cosr</span> <span class="mi">16</span> <span class="mi">10</span> <span class="mi">1</span><span class="nv">/2</span><span class="p">)</span> <span class="mi">5</span> <span class="o">.</span><span class="mi">05</span><span class="p">))</span>
+<span class="w">        </span><span class="c1">;; play a note at each beat</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">channel</span><span class="w"> </span><span class="nv">C3</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="p">))</span>
+<span class="w">        </span><span class="c1">;; change CC every time the function runs</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">:midicc</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1/2</span><span class="p">)</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mf">.05</span><span class="p">))</span>
 
-    <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="nv">dur</span><span class="p">)))</span>
-        <span class="ss">&#39;testmidicc</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="nv">dur</span><span class="p">)</span> <span class="nv">dur</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span>
+<span class="w">        </span><span class="ss">&#39;testmidicc</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="nf">testmidicc</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="nv">/8</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">testmidicc</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">1/8</span><span class="p">)</span>
 </code></pre></div>
 <p>You should see the MIDI CC effects in real time - eg if we mapped filter-1 to <code>Frequency</code> : </p>
 <p><img alt="alt" src="../../assets/images/livemidicc-20231001205647.png" /></p>

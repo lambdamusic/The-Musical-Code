@@ -22,7 +22,3 @@ The program:
 
 ![2010-11-livecoding-leaflet.npg](/media/static/blog_img/2010-11-livecoding-leaflet.png)
 
-
-## About livecoding
-
-> Live coding is a new direction in electronic music and video, and is starting to get somewhere interesting. Live coders expose and rewire the innards of software while it generates improvised music and/or visuals. All code manipulation is projected for your pleasure. Live coding is inclusive and accessible to all. For more info see: http://toplap.org/

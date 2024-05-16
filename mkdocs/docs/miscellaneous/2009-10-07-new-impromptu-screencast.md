@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "New Impromptu screencast and a few lessons learned"
+title: "Livecodin at the Shunt, London"
 date: 2009-10-07
 categories: 
   - "computermusic"
@@ -12,8 +12,10 @@ tags:
 
 Initially this song was called '**Voices Slowly Talk To Me**' - then.. as usual.. I lost control of its direction! So I don't know anymore how much the title would apply. Anyways, it's my second experiment with recording an [Impromptu](http://impromptu.moso.com.au/) performance (by the way I also played it live the other night at the [Shunt](http://www.shunt.co.uk/) in London, with various mistakes and delays, but somehow I got to the end - thanks to the [toplap crew](http://toplap.org/uk/) for their support!).
 
-<iframe src="http://player.vimeo.com/video/6944991?autoplay=1" width="400" height="327" frameborder="0"></iframe>
 
+![alt](../assets/../assets/images/2024-05-16-shunt-livecoding-1.png)
+
+![alt](../assets/../assets/images/2024-05-16-shunt-livecoding-2.png)
 
 ## Livecoding practice: lessons learned
 

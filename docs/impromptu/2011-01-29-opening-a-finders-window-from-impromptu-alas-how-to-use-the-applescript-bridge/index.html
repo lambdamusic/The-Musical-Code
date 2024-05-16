@@ -618,30 +618,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../works/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../works/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../works/2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -774,6 +750,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1035,49 +1023,49 @@
 <span class="w">     </span><span class="err">@</span><span class="s">&quot;tell application &quot;</span><span class="n">Terminal</span><span class="s">&quot; to do script &quot;</span><span class="n">cd</span><span class="w"> </span><span class="o">%</span><span class="err">@</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">folderPath</span><span class="p">];</span><span class="w">  </span>
 
 <span class="p">[</span><span class="n">NSAppleScript</span><span class="p">](</span><span class="n">http</span><span class="o">:</span><span class="c1">//developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSAppleScript_Class/) \*as \= \[\[[NSAppleScript](http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSAppleScript_Class/) alloc\] initWithSource: s\];  </span>
-<span class="p">[</span><span class="n">as</span><span class="w"> </span><span class="n">executeAndReturnError</span><span class="o">:</span><span class="n">nil</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">as</span><span class="w"> </span><span class="n">executeAndReturnError</span><span class="o">:</span><span class="n">nil</span><span class="p">];</span>
 </code></pre></div>
 <p>So I translated the bottom part of the code above into impromptu/scheme:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">run_applescript</span>  
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">script</span><span class="p">)</span>  
-      <span class="p">(</span><span class="nf">objc:call</span> <span class="p">(</span><span class="nf">objc:call</span> <span class="p">(</span><span class="nf">objc:call</span> <span class="s">&quot;NSAppleScript&quot;</span> <span class="s">&quot;alloc&quot;</span><span class="p">)</span>  
-                            <span class="s">&quot;initWithSource:&quot;</span>  
-                            <span class="nv">script</span><span class="p">)</span>  
-                 <span class="s">&quot;executeAndReturnError:&quot;</span> <span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">run_applescript</span><span class="w">  </span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">script</span><span class="p">)</span><span class="w">  </span>
+<span class="w">      </span><span class="p">(</span><span class="nf">objc:call</span><span class="w"> </span><span class="p">(</span><span class="nf">objc:call</span><span class="w"> </span><span class="p">(</span><span class="nf">objc:call</span><span class="w"> </span><span class="s">&quot;NSAppleScript&quot;</span><span class="w"> </span><span class="s">&quot;alloc&quot;</span><span class="p">)</span><span class="w">  </span>
+<span class="w">                            </span><span class="s">&quot;initWithSource:&quot;</span><span class="w">  </span>
+<span class="w">                            </span><span class="nv">script</span><span class="p">)</span><span class="w">  </span>
+<span class="w">                 </span><span class="s">&quot;executeAndReturnError:&quot;</span><span class="w"> </span><span class="p">)))</span>
 
-<span class="nv">That</span> <span class="nv">is</span> <span class="nv">a</span> <span class="nv">generic</span> <span class="nv">script-running</span> <span class="nv">function,</span> <span class="nv">that</span> <span class="nv">is,</span> <span class="nv">you</span> <span class="nv">can</span> <span class="nv">pass</span> <span class="nv">any</span> <span class="nv">script</span> <span class="k">and </span><span class="nv">it</span><span class="ss">&#39;ll</span> <span class="nv">run</span> <span class="nv">it,</span> <span class="nv">eg:</span>
+<span class="nv">That</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">generic</span><span class="w"> </span><span class="nv">script-running</span><span class="w"> </span><span class="nv">function,</span><span class="w"> </span><span class="nv">that</span><span class="w"> </span><span class="nv">is,</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">pass</span><span class="w"> </span><span class="nb">any</span><span class="w"> </span><span class="nv">script</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nv">it</span><span class="ss">&#39;ll</span><span class="w"> </span><span class="nv">run</span><span class="w"> </span><span class="nv">it,</span><span class="w"> </span><span class="nv">eg:</span>
 
-<span class="p">(</span><span class="k">define </span><span class="nv">script0</span> <span class="s">&quot;  </span>
-<span class="s">   tell application &quot;</span><span class="nv">Finder</span><span class="s">&quot; to open folder &quot;</span><span class="nv">Macintosh</span> <span class="nv">HD:Users</span><span class="s">&quot;  </span>
-<span class="s">   tell application &quot;</span><span class="nv">Finder</span><span class="s">&quot; to activate&quot;</span><span class="p">)</span>  
-
-
-<span class="p">(</span><span class="k">define </span><span class="nv">script1</span> <span class="s">&quot;  </span>
-<span class="s">   tell application &quot;</span><span class="nv">Terminal</span><span class="s">&quot; to do script &quot;</span><span class="nv">cd</span> <span class="nv">~</span><span class="c1">; open .&quot;&quot;)  </span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">script0</span><span class="w"> </span><span class="s">&quot;  </span>
+<span class="s">   tell application &quot;</span><span class="nv">Finder</span><span class="s">&quot; to open folder &quot;</span><span class="nv">Macintosh</span><span class="w"> </span><span class="nv">HD:Users</span><span class="s">&quot;  </span>
+<span class="s">   tell application &quot;</span><span class="nv">Finder</span><span class="s">&quot; to activate&quot;</span><span class="p">)</span><span class="w">  </span>
 
 
-<span class="p">(</span><span class="k">define </span><span class="nv">script2</span> <span class="s">&quot;  </span>
-<span class="s">                tell application &quot;</span><span class="nv">System</span> <span class="nv">Events</span><span class="s">&quot;n  </span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">script1</span><span class="w"> </span><span class="s">&quot;  </span>
+<span class="s">   tell application &quot;</span><span class="nv">Terminal</span><span class="s">&quot; to do script &quot;</span><span class="nv">cd</span><span class="w"> </span><span class="nv">~</span><span class="c1">; open .&quot;&quot;)  </span>
+
+
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">script2</span><span class="w"> </span><span class="s">&quot;  </span>
+<span class="s">                tell application &quot;</span><span class="nv">System</span><span class="w"> </span><span class="nv">Events</span><span class="s">&quot;n  </span>
 <span class="s">                tell dock preferencesn  </span>
 <span class="s">                set properties to {autohide:false}n  </span>
 <span class="s">                end telln  </span>
-<span class="s">                end tell&quot;</span><span class="p">)</span>  
+<span class="s">                end tell&quot;</span><span class="p">)</span><span class="w">  </span>
 
 <span class="c1">;; finally, let&#39;s choose randomly one of the scripts above and run it  </span>
-<span class="p">(</span><span class="nf">run_applescript</span> <span class="p">(</span><span class="nf">random</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">script0</span> <span class="nv">script1</span> <span class="nv">script2</span><span class="p">)))</span>
+<span class="p">(</span><span class="nf">run_applescript</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="nv">script0</span><span class="w"> </span><span class="nv">script1</span><span class="w"> </span><span class="nv">script2</span><span class="p">)))</span>
 </code></pre></div>
 <p>Now, back to the original problem: in order to open a Finder's window at a specified location we need to pass the location variable to our function <em>run_applescript</em>; also, we want to be able to pass unix path expressions (eg '/Users/mike/music/'), so we've got to transform that path syntax into the semicolon-delimited macintosh syntax ("Macintosh HD:Users:mike:music") needed by the applescript function we're using. That's easily done with <em>string-replace</em>, so here we go:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">open_finder_at</span>  
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">location</span><span class="p">)</span>  
-      <span class="p">(</span><span class="k">let* </span><span class="p">((</span><span class="nf">llocation</span> <span class="p">(</span><span class="nf">string-replace</span> <span class="nv">location</span> <span class="s">&quot;/&quot;</span> <span class="s">&quot;:&quot;</span><span class="p">))</span>  
-              <span class="p">(</span><span class="nf">script</span> <span class="p">(</span><span class="nb">string-append </span><span class="s">&quot;tell application &quot;</span><span class="nv">Finder</span><span class="s">&quot; to activate open folder &quot;</span><span class="nv">Macintosh</span> <span class="nv">HD</span><span class="s">&quot; llocation &quot;&quot;&quot;</span><span class="p">)))</span>  
-         <span class="p">(</span><span class="nf">objc:call</span> <span class="p">(</span><span class="nf">objc:call</span> <span class="p">(</span><span class="nf">objc:call</span> <span class="s">&quot;NSAppleScript&quot;</span> <span class="s">&quot;alloc&quot;</span><span class="p">)</span>  
-                               <span class="s">&quot;initWithSource:&quot;</span>  
-                               <span class="nv">script</span><span class="p">)</span>  
-                    <span class="s">&quot;executeAndReturnError:&quot;</span> <span class="p">))))</span>  
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">open_finder_at</span><span class="w">  </span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">location</span><span class="p">)</span><span class="w">  </span>
+<span class="w">      </span><span class="p">(</span><span class="k">let*</span><span class="w"> </span><span class="p">((</span><span class="nf">llocation</span><span class="w"> </span><span class="p">(</span><span class="nb">string-replace</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">))</span><span class="w">  </span>
+<span class="w">              </span><span class="p">(</span><span class="nf">script</span><span class="w"> </span><span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s">&quot;tell application &quot;</span><span class="nv">Finder</span><span class="s">&quot; to activate open folder &quot;</span><span class="nv">Macintosh</span><span class="w"> </span><span class="nv">HD</span><span class="s">&quot; llocation &quot;&quot;&quot;</span><span class="p">)))</span><span class="w">  </span>
+<span class="w">         </span><span class="p">(</span><span class="nf">objc:call</span><span class="w"> </span><span class="p">(</span><span class="nf">objc:call</span><span class="w"> </span><span class="p">(</span><span class="nf">objc:call</span><span class="w"> </span><span class="s">&quot;NSAppleScript&quot;</span><span class="w"> </span><span class="s">&quot;alloc&quot;</span><span class="p">)</span><span class="w">  </span>
+<span class="w">                               </span><span class="s">&quot;initWithSource:&quot;</span><span class="w">  </span>
+<span class="w">                               </span><span class="nv">script</span><span class="p">)</span><span class="w">  </span>
+<span class="w">                    </span><span class="s">&quot;executeAndReturnError:&quot;</span><span class="w"> </span><span class="p">))))</span><span class="w">  </span>
 
 
-<span class="p">(</span><span class="nf">open_finder_at</span> <span class="s">&quot;/Users/me/&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">open_finder_at</span><span class="w"> </span><span class="s">&quot;/Users/me/&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>That's pretty much it really... now we can easily open OsX Finder's windows from within Impromptu.</p>
 <p>But as I said above, there's a surprise: after getting this far I thought I'd search impromptu's mailing list for more examples of <a href="http://moso.com.au/wiki/index.php?title=ObjC_Functions">obj:call</a> .... and guess what, there's already a system function that runs applescripts, it's called <a href="http://moso.com.au/wiki/index.php?title=Sys:run-applescript">sys:run-applescript</a> !</p>

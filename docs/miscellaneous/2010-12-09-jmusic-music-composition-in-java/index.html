@@ -608,30 +608,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../works/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../works/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../works/2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -766,6 +742,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1053,7 +1041,7 @@
                        (play (/ dur 2) dls x 90 dur))<br />
                      (map (lambda(x) (+ x note)) (list-ref progression 2))) <br />
           (set! note (+ note (car (list-ref progression 3)))))                <br />
-         (if (> note 50)<br />
+         (if (&gt; note 50)<br />
              (callback (*metro* (+ beat (* 1/2 dur))) 'loop (+ beat dur) note)<br />
              (for-each (lambda (x)<br />
                           (play (eval dur) dls x 90 dur))<br />

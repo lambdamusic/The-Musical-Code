@@ -618,30 +618,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../works/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../works/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../works/2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -774,6 +750,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1037,53 +1025,53 @@
 <span class="c1">;;;;;;;</span>
 
 <span class="c1">;; (utils:list-flatten &#39;(9 9 (9 9 9 ))))  = (9 9 9 9 9)</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">utils:list-flatten</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">l</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">null? </span><span class="nv">l</span><span class="p">)</span>
-             <span class="o">&#39;</span><span class="p">())</span>
-            <span class="p">((</span><span class="nf">atom?</span> <span class="nv">l</span><span class="p">)</span>
-             <span class="p">(</span><span class="nb">list </span><span class="nv">l</span><span class="p">))</span>
-            <span class="p">(</span><span class="no">#t</span> <span class="p">(</span><span class="nb">append </span><span class="p">(</span><span class="nf">utils:list-flatten</span>  <span class="p">(</span><span class="nb">car </span><span class="nv">l</span><span class="p">))</span> <span class="p">(</span><span class="nf">utils:list-flatten</span>  <span class="p">(</span><span class="nb">cdr </span><span class="nv">l</span><span class="p">)))))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">utils:list-flatten</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">l</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">null?</span><span class="w"> </span><span class="nv">l</span><span class="p">)</span>
+<span class="w">             </span><span class="o">&#39;</span><span class="p">())</span>
+<span class="w">            </span><span class="p">((</span><span class="nf">atom?</span><span class="w"> </span><span class="nv">l</span><span class="p">)</span>
+<span class="w">             </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="nv">l</span><span class="p">))</span>
+<span class="w">            </span><span class="p">(</span><span class="no">#t</span><span class="w"> </span><span class="p">(</span><span class="nb">append</span><span class="w"> </span><span class="p">(</span><span class="nf">utils:list-flatten</span><span class="w">  </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">l</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="nf">utils:list-flatten</span><span class="w">  </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="nv">l</span><span class="p">)))))))</span>
 
 <span class="c1">;; returns a char from a string of length 1, or a list of chars from a longer string</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">utils:char</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">string_char</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">string? </span><span class="nv">string_char</span><span class="p">)</span>
-          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="p">(</span><span class="nb">string-length </span><span class="nv">string_char</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-              <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="p">(</span><span class="nb">string-length </span><span class="nv">string_char</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-                  <span class="p">(</span><span class="nb">string-&gt;list </span><span class="nv">string_char</span><span class="p">)</span>
-                  <span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nb">string-&gt;list </span><span class="nv">string_char</span><span class="p">))))</span>
-          <span class="p">(</span><span class="nf">print</span> <span class="ss">&#39;please</span> <span class="ss">&#39;enter</span> <span class="ss">&#39;a</span> <span class="ss">&#39;string</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">utils:char</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">string_char</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">string?</span><span class="w"> </span><span class="nv">string_char</span><span class="p">)</span>
+<span class="w">          </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="p">(</span><span class="nb">string-length</span><span class="w"> </span><span class="nv">string_char</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">              </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="p">(</span><span class="nb">string-length</span><span class="w"> </span><span class="nv">string_char</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">(</span><span class="nb">string-&gt;list</span><span class="w"> </span><span class="nv">string_char</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="p">(</span><span class="nb">string-&gt;list</span><span class="w"> </span><span class="nv">string_char</span><span class="p">))))</span>
+<span class="w">          </span><span class="p">(</span><span class="nf">print</span><span class="w"> </span><span class="ss">&#39;please</span><span class="w"> </span><span class="ss">&#39;enter</span><span class="w"> </span><span class="ss">&#39;a</span><span class="w"> </span><span class="ss">&#39;string</span><span class="p">))))</span>
 
 <span class="c1">;; matches a single character in a string, and replaces it</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">utils:string-replace</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">s</span> <span class="nv">match</span> <span class="nv">replacement</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">ll</span> <span class="p">(</span><span class="nb">string-&gt;list </span><span class="nv">s</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">match1</span> <span class="p">(</span><span class="nf">utils:char</span> <span class="nv">match</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">replacement1</span> <span class="p">(</span><span class="nf">utils:char</span> <span class="nv">replacement</span><span class="p">)))</span>
-         <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="p">(</span><span class="nb">string-length </span><span class="nv">match</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-             <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">z</span> <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
-                              <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">equal? </span><span class="nv">x</span> <span class="nv">match1</span><span class="p">)</span>
-                                  <span class="nv">replacement1</span>
-                                  <span class="nv">x</span><span class="p">))</span>
-                           <span class="nv">ll</span><span class="p">)))</span>
-                <span class="p">(</span><span class="nb">list-&gt;string </span><span class="p">(</span><span class="nf">utils:list-flatten</span> <span class="nv">z</span><span class="p">)))</span>
-                <span class="c1">;z)</span>
-             <span class="p">(</span><span class="nf">print</span> <span class="s">&quot;i can match only single characters for now&quot;</span><span class="p">)))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">utils:string-replace</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">s</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="nv">replacement</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">ll</span><span class="w"> </span><span class="p">(</span><span class="nb">string-&gt;list</span><span class="w"> </span><span class="nv">s</span><span class="p">))</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">match1</span><span class="w"> </span><span class="p">(</span><span class="nf">utils:char</span><span class="w"> </span><span class="k">match</span><span class="p">))</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">replacement1</span><span class="w"> </span><span class="p">(</span><span class="nf">utils:char</span><span class="w"> </span><span class="nv">replacement</span><span class="p">)))</span>
+<span class="w">         </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="p">(</span><span class="nb">string-length</span><span class="w"> </span><span class="k">match</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">             </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">z</span><span class="w"> </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
+<span class="w">                              </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">equal?</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="nv">match1</span><span class="p">)</span>
+<span class="w">                                  </span><span class="nv">replacement1</span>
+<span class="w">                                  </span><span class="nv">x</span><span class="p">))</span>
+<span class="w">                           </span><span class="nv">ll</span><span class="p">)))</span>
+<span class="w">                </span><span class="p">(</span><span class="nb">list-&gt;string</span><span class="w"> </span><span class="p">(</span><span class="nf">utils:list-flatten</span><span class="w"> </span><span class="nv">z</span><span class="p">)))</span>
+<span class="w">                </span><span class="c1">;z)</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">print</span><span class="w"> </span><span class="s">&quot;i can match only single characters for now&quot;</span><span class="p">)))))</span>
 
 <span class="c1">;; makes a string upper case</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">utils:string-capitalize</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">s</span><span class="p">)</span>
-      <span class="p">(</span><span class="nb">string-append </span><span class="p">(</span><span class="nb">string </span><span class="p">(</span><span class="nb">char-upcase </span><span class="p">(</span><span class="nb">string-ref </span><span class="nv">s</span> <span class="mi">0</span><span class="p">)))</span> <span class="p">(</span><span class="nb">substring </span><span class="nv">s</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">string-length </span><span class="nv">s</span><span class="p">)))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">utils:string-capitalize</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">s</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="p">(</span><span class="nb">char-upcase</span><span class="w"> </span><span class="p">(</span><span class="nb">string-ref</span><span class="w"> </span><span class="nv">s</span><span class="w"> </span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">(</span><span class="nb">substring</span><span class="w"> </span><span class="nv">s</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">string-length</span><span class="w"> </span><span class="nv">s</span><span class="p">)))))</span>
 
 <span class="c1">;; open-url: calls the default mac browser with a url argument </span>
 <span class="c1">;; disclaimer: I&#39;m not an objc programmer... found an example at </span>
 <span class="c1">;; [http://macosx.com/forums/software-programming-web-scripting/18422-how-do-i-launch-url-using-cocoa-objective-c.html](http://macosx.com/forums/software-programming-web-scripting/18422-how-do-i-launch-url-using-cocoa-objective-c.html)</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">utils:open-url</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">urlstring</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">urlobj</span> <span class="p">(</span><span class="nf">objc:call</span> <span class="s">&quot;NSURL&quot;</span> <span class="s">&quot;URLWithString:&quot;</span> <span class="nv">urlstring</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">workspace</span> <span class="p">(</span><span class="nf">objc:call</span> <span class="s">&quot;NSWorkspace&quot;</span> <span class="s">&quot;sharedWorkspace&quot;</span><span class="p">)))</span>
-         <span class="p">(</span><span class="nf">objc:call</span> <span class="nv">workspace</span> <span class="s">&quot;openURL:&quot;</span> <span class="nv">urlobj</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">utils:open-url</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">urlstring</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">urlobj</span><span class="w"> </span><span class="p">(</span><span class="nf">objc:call</span><span class="w"> </span><span class="s">&quot;NSURL&quot;</span><span class="w"> </span><span class="s">&quot;URLWithString:&quot;</span><span class="w"> </span><span class="nv">urlstring</span><span class="p">))</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">workspace</span><span class="w"> </span><span class="p">(</span><span class="nf">objc:call</span><span class="w"> </span><span class="s">&quot;NSWorkspace&quot;</span><span class="w"> </span><span class="s">&quot;sharedWorkspace&quot;</span><span class="p">)))</span>
+<span class="w">         </span><span class="p">(</span><span class="nf">objc:call</span><span class="w"> </span><span class="nv">workspace</span><span class="w"> </span><span class="s">&quot;openURL:&quot;</span><span class="w"> </span><span class="nv">urlobj</span><span class="p">))))</span>
 </code></pre></div>
 <p>Finally, the functions for opening the wiki page:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">;;;;;;;;;;</span>
@@ -1092,30 +1080,30 @@
 <span class="c1">;;;;;;;;;;</span>
 
 <span class="c1">;; wiki-escape: composes the url so that it matches the ones of the online wiki </span>
-<span class="p">(</span><span class="k">define </span><span class="nv">wikiescape</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">funname</span><span class="p">)</span>
-      <span class="p">(</span><span class="nb">for-each </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
-                   <span class="p">(</span><span class="k">set! </span><span class="nv">funname</span> <span class="p">(</span><span class="nf">utils:string-replace</span> <span class="nv">funname</span> <span class="p">(</span><span class="nb">car </span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">cadr </span><span class="nv">x</span><span class="p">))))</span>
-                <span class="o">&#39;</span><span class="p">((</span><span class="s">&quot;+&quot;</span> <span class="s">&quot;%2B&quot;</span><span class="p">)</span>
-                  <span class="p">(</span><span class="s">&quot;=&quot;</span> <span class="s">&quot;%3D&quot;</span><span class="p">)</span>
-                  <span class="p">(</span><span class="s">&quot;&lt;&quot;</span> <span class="s">&quot;lessthan&quot;</span><span class="p">)</span>
-                  <span class="p">(</span><span class="s">&quot;&gt;&quot;</span> <span class="s">&quot;greaterthan&quot;</span><span class="p">)</span>
-                  <span class="p">(</span><span class="s">&quot;*&quot;</span> <span class="s">&quot;%2A&quot;</span><span class="p">)</span>
-                  <span class="p">(</span><span class="s">&quot;?&quot;</span> <span class="s">&quot;%3F&quot;</span><span class="p">)</span>
-                  <span class="p">(</span><span class="s">&quot;!&quot;</span> <span class="s">&quot;%21&quot;</span><span class="p">)</span>
-                  <span class="p">))</span>
-      <span class="p">(</span><span class="nf">utils:string-capitalize</span> <span class="nv">funname</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">wikiescape</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">funname</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">for-each</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
+<span class="w">                   </span><span class="p">(</span><span class="k">set!</span><span class="w"> </span><span class="nv">funname</span><span class="w"> </span><span class="p">(</span><span class="nf">utils:string-replace</span><span class="w"> </span><span class="nv">funname</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">cadr</span><span class="w"> </span><span class="nv">x</span><span class="p">))))</span>
+<span class="w">                </span><span class="o">&#39;</span><span class="p">((</span><span class="s">&quot;+&quot;</span><span class="w"> </span><span class="s">&quot;%2B&quot;</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="w"> </span><span class="s">&quot;%3D&quot;</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">(</span><span class="s">&quot;&lt;&quot;</span><span class="w"> </span><span class="s">&quot;lessthan&quot;</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">(</span><span class="s">&quot;&gt;&quot;</span><span class="w"> </span><span class="s">&quot;greaterthan&quot;</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="w"> </span><span class="s">&quot;%2A&quot;</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">(</span><span class="s">&quot;?&quot;</span><span class="w"> </span><span class="s">&quot;%3F&quot;</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">(</span><span class="s">&quot;!&quot;</span><span class="w"> </span><span class="s">&quot;%21&quot;</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">utils:string-capitalize</span><span class="w"> </span><span class="nv">funname</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="nv">wiki-inner</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">funname</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">let* </span><span class="p">((</span><span class="nf">urlbase</span> <span class="s">&quot;[http://moso.com.au/wiki/index.php?title=](http://moso.com.au/wiki/index.php?title=)&quot;</span><span class="p">)</span>
-             <span class="p">(</span><span class="nf">newname</span> <span class="p">(</span><span class="nf">wikiescape</span> <span class="nv">funname</span><span class="p">))</span>
-             <span class="p">(</span><span class="nf">url</span> <span class="p">(</span><span class="nb">string-append </span><span class="nv">urlbase</span> <span class="nv">newname</span><span class="p">)))</span>
-         <span class="p">(</span><span class="nf">utils:open-url</span> <span class="nv">url</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">wiki-inner</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">funname</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">let*</span><span class="w"> </span><span class="p">((</span><span class="nf">urlbase</span><span class="w"> </span><span class="s">&quot;[http://moso.com.au/wiki/index.php?title=](http://moso.com.au/wiki/index.php?title=)&quot;</span><span class="p">)</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">newname</span><span class="w"> </span><span class="p">(</span><span class="nf">wikiescape</span><span class="w"> </span><span class="nv">funname</span><span class="p">))</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">url</span><span class="w"> </span><span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="nv">urlbase</span><span class="w"> </span><span class="nv">newname</span><span class="p">)))</span>
+<span class="w">         </span><span class="p">(</span><span class="nf">utils:open-url</span><span class="w"> </span><span class="nv">url</span><span class="p">))))</span>
 
 <span class="c1">;; macro wrapper and main function that gets called </span>
-<span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">wiki</span> <span class="nv">name</span><span class="p">)</span>
-   <span class="o">`</span><span class="p">(</span><span class="nf">wiki-inner</span> <span class="p">(</span><span class="nf">sexpr-&gt;string</span> <span class="p">(</span><span class="k">quote </span><span class="o">,</span><span class="nv">name</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define-macro</span><span class="w"> </span><span class="p">(</span><span class="nf">wiki</span><span class="w"> </span><span class="nv">name</span><span class="p">)</span>
+<span class="w">   </span><span class="o">`</span><span class="p">(</span><span class="nf">wiki-inner</span><span class="w"> </span><span class="p">(</span><span class="nf">sexpr-&gt;string</span><span class="w"> </span><span class="p">(</span><span class="k">quote</span><span class="w"> </span><span class="o">,</span><span class="nv">name</span><span class="p">))))</span>
 </code></pre></div>
 <p>That's it: load all of this code (or put it in a single file and load it at startup time) and you've got the wiki procedure available!</p>
                 

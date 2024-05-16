@@ -674,30 +674,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../works/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../works/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../works/2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -830,6 +806,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1141,42 +1129,42 @@
 <h2 id="goal">Goal</h2>
 <p>Changing</p>
 <div class="highlight"><pre><span></span><code><span class="c1">;; from </span>
-<span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="nv">dur</span><span class="p">)))</span>
-        <span class="ss">&#39;main</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="nv">dur</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span>
+<span class="w">        </span><span class="ss">&#39;main</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">))</span>
 
 <span class="c1">;; to</span>
-<span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;main</span> <span class="p">)</span>
+<span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;main</span><span class="w"> </span><span class="p">)</span>
 </code></pre></div>
 <p>or, if you have more arguments:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">;; from</span>
-<span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="nv">dur</span><span class="p">)))</span>
-        <span class="ss">&#39;main</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="nv">dur</span><span class="p">)</span> <span class="nv">dur</span> <span class="nv">plist</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span>
+<span class="w">        </span><span class="ss">&#39;main</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">plist</span><span class="p">)</span>
 
 <span class="c1">;; to  </span>
-<span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;main</span> <span class="nv">dur</span> <span class="nv">plist</span> <span class="p">)</span>
+<span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;main</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">plist</span><span class="w"> </span><span class="p">)</span>
 </code></pre></div>
 <h2 id="implementation">Implementation</h2>
 <div class="highlight"><pre><span></span><code><span class="c1">;; first arg is always the time delay for the recursion, then the function</span>
 <span class="p">(</span><span class="nf">impc:aot:do-or-emit</span>
-    <span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="nv">fun</span> <span class="o">.</span> <span class="nv">args</span><span class="p">)</span>
-      <span class="o">`</span><span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="o">,</span><span class="nv">dur</span><span class="p">)))</span>
-            <span class="p">(</span><span class="nb">eval </span><span class="p">(</span><span class="k">quote </span><span class="o">,</span><span class="nv">fun</span><span class="p">))</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="o">,</span><span class="nv">dur</span><span class="p">)</span> <span class="o">,@</span><span class="nv">args</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">(</span><span class="k">define-macro</span><span class="w"> </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">fun</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nv">args</span><span class="p">)</span>
+<span class="w">      </span><span class="o">`</span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="o">,</span><span class="nv">dur</span><span class="p">)))</span>
+<span class="w">            </span><span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="p">(</span><span class="k">quote</span><span class="w"> </span><span class="o">,</span><span class="nv">fun</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="o">,</span><span class="nv">dur</span><span class="p">)</span><span class="w"> </span><span class="o">,@</span><span class="nv">args</span><span class="p">)))</span>
 </code></pre></div>
 <p>The only <strong>requirement</strong> is to have the <code>beat</code> and <code>*metro*</code> symbols defined. Note: <a href="https://github.com/digego/extempore/blob/v0.8.9/runtime/scheme.xtm"><em>metro</em></a> is available by default with the standard Extempore library.</p>
 <h2 id="example">Example</h2>
 <div class="highlight"><pre><span></span><code><span class="c1">;; basically, you can simply omit beat</span>
-<span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">beat</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span><span class="p">)))</span>   
-    <span class="p">(</span><span class="nf">callback-at</span> <span class="mi">1</span> <span class="ss">&#39;println</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">beat</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="p">)))</span><span class="w">   </span>
+<span class="w">    </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="ss">&#39;println</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 
 
 <span class="c1">;; let&#39;s play some music </span>
-<span class="p">(</span><span class="k">define </span><span class="nv">pinco</span>
-  <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">dur</span> <span class="p">(</span><span class="nf">random</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">)))</span>
-        <span class="p">(</span><span class="nf">play</span> <span class="mi">1</span> <span class="p">(</span><span class="nf">random</span> <span class="mi">60</span> <span class="mi">80</span><span class="p">)</span> <span class="mi">90</span> <span class="nv">dur</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">callback-at</span> <span class="nv">dur</span> <span class="ss">&#39;pinco</span> <span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">pinco</span>
+<span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">&#39;pinco</span><span class="w"> </span><span class="p">))))</span>
 
-<span class="p">(</span><span class="nf">pinco</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">pinco</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="see-also">See also</h2>
 <ul>

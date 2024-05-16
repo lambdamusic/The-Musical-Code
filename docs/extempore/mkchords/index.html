@@ -674,30 +674,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../works/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../works/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../works/2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -830,6 +806,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1139,23 +1127,23 @@
 <p>A summary of the chords functions available, in the <code>mk</code> namespace, to create harmonic structures like scales and chords. </p>
 <p>All of these functions take either a chord symbol or a scale symbol. </p>
 <div class="highlight"><pre><span></span><code><span class="c1">; sym chords</span>
-<span class="ss">&#39;M|m|Msus|M4|M6|M64|M7|M65|M43|M42|M2|M7</span><span class="o">#</span><span class="mi">4</span><span class="nv">|M9|7|9|65|43|2|42|msus|m4|m6|m64|m7|m65|m43|m42|m2|m9|m7b5|d|d6|d64|d7|d65|d43|d42|d2</span>
+<span class="ss">&#39;M|m|Msus|M4|M6|M64|M7|M65|M43|M42|M2|M7</span><span class="o">#</span><span class="nv">4|M9|7|9|65|43|2|42|msus|m4|m6|m64|m7|m65|m43|m42|m2|m9|m7b5|d|d6|d64|d7|d65|d43|d42|d2</span>
 
 <span class="c1">; sym scales</span>
 <span class="ss">&#39;M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian</span>
 </code></pre></div>
 <h2 id="chords">Chords</h2>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">mkchord</span> <span class="nv">root</span> <span class="ss">&#39;chordsym</span> <span class="p">)</span>
-<span class="p">(</span><span class="nf">mkchordrand</span> <span class="nv">root</span> <span class="ss">&#39;chordsym</span> <span class="p">)</span>
-<span class="p">(</span><span class="nf">mkchordsteps</span> <span class="nv">root</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">steps</span><span class="p">)</span> <span class="ss">&#39;scalesym</span> <span class="p">)</span>
-<span class="p">(</span><span class="nf">mkchordiatonic</span> <span class="nv">root</span> <span class="ss">&#39;maj-min</span> <span class="ss">&#39;degree</span><span class="p">)</span> <span class="c1">; chordsym either M or m TODO</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">mkchord</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">&#39;chordsym</span><span class="w"> </span><span class="p">)</span>
+<span class="p">(</span><span class="nf">mkchordrand</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">&#39;chordsym</span><span class="w"> </span><span class="p">)</span>
+<span class="p">(</span><span class="nf">mkchordsteps</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="nv">steps</span><span class="p">)</span><span class="w"> </span><span class="ss">&#39;scalesym</span><span class="w"> </span><span class="p">)</span>
+<span class="p">(</span><span class="nf">mkchordiatonic</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">&#39;maj-min</span><span class="w"> </span><span class="ss">&#39;degree</span><span class="p">)</span><span class="w"> </span><span class="c1">; chordsym either M or m TODO</span>
 </code></pre></div>
 <p>These are enhanced versions of the <code>pc</code> functions. </p>
 <p>Deprecated:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">pc:chord</span> <span class="nv">root</span> <span class="ss">&#39;chordsym</span> <span class="p">)</span>
-<span class="p">(</span><span class="nf">pc:make-chord</span> <span class="nv">lower</span> <span class="nv">upper</span> <span class="nv">number</span> <span class="nv">pcchord</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">pc:make-chord-fixed</span> <span class="nv">pitch</span> <span class="nv">number</span> <span class="nv">pcchord</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">pc:diatonic</span> <span class="nv">root</span> <span class="ss">&#39;^-</span> <span class="ss">&#39;i</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">pc:chord</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">&#39;chordsym</span><span class="w"> </span><span class="p">)</span>
+<span class="p">(</span><span class="nf">pc:make-chord</span><span class="w"> </span><span class="nv">lower</span><span class="w"> </span><span class="nv">upper</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="nv">pcchord</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">pc:make-chord-fixed</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="nv">pcchord</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">pc:diatonic</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">&#39;^-</span><span class="w"> </span><span class="ss">&#39;i</span><span class="p">)</span>
 </code></pre></div>
 <p>The only advantage of pc:make-chord is that it can table a list of pitch classes, while mkchord just chord syms EG</p>
 <div class="highlight"><pre><span></span><code>(pc:make-chord-fixed C4 3 
@@ -1167,12 +1155,12 @@
 <div class="highlight"><pre><span></span><code>(mkmelody 4 60 &#39;m &#39;(1 -1) )
 </code></pre></div>
 <h2 id="scales">Scales</h2>
-<p><div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">mkscale</span> <span class="nv">root</span> <span class="ss">&#39;scale-sym</span> <span class="p">)</span>
-<span class="p">(</span><span class="nf">mkscalestep</span> <span class="nv">root</span> <span class="nv">step</span> <span class="ss">&#39;scale-sym</span><span class="p">)</span> <span class="c1">;; transpose the scale beginning</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">mkscale</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">&#39;scale-sym</span><span class="w"> </span><span class="p">)</span>
+<span class="p">(</span><span class="nf">mkscalestep</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="nv">step</span><span class="w"> </span><span class="ss">&#39;scale-sym</span><span class="p">)</span><span class="w"> </span><span class="c1">;; transpose the scale beginning</span>
 </code></pre></div>
 These are enhanced versions of the <code>pc</code> functions IE</p>
 <div class="highlight"><pre><span></span><code><span class="c1">;; snippets deprecated</span>
-<span class="p">(</span><span class="nf">pc:scale</span> <span class="mi">0</span> <span class="ss">&#39;scale-sym</span> <span class="p">)</span>
+<span class="p">(</span><span class="nf">pc:scale</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ss">&#39;scale-sym</span><span class="w"> </span><span class="p">)</span>
 </code></pre></div>
 <h2 id="intervals">Intervals</h2>
 <div class="highlight"><pre><span></span><code>(mkint C4 3 &#39;scale-sym )

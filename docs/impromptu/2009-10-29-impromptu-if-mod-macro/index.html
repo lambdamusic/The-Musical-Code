@@ -651,30 +651,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../works/2009-06-23-algorithmic-music-exercise-1/" class="md-nav__link">
-        Algorithmic music: first steps
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../works/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
-        New Impromptu screencast and a few lessons learned
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../works/2009-11-23-new-song-with-impromptu-kali/" class="md-nav__link">
         New song with Impromptu: KALI
       </a>
@@ -807,6 +783,18 @@
           Miscellaneous
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+        Livecodin at the Shunt, London
+      </a>
+    </li>
+  
+
           
             
   
@@ -1095,45 +1083,45 @@
 <h2 id="implementing-if-mod">Implementing <code>if-mod</code></h2>
 <p>To recap.. normally with <a href="http://impromptu.moso.com.au/">Impromptu</a> if you want to play notes at some specific time expressed in beats with you'd have to <strong>set up a metronome</strong> first [have a look <a href="http://impromptu.moso.com.au/tutorials/making_music/Beat%20%26%20Tempo.html">here</a> for more info about how to use *metro*] and then <strong>check for the right beat</strong> using the <em>modulo</em> function. </p>
 <p>For example, something like this will play a central C every first beat of a 4/4 measure:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">*metro*</span> <span class="p">(</span><span class="nf">make-metro</span> <span class="mi">100</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nf">make-metro</span><span class="w"> </span><span class="mi">100</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="nv">test</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">equal? </span><span class="p">(</span><span class="nb">modulo </span><span class="nv">beat</span> <span class="mi">4</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-          <span class="p">(</span><span class="nf">play</span> <span class="nv">dls</span> <span class="mi">60</span> <span class="mi">60</span> <span class="mi">3</span><span class="p">))</span>
-      <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">)))</span> <span class="ss">&#39;test</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">test</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">equal?</span><span class="w"> </span><span class="p">(</span><span class="nb">modulo</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">          </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">dls</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1/4</span><span class="p">)))</span><span class="w"> </span><span class="ss">&#39;test</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="mi">1/4</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="nf">test</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">test</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
 <p>Another way of doing this is by using <em>case</em>. Same approach, but probably faster to code, as it lets you specify 'multiple beats' very easily:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">test2</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">case </span><span class="p">(</span><span class="nb">modulo </span><span class="nv">beat</span> <span class="mi">4</span><span class="p">)</span>
-            <span class="p">((</span><span class="mi">0</span><span class="p">)</span>
-             <span class="p">(</span><span class="nf">play</span> <span class="nv">dls</span> <span class="mi">60</span> <span class="mi">60</span> <span class="mi">3</span><span class="p">))</span>
-            <span class="p">((</span><span class="mi">2</span> <span class="mi">5</span><span class="nv">/2</span><span class="p">)</span>
-             <span class="p">(</span><span class="nf">play</span> <span class="nv">dls</span> <span class="mi">67</span> <span class="mi">60</span> <span class="mi">1</span><span class="nv">/2</span><span class="p">)))</span>
-      <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">)))</span> <span class="ss">&#39;test2</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">test2</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="nb">modulo</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="w">            </span><span class="p">((</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">dls</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
+<span class="w">            </span><span class="p">((</span><span class="mi">2</span><span class="w"> </span><span class="mi">5/2</span><span class="p">)</span>
+<span class="w">             </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">dls</span><span class="w"> </span><span class="mi">67</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">1/2</span><span class="p">)))</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1/4</span><span class="p">)))</span><span class="w"> </span><span class="ss">&#39;test2</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="mi">1/4</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="nf">test2</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">test2</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
 <p>Still quite a few parenthesis though... which, especially when playing live, might mean more chances to mess up! So when I saw Ben's video I realized that a <strong>macro</strong> usable to facilitate the creation of <em>case/modulo</em> expressions would be quite useful.. Here is how it can be done:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">define-macro</span> <span class="p">(</span><span class="nf">if-mod</span> <span class="nv">x</span> <span class="nv">y</span> <span class="nv">args</span><span class="p">)</span>
-   <span class="o">`</span><span class="p">(</span><span class="nb">for-each </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">step</span><span class="p">)</span>
-                 <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">equal? </span><span class="p">(</span><span class="nb">modulo </span><span class="nv">beat</span> <span class="o">,</span><span class="nv">x</span><span class="p">)</span> <span class="nv">step</span><span class="p">)</span>
-                     <span class="o">,</span><span class="nv">args</span><span class="p">))</span>
-              <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">list? </span><span class="o">,</span><span class="nv">y</span><span class="p">)</span>
-                  <span class="o">,</span><span class="nv">y</span>
-                  <span class="p">(</span><span class="nb">list </span><span class="o">,</span><span class="nv">y</span><span class="p">))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define-macro</span><span class="w"> </span><span class="p">(</span><span class="nf">if-mod</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">args</span><span class="p">)</span>
+<span class="w">   </span><span class="o">`</span><span class="p">(</span><span class="nb">for-each</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">step</span><span class="p">)</span>
+<span class="w">                 </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">equal?</span><span class="w"> </span><span class="p">(</span><span class="nb">modulo</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="o">,</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="nv">step</span><span class="p">)</span>
+<span class="w">                     </span><span class="o">,</span><span class="nv">args</span><span class="p">))</span>
+<span class="w">              </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">list?</span><span class="w"> </span><span class="o">,</span><span class="nv">y</span><span class="p">)</span>
+<span class="w">                  </span><span class="o">,</span><span class="nv">y</span>
+<span class="w">                  </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="o">,</span><span class="nv">y</span><span class="p">))))</span>
 </code></pre></div>
 <p>Now, by using the if-mod macro we've just created we can re-write the second example above much more concisely:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">test2-new</span>
-   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">if-mod</span> <span class="mi">4</span> <span class="mi">0</span> <span class="p">(</span><span class="nf">play</span> <span class="nv">dls</span> <span class="mi">60</span> <span class="mi">60</span> <span class="mi">3</span><span class="p">))</span>
-      <span class="p">(</span><span class="nf">if-mod</span> <span class="mi">4</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">5</span><span class="nv">/2</span><span class="p">)</span> <span class="p">(</span><span class="nf">play</span> <span class="nv">dls</span> <span class="mi">67</span> <span class="mi">60</span> <span class="mi">1</span><span class="nv">/2</span><span class="p">))</span>
-      <span class="p">(</span><span class="nf">callback</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="p">(</span><span class="nb">* </span><span class="mi">1</span><span class="nv">/2</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">)))</span> <span class="ss">&#39;test2-new</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">beat</span> <span class="mi">1</span><span class="nv">/4</span><span class="p">))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">test2-new</span>
+<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">if-mod</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">dls</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">if-mod</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="mi">5/2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">dls</span><span class="w"> </span><span class="mi">67</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">1/2</span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1/4</span><span class="p">)))</span><span class="w"> </span><span class="ss">&#39;test2-new</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="mi">1/4</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="nf">test2-new</span> <span class="p">(</span><span class="nf">*metro*</span> <span class="ss">&#39;get-beat</span> <span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">test2-new</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">&#39;get-beat</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
 <p>That's all! Notice also that the <em>if-mod</em> construct can take either a list of beats or a single one.</p>
                 

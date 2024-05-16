@@ -26,7 +26,7 @@ The most basic version of the loop templates. `dur` as an inner variable is hand
 ```
 
 
-## 2. `dur` as a function argument
+## 2. Loop with `dur` as a function argument
 
 Takes `dur` as a loop argument. Useful when we want to change `dur` INSIDE the function - ie based on some other process that happens in the function, so the next iteration should receive a preprocessed `dur`. 
 
@@ -141,7 +141,7 @@ See also
 - [rotatedeep](https://extempore.michelepasin.org/def/rotatedeep.html)  
 
 
-## 7. Loop with map+play pattern
+## 7. Loop with `map` + `play` pattern
 
 A more complex pattern playing structure that maps over several lists. It's a terse structure that permits to generate many rythmic and harmonic variations by modifying the external `times`, `notes` and `vols` periodically.
 
