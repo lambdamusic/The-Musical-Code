@@ -22,6 +22,7 @@ git push
 
 echo "=================="
 echo "Completed push to https://github.com/lambdamusic/The-Musical-Code"
+echo "Website soon to updated at https://livecoding.michelepasin.org/"
 echo "=================="
 
 
