@@ -10,7 +10,7 @@ eg 1920 x 1080
 
 > The standard aspect ratio for YouTube on a computer is 16:9. If your video has a different aspect ratio, the player will automatically change to the ideal size to match your video and the viewer's device.
 
-https://support.google.com/youtube/answer/6375112
+[https://support.google.com/youtube/answer/6375112](https://support.google.com/youtube/answer/6375112)
 
 Top [16:9 Resolutions](https://aspectratiocalculator.com/16-9.html):
 
