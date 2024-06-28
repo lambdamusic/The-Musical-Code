@@ -16,7 +16,7 @@ tags:
 
 This is extremely useful, to say the least, if you are performing live and want to avoid situations in which a (stupid) typo or parenthesis error will mess up your entire gig. The error hook in many cases will prevent your looping function from crashing, giving you time to fix the error. Really neat.
 
-[![Impromptu: livecoding error hook](/media/static/blog_img/6619819815_240eaf85dd_z.jpg)](http://www.flickr.com/photos/mikele/6619819815/ "Impromptu: livecoding error hook by MagIcReBirth, on Flickr")
+[![Impromptu: livecoding error hook](../assets/images/6619819815_240eaf85dd_z.jpg)](http://www.flickr.com/photos/mikele/6619819815/ "Impromptu: livecoding error hook by MagIcReBirth, on Flickr")
 
 Here's an example from the official release notes:
 

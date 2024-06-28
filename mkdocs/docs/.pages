@@ -1,8 +1,8 @@
 nav:
  - index.md
  - extempore
- - howtos
  - impromptu
- - livecoding
+ - tips
+ - videos
  - miscellaneous
  - ...

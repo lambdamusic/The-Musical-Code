@@ -23,6 +23,7 @@ In particular there are various interesting sections that focus on how to repres
 
 The musical result is beautiful; here's how I implemented it in scheme via Impromptu:
 
+```lisp
 (define progression  
    '((0 4 \-2 \-5) (\-7) (0 4 7 10) (5)))  
   
@@ -47,5 +48,4 @@ The musical result is beautiful; here's how I implemented it in scheme via Impro
              ))))  
   
 (loop (\*metro\* 'get\-beat) 50)
-
-...
+```

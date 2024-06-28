@@ -15,9 +15,9 @@ The latest issue of the [Computer Music Journal](http://www.mitpressjournals.org
 
 > Because this is the [Winter issue](http://www.mitpressjournals.org/toc/comj/35/4), it includes the annual CMJ DVD, whose program notes appear near the end of the issue. The curators for the compositions on this year’s DVD are specialists in live coding, the practice of onstage computer programming whose real-time output is an improvised and often collaborative musical performance. As always, the DVD also includes sound and video examples to accompany recent articles, as well as related files on the DVD-ROM portion of the disc.
 
-![CMJ dvd - front](/media/static/blog_img/6688959507_ea2797cc1f.jpg)]
+![CMJ dvd - front](../assets/images/6688959507_ea2797cc1f.jpg)]
 
-![CMJ dvd - back](/media/static/blog_img/6688959057_6aa2de5fbc.jpg)]
+![CMJ dvd - back](../assets/images/6688959057_6aa2de5fbc.jpg)]
 
 
 ## More information

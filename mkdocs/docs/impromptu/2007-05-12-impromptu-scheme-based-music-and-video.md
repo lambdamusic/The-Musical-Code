@@ -7,7 +7,7 @@ categories:
   - "justblogging"
 ---
 
-![](/media/static/blog_img/desktop_095.png)
+![](../assets/images/desktop_095.png)
 
 ## Live & interactive programming
 

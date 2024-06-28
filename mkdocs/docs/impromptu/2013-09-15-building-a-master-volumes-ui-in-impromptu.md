@@ -17,7 +17,7 @@ The script assumes that your audio graph includes a mixer object called \*mixer\
 
 The objc bridge commands are based on the **silly-synth example** that comes with the default impromptu package.
 
-![VolumeSLider](/media/static/blog_img/volumeSLider1.png)
+![VolumeSLider](../assets/images/volumeSLider1.png)
 
 Being able to control volumes manually rather than programmatically made a great difference for me. Both in live coding situations and while experimenting on my own, it totally speeds up the music creation process and the ability of working with multiple melodic lines.
 

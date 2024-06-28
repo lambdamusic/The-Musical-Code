@@ -14,7 +14,7 @@ tags:
 
 I've started reading "[Notes from the Metalevel: An Introduction to Computer Composition](http://www.routledge.com/books/details/9789026519758/)", by Heinrich Taube, and realised I should have done that a long time ago!
 
-![](/media/static/blog_img/9789026519758.jpg)
+![](../assets/images/9789026519758.jpg)
 
 ## About the book
 

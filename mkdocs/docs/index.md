@@ -15,16 +15,6 @@ Admittedly, that's a rather unconventional way of making music. But it's also fu
 
 
 
-## How this site is structured
-
-* Extempore
-* Impromptu
-* Livecoding
-* Works
-* Miscellaneous
-
-
-
 ## Video tutorials
 
 This website has a counterpart [YouTube channel](https://www.youtube.com/channel/UCanqSICbxzRNEZGMlu8qfyw), where you can watch/listen the works in execution. 

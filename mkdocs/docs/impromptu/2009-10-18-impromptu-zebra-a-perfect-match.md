@@ -23,6 +23,6 @@ I've been having so much fun using Impromptu with the [Zebra](http://www.u-he.co
 
 ## Screenshots
 
- [![Image zebra1.png](/media/static/blog_img/zebra1.png)](/media/static/blog_img/zebra1.png)
+ [![Image zebra1.png](../assets/images/zebra1.png)](../assets/images/zebra1.png)
 
-[![Image zebra2.png](/media/static/blog_img/zebra2.png)](/media/static/blog_img/zebra2.png)
+[![Image zebra2.png](../assets/images/zebra2.png)](../assets/images/zebra2.png)

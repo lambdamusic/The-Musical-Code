@@ -20,7 +20,7 @@ Possibly useful in order to keep track of the downbeats while you compose, or ju
 
 Here's a short example of how to use it:
 
-<iframe src="http://player.vimeo.com/video/60047833?autoplay=1" width="500" height="533" frameborder="0" webkitallowfullscreen mozallowfullscreen="" allowfullscreen=""></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bD27-u8XSd8?si=BEsQrYBYrh1BC6QW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Make-metronome relies on the standard libraries that come with Impromptu, in particular make-metro, which is [described in this tutorial](http://impromptu.moso.com.au/tutorials/making_music/Beat%20%26%20Tempo.html)e and on this [video](http://impromptu.moso.com.au/resources.html#faq7). Essentially, it requires you to define a _metro_ object first, e.g. (define \*metro\* (make-metro 120)).
 

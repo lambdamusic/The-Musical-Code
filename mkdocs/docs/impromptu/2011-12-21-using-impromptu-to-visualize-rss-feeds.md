@@ -14,7 +14,7 @@ tags:
 
 Some time ago I've been experimenting with the processing and display of [RSS feeds](http://www.google.co.uk/url?sa=t&rct=j&q=rss%20feed&source=web&cd=1&ved=0CD0QFjAA&url=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FRSS&ei=K9jxTtyyMY-K4gSwibHBAQ&usg=AFQjCNEdBSkFc9gzQ_IRDoz4mZzyuZwfbw) within [Impromptu](http://impromptu.moso.com.au/), and as a result I built a small app that retrieves the news feed from [The Guardian](http://www.guardian.co.uk/) online and displays on a canvas. I've had a bit of free time these days, so last night I thought it was time to polish it a little and make it available on this blog (who knows maybe someone else will use it as starting point for another project).
 
-[![Visualizing rss feeds with Impromptu](/media/static/blog_img/6549002895_2b42b95cef.jpg)](http://www.flickr.com/photos/mikele/6549002895/ "Visualizing rss feeds with Impromptu by MagIcReBirth, on Flickr")
+[![Visualizing rss feeds with Impromptu](../assets/images/6549002895_2b42b95cef.jpg)](http://www.flickr.com/photos/mikele/6549002895/ "Visualizing rss feeds with Impromptu by MagIcReBirth, on Flickr")
 
 > There're a thousand improvements that could be done to it still, but the core of the application is there: I packaged it as a standalone app that you can [download here](http://www.box.com/s/oprvyybridp0gtij8j5d). (use the 'show package contents' Finder command to see the source code).
 
@@ -111,7 +111,7 @@ Finally, the util:open-url opens up a url string in your browser (I've already t
 
 You can see all of this code in action by [downloading the app](http://www.box.com/s/oprvyybridp0gtij8j5d) and taking a look its contents (all the files are under Contents/Resources/app).
 
-[![Visualizing rss feeds with Impromptu](/media/static/blog_img/6549002521_9b39fb2120.jpg)](http://www.flickr.com/photos/mikele/6549002521/ "Visualizing rss feeds with Impromptu by MagIcReBirth, on Flickr")
+[![Visualizing rss feeds with Impromptu](../assets/images/6549002521_9b39fb2120.jpg)](http://www.flickr.com/photos/mikele/6549002521/ "Visualizing rss feeds with Impromptu by MagIcReBirth, on Flickr")
 
 ### If I had the time…
 
