@@ -1,0 +1,114 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; techno-beat-1.xtm -- 
+;; July 5, 2024 
+;; 
+;; 
+;; 
+;; 
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; kits for ACTIVATION KIT (ABLETON DRUMS)
+(define *kit-sn* x42)
+(define *kit-kick* x32)
+(define *kit-kick2* x41)
+(define *kit-tom* x22)
+(define *kit-tom2* x34)
+(define *kit-perc* x11)
+(define *kit-perc2* x13)
+(define *kit-perc3* x24)
+(define *kit-crash* x12)
+(define *kit-ride* x14)
+(define *kit-snare* x31)
+(define *kit-snare2* x42)
+(define *kit-snare3* x43)
+(define *kit-clap* x44)
+(define *kit-hhat* x21)
+(define *kit-hhat2* x23)
+(define *kit-hhat3* x33)
+
+;; midicc channel zebra
+(define *cutoff* 11) 
+(define *reso* 12)   
+
+;; midi instruments
+(define glitch 1) ; Analog Lab V / Kick Glitch Hits
+(define bass 2) ; ZebraHZ / Chordination 
+(define drone 3) ; kontakt / Ethereal Earth / Trumpet Fireflies
+(define voice 4) ; Police Radio Sample
+
+;; start volumes
+(mix glitch 20)
+(mix bass 20)
+(mix drone 100)
+(mix voice 100)
+
+
+
+
+
+
+(define drones
+  (lambda (beat)
+    (let ((dur (random)))
+        
+        (atbtw 14/5 0 1 (play drone C1 80 2))
+        (atbtw 2 0 1/2 (play glitch C4 (cosr 20 20 1/3) 4))
+
+      (callback-at dur 'drones ))))
+
+(drones (*metro* 'get-beat 1))
+
+
+
+(define main
+  (lambda (beat)
+    (let ((dur 1/4)
+          (osc1 (cosr 60 60 1/128))
+          (osc2 (cosr 60 60 5/256))
+    )
+
+      ;; drums
+      (at 1 0 (playk *kit-hhat* 90))
+      (at 2 1/2 (playk *kit-hhat3* 90))
+      (at 5/3 1/4 (playk *kit-hhat3* 90))
+
+      ;; bassline
+      (play bass (mkint C2 (oneof 0 3 4 5) 'm ) 90 dur)
+      (mcc *cutoff* osc1)
+      (mcc *reso* osc2)
+
+      ;; cyclical drums
+      (if> osc1 60 
+        (at 1 1/2 (playk *kit-kick* 90)))
+
+      (if< osc1 60 
+        (at 10/3 1/4 (playk *kit-snare* 90)))
+
+      (if< osc1 60 
+        (at 50 0 (play voice C4 80 50)))
+
+
+      (callback-at dur 'main ))))
+
+(main (*metro* 'get-beat 1))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

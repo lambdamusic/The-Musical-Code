@@ -1,7 +1,7 @@
 # awesome-pages copy of YAML settings
 # pages are loaded dynamically
 
-site_name: The Musical Code | Experiments with musical algorithms
+site_name: The Musical Code | Experiments in Algorithmic Composition
 docs_dir: docs
 site_dir: ../docs
 
