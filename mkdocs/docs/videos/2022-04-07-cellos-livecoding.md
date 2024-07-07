@@ -13,7 +13,7 @@ tags:
 
 A new livecoding composition using [Extempore](https://extemporelang.github.io/) and Ableton Live: 'Study for Cello and Double-bass'. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VR6lMsECEQc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VR6lMsECEQc?autoplay=1&amp;start=170" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Creating chords using a cosine function
 

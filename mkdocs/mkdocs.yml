@@ -20,6 +20,8 @@ theme:
       scheme: slate
       primary: purple
       accent: deep orange
+    features:
+      - navigation.tabs
 markdown_extensions:
   - admonition
   - attr_list

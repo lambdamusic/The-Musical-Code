@@ -1,4 +1,4 @@
-# About
+# What is Extempore?
 
 !!! warning
     Page under construction

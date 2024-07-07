@@ -18,7 +18,7 @@ Thursday Club Xmas party \[ [event-site](http://toplap.org/uk/event/thursd/) | [
 
 ## My performance of **Turbo Robot**:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/O7pr-9SxGxw?si=ZqTKBrogmZ9Y4u5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/O7pr-9SxGxw?si=ZqTKBrogmZ9Y4u5k&autoplay=1&amp;start=340" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 ## The Event

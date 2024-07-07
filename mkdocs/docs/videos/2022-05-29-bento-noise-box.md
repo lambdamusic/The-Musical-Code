@@ -31,7 +31,7 @@ Just trying to control it using MIDI-CC from Extempore.
 
 Note: I previously created some MIDI mappings and saved them to a [file](https://github.com/lambdamusic/extempore-extensions/blob/main/init/init_bento.xtm) I can reload each time.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/P6Av_eLy_xw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P6Av_eLy_xw?autoplay=1&amp;start=340" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Take 2
 
@@ -41,5 +41,5 @@ Drumkit sounds generated with Ableton Live.
 
 Slowly getting the hang of it!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Prg-bmA9zDo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Prg-bmA9zDo?autoplay=0&amp;start=340" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
