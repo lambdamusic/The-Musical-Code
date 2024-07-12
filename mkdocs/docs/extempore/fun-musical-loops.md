@@ -9,7 +9,7 @@ categories:
 
 A collection of [Extempore](https://extemporelang.github.io/) code snippets for creating different types of musical outputs. 
 
-## 1. Loop with inner `dur`
+## Loop with inner `dur`
 
 The most basic version of the loop templates. `dur` as an inner variable is handy in case we want to change `dur` on the fly and derive other parameters from it in the function body. 
 
@@ -26,7 +26,7 @@ The most basic version of the loop templates. `dur` as an inner variable is hand
 ```
 
 
-## 2. Loop with `dur` as a function argument
+## Loop with `dur` as a function argument
 
 Takes `dur` as a loop argument. Useful when we want to change `dur` INSIDE the function - ie based on some other process that happens in the function, so the next iteration should receive a preprocessed `dur`. 
 
@@ -49,7 +49,7 @@ Clearly this is a special case - normally `dur` is either fixed or randomly assi
 
 
 
-## 3. Loop with all `play` arguments
+## Loop with all `play` arguments
 
 I.e. the 'explicit' loop. Here we are passing all `play` args so that they can be changed at each iteration. 
 
@@ -70,7 +70,7 @@ I.e. the 'explicit' loop. Here we are passing all `play` args so that they can b
 ```
 
 
-## 4. Rotating melody loop, external
+## Loop with rotating melody, external
 
 Using notes and durs patterns as arguments, which rotate and get reset to the original lists when all elements have been used.
 
@@ -95,7 +95,7 @@ Note: since notes and durs are global variables, they can be easily changed outs
 ```
 
 
-## 5. Rotating melody loop, internal 
+## Loop with rotating melody, internal 
 
 Similiar to the external melody version, but the pattern arguments are internal and rotated periodically. 
 
@@ -117,7 +117,7 @@ This allows for example to call the same function multiple times with different 
 ```
 
 
-## 6. Rotating melody loop, internal, with 'deep' rotation
+## Loop with rotating melody, internal, with 'deep' rotation
 
 A variation of the rotate loop that takes a nested list of plists and takes one value from each plist per cycle, while rotating them, generating a two-voices alternating structure.
 
@@ -141,7 +141,7 @@ See also
 - [rotatedeep](https://extempore.michelepasin.org/def/rotatedeep.html)  
 
 
-## 7. Loop with `map` + `play` pattern
+## Loop with `map` + `play` pattern
 
 A more complex pattern playing structure that maps over several lists. It's a terse structure that permits to generate many rythmic and harmonic variations by modifying the external `times`, `notes` and `vols` periodically.
 
@@ -169,7 +169,7 @@ See also
 - [Rythmic Cycles on YouTube](https://www.youtube.com/watch?v=m3v8gRzROkU) uses this pattern
 
 
-## 8. Loop with `every`
+## Loop with `every`
 
 Allows to express conditions in relation to the loop (iteration) count, by passing an extra parameter `lc`. 
 
@@ -190,7 +190,7 @@ See also
 - [every](https://extempore.michelepasin.org/def/every-2.html)
 
 
-## 9. Loop with `rect` downbeats
+## Loop with `rect` downbeats
 
 Using a `rectr` function to oscillate downbeats between two states only. 
 
@@ -212,7 +212,7 @@ Note: `dur` is defined internally here, to make it easier to update the snippet 
 ```
 
 
-## 10. Loop with 'ping pong' effect 
+## Loop with 'ping pong' effect 
 
 Shorten the loop cycle duration by a fixed amount to achieve a ping pong effect. Reset the cycle duration when it gets too short.
 
@@ -229,7 +229,7 @@ Shorten the loop cycle duration by a fixed amount to achieve a ping pong effect.
 (lp1 (*metro* 'get-beat 1) A3 1 1)
 ```
 
-## 11. Loop with diatonic chord progressions
+## Loop with diatonic chord progressions
 
 Generates chords variations based on diatonic changes. 
 

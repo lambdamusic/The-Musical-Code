@@ -5,3 +5,4 @@ mkdocs-material-extensions==1.0.3
 mkdocs-git-revision-date-plugin==0.3.2
 #added to avoid dependency conflict
 jinja2==3.0.3
+mkdocs-enumerate-headings-plugin==0.6.2

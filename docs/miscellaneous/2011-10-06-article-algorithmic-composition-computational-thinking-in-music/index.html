@@ -1,1624 +1,823 @@
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-        <meta name="author" content="Michele Pasin">
-      
-      
-      <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
-    
-    
-      
-        <title>Article: Algorithmic Composition: Computational Thinking in Music - The Musical Code | Experiments in Algorithmic Composition</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/main.802231af.min.css">
-      
-        
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#ab47bd">
-        
-      
-    
-    
-    
+<!DOCTYPE html>
 
-  <!-- OneTrust Cookies Consent Notice start for dimensions.ai -->
-  <!-- <script type="text/javascript" src="https://cdn.cookielaw.org/consent/3329b668-7887-4dba-9bee-c3853a706e6f/OtAutoBlock.js"></script>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Michele Pasin" name="author"/>
+<link href="../../assets/images/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.6" name="generator"/>
+<title>Article: Algorithmic Composition: Computational Thinking in Music - The Musical Code | Experiments in Algorithmic Composition</title>
+<link href="../../assets/stylesheets/main.802231af.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
+<meta content="#ab47bd" name="theme-color"/>
+<!-- OneTrust Cookies Consent Notice start for dimensions.ai -->
+<!-- <script type="text/javascript" src="https://cdn.cookielaw.org/consent/3329b668-7887-4dba-9bee-c3853a706e6f/OtAutoBlock.js"></script>
   <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="3329b668-7887-4dba-9bee-c3853a706e6f"></script>
   <script type="text/javascript">
       function OptanonWrapper() { }
   </script> -->
-  <!-- OneTrust Cookies Consent Notice end for dimensions.ai -->
-
-    
-      
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
-      
-    
-    
-    
-    
-      
-
-  
-
-
-  
-
-  
-
-
-
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="deep-orange">
-  
-    
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#serialism-as-a-continuation-of-early-algorithmic-composition" class="md-skip">
+<!-- OneTrust Cookies Consent Notice end for dimensions.ai -->
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+</head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="purple" data-md-color-scheme="slate" dir="ltr">
+<script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#serialism-as-a-continuation-of-early-algorithmic-composition">1.1 
           Skip to content
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="The Musical Code | Experiments in Algorithmic Composition" class="md-header__button md-logo" aria-label="The Musical Code | Experiments in Algorithmic Composition" data-md-component="logo">
-      
-  <img src="../../assets/images/logo.jpg" alt="logo">
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="The Musical Code | Experiments in Algorithmic Composition" class="md-header__button md-logo" data-md-component="logo" href="../.." title="The Musical Code | Experiments in Algorithmic Composition">
+<img alt="logo" src="../../assets/images/logo.jpg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             The Musical Code | Experiments in Algorithmic Composition
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               Article: Algorithmic Composition: Computational Thinking in Music
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list"></ol>
 </div>
-    
-    
-      <div class="md-header__source">
-        
-<a href="https://github.com/lambdamusic/The-Musical-Code/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/lambdamusic/The-Musical-Code/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     GitHub
   </div>
 </a>
-      </div>
-    
-  </nav>
+</div>
+</nav>
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
       Home
     </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../videos/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../videos/">
         Videos
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../extempore/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../extempore/">
         Extempore
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../impromptu/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../impromptu/">
         Impromptu
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../tips/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tips/">
         Tips
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../2009-10-07-new-impromptu-screencast/" class="md-tabs__link md-tabs__link--active">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../2009-10-07-new-impromptu-screencast/">
         Miscellaneous
       </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="The Musical Code | Experiments in Algorithmic Composition" class="md-nav__button md-logo" aria-label="The Musical Code | Experiments in Algorithmic Composition" data-md-component="logo">
-      
-  <img src="../../assets/images/logo.jpg" alt="logo">
-
-    </a>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="The Musical Code | Experiments in Algorithmic Composition" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="The Musical Code | Experiments in Algorithmic Composition">
+<img alt="logo" src="../../assets/images/logo.jpg"/>
+</a>
     The Musical Code | Experiments in Algorithmic Composition
   </label>
-  
-    <div class="md-nav__source">
-      
-<a href="https://github.com/lambdamusic/The-Musical-Code/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/lambdamusic/The-Musical-Code/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     GitHub
   </div>
 </a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
         Home
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
-      
-      <label class="md-nav__link" for="__nav_2">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
         Videos
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Videos" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Videos" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
           Videos
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/" class="md-nav__link">
-        About
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/">
+        Videos
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2009-11-23-kali/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2009-11-23-kali/">
         Kali (2009-03)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2010-01-03-xanadu/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2010-01-03-xanadu/">
         Xanadu (2010-01)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2010-02-12-anatomy-theatre/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2010-02-12-anatomy-theatre/">
         Untitled 12 (2010-02) live @ Anatomy Theatre
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2010-04-02-misty-morning/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2010-04-02-misty-morning/">
         My misty morning (2010-04)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2010-12-09-goldsmith-college/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2010-12-09-goldsmith-college/">
         Turbo Robot (2010-12) live @ Goldsmith College
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2010-12-21-new-song-turborobot/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2010-12-21-new-song-turborobot/">
         Turborobot (2010-12)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2011-07-09-livecoding-in-paris/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2011-07-09-livecoding-in-paris/">
         Fjords (2011-07) live at La General Paris
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2011-07-11-fjords-strasbourg/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2011-07-11-fjords-strasbourg/">
         Fjords (2011-07) live @ Strasbourg LSM
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2013-11-27-ziggurat-51/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2013-11-27-ziggurat-51/">
         Ziggurat 51 (2013-11)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2020-09-09-ambient-experiment/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2020-09-09-ambient-experiment/">
         Ambient experiment (2020-09)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2020-11-02-livecoding-piano-scales/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2020-11-02-livecoding-piano-scales/">
         Piano Scales (2020-11)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2021-04-10-livecoding-rhythmic-cycles/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2021-04-10-livecoding-rhythmic-cycles/">
         Rhythmic Cycles (2021-04)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2022-04-07-cellos-livecoding/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2022-04-07-cellos-livecoding/">
         Study for Cello and Double-bass (2022-04)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2022-05-29-bento-noise-box/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2022-05-29-bento-noise-box/">
         Bento noise box (2022-05)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2022-09-18-chilled-electro/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2022-09-18-chilled-electro/">
         Chilled electro jam (2022-09)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2023-11-18-the-self/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2023-11-18-the-self/">
         The self (2023-11)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2023-12-09-many-pianos-1/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2023-12-09-many-pianos-1/">
         Many pianos - Study No 1 in C Minor (2023-12)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2024-01-06-many-pianos-2/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2024-01-06-many-pianos-2/">
         Many pianos - Study No 2 in B Minor (2024-01)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2024-02-12-out-of-this-world/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2024-02-12-out-of-this-world/">
         Out of this world (2024-02)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2024-03-08-ping-pong/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2024-03-08-ping-pong/">
         Ping pong delays (2024-03)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../videos/2024-07-05-techno-jam/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2024-07-05-techno-jam/">
         Techno jam (2024-07)
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
-      
-      <label class="md-nav__link" for="__nav_3">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
         Extempore
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Extempore" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Extempore" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
           Extempore
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../extempore/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/">
         What is Extempore?
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../extempore/ableton-live/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/ableton-live/">
         Ableton Live
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../extempore/vscode/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/vscode/">
         VSCode
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../extempore/fun-musical-loops/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/fun-musical-loops/">
         Musical Loops functions
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../extempore/mkchords/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/mkchords/">
         Making scales and chords
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../extempore/fun-callback-at/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/fun-callback-at/">
         Callback-at
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../extempore/fun-rect/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/fun-rect/">
         Rect
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
-      
-      <label class="md-nav__link" for="__nav_4">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
         Impromptu
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Impromptu" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Impromptu" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
           Impromptu
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/">
         What is Impromptu?
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2007-05-12-impromptu-scheme-based-music-and-video/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2007-05-12-impromptu-scheme-based-music-and-video/">
         Impromptu: scheme-based music and video
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2009-10-18-impromptu-zebra-a-perfect-match/" class="md-nav__link">
-        Impromptu & Zebra: a perfect match!
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2009-10-18-impromptu-zebra-a-perfect-match/">
+        Impromptu &amp; Zebra: a perfect match!
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2009-10-29-impromptu-if-mod-macro/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2009-10-29-impromptu-if-mod-macro/">
         Impromptu: If-mod macro
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2010-02-15-impromptu-function-to-access-wiki-docs-from-the-editor/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2010-02-15-impromptu-function-to-access-wiki-docs-from-the-editor/">
         Impromptu: access the Wiki docs from the editor
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2010-10-13-impromptu-2-5/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2010-10-13-impromptu-2-5/">
         Impromptu 2.5 released
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2011-01-29-opening-a-finders-window-from-impromptu-alas-how-to-use-the-applescript-bridge/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2011-01-29-opening-a-finders-window-from-impromptu-alas-how-to-use-the-applescript-bridge/">
         Opening a Finder's window from Impromptu (alas how to use the applescript bridge..)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2011-02-07-what-is-the-reaper-time-in-impromptu/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2011-02-07-what-is-the-reaper-time-in-impromptu/">
         What is the reaper time in Impromptu?
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2011-03-29-an-alternative-to-the-play-macro-iplay-and-with-instrument/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2011-03-29-an-alternative-to-the-play-macro-iplay-and-with-instrument/">
         An alternative to the 'play' macro: 'iplay' and 'with-instrument'
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2011-05-02-the-new-livecoding-error-hook-in-impromptu/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2011-05-02-the-new-livecoding-error-hook-in-impromptu/">
         The new Livecoding Error Hook in Impromptu
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2011-12-21-using-impromptu-to-visualize-rss-feeds/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2011-12-21-using-impromptu-to-visualize-rss-feeds/">
         Using Impromptu to visualize RSS feeds
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2013-02-20-a-metronome-object-for-impromptu/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2013-02-20-a-metronome-object-for-impromptu/">
         A metronome object for Impromptu
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../impromptu/2013-09-15-building-a-master-volumes-ui-in-impromptu/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2013-09-15-building-a-master-volumes-ui-in-impromptu/">
         Building a master volumes UI with impromptu
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
-      
-      <label class="md-nav__link" for="__nav_5">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
         Tips
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Tips" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tips" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
           Tips
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tips/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tips/">
         About
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tips/performing/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tips/performing/">
         Performing
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tips/screencasting/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tips/screencasting/">
         Screencasting
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tips/imovie/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tips/imovie/">
         iMovie
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tips/youtube/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tips/youtube/">
         YouTube
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tips/hydra/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tips/hydra/">
         Hydra Sketches
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tips/behringer/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tips/behringer/">
         Behringer Mixer
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tips/finalcut/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tips/finalcut/">
         FinalCut
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tips/mp3/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tips/mp3/">
         MP3
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
-      
-      <label class="md-nav__link" for="__nav_6">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
         Miscellaneous
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Miscellaneous" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
           Miscellaneous
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2009-10-07-new-impromptu-screencast/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2009-10-07-new-impromptu-screencast/">
         Event: Livecoding at the Shunt, London
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2010-01-10-livecoding-night-kings-college-coming-up/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2010-01-10-livecoding-night-kings-college-coming-up/">
         Event: Livecoding night @ King's College coming up
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2010-03-29-algorithms-are-thoughts-chainsaws-are-tools/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2010-03-29-algorithms-are-thoughts-chainsaws-are-tools/">
         Algorithms are Thoughts, Chainsaws are Tools
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2010-08-10-learning-resources-about-scheme/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2010-08-10-learning-resources-about-scheme/">
         Learning resources about Scheme
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2010-12-09-jmusic-music-composition-in-java/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2010-12-09-jmusic-music-composition-in-java/">
         JMusic: music composition in Java
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2011-02-24-new-livecoding-documentary-available/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2011-02-24-new-livecoding-documentary-available/">
         'Show us your screens': new Livecoding documentary
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2011-06-29-livecoding-is-like-gardening/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2011-06-29-livecoding-is-like-gardening/">
         Livecoding is like gardening
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2011-07-11-workshop-on-live-coding-rmll-11/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2011-07-11-workshop-on-live-coding-rmll-11/">
         Workshop on Live Coding @ RMLL-11
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
           Article: Algorithmic Composition: Computational Thinking in Music
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Article: Algorithmic Composition: Computational Thinking in Music
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#serialism-as-a-continuation-of-early-algorithmic-composition" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#serialism-as-a-continuation-of-early-algorithmic-composition">1.1 
     Serialism As A Continuation Of Early Algorithmic Composition
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#composers-hiller-and-the-illiac-suite-for-string-quartet" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#composers-hiller-and-the-illiac-suite-for-string-quartet">1.2 
     Composers: Hiller And "The Illiac Suite For String Quartet"
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#cage-on-the-difference-between-traditional-and-computer-assisted-composition" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cage-on-the-difference-between-traditional-and-computer-assisted-composition">1.3 
     Cage On The Difference Between Traditional And Computer- Assisted Composition
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#composers-xenakis" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#composers-xenakis">1.4 
     Composers: Xenakis
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#composers-koenig" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#composers-koenig">1.5 
     Composers: Koenig
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#the-contemporary-landscape-a-division-between-composers-and-ai-researchers" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-contemporary-landscape-a-division-between-composers-and-ai-researchers">1.6 
     The Contemporary Landscape: A Division Between Composers And Ai Researchers
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#algorithmic-composition-outside-academia-brian-eno" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithmic-composition-outside-academia-brian-eno">1.7 
     Algorithmic Composition Outside Academia: Brian Eno
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#ligeti-on-the-relation-between-music-and-mathematics" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ligeti-on-the-relation-between-music-and-mathematics">1.8 
     Ligeti On The Relation Between Music And Mathematics
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#example-an-algorithmic-model-of-ligetis-desordre" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-an-algorithmic-model-of-ligetis-desordre">1.9 
     Example: An Algorithmic Model Of Ligeti's Desordre
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#on-the-negative-reception-of-algorithmic-composition" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#on-the-negative-reception-of-algorithmic-composition">1.10 
     On The Negative Reception Of Algorithmic Composition
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#composing-using-algorithmic-methods-misconceptions" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#composing-using-algorithmic-methods-misconceptions">1.11 
     Composing Using Algorithmic Methods: Misconceptions
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2011-12-26-article-thought-and-performance-live-coding-music-explained-to-anyone/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2011-12-26-article-thought-and-performance-live-coding-music-explained-to-anyone/">
         Article: Thought and Performance, Live Coding Music, Explained to Anyone
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2012-01-13-special-issue-of-cmj-dvd-on-livecoding/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2012-01-13-special-issue-of-cmj-dvd-on-livecoding/">
         Special issue of CMJ DVD on livecoding
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2012-03-09-composing-at-the-metalevel/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2012-03-09-composing-at-the-metalevel/">
         Composing at the metalevel
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../plugins/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../plugins/">
         Plugins
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#serialism-as-a-continuation-of-early-algorithmic-composition" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#serialism-as-a-continuation-of-early-algorithmic-composition">1.1 
     Serialism As A Continuation Of Early Algorithmic Composition
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#composers-hiller-and-the-illiac-suite-for-string-quartet" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#composers-hiller-and-the-illiac-suite-for-string-quartet">1.2 
     Composers: Hiller And "The Illiac Suite For String Quartet"
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#cage-on-the-difference-between-traditional-and-computer-assisted-composition" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cage-on-the-difference-between-traditional-and-computer-assisted-composition">1.3 
     Cage On The Difference Between Traditional And Computer- Assisted Composition
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#composers-xenakis" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#composers-xenakis">1.4 
     Composers: Xenakis
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#composers-koenig" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#composers-koenig">1.5 
     Composers: Koenig
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#the-contemporary-landscape-a-division-between-composers-and-ai-researchers" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-contemporary-landscape-a-division-between-composers-and-ai-researchers">1.6 
     The Contemporary Landscape: A Division Between Composers And Ai Researchers
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#algorithmic-composition-outside-academia-brian-eno" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithmic-composition-outside-academia-brian-eno">1.7 
     Algorithmic Composition Outside Academia: Brian Eno
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#ligeti-on-the-relation-between-music-and-mathematics" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ligeti-on-the-relation-between-music-and-mathematics">1.8 
     Ligeti On The Relation Between Music And Mathematics
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#example-an-algorithmic-model-of-ligetis-desordre" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-an-algorithmic-model-of-ligetis-desordre">1.9 
     Example: An Algorithmic Model Of Ligeti's Desordre
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#on-the-negative-reception-of-algorithmic-composition" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#on-the-negative-reception-of-algorithmic-composition">1.10 
     On The Negative Reception Of Algorithmic Composition
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#composing-using-algorithmic-methods-misconceptions" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#composing-using-algorithmic-methods-misconceptions">1.11 
     Composing Using Algorithmic Methods: Misconceptions
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/lambdamusic/The-Musical-Code/edit/master/docs/miscellaneous/2011-10-06-article-algorithmic-composition-computational-thinking-in-music.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  <h1>Article: Algorithmic Composition: Computational Thinking in Music</h1>
-                
-                <p>An article by <a href="http://people.ace.ed.ac.uk/staff/medward2/">Michael Edwards</a> on algorithmic composition has been published last month on the Communications of the ACM journal. The article is titled <a href="http://cacm.acm.org/magazines/2011/7/109891-algorithmic-composition/fulltext">Algorithmic Composition: Computational Thinking in Music</a>.</p>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/lambdamusic/The-Musical-Code/edit/master/docs/miscellaneous/2011-10-06-article-algorithmic-composition-computational-thinking-in-music.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Article: Algorithmic Composition: Computational Thinking in Music</h1>
+<p>An article by <a href="http://people.ace.ed.ac.uk/staff/medward2/">Michael Edwards</a> on algorithmic composition has been published last month on the Communications of the ACM journal. The article is titled <a href="http://cacm.acm.org/magazines/2011/7/109891-algorithmic-composition/fulltext">Algorithmic Composition: Computational Thinking in Music</a>.</p>
 <p>Although the article is quite introductory (Edwards makes it clear that the article "is more illustrative than all-inclusive, presenting examples of particular techniques and some of the music that has been produced with them") it is defintely an interesting read. I found quite a few nice ideas in it and also references to musics and musicians I wasn't familiar with.</p>
 <p>Follows a list of 'highlights' from my iPad reader, to which I added hyperlinks to relevant explanatory materials:</p>
-<h2 id="serialism-as-a-continuation-of-early-algorithmic-composition">Serialism As A Continuation Of Early Algorithmic Composition</h2>
+<h2 id="serialism-as-a-continuation-of-early-algorithmic-composition"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Serialism As A Continuation Of Early Algorithmic Composition</h2>
 <blockquote>
 <p>After World War II, many Western classical music composers continued to develop the serial technique invented by <a href="http://en.wikipedia.org/wiki/Arnold_Schoenberg">Arnold Schönberg</a> (1874–1951) et al. Though generally seen as a radical break with tradition, in light of the earlier historical examples just presented, <a href="http://en.wikipedia.org/wiki/Serialism">serialism’s</a> detailed organization can be viewed as no more than a continuation of the tradition of formalizing musical composition. Indeed, one of the new generation’s criticisms of Schönberg was that he radicalized only pitch structure, leaving other parameters (such as rhythm, dynamic, even form) in the 19th century. They looked to the music of Schönberg’s pupil <a href="http://en.wikipedia.org/wiki/Anton_Webern">Anton von Webern</a> for inspiration in organizing these other parameters according to serial principles. Hence the rise of the total serialists: <a href="http://en.wikipedia.org/wiki/Pierre_Boulez">Boulez</a>, <a href="http://en.wikipedia.org/wiki/Karlheinz_Stockhausen">Stockhausen</a>, <a href="http://en.wikipedia.org/wiki/Henri_Pousseur">Pousseur</a>, <a href="http://en.wikipedia.org/wiki/Luigi_Nono">Nono</a>, and others in Europe, and <a href="http://en.wikipedia.org/wiki/Milton_Babbitt">Milton Babbitt</a> and his students at Princeton.</p>
 </blockquote>
-<h2 id="composers-hiller-and-the-illiac-suite-for-string-quartet">Composers: Hiller And "The Illiac Suite For String Quartet"</h2>
+<h2 id="composers-hiller-and-the-illiac-suite-for-string-quartet"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Composers: Hiller And "The Illiac Suite For String Quartet"</h2>
 <blockquote>
 <p><a href="http://en.wikipedia.org/wiki/Lejaren_Hiller">Lejaren Hiller</a> (1924–1994) is widely recognized as the first composer to have applied computer programs to algorithmic composition. The use of specially designed, unique computer hardware was common at U.S. universities in the mid-20th century. Hiller used the Illiac computer at the University of Illinois, Urbana-Champaign, to create experimental new music with algorithms. His collaboration with Leonard Isaacson resulted in 1956 in the first known computer-aided composition, The Illiac Suite for String Quartet (<a href="http://en.wikipedia.org/wiki/Illiac_Suite">wiki</a> | <a href="http://www.youtube.com/watch?v=isvYe6yOPXQ&amp;feature=related">video</a>), programmed in binary, and using, among other techniques, Markov Chains in “random walk” pitch generation algorithms.</p>
 </blockquote>
-<h2 id="cage-on-the-difference-between-traditional-and-computer-assisted-composition">Cage On The Difference Between Traditional And Computer- Assisted Composition</h2>
+<h2 id="cage-on-the-difference-between-traditional-and-computer-assisted-composition"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> Cage On The Difference Between Traditional And Computer- Assisted Composition</h2>
 <blockquote>
 <p><a href="http://en.wikipedia.org/wiki/John_Cage">Cage</a> said in an interview during the composition of HPSCHD (<a href="http://en.wikipedia.org/wiki/HPSCHD">wiki</a> | <a href="http://www.youtube.com/watch?v=t_hTxJpWITw">video</a>), "Formerly, when one worked alone, at a given point a decision was made, and one went in one direction rather than another; whereas, in the case of working with another person and with computer facilities, the need to work as though decisions were scarce—as though you had to limit yourself to one idea—is no longer pressing. It’s a change from the influences of scarcity or economy to the influences of abundance and ## I’d be willing to say—waste."</p>
 </blockquote>
-<h2 id="composers-xenakis">Composers: Xenakis</h2>
+<h2 id="composers-xenakis"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Composers: Xenakis</h2>
 <blockquote>
 <p>Known primarily for his instrumental compositions but also as an engineer and architect, <a href="http://en.wikipedia.org/wiki/Iannis_Xenakis">Iannis Xenakis</a> was a pioneer of algorithmic composition and computer music. Using language typical of the sci-fi age, he wrote, “With the aid of electronic computers, the composer becomes a sort of pilot: he presses buttons, introduces coordinates, and supervises the controls of a cosmic vessel sailing in the space of sound, across sonic constellations and galaxies that he could formerly glimpse only in a distant dream. [...] Xenakis’s approach, which led to the <a href="http://en.wikipedia.org/wiki/Stochastic">Stochastic</a> Music Programme (henceforth SMP) and radically new pieces (such as <a href="http://www.youtube.com/watch?v=sWdQBblec0M">Pithoprakta</a>, 1956), used formulae originally developed by scientists to explain the behavior of gas particles (Maxwell’s and Boltzmann’s Kinetic Theory of Gases). He saw his stochastic compositions as clouds of sound, with individual notes as the analogue of gas particles. [...] His <a href="http://www.youtube.com/watch?v=vbU69HObLeg">Eonta</a> (1963–1964) for two trumpets, three tenor trombones, and piano was composed with SMP. The program was applied in particular to the creation of the massively complex opening piano solo.</p>
 </blockquote>
-<h2 id="composers-koenig">Composers: Koenig</h2>
+<h2 id="composers-koenig"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> Composers: Koenig</h2>
 <blockquote>
 <p><a href="http://en.wikipedia.org/wiki/Gottfried_Michael_Koenig">Koenig</a> saw transcription (from computer output to musical score) as an important part of the process of algorithmic composition, writing, "Neither the histograms nor the connection algorithm contains any hints about the envisaged, ‘unfolded’ score, which consists of instructions for dividing the labor of the production changes mode, that is, the division into performance parts. The histogram, unfolded to reveal the individual time and parameter values, has to be split up into voices."</p>
 </blockquote>
-<h2 id="the-contemporary-landscape-a-division-between-composers-and-ai-researchers">The Contemporary Landscape: A Division Between Composers And Ai Researchers</h2>
+<h2 id="the-contemporary-landscape-a-division-between-composers-and-ai-researchers"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> The Contemporary Landscape: A Division Between Composers And Ai Researchers</h2>
 <blockquote>
 <p>Contemporary (late 20th century) techniques tend to be hybrids of <a href="http://en.wikipedia.org/wiki/Deterministic_algorithm">deterministic</a> and <a href="http://en.wikipedia.org/wiki/Stochastic">stochastic</a> approaches. Systems using techniques from artificial intelligence (AI) and/or linguistics.. [...] While naturally significant to AI research, linguistics, and computer science, such systems tend to be of limited use to composers writing music in a modern and personal style that perhaps resists codification because of its notational and sonic complexity and, more simply, its lack of sufficient and stylistically consistent data [...] Thus we can witness a division between composers concerned with creating new music with personalized systems and researchers interested in developing systems for machine learning and AI. The latter may quite understandably find it more useful to generate music in well-known styles not only because there is extant data but also because familiarity of material simplifies some aspects of the assessment of results. Naturally though, more collaboration between composers and researchers could lead to fruitful, aesthetically progressive results.</p>
 </blockquote>
-<h2 id="algorithmic-composition-outside-academia-brian-eno">Algorithmic Composition Outside Academia: Brian Eno</h2>
+<h2 id="algorithmic-composition-outside-academia-brian-eno"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> Algorithmic Composition Outside Academia: Brian Eno</h2>
 <blockquote>
 <p>Application of algorithmic-composition techniques is not restricted to academia or to the classical avant garde. Pop/ambient musician <a href="http://en.wikipedia.org/wiki/Brian_Eno">Brian Eno</a> (1948–) is known for his admiration and use of generative systems in Music for Airports (1978) [<a href="http://en.wikipedia.org/wiki/Ambient_1:_Music_for_Airports">wiki</a> | <a href="http://www.youtube.com/watch?v=B9kPIp4MtX0">video</a>] and other pieces. Eno was inspired by the American <a href="http://en.wikipedia.org/wiki/Minimalist_music">minimalists</a>, in particular <a href="http://en.wikipedia.org/wiki/Steve_Reich">Steve Reich</a> (1936–) and his tape piece It’s Gonna Rain (1965) [<a href="http://en.wikipedia.org/wiki/It's_Gonna_Rain">wiki</a> | <a href="http://www.youtube.com/watch?v=q0DQRfm0uL8">video</a>]. [...] Eno said about his Discreet Music (1975) [<a href="http://en.wikipedia.org/wiki/Discreet_Music">wiki</a> | <a href="http://www.youtube.com/watch?v=SrBoE0ItRLc">video</a>], "Since I have always preferred making plans to executing them, I have gravitated towards situations and systems that, once set into operation, could create music with little or no intervention on my part. That is to say, I tend towards the roles of planner and programmer, and then become an audience to the results".</p>
 </blockquote>
-<h2 id="ligeti-on-the-relation-between-music-and-mathematics">Ligeti On The Relation Between Music And Mathematics</h2>
+<h2 id="ligeti-on-the-relation-between-music-and-mathematics"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> Ligeti On The Relation Between Music And Mathematics</h2>
 <blockquote>
 <p>After leaving his native Hungary in the late 1950s, <a href="http://en.wikipedia.org/wiki/Ligeti">Ligeti</a> worked in the same studios as Cologne electronic music pioneers Karlheinz Stockhausen and Gottfried Michael Koenig though produced little electronic music of his own. However, his interest in science and mathematics led to several instrumental pieces influenced by, for example, fractal geometry and chaos theory. But these influences did not lead to a computer-based algorithmic approach. He was quoted in Steinitz saying, "Somewhere underneath, very deeply, there’s a common place in our spirit where the beauty of mathematics and the beauty of music meet. But they don’t meet on the level of algorithms or making music by calculation. It’s much lower, much deeper—or much higher, you could say."</p>
 </blockquote>
-<h2 id="example-an-algorithmic-model-of-ligetis-desordre">Example: An Algorithmic Model Of Ligeti's Desordre</h2>
+<h2 id="example-an-algorithmic-model-of-ligetis-desordre"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> Example: An Algorithmic Model Of Ligeti's Desordre</h2>
 <blockquote>
 <p>I have implemented algorithmic models of the first part of <a href="http://www.youtube.com/watch?v=qj9QlWltv8s">Désordre</a> in the open-source software system <a href="http://puredata.info/">Pure Data</a>, which, along with the following discussion, is based on analyses by Tobias Kunze,26 used here with permission, and Hartmut Kinzler. It is freely downloadable from my Web site <a href="http://www.michael-edwards.org/software/desordre.zip">http://www.michael-edwards.org/software/desordre.zip</a> [...] The main argument of Désordre consists of foreground and background textures.. [...] In Désordre we experience a clear, compelling, yet not entirely predictable musical development of rhythmic acceleration coupled with a movement from the middle piano register to the extremes of high and low, all expressed through two related and repeating melodic cycles with slightly differing lengths resulting in a combination that dislocates and leads to metrical disorder. I invite the reader to investigate this in more detail by downloading my software implementation.</p>
 </blockquote>
-<h2 id="on-the-negative-reception-of-algorithmic-composition">On The Negative Reception Of Algorithmic Composition</h2>
+<h2 id="on-the-negative-reception-of-algorithmic-composition"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10</span> On The Negative Reception Of Algorithmic Composition</h2>
 <blockquote>
 <p>There has been (and still is) considerable resistance to algorithmic composition from all sides, from musicians to the general public. This resistance bears comparison to the reception of the supposedly overly mathematical serial approach introduced by the composers of the <a href="http://en.wikipedia.org/wiki/Second_Viennese_School">Second Viennese School</a> of the 1920s and 1930s. Alongside the techniques of other music composed from the beginning of the 20th century onward, the serial principle itself is frequently considered to be the reason the music—so-called modern music, though now close to 100 years old — may not appeal. [...] Algorithmic composition is often viewed as a sideline in contemporary musical activity, as opposed to a logical application and incorporation of compositional technique into the digital domain. Without wishing to imply that instrumental composition is in a general state of stagnation, if the computer is the universal tool, there is surely no doubt that not applying it to composition would be, if not exactly an example of Luddism, then at least to risk missing important aesthetic developments that only the computer can facilitate, and that other artistic fields already take advantage of.</p>
 </blockquote>
-<h2 id="composing-using-algorithmic-methods-misconceptions">Composing Using Algorithmic Methods: Misconceptions</h2>
+<h2 id="composing-using-algorithmic-methods-misconceptions"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11</span> Composing Using Algorithmic Methods: Misconceptions</h2>
 <blockquote>
 <p>Much of the resistance to algorithmic composition that persists to this day stems from the misguided bias that the computer, not the composer, composes the music. In the vast majority of cases where the composer is also the programmer, this is simply not true. As composer and computer musician Curtis Roads pointed out more than 15 years ago, it takes a good composer to design algorithms that result in music that captures the imagination. [...] Furthermore, using algorithmic-composition techniques does not by necessity imply less composition work or a shortcut to musical results; rather, it is a change of focus from note-to-note com- position to a top-down formalization of compositional process. Composition is, in fact, often slowed by the requirement that musical ideas be expressed and their characteristics encapsulated in a highly structured and non-musical general programming language. Learning the discipline of programming is itself a time-consuming and, for some composers, an insurmountable problem.</p>
 </blockquote>
-                
-                  
-                    
-
-<hr>
+<hr/>
 <div class="md-source-date">
-  <small>
+<small>
     
-      Last update: 2024-04-21
+      Last update: 2024-07-07
     
   </small>
 </div>
-                  
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-        
-      </main>
-      
-        
+</article>
+</div>
+</div>
+</main>
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../2011-07-11-workshop-on-live-coding-rmll-11/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Workshop on Live Coding @ RMLL-11" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Workshop on Live Coding @ RMLL-11" class="md-footer__link md-footer__link--prev" href="../2011-07-11-workshop-on-live-coding-rmll-11/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
                 Previous
               </span>
               Workshop on Live Coding @ RMLL-11
             </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../2011-12-26-article-thought-and-performance-live-coding-music-explained-to-anyone/" class="md-footer__link md-footer__link--next" aria-label="Next: Article: Thought and Performance, Live Coding Music, Explained to Anyone" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
+</div>
+</a>
+<a aria-label="Next: Article: Thought and Performance, Live Coding Music, Explained to Anyone" class="md-footer__link md-footer__link--next" href="../2011-12-26-article-thought-and-performance-live-coding-music-explained-to-anyone/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
                 Next
               </span>
               Article: Thought and Performance, Live Coding Music, Explained to Anyone
             </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
             © Copyright 2023-2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a>
-          </div>
+</div>
         
         Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
           Material for MkDocs
         </a>
-        
-      </div>
-      
-    </div>
-  </div>
+</div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
-    
-    
-      <script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
-      
-    
-  </body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+<script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
+<script src="../../assets/js/headings-fix.js"></script>
+</body>
 </html>

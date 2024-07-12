@@ -1,30 +1,27 @@
 # What is Extempore?
 
-!!! warning
-    Page under construction
-
-!!! note "Note"
+!!! note "In a nutshell"
     [Extempore](https://extemporelang.github.io/) is a programming language for musical livecoding and algorithmic composition. If you're new to Extempore, [YouTube](https://www.youtube.com/results?search_query=extempore+livecoding) has many videos that show it in action.
 
 ## Getting started with Extempore
 
 Start from here
 
-- [Extempore Homepage](https://extemporelang.github.io/)
-- [GitHub Homepage](https://github.com/digego/extempore)
-- [Mailing List Archives](https://groups.google.com/g/extemporelang)
-- [VSCode plugin](https://github.com/extemporelang/vscode-extempore)
+- [Extempore Homepage](https://extemporelang.github.io/) and [GitHub project](https://github.com/digego/extempore): all you need to know about the Extempore language from its author Andrew Sorensen
+- [Mailing List Archives](https://groups.google.com/g/extemporelang): questions and answers from the community
+- [VSCode plugin](https://github.com/extemporelang/vscode-extempore): an extension for the popular code editor that makes it easier to interact with the Extempore server
 
 Other resources
 
-- [Ben's livecoding tricks](https://benswift.me/blog/2021/04/23/a-short-list-of-extempore-livecoding-tricks/)
-- My own [Extempore Extensions Github repo](https://github.com/lambdamusic/extempore-extensions) contains a bunch of (mainly MIDI) scheme extensions that I developed in order to create Extempore musical algorithms more efficiently and more naturally. 
+- [Ben's livecoding tricks](https://benswift.me/blog/2021/04/23/a-short-list-of-extempore-livecoding-tricks/) give you a hint of how to make music with Extempore
+- My own [Functions navigator](https://extempore.michelepasin.org/): a website that makes it easier to search and inspect Extempore's code base.
+- My own [Extempore Extensions](https://github.com/lambdamusic/extempore-extensions) GitHub project: contains a bunch of (mainly MIDI) scheme extensions that I developed in order to create Extempore musical algorithms more efficiently and more naturally. 
 
 
 ## Installing Extempore
 
 !!! warning
-    WIP
+    Section needs revision
 
 1. Install [latest release](https://github.com/digego/extempore/releases)
 2. Extract and open (some shortcuts available in bash_profile)

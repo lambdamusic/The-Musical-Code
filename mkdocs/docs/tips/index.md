@@ -1,7 +1,9 @@
-# About
+---
+title: "About"
+date: "2024-04-04"
+---
 
-!!! warning
-    Page under construction
+# Tips
 
-!!! note "Note"
-    [Extempore](https://extemporelang.github.io/) is a programming language for musical livecoding and algorithmic composition. If you're new to Extempore, [YouTube](https://www.youtube.com/results?search_query=extempore+livecoding) has many videos that show it in action.
+!!! info
+    Miscellaneous tips about livecoding and electronic music production

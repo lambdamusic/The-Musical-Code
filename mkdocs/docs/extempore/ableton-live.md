@@ -2,9 +2,12 @@
 
 # Ableton Live
 
-## Controlling Ableton Live via Extempore & MIDI
+!!! note "In a nutshell"
+    How to control Ableton LIVE using Extempore.
 
-In a nutshell: 
+## Controlling Ableton Live via MIDI
+
+Mains steps: 
 
 1. Create a new virtual device using the Audio Midi Setup app 
 2. Restart Ableton LIVE, open preferences and add a Control Surface for extempore. Ensure INPUT sections 'Track' and Remote' are on.
@@ -12,7 +15,7 @@ In a nutshell:
 
 See also
 
-- [Extempore mailing list thread on MIDI setup ](https://groups.google.com/g/extemporelang/c/9cQqmflEdpY/m/vej0rEw-AQAJ)
+- [A thread on MIDI setup on the Extempore mailing list](https://groups.google.com/g/extemporelang/c/9cQqmflEdpY/m/vej0rEw-AQAJ)
 
 
 
@@ -96,7 +99,7 @@ See also
 
 
 
-##  Using Midi CC and Automations
+## Using Midi CC and Automations
 
 ### Arm the track 
 

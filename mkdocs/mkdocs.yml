@@ -22,6 +22,8 @@ theme:
       accent: deep orange
     features:
       - navigation.tabs
+      - navigation.tabs.sticky
+      - navigation.path
 markdown_extensions:
   - admonition
   - attr_list
@@ -33,6 +35,15 @@ plugins:
     - search
     - awesome-pages
     - git-revision-date
+    - enumerate-headings:
+        toc_depth: 6
+        strict: true
+        increment_across_pages: false
+        exclude:
+          - index.md
+          - if-you-need-to/test.md
+extra_javascript:
+    - assets/js/headings-fix.js          
 extra:
   analytics:
     provider: google
