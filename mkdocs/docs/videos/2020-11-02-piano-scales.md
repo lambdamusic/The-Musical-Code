@@ -12,8 +12,7 @@ tags:
 review: false
 ---
 
-
-In general, [algorithmic compositions](https://en.wikipedia.org/wiki/Algorithmic_composition) using piano instruments always strike me for their captivating simplicity. So here's a new little experiment, titled ['Piano Scales](https://www.youtube.com/watch?v=Qix3tbpb9V4)'.
+Musical patterns emerging from time-triggered overlapping piano scales. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Qix3tbpb9V4?autoplay=1&amp;start=140" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

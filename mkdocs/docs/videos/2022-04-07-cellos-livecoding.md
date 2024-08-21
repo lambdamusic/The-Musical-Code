@@ -10,8 +10,7 @@ tags:
   - "extempore"
 ---
 
-
-A new livecoding composition using [Extempore](https://extemporelang.github.io/) and Ableton Live: 'Study for Cello and Double-bass'. 
+Game of Thrones inspired intertwining cellos melodic lines. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VR6lMsECEQc?autoplay=1&amp;start=170" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

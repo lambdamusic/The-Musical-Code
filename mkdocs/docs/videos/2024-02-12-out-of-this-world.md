@@ -12,7 +12,6 @@ tags:
   - "livecoding"
 ---
 
-
-Experimental ambient music inspired by the words of Alan Watts. Tip: listen with good headphones for full effect.
+Ambient music inspired by the words of Alan Watts. Tip: listen with good headphones for full effect.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UMBRRFGPI3M?si=VDo8f9M3g7741bhA&autoplay=1&amp;start=340" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

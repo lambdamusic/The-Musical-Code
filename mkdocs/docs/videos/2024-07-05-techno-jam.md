@@ -12,7 +12,7 @@ tags:
   - "livecoding"
 ---
 
-Me having fun with various overlapping electronic lines.
+Overlapping basslines and industrial noise sounds. Listen with a good pair of headphones!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Mk31VUWwDnQ?si=WTWV4ZnMTcTLBRKN&autoplay=1&amp;start=340" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

@@ -12,16 +12,16 @@ tags:
   - "london"
 ---
 
+Recording from Thursday Club Xmas party at Goldmisth college, London.
 
-Thursday Club Xmas party \[ [event-site](http://toplap.org/uk/event/thursd/) | [facebook](http://www.facebook.com/event.php?eid=131290450261616) | [flier](http://toplap.org/media/thursday.pdf) | [map](http://maps.google.co.uk/?ie=UTF8&ll=51.474597,-0.037993&spn=0.000433,0.000983&t=h&z=20) \]
-
-
-## My performance of **Turbo Robot**:
+Happy electronica piece with an almostlyrical intermezzo. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/O7pr-9SxGxw?si=ZqTKBrogmZ9Y4u5k&autoplay=1&amp;start=340" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-
 ## The Event
+
+Thursday Club Xmas party \[ [event-site](http://toplap.org/uk/event/thursd/) | [facebook](http://www.facebook.com/event.php?eid=131290450261616) | [flier](http://toplap.org/media/thursday.pdf) | [map](http://maps.google.co.uk/?ie=UTF8&ll=51.474597,-0.037993&spn=0.000433,0.000983&t=h&z=20) \]
+
 
 **6:30pm sharp til 8:30pm, 2010/12/16** at [Goldsmith Digital Studios](http://www.gold.ac.uk/virtual-tours/bpb-terrace/)
 
