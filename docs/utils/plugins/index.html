@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../assets/images/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.6" name="generator"/>
+<title>Plugins - The Musical Code | Experiments in Algorithmic Composition</title>
+<link href="../../assets/stylesheets/main.802231af.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
+<meta content="#ab47bd" name="theme-color"/>
+<!-- OneTrust Cookies Consent Notice start for dimensions.ai -->
+<!-- <script type="text/javascript" src="https://cdn.cookielaw.org/consent/3329b668-7887-4dba-9bee-c3853a706e6f/OtAutoBlock.js"></script>
+  <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="3329b668-7887-4dba-9bee-c3853a706e6f"></script>
+  <script type="text/javascript">
+      function OptanonWrapper() { }
+  </script> -->
+<!-- OneTrust Cookies Consent Notice end for dimensions.ai -->
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+</head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="purple" data-md-color-scheme="slate" dir="ltr">
+<script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#plugins">1. 
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="The Musical Code | Experiments in Algorithmic Composition" class="md-header__button md-logo" data-md-component="logo" href="../.." title="The Musical Code | Experiments in Algorithmic Composition">
+<img alt="logo" src="../../assets/images/logo.jpg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            The Musical Code | Experiments in Algorithmic Composition
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Plugins
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/lambdamusic/The-Musical-Code/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../videos/">
+        Videos
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../extempore/">
+        Extempore
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../impromptu/">
+        Impromptu
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../miscellaneous/2012-03-09-composing-at-the-metalevel/">
+        Miscellaneous
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../">
+        Utils
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="The Musical Code | Experiments in Algorithmic Composition" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="The Musical Code | Experiments in Algorithmic Composition">
+<img alt="logo" src="../../assets/images/logo.jpg"/>
+</a>
+    The Musical Code | Experiments in Algorithmic Composition
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/lambdamusic/The-Musical-Code/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+        Videos
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Videos" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Videos
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/">
+        Intro
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2024-07-05-techno-jam/">
+        Techno jam (2024-07)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2024-03-08-ping-pong/">
+        Ping pong delays (2024-03)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2024-02-12-out-of-this-world/">
+        Out of this world (2024-02)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2024-01-06-many-pianos-2/">
+        Dreamy pianos - Study No 2 in B Minor (2024-01)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2023-12-09-many-pianos-1/">
+        Dreamy pianos - Study No 1 in C Minor (2023-12)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2023-11-18-the-self/">
+        The self (2023-11)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2022-09-18-chilled-electro/">
+        Chilled electro jam (2022-09)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2022-05-29-bento-noise-box/">
+        Bento noise box (2022-05)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2022-04-07-cellos-livecoding/">
+        Study for Cello and Double-bass (2022-04)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2021-04-10-rhythmic-cycles/">
+        Rhythmic Cycles (2021-04)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2020-11-02-piano-scales/">
+        Piano Scales (2020-11)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2020-09-09-ambient-experiment/">
+        Ambient experiment (2020-09)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2013-11-27-ziggurat-51/">
+        Ziggurat 51 (2013-11)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2011-07-11-fjords-strasbourg/">
+        Fjords (2011-07) live @ Strasbourg LSM
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2011-07-09-livecoding-in-paris/">
+        Fjords (2011-07) live at La General Paris
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2010-12-21-new-song-turborobot/">
+        Turborobot (2010-12)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2010-12-09-goldsmith-college/">
+        Turbo Robot (2010-12) live @ Goldsmith College
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2010-04-02-misty-morning/">
+        My misty morning (2010-04)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2010-02-12-anatomy-theatre/">
+        Untitled 12 (2010-02) live @ Anatomy Theatre
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2010-01-03-xanadu/">
+        Xanadu (2010-01)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/2009-11-23-kali/">
+        Kali (2009-03)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+        Extempore
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Extempore" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Extempore
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/">
+        What is Extempore?
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/ableton-live/">
+        Ableton Live
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/vscode/">
+        VSCode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/fun-musical-loops/">
+        Musical Loops functions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/mkchords/">
+        Making scales and chords
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/fun-callback-at/">
+        Callback-at
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/fun-rect/">
+        Rect
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+        Impromptu
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Impromptu" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Impromptu
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/">
+        What is Impromptu?
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2007-05-12-impromptu-scheme-based-music-and-video/">
+        Impromptu: scheme-based music and video
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2009-10-18-impromptu-zebra-a-perfect-match/">
+        Impromptu &amp; Zebra: a perfect match!
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2009-10-29-impromptu-if-mod-macro/">
+        Impromptu: If-mod macro
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2010-02-15-impromptu-function-to-access-wiki-docs-from-the-editor/">
+        Impromptu: access the Wiki docs from the editor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2010-10-13-impromptu-2-5/">
+        Impromptu 2.5 released
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2011-01-29-opening-a-finders-window-from-impromptu-alas-how-to-use-the-applescript-bridge/">
+        Opening a Finder's window from Impromptu (alas how to use the applescript bridge..)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2011-02-07-what-is-the-reaper-time-in-impromptu/">
+        What is the reaper time in Impromptu?
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2011-03-29-an-alternative-to-the-play-macro-iplay-and-with-instrument/">
+        An alternative to the 'play' macro: 'iplay' and 'with-instrument'
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2011-05-02-the-new-livecoding-error-hook-in-impromptu/">
+        The new Livecoding Error Hook in Impromptu
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2011-12-21-using-impromptu-to-visualize-rss-feeds/">
+        Using Impromptu to visualize RSS feeds
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2013-02-20-a-metronome-object-for-impromptu/">
+        A metronome object for Impromptu
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../impromptu/2013-09-15-building-a-master-volumes-ui-in-impromptu/">
+        Building a master volumes UI with impromptu
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Miscellaneous" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2012-03-09-composing-at-the-metalevel/">
+        Composing at the metalevel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2012-01-13-special-issue-of-cmj-dvd-on-livecoding/">
+        Special issue of CMJ DVD on livecoding
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2011-12-26-article-thought-and-performance-live-coding-music-explained-to-anyone/">
+        Article: Thought and Performance, Live Coding Music, Explained to Anyone
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2011-10-06-article-algorithmic-composition-computational-thinking-in-music/">
+        Article: Algorithmic Composition: Computational Thinking in Music
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2011-07-11-workshop-on-live-coding-rmll-11/">
+        Workshop on Live Coding @ RMLL-11
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2011-06-29-livecoding-is-like-gardening/">
+        Livecoding is like gardening
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2011-02-24-new-livecoding-documentary-available/">
+        'Show us your screens': new Livecoding documentary
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2010-12-09-jmusic-music-composition-in-java/">
+        JMusic: music composition in Java
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2010-08-10-learning-resources-about-scheme/">
+        Learning resources about Scheme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2010-03-29-algorithms-are-thoughts-chainsaws-are-tools/">
+        Algorithms are Thoughts, Chainsaws are Tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2010-01-10-livecoding-night-kings-college-coming-up/">
+        Event: Livecoding night @ King's College coming up
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2009-10-07-new-impromptu-screencast/">
+        Event: Livecoding at the Shunt, London
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://blog.toplap.org/">
+        TopLap.org
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+        Utils
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Utils" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+        About
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../performing/">
+        Performing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../screencasting/">
+        Screencasting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../imovie/">
+        iMovie
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../youtube/">
+        YouTube
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hydra/">
+        Hydra Sketches
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../behringer/">
+        Behringer Mixer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../finalcut/">
+        FinalCut
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mp3/">
+        MP3
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Plugins
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/lambdamusic/The-Musical-Code/edit/master/docs/utils/plugins.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="plugins"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Plugins</h1>
+<h1 id="kontakt-instruments"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.</span> Kontakt instruments</h1>
+<p>The default instruments are pretty good </p>
+<p>However if you open up any of mine in the <code>2.instruments</code> library, they go into DEMO mode </p>
+<p><img alt="alt" src="../../assets/images/kontakt1.png"/></p>
+<p>~~The correct way is to open them up in Live directly.~~</p>
+<p>It used to be possible to import them using Sample. But from <a href="https://help.ableton.com/hc/en-us/articles/115001134410-Supported-sample-formats">Live 11</a> it is not possible to do that anymore..</p>
+<p>See: <a href="https://bedroomproducersblog.com/2020/04/23/kontakt-demo-mode/#:~:text=Question%3A%20Why%20do%20I%20see,the%20full%20version%20of%20Kontakt.">Kontakt Player Demo Mode – Explained</a></p>
+<blockquote>
+<p>The “demo mode” means that you can only use the library for fifteen minutes. After that, there will be no sound on the output, and you won’t be able to access the editing features</p>
+</blockquote>
+<p>Free libraries for Kontakt: 
+- https://projectsam.com/libraries/the-free-orchestra/</p>
+<h1 id="spitfire-audio"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.</span> Spitfire Audio</h1>
+<ul>
+<li><a href="https://labs.spitfireaudio.com/">main site</a></li>
+<li><a href="https://www.spitfireaudio.com/getting-started-labs">installation</a> </li>
+</ul>
+<p>How to reset: </p>
+<p>Had occasionally to reset everything cause I was getting errors with instruments not being found, even after reinstalling them as per <a href="https://spitfireaudio.zendesk.com/hc/en-us/articles/360006357354">error 4</a></p>
+<ol>
+<li><a href="https://spitfireaudio.zendesk.com/hc/en-us/articles/4403731679121-How-do-I-Uninstall-a-Spitfire-Library-">delete everything</a></li>
+<li>install app and log in </li>
+<li>the libraries installed previously may still appear. So you have to <ul>
+<li>click on the library icon, select the cog, click on 'reset', 'reset entire library'</li>
+<li>optionally, then reinstall it</li>
+</ul>
+</li>
+</ol>
+<p><img alt="alt" src="../../assets/images/spitfire-20231030155833.png"/></p>
+<p>This <a href="https://www.youtube.com/watch?v=1aM1pDguhlM">youtube video</a> helps!</p>
+<h1 id="pianobook-samples"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.</span> Pianobook samples</h1>
+<p>Get the <a href="https://www.decentsamples.com/product/decent-sampler-plugin/">Decent Sampler plugin</a></p>
+<p>Get an account on https://www.pianobook.co.uk/faq/</p>
+<h1 id="arturia-minilab"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.</span> Arturia Minilab</h1>
+<ul>
+<li><a href="https://www.arturia.com/products/hybrid-synths/minilab-mkii/overview">Overview</a> </li>
+<li><a href="https://www.youtube.com/channel/UC42FCmmQtebb2AHSoBCq1Aw">Minilab and Logic</a> </li>
+<li><a href="https://www.youtube.com/watch?v=CNmfXu6WkiA">Set up with Ableton</a></li>
+<li><a href="https://remotify.io/tutorials/midi-mapping-ableton-live#saving-midi-mappings">Ableton midi mappings via remote scripts</a></li>
+</ul>
+<p>PROS
+nice keyboard
+good quality
+midi control works
+knobs</p>
+<p>CONS
+no midi out 
+no arpeggiator </p>
+<h1 id="arturia-analog-4-vs-analog-5"><span class="enumerate-headings-plugin enumerate-heading-plugin">6.</span> Arturia Analog 4 Vs Analog 5</h1>
+<p>August 15, 2023: I have both of them installed </p>
+<blockquote>
+<p>Analog Lab V (5) can play all Arturias sounds, including legacy sounds, if you have any.<br/>
+Analog Lab 4 can't play the sounds from applications that's new in V-Collection 8. But perhaps you find the workflow and better for you, as things has changed from AL 4 to AL V.</p>
+</blockquote>
+<ul>
+<li><a href="https://forum.reasontalk.com/viewtopic.php?f=12&amp;t=7528000&amp;sid=b8deeb5a264c7477e2c0a392ef20b670">Arturia Analog Lab 4 vs 5 (is it worth it to double install?)</a></li>
+<li>https://legacy-forum.arturia.com/index.php?topic=108084.0</li>
+<li>https://splice.com/blog/difference-between-v-collection-analog-lab/</li>
+</ul>
+<h1 id="akai-mpk-mini-play"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.</span> Akai MPK Mini Play</h1>
+<p>March 9, 2021: Editor does not work with OSx !!! 
+- <a href="https://www.akaipro.com/mpk-mini-play-mpkminiplay">Homepage</a></p>
+<h1 id="launchkey-mini-mk3"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.</span> Launchkey Mini MK3</h1>
+<ul>
+<li><a href="https://support.novationmusic.com/hc/en-gb/articles/360009318600-Getting-Started-With-Launchkey-Mini-MK3">Getting-Started-With-Launchkey-Mini-MK3</a></li>
+<li><a href="https://support.novationmusic.com/hc/en-gb/articles/360012823320">update firmware</a></li>
+<li><a href="https://support.novationmusic.com/hc/en-gb/articles/360009288079-Getting-Started-With-Launchkey-Mini-MK3-Ableton-Live-10-Setup">Getting-Started-With-Launchkey-Mini-MK3-Ableton-Live-10-Setup</a> </li>
+</ul>
+<p>March 9, 2021: returned / felt very cheap</p>
+<h1 id="logic-pro-x"><span class="enumerate-headings-plugin enumerate-heading-plugin">9.</span> Logic Pro X</h1>
+<p>2021-03-14: tested and eventually gave up
+TODO: write up article on blog to sum up the problems</p>
+<ul>
+<li>Logic Pro X: A Guide to Multitrack MIDI Recording
+https://www.macprovideo.com/article/logic-pro/logic-pro-x-a-guide-to-multitrack-midi-recording</li>
+<li>Too many midi events
+https://www.logicprohelp.com/forum/viewtopic.php?t=57319</li>
+<li>Playing midi instruments w/o selecting the track
+https://www.logicprohelp.com/forum/viewtopic.php?t=128623</li>
+<li>IAC Driver, ports etc
+https://www.logicprohelp.com/forum/viewtopic.php?t=121829</li>
+<li>Official help desc
+https://support.apple.com/en-gb/guide/logicpro/lgcpbc10f1ea/mac#:~:text=%E2%80%9CMIDI%20data%20reduction%E2%80%9D%20checkbox%3A,only%20a%20few%20MIDI%20ports.</li>
+<li>Midi sustain 
+https://www.reddit.com/r/Logic_Studio/comments/2lqv3q/midi_notes_sustain_indefinitely_anyone_else_ever/</li>
+<li>Generic Tutorial on Logic and Midi Controller
+https://www.musicsequencing.com/article/controlling-logic-with-a-midi-controller</li>
+<li>Arturia Minilab support issues
+https://forum.arturia.com/index.php?topic=93486.0</li>
+</ul>
+<h1 id="music-audio-visualizer"><span class="enumerate-headings-plugin enumerate-heading-plugin">10.</span> Music Audio Visualizer</h1>
+<p>May 2, 2022</p>
+<ul>
+<li><a href="https://magicmusicvisuals.com/download">magic visuals</a> Seems nice but hard to get going with</li>
+<li>https://animusvisualizer.webflow.io/</li>
+<li><a href="https://www.reddit.com/r/futurebeats/comments/a15a3d/realtime_music_visualizers/">Interesting thread</a></li>
+<li>https://lairdkruger.github.io/Audio-Visualizers/</li>
+<li>https://www.uberviz.io/</li>
+<li>Searching on google... <a href="https://www.google.com/search?q=music+visualizer+real+time">really hard to find anything!</a></li>
+</ul>
+<hr/>
+<div class="md-source-date">
+<small>
+    
+      Last update: 2024-09-29
+    
+  </small>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: MP3" class="md-footer__link md-footer__link--prev" href="../mp3/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              MP3
+            </div>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © Copyright 2023-2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+<script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
+<script src="../../assets/js/headings-fix.js"></script>
+</body>
+</html>
