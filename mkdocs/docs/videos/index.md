@@ -3,7 +3,8 @@ title: "Intro"
 date: "2024-04-04"
 ---
 
-# Videos: livecoding and screencasts
+# Videos: livecoding perfomances
 
-!!! info
-    A collection of screencasts and other livecoding performances I have made over the years.
+This section contains a collection of screencasts and other livecoding performances I have made over the years.
+
+The videos are listed in reverse chronological order. 

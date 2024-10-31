@@ -17,8 +17,8 @@ theme:
     logo: assets/images/logo.jpg
     custom_dir: docs/assets/custom_theme/
     palette:
-      scheme: slate
-      primary: purple
+      scheme: default
+      primary: blue
       accent: deep orange
     features:
       - navigation.tabs
