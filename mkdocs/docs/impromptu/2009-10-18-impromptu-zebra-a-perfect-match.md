@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "Impromptu & Zebra: a perfect match!"
+title: "2009-10-18: Impromptu & Zebra: a perfect match!"
 date: 2009-10-18
 categories: 
   - "computermusic"

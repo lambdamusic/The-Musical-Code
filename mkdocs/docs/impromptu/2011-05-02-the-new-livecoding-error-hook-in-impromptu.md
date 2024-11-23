@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "The new Livecoding Error Hook in Impromptu"
+title: "2011-05-02: The new Livecoding Error Hook in Impromptu"
 date: 2011-05-02
 categories: 
   - "computermusic"

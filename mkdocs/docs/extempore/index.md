@@ -5,7 +5,7 @@
 
 ## Getting started with Extempore
 
-Start from here
+### Main resources
 
 - [Extempore Homepage](https://extemporelang.github.io/) and [GitHub project](https://github.com/digego/extempore): all you need to know about the Extempore language from its author Andrew Sorensen
 - [Mailing List Archives](https://groups.google.com/g/extemporelang): questions and answers from the community

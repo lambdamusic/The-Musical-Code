@@ -1,6 +1,6 @@
 # Extempore extensions
 
-A lot of the code examples on this site make use of my custom extensions to the Extempore programming environment.
+A collection of my own custom extensions to the Extempore programming environment. Many of the compositions on this website rely on them e.g. macros like [mkchord](https://extempore.michelepasin.org/def/-mkchord.html) or [mkint](https://extempore.michelepasin.org/def/-mkint.html).
 
 
 ## GitHub

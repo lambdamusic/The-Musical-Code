@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "Opening a Finder's window from Impromptu (alas how to use the applescript bridge..)"
+title: "2011-01-29: Opening a Finder's window from Impromptu (alas how to use the applescript bridge..)"
 date: 2011-01-29
 categories: 
   - "computermusic"

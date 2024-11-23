@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "Building a master volumes UI with impromptu"
+title: "2013-09-15: Building a master volumes UI with impromptu"
 date: 2013-09-15
 categories: 
   - "computermusic"

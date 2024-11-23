@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "Impromptu: If-mod macro"
+title: "2009-10-29: Impromptu: If-mod macro"
 date: 2009-10-29
 categories: 
   - "computermusic"

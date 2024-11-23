@@ -1,13 +1,14 @@
 ---
 author: Michele Pasin
-title: "Impromptu: scheme-based music and video"
+title: "2007-05-12: Impromptu: scheme-based music and video"
 description: "A new scheme based language for multimedia programming."
 date: 2007-05-12
 categories: 
   - "justblogging"
 ---
 
-![](../assets/images/desktop_095.png)
+![](../assets/images/impromptu-site.png)
+
 
 ## Live & interactive programming
 

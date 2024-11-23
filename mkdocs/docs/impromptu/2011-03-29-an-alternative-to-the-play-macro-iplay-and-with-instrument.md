@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "An alternative to the 'play' macro: 'iplay' and 'with-instrument'"
+title: "2011-03-29: An alternative to the 'play' macro: 'iplay' and 'with-instrument'"
 date: 2011-03-29
 categories: 
   - "computermusic"

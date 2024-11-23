@@ -5,22 +5,22 @@
 - [Shortcuts master list](https://kapeli.com/cheat_sheets/Visual_Studio_Code.docset/Contents/Resources/Documents/index)
 - [Built-in Snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
 
-My shortcuts: 
+My usual shortcuts: 
 
-- Alt+D => Delete all right // delete line without removing line
-- CMD+E => Extempore Eval
-- ALT+CMD+E => Extempore Connect current Buffer
-- CMD+] => Indent Line
-- CMD+[ => Outdent Line
-- CMD+rightArrow => End of line
-- CMD+leftArrow => Start of line
-- CMD+L => Select Line
-- CMD+D => Duplicate Line
-- ALT+D => Delete all right // delete line without removing line
-- CMD+shift+D => delete line
-- CMD+K 1-2-3-4 => Wrap selection With letbeat / onbeat / dotimes / println 
-- OPT+CMD+K => Format selection
-- SHIFT+CMD+K => Show snippets
+- `Alt+D` => Delete all right // delete line without removing line
+- `CMD+E` => Extempore Eval
+- `ALT+CMD+E` => Extempore Connect current Buffer
+- `CMD+]` => Indent Line
+- `CMD+[` => Outdent Line
+- `CMD+rightArrow` => End of line
+- `CMD+leftArrow` => Start of line
+- ``CMD+L`` => Select Line
+- `CMD+D` => Duplicate Line
+- `ALT+D` => Delete all right // delete line without removing line
+- `CMD+shift+D` => delete line
+- `CMD+K 1-2-3-4` => Wrap selection With letbeat / onbeat / dotimes / println 
+- `OPT+CMD+K` => Format selection
+- `SHIFT+CMD+K` => Show snippets
 
 Preferences > Open Keyword Shortcuts
 
@@ -114,12 +114,12 @@ Backup the built-in snippets
 
 VSCode is pretty handy for editing Markdown. Here are some tips:
 
-- Press ⌃Space (Trigger Suggest) while editing to see a list of suggested Markdown snippets
-- Use ⇧⌘O to quickly jump to a header in the current file.
-- Use ⌘T to search through headers across all Markdown files in the current workspace
-- Path suggestions are automatically shown when you type / or can be manually invoked by using ⌃Space.
+- Press `⌃Space` (Trigger Suggest) while editing to see a list of suggested Markdown snippets
+- Use `⇧⌘O` to quickly jump to a header in the current file.
+- Use `⌘T` to search through headers across all Markdown files in the current workspace
+- Path suggestions are automatically shown when you type / or can be manually invoked by using `⌃Space`.
 - You can Drag and drop a file from VS Code's Explorer or from your operating system into a Markdown editor. Start by dragging a file from VS Code's Explorer over your Markdown code and then hold down Shift to start dropping it into the file. 
-- Previews: To switch between views, press ⇧⌘V in the editor. You can view the preview side-by-side (⌘K V) too
+- Previews: To switch between views, press `⇧⌘V` in the editor. You can view the preview side-by-side (`⌘K V`) too
 
 From [vscode help](https://code.visualstudio.com/docs/languages/markdown)
 

@@ -1,8 +1,8 @@
 
-# Plugins
+# Plugins & DAWs
 
 
-# Kontakt instruments
+## Kontakt instruments
 
 The default instruments are pretty good 
 
@@ -26,7 +26,7 @@ Free libraries for Kontakt:
 
 
 
-# Spitfire Audio
+## Spitfire Audio
 
 - [main site](https://labs.spitfireaudio.com/)
 - [installation](https://www.spitfireaudio.com/getting-started-labs) 
@@ -47,7 +47,7 @@ This [youtube video](https://www.youtube.com/watch?v=1aM1pDguhlM) helps!
 
 
 
-# Pianobook samples
+## Pianobook samples
 
 
 Get the [Decent Sampler plugin](https://www.decentsamples.com/product/decent-sampler-plugin/)
@@ -57,10 +57,7 @@ Get an account on https://www.pianobook.co.uk/faq/
 
 
 
-
-
-
-# Arturia Minilab
+## Arturia Minilab
 
 - [Overview](https://www.arturia.com/products/hybrid-synths/minilab-mkii/overview) 
 - [Minilab and Logic](https://www.youtube.com/channel/UC42FCmmQtebb2AHSoBCq1Aw) 
@@ -78,7 +75,7 @@ no midi out
 no arpeggiator 
 
 
-# Arturia Analog 4 Vs Analog 5
+## Arturia Analog 4 Vs Analog 5
 
 August 15, 2023: I have both of them installed 
 
@@ -91,13 +88,13 @@ August 15, 2023: I have both of them installed
 
 
 
-# Akai MPK Mini Play
+## Akai MPK Mini Play
 
 March 9, 2021: Editor does not work with OSx !!! 
 - [Homepage](https://www.akaipro.com/mpk-mini-play-mpkminiplay)
 
 
-# Launchkey Mini MK3
+## Launchkey Mini MK3
 
 - [Getting-Started-With-Launchkey-Mini-MK3](https://support.novationmusic.com/hc/en-gb/articles/360009318600-Getting-Started-With-Launchkey-Mini-MK3)
 - [update firmware](https://support.novationmusic.com/hc/en-gb/articles/360012823320)
@@ -107,10 +104,7 @@ March 9, 2021: returned / felt very cheap
 
 
 
-
-
-
-# Logic Pro X
+## Logic Pro X
 
 2021-03-14: tested and eventually gave up
 TODO: write up article on blog to sum up the problems
@@ -135,7 +129,7 @@ https://forum.arturia.com/index.php?topic=93486.0
 
 
 
-# Music Audio Visualizer
+## Music Audio Visualizer
 
 May 2, 2022
 

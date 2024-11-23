@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "Impromptu: access the Wiki docs from the editor"
+title: "2010-02-15: Impromptu: access the Wiki docs from the editor"
 date: 2010-02-15
 categories: 
   - "computermusic"

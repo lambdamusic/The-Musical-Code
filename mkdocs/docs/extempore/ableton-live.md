@@ -3,7 +3,7 @@
 # Ableton Live
 
 !!! note "In a nutshell"
-    How to control Ableton LIVE using Extempore.
+    Extempore can generate musical events using MIDI and an external software sequencer like Ableton LIVE. This page shows how to control Ableton LIVE using Extempore.
 
 ## Controlling Ableton Live via MIDI
 

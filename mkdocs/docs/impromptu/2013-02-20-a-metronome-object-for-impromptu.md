@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "A metronome object for Impromptu"
+title: "2013-02-20: A metronome object for Impromptu"
 date: 2013-02-20
 categories: 
   - "computermusic"

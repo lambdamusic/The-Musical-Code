@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "Using Impromptu to visualize RSS feeds"
+title: "2011-12-21: Using Impromptu to visualize RSS feeds"
 date: 2011-12-21
 categories: 
   - "computermusic"

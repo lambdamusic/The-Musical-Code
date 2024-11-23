@@ -1,6 +1,6 @@
 ---
 author: Michele Pasin
-title: "What is the reaper time in Impromptu?"
+title: "2011-02-07: What is the reaper time in Impromptu?"
 date: 2011-02-07
 categories: 
   - "computermusic"
