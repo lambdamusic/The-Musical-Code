@@ -131,7 +131,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../performing/">
+<a class="md-tabs__link md-tabs__link--active" href="./">
         Utils
       </a>
 </li>
@@ -523,11 +523,6 @@
           Utils
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../performing/">
-        Performing
-      </a>
-</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -544,10 +539,10 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#quicktime-and-recordit">1.1 
-    QuickTime and RecordIt
+<a class="md-nav__link" href="#using-quicktime-and-recordit">1.1 
+    Using QuickTime and RecordIt
   </a>
-<nav aria-label="QuickTime and RecordIt" class="md-nav">
+<nav aria-label="Using QuickTime and RecordIt" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#recording-a-screencast-steps">1.1.1 
@@ -563,12 +558,26 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#screencast-with-screenflick-legacy">1.2 
-    Screencast with Screenflick (legacy)
+<a class="md-nav__link" href="#using-screenflick-legacy">1.2 
+    Using Screenflick (legacy)
+  </a>
+<nav aria-label="Using Screenflick (legacy)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#my-own-tips">1.2.1 
+    My own tips
   </a>
 </li>
 </ul>
 </nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../performing/">
+        Performing
+      </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../imovie/">
@@ -623,10 +632,10 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#quicktime-and-recordit">1.1 
-    QuickTime and RecordIt
+<a class="md-nav__link" href="#using-quicktime-and-recordit">1.1 
+    Using QuickTime and RecordIt
   </a>
-<nav aria-label="QuickTime and RecordIt" class="md-nav">
+<nav aria-label="Using QuickTime and RecordIt" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#recording-a-screencast-steps">1.1.1 
@@ -642,9 +651,18 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#screencast-with-screenflick-legacy">1.2 
-    Screencast with Screenflick (legacy)
+<a class="md-nav__link" href="#using-screenflick-legacy">1.2 
+    Using Screenflick (legacy)
   </a>
+<nav aria-label="Using Screenflick (legacy)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#my-own-tips">1.2.1 
+    My own tips
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -656,9 +674,9 @@
 <a class="md-content__button md-icon" href="https://github.com/lambdamusic/The-Musical-Code/edit/master/docs/utils/screencasting.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<p>This post shows how to make a livecoding screencast using free OSX technologies. </p>
 <h1 id="making-a-screencast"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Making a screencast</h1>
-<h2 id="quicktime-and-recordit"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> QuickTime and RecordIt</h2>
+<p>This post shows how to make a livecoding screencast using free OSX technologies. </p>
+<h2 id="using-quicktime-and-recordit"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Using QuickTime and RecordIt</h2>
 <p>Capturing system audio and screen-recording your live coding performance can be done in multiple ways. Here's a method based on Apple's <a href="https://en.wikipedia.org/wiki/QuickTime">Quicktime</a> and an audio plugin that is part of a third-party software, <a href="https://www.buildtoconnect.com/en/products/recordit">Record It</a>.</p>
 <blockquote>
 <p>Note: both of these software components are free.  The <a href="https://www.buildtoconnect.com/downloads/RecordItAudioDevice.pkg">Record It Audio Device</a> which is a free extension that enables you to capture system sounds on your Mac. It acts as a virtual audio input device and sends the sound from music, videos, and system alerts that you would normally hear through your speakers to the input cha</p>
@@ -698,28 +716,39 @@
 </ol>
 <p><strong>Results</strong>: For a 10 mins video, that gives me a <code>.mp4</code> file of ~250M </p>
 <p>Upload to YouTube and off you go ;-)</p>
-<h2 id="screencast-with-screenflick-legacy"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Screencast with Screenflick (legacy)</h2>
+<h2 id="using-screenflick-legacy"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Using Screenflick (legacy)</h2>
+<div class="admonition warning">
+<p class="admonition-title">Legacy method</p>
+<p>This method requires a license from Screenflick </p>
+</div>
 <p><a href="../../assets/images/screenflick.png"><img alt="Image screenflick.png" src="../../assets/images/screenflick.png"/></a></p>
 <p><a href="https://www.araelium.com/support/screenflick">https://www.araelium.com/support/screenflick</a></p>
+<p>Official docs:</p>
+<blockquote>
 <ul>
 <li>When you start a recording with system audio turned on, Screenflick switches the system-wide default audio output device to the "Soundflower" virtual audio device, which Screenflick then uses as an input to record audio from. </li>
 <li>Some programs unfortunately will play all audio over a specific output device determined when the application launched rather than always using the current system setting which can lead to problems like this.</li>
-<li>What needs to happen is the program playing audio needs to decide that it should play that audio to the Soundflower device, rather than your speakers. There are two ways this can happen.<ol>
+<li>What needs to happen is the program playing audio needs to decide that it should play that audio to the Soundflower device, rather than your speakers. There are two ways this can happen.</li>
 <li>Launch the program which plays the audio after you start a Screenflick recording. (The system output device will be Soundflower and the program will therefore use it.)</li>
 <li>Before starting the program, go into System Preferences and change the system output audio device to "Soundflower (2ch)" manually, start the program which will play audio, and then start the recording in Screenflick when you're ready. (After the recording ends, don't forget to change the system output device back to your speakers.)
-[BEST]</li>
+  [BEST]</li>
 <li>A third option which doesn't always exist, is that the program playing audio may have a preference setting for which audio device to play audio to. Check the program's preferences just in case. If it does have a setting, set it to "Soundflower (2ch)" while recording.</li>
-</ol>
+</ul>
+</blockquote>
+<h3 id="my-own-tips"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1</span> My own tips</h3>
+<ul>
+<li>Frame rate: <code>FPS 15</code> <ul>
+<li>Seems to lead to less MIDI delays </li>
+<li>Frames not an issue cause it's just screen recording</li>
+</ul>
+</li>
+<li>Then <strong>export</strong> to QuickTime</li>
+<li>Audio <code>128 Kbps</code></li>
+<li>All other options default<ul>
+<li>Changing framerate seem to have no effect </li>
+</ul>
 </li>
 </ul>
-<p>My own tips:
-- FPS 15<br/>
-    - Seems to lead to less MIDI delays 
-    - Frames not an issue cause it's just screen recording
-Then <strong>export</strong> to Qtime
-- Audio 128 Kbps
-- All other options default
-    - Changing framerate seem to have no effect </p>
 <hr/>
 <div class="md-source-date">
 <small>
@@ -734,7 +763,7 @@ Then <strong>export</strong> to Qtime
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Performing" class="md-footer__link md-footer__link--prev" href="../performing/" rel="prev">
+<a aria-label="Previous: Event: Livecoding at the Shunt, London" class="md-footer__link md-footer__link--prev" href="../../miscellaneous/2009-10-07-new-impromptu-screencast/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -743,17 +772,17 @@ Then <strong>export</strong> to Qtime
 <span class="md-footer__direction">
                 Previous
               </span>
-              Performing
+              Event: Livecoding at the Shunt, London
             </div>
 </div>
 </a>
-<a aria-label="Next: iMovie" class="md-footer__link md-footer__link--next" href="../imovie/" rel="next">
+<a aria-label="Next: Performing" class="md-footer__link md-footer__link--next" href="../performing/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              iMovie
+              Performing
             </div>
 </div>
 <div class="md-footer__button md-icon">

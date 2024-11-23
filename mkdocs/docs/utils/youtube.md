@@ -3,9 +3,7 @@ author: Michele Pasin
 title: "YouTube"
 ---
 
-
-
-# Tips about saving videos to YouTube.
+# Tips about saving videos to YouTube
 
 
 ## Useful links
