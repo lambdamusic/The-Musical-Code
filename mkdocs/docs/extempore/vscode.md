@@ -1,5 +1,8 @@
 # VSCode
 
+!!! warning
+    Section needs revision
+    
 ## VSCode cheats for livecoding
 
 - [Shortcuts master list](https://kapeli.com/cheat_sheets/Visual_Studio_Code.docset/Contents/Resources/Documents/index)
