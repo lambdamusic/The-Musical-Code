@@ -68,4 +68,5 @@ target/
 mkdocs/drafts
 mkdocs/DRAFTS
 mkdocs/private
+private
 README_PRIVATE.md
