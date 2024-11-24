@@ -42,6 +42,9 @@ plugins:
         exclude:
           - index.md
           - if-you-need-to/test.md
+    - print-site:
+        add_to_navigation: false
+        print_page_title: 'Print The Musical Code Site'
 extra_javascript:
     - assets/js/headings-fix.js          
 extra:

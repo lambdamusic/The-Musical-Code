@@ -5,25 +5,29 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../videos/2009-11-23-kali/" rel="prev"/>
+<link href="my-extensions/" rel="next"/>
 <link href="../assets/images/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.2.2, mkdocs-material-7.2.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.5.45" name="generator"/>
 <title>Quick start - The Musical Code | Experiments in Algorithmic Composition</title>
-<link href="../assets/stylesheets/main.802231af.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
-<meta content="#2094f3" name="theme-color"/>
-<!-- OneTrust Cookies Consent Notice start for dimensions.ai -->
-<!-- <script type="text/javascript" src="https://cdn.cookielaw.org/consent/3329b668-7887-4dba-9bee-c3853a706e6f/OtAutoBlock.js"></script>
-  <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="3329b668-7887-4dba-9bee-c3853a706e6f"></script>
-  <script type="text/javascript">
-      function OptanonWrapper() { }
-  </script> -->
-<!-- OneTrust Cookies Consent Notice end for dimensions.ai -->
+<link href="../assets/stylesheets/main.0253249f.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
-<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/print-site-enum-headings1.css" rel="stylesheet"/>
+<link href="../css/print-site-enum-headings2.css" rel="stylesheet"/>
+<link href="../css/print-site-enum-headings3.css" rel="stylesheet"/>
+<link href="../css/print-site-enum-headings4.css" rel="stylesheet"/>
+<link href="../css/print-site-enum-headings5.css" rel="stylesheet"/>
+<link href="../css/print-site-enum-headings6.css" rel="stylesheet"/>
+<link href="../css/print-site.css" rel="stylesheet"/>
+<link href="../css/print-site-material.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","GA-302041842"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","GA-302041842",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=GA-302041842",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+<script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
 </head>
 <body data-md-color-accent="deep-orange" data-md-color-primary="blue" data-md-color-scheme="default" dir="ltr">
-<script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
@@ -34,13 +38,13 @@
 </div>
 <div data-md-component="announce">
 </div>
-<header class="md-header" data-md-component="header">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
 <a aria-label="The Musical Code | Experiments in Algorithmic Composition" class="md-header__button md-logo" data-md-component="logo" href=".." title="The Musical Code | Experiments in Algorithmic Composition">
 <img alt="logo" src="../assets/images/logo.jpg"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
 </label>
 <div class="md-header__title" data-md-component="header-title">
 <div class="md-header__ellipsis">
@@ -59,7 +63,7 @@
 </div>
 </div>
 <label class="md-header__button md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
 </label>
 <div class="md-search" data-md-component="search" role="dialog">
 <label class="md-search__overlay" for="__search"></label>
@@ -67,31 +71,31 @@
 <form class="md-search__form" name="search">
 <input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
 <label class="md-search__icon md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </label>
 <nav aria-label="Search" class="md-search__options">
-<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
 </button>
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
           </div>
-<ol class="md-search-result__list"></ol>
+<ol class="md-search-result__list" role="presentation"></ol>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/lambdamusic/The-Musical-Code/" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/lambdamusic/The-Musical-Code" title="Go to repository">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
 </div>
 <div class="md-source__repository">
     GitHub
@@ -99,44 +103,64 @@
 </a>
 </div>
 </nav>
-</header>
-<div class="md-container" data-md-component="container">
 <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
-<div class="md-tabs__inner md-grid">
+<div class="md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="..">
-      Home
-    </a>
+        
+  
+    
+  
+  Welcome
+
+      </a>
 </li>
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../videos/">
-        Videos
-      </a>
+          
+  
+  Videos
+
+        </a>
 </li>
-<li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="./">
-        Extempore
-      </a>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="./">
+          
+  
+  Extempore
+
+        </a>
 </li>
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../impromptu/">
-        Impromptu
-      </a>
+          
+  
+  Impromptu
+
+        </a>
 </li>
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../miscellaneous/2012-03-09-composing-at-the-metalevel/">
-        Miscellaneous
-      </a>
+          
+  
+  Miscellaneous
+
+        </a>
 </li>
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../utils/screencasting/">
-        Utils
-      </a>
+          
+  
+  Utils
+
+        </a>
 </li>
 </ul>
 </div>
 </nav>
+</header>
+<div class="md-container" data-md-component="container">
 <main class="md-main" data-md-component="main">
 <div class="md-main__inner md-grid">
 <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
@@ -150,9 +174,9 @@
     The Musical Code | Experiments in Algorithmic Composition
   </label>
 <div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/lambdamusic/The-Musical-Code/" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/lambdamusic/The-Musical-Code" title="Go to repository">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
 </div>
 <div class="md-source__repository">
     GitHub
@@ -162,155 +186,209 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="..">
-        Home
-      </a>
+<span class="md-ellipsis">
+    Welcome
+  </span>
+</a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2">
-        Videos
-        <span class="md-nav__icon md-icon"></span>
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Videos
+  </span>
+<span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Videos" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
-          Videos
-        </label>
+            Videos
+          </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/">
-        Intro
-      </a>
+<span class="md-ellipsis">
+    Intro
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2024-07-05-techno-jam/">
-        Techno jam (2024-07)
-      </a>
+<span class="md-ellipsis">
+    Techno jam (2024-07)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2024-03-08-ping-pong/">
-        Ping pong delays (2024-03)
-      </a>
+<span class="md-ellipsis">
+    Ping pong delays (2024-03)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2024-02-12-out-of-this-world/">
-        Out of this world (2024-02)
-      </a>
+<span class="md-ellipsis">
+    Out of this world (2024-02)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2024-01-06-many-pianos-2/">
-        Dreamy pianos - Study No 2 in B Minor (2024-01)
-      </a>
+<span class="md-ellipsis">
+    Dreamy pianos - Study No 2 in B Minor (2024-01)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2023-12-09-many-pianos-1/">
-        Dreamy pianos - Study No 1 in C Minor (2023-12)
-      </a>
+<span class="md-ellipsis">
+    Dreamy pianos - Study No 1 in C Minor (2023-12)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2023-11-18-the-self/">
-        The self (2023-11)
-      </a>
+<span class="md-ellipsis">
+    The self (2023-11)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2022-09-18-chilled-electro/">
-        Chilled electro jam (2022-09)
-      </a>
+<span class="md-ellipsis">
+    Chilled electro jam (2022-09)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2022-05-29-bento-noise-box/">
-        Bento noise box (2022-05)
-      </a>
+<span class="md-ellipsis">
+    Bento noise box (2022-05)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2022-04-07-cellos-livecoding/">
-        Study for Cello and Double-bass (2022-04)
-      </a>
+<span class="md-ellipsis">
+    Study for Cello and Double-bass (2022-04)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2021-04-10-rhythmic-cycles/">
-        Rhythmic Cycles (2021-04)
-      </a>
+<span class="md-ellipsis">
+    Rhythmic Cycles (2021-04)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2020-11-02-piano-scales/">
-        Piano Scales (2020-11)
-      </a>
+<span class="md-ellipsis">
+    Piano Scales (2020-11)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2020-09-09-ambient-experiment/">
-        Ambient experiment (2020-09)
-      </a>
+<span class="md-ellipsis">
+    Ambient experiment (2020-09)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2013-11-27-ziggurat-51/">
-        Ziggurat 51 (2013-11)
-      </a>
+<span class="md-ellipsis">
+    Ziggurat 51 (2013-11)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2011-07-11-fjords-strasbourg/">
-        Fjords (2011-07) live @ Strasbourg LSM
-      </a>
+<span class="md-ellipsis">
+    Fjords (2011-07) live @ Strasbourg LSM
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2011-07-09-livecoding-in-paris/">
-        Fjords (2011-07) live at La General Paris
-      </a>
+<span class="md-ellipsis">
+    Fjords (2011-07) live at La General Paris
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2010-12-21-new-song-turborobot/">
-        Turborobot (2010-12)
-      </a>
+<span class="md-ellipsis">
+    Turborobot (2010-12)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2010-12-09-goldsmith-college/">
-        Turbo Robot (2010-12) live @ Goldsmith College
-      </a>
+<span class="md-ellipsis">
+    Turbo Robot (2010-12) live @ Goldsmith College
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2010-04-02-misty-morning/">
-        My misty morning (2010-04)
-      </a>
+<span class="md-ellipsis">
+    My misty morning (2010-04)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2010-02-12-anatomy-theatre/">
-        Untitled 12 (2010-02) live @ Anatomy Theatre
-      </a>
+<span class="md-ellipsis">
+    Untitled 12 (2010-02) live @ Anatomy Theatre
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2010-01-03-xanadu/">
-        Xanadu (2010-01)
-      </a>
+<span class="md-ellipsis">
+    Xanadu (2010-01)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../videos/2009-11-23-kali/">
-        Kali (2009-03)
-      </a>
+<span class="md-ellipsis">
+    Kali (2009-03)
+  </span>
+</a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3">
-        Extempore
-        <span class="md-nav__icon md-icon"></span>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    Extempore
+  </span>
+<span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Extempore" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_3">
 <span class="md-nav__icon md-icon"></span>
-          Extempore
-        </label>
+            Extempore
+          </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Quick start
-          <span class="md-nav__icon md-icon"></span>
+<span class="md-ellipsis">
+    Quick start
+  </span>
+<span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        Quick start
-      </a>
+<span class="md-ellipsis">
+    Quick start
+  </span>
+</a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
 <span class="md-nav__icon md-icon"></span>
@@ -319,33 +397,43 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#getting-started-with-extempore">1.1 
-    Getting started with Extempore
-  </a>
+<span class="md-ellipsis">
+      Getting started with Extempore
+    </span>
+</a>
 <nav aria-label="Getting started with Extempore" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#main-resources">1.1.1 
-    Main resources
-  </a>
+<span class="md-ellipsis">
+      Main resources
+    </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#other-resources">1.1.2 
-    Other resources
-  </a>
+<span class="md-ellipsis">
+      Other resources
+    </span>
+</a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#installing-extempore">1.2 
-    Installing Extempore
-  </a>
+<span class="md-ellipsis">
+      Installing Extempore
+    </span>
+</a>
 <nav aria-label="Installing Extempore" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#installation-errors">1.2.1 
-    Installation errors
-  </a>
+<span class="md-ellipsis">
+      Installation errors
+    </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -355,268 +443,362 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="my-extensions/">
-        Extempore extensions
-      </a>
+<span class="md-ellipsis">
+    Extempore extensions
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="ableton-live/">
-        Ableton Live
-      </a>
+<span class="md-ellipsis">
+    Ableton Live
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="vscode/">
-        VSCode
-      </a>
+<span class="md-ellipsis">
+    VSCode
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="fun-musical-loops/">
-        Musical Loops functions
-      </a>
+<span class="md-ellipsis">
+    Musical Loops functions
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="mkchords/">
-        Making scales and chords
-      </a>
+<span class="md-ellipsis">
+    Making scales and chords
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="fun-callback-at/">
-        Callback-at
-      </a>
+<span class="md-ellipsis">
+    Callback-at
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="fun-rect/">
-        Rect
-      </a>
+<span class="md-ellipsis">
+    Rect
+  </span>
+</a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4">
-        Impromptu
-        <span class="md-nav__icon md-icon"></span>
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Impromptu
+  </span>
+<span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Impromptu" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_4">
 <span class="md-nav__icon md-icon"></span>
-          Impromptu
-        </label>
+            Impromptu
+          </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/">
-        About Impromptu
-      </a>
+<span class="md-ellipsis">
+    About Impromptu
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2013-09-15-building-a-master-volumes-ui-in-impromptu/">
-        2013-09-15: Building a master volumes UI with impromptu
-      </a>
+<span class="md-ellipsis">
+    2013-09-15: Building a master volumes UI with impromptu
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2013-02-20-a-metronome-object-for-impromptu/">
-        2013-02-20: A metronome object for Impromptu
-      </a>
+<span class="md-ellipsis">
+    2013-02-20: A metronome object for Impromptu
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2011-12-21-using-impromptu-to-visualize-rss-feeds/">
-        2011-12-21: Using Impromptu to visualize RSS feeds
-      </a>
+<span class="md-ellipsis">
+    2011-12-21: Using Impromptu to visualize RSS feeds
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2011-05-02-the-new-livecoding-error-hook-in-impromptu/">
-        2011-05-02: The new Livecoding Error Hook in Impromptu
-      </a>
+<span class="md-ellipsis">
+    2011-05-02: The new Livecoding Error Hook in Impromptu
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2011-03-29-an-alternative-to-the-play-macro-iplay-and-with-instrument/">
-        2011-03-29: An alternative to the 'play' macro: 'iplay' and 'with-instrument'
-      </a>
+<span class="md-ellipsis">
+    2011-03-29: An alternative to the 'play' macro: 'iplay' and 'with-instrument'
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2011-02-07-what-is-the-reaper-time-in-impromptu/">
-        2011-02-07: What is the reaper time in Impromptu?
-      </a>
+<span class="md-ellipsis">
+    2011-02-07: What is the reaper time in Impromptu?
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2011-01-29-opening-a-finders-window-from-impromptu-alas-how-to-use-the-applescript-bridge/">
-        2011-01-29: Opening a Finder's window from Impromptu (alas how to use the applescript bridge..)
-      </a>
+<span class="md-ellipsis">
+    2011-01-29: Opening a Finder's window from Impromptu (alas how to use the applescript bridge..)
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2010-10-13-impromptu-2-5/">
-        2010-10-13: Impromptu 2.5 released
-      </a>
+<span class="md-ellipsis">
+    2010-10-13: Impromptu 2.5 released
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2010-02-15-impromptu-function-to-access-wiki-docs-from-the-editor/">
-        2010-02-15: Impromptu: access the Wiki docs from the editor
-      </a>
+<span class="md-ellipsis">
+    2010-02-15: Impromptu: access the Wiki docs from the editor
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2009-10-29-impromptu-if-mod-macro/">
-        2009-10-29: Impromptu: If-mod macro
-      </a>
+<span class="md-ellipsis">
+    2009-10-29: Impromptu: If-mod macro
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2009-10-18-impromptu-zebra-a-perfect-match/">
-        2009-10-18: Impromptu &amp; Zebra: a perfect match!
-      </a>
+<span class="md-ellipsis">
+    2009-10-18: Impromptu &amp; Zebra: a perfect match!
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../impromptu/2007-05-12-impromptu-scheme-based-music-and-video/">
-        2007-05-12: Impromptu: scheme-based music and video
-      </a>
+<span class="md-ellipsis">
+    2007-05-12: Impromptu: scheme-based music and video
+  </span>
+</a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5">
-        Miscellaneous
-        <span class="md-nav__icon md-icon"></span>
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Miscellaneous
+  </span>
+<span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Miscellaneous" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
-          Miscellaneous
-        </label>
+            Miscellaneous
+          </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2012-03-09-composing-at-the-metalevel/">
-        Composing at the metalevel
-      </a>
+<span class="md-ellipsis">
+    Composing at the metalevel
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2012-01-13-special-issue-of-cmj-dvd-on-livecoding/">
-        Special issue of CMJ DVD on livecoding
-      </a>
+<span class="md-ellipsis">
+    Special issue of CMJ DVD on livecoding
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2011-12-26-article-thought-and-performance-live-coding-music-explained-to-anyone/">
-        Article: Thought and Performance, Live Coding Music, Explained to Anyone
-      </a>
+<span class="md-ellipsis">
+    Article: Thought and Performance, Live Coding Music, Explained to Anyone
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2011-10-06-article-algorithmic-composition-computational-thinking-in-music/">
-        Article: Algorithmic Composition: Computational Thinking in Music
-      </a>
+<span class="md-ellipsis">
+    Article: Algorithmic Composition: Computational Thinking in Music
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2011-07-11-workshop-on-live-coding-rmll-11/">
-        Workshop on Live Coding @ RMLL-11
-      </a>
+<span class="md-ellipsis">
+    Workshop on Live Coding @ RMLL-11
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2011-06-29-livecoding-is-like-gardening/">
-        Livecoding is like gardening
-      </a>
+<span class="md-ellipsis">
+    Livecoding is like gardening
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2011-02-24-new-livecoding-documentary-available/">
-        'Show us your screens': new Livecoding documentary
-      </a>
+<span class="md-ellipsis">
+    'Show us your screens': new Livecoding documentary
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2010-12-09-jmusic-music-composition-in-java/">
-        JMusic: music composition in Java
-      </a>
+<span class="md-ellipsis">
+    JMusic: music composition in Java
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2010-08-10-learning-resources-about-scheme/">
-        Learning resources about Scheme
-      </a>
+<span class="md-ellipsis">
+    Learning resources about Scheme
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2010-03-29-algorithms-are-thoughts-chainsaws-are-tools/">
-        Algorithms are Thoughts, Chainsaws are Tools
-      </a>
+<span class="md-ellipsis">
+    Algorithms are Thoughts, Chainsaws are Tools
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2010-01-10-livecoding-night-kings-college-coming-up/">
-        Event: Livecoding night @ King's College coming up
-      </a>
+<span class="md-ellipsis">
+    Event: Livecoding night @ King's College coming up
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../miscellaneous/2009-10-07-new-impromptu-screencast/">
-        Event: Livecoding at the Shunt, London
-      </a>
+<span class="md-ellipsis">
+    Event: Livecoding at the Shunt, London
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="https://blog.toplap.org/">
-        TopLap.org
-      </a>
+<span class="md-ellipsis">
+    TopLap.org
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="https://benswift.me/">
-        Ben Swift
-      </a>
+<span class="md-ellipsis">
+    Ben Swift
+  </span>
+</a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_6">
-        Utils
-        <span class="md-nav__icon md-icon"></span>
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Utils
+  </span>
+<span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-label="Utils" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_6">
 <span class="md-nav__icon md-icon"></span>
-          Utils
-        </label>
+            Utils
+          </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../utils/screencasting/">
-        Screencasting
-      </a>
+<span class="md-ellipsis">
+    Screencasting
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../utils/performing/">
-        Performing
-      </a>
+<span class="md-ellipsis">
+    Performing
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../utils/imovie/">
-        iMovie
-      </a>
+<span class="md-ellipsis">
+    iMovie
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../utils/youtube/">
-        YouTube
-      </a>
+<span class="md-ellipsis">
+    YouTube
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../utils/hydra/">
-        Hydra Sketches
-      </a>
+<span class="md-ellipsis">
+    Hydra Sketches
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../utils/behringer/">
-        Behringer Mixer
-      </a>
+<span class="md-ellipsis">
+    Behringer Mixer
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../utils/finalcut/">
-        FinalCut
-      </a>
+<span class="md-ellipsis">
+    FinalCut
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../utils/markdown/">
-        Markdown
-      </a>
+<span class="md-ellipsis">
+    Markdown
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../utils/mp3/">
-        MP3
-      </a>
+<span class="md-ellipsis">
+    MP3
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../utils/plugins/">
-        Plugins &amp; DAWs
-      </a>
+<span class="md-ellipsis">
+    Plugins &amp; DAWs
+  </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -637,33 +819,43 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#getting-started-with-extempore">1.1 
-    Getting started with Extempore
-  </a>
+<span class="md-ellipsis">
+      Getting started with Extempore
+    </span>
+</a>
 <nav aria-label="Getting started with Extempore" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#main-resources">1.1.1 
-    Main resources
-  </a>
+<span class="md-ellipsis">
+      Main resources
+    </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#other-resources">1.1.2 
-    Other resources
-  </a>
+<span class="md-ellipsis">
+      Other resources
+    </span>
+</a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#installing-extempore">1.2 
-    Installing Extempore
-  </a>
+<span class="md-ellipsis">
+      Installing Extempore
+    </span>
+</a>
 <nav aria-label="Installing Extempore" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#installation-errors">1.2.1 
-    Installation errors
-  </a>
+<span class="md-ellipsis">
+      Installation errors
+    </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -675,8 +867,8 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/lambdamusic/The-Musical-Code/edit/master/docs/extempore/index.md" title="Edit this page">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+<a class="md-content__button md-icon" href="../print_page/" title="Print Site">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 3H6v4h12m1 5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m-3 7H8v-5h8m3-6H5a3 3 0 0 0-3 3v6h4v4h12v-4h4v-6a3 3 0 0 0-3-3"></path></svg>
 </a>
 <h1 id="quick-start"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Quick start</h1>
 <div class="admonition question">
@@ -724,58 +916,32 @@ Received<span class="w"> </span>interrupt<span class="w"> </span>signal<span cla
 <li>open up folder in finder libs/platform-shlibs</li>
 <li>right click open in OSx for all executables  </li>
 </ul>
-<hr/>
-<div class="md-source-date">
-<small>
-    
-      Last update: 2024-11-23
-    
-  </small>
-</div>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="Last update">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+</span>
+    2024-11-23
+  </span>
+</aside>
 </article>
 </div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
 </div>
 </main>
 <footer class="md-footer">
-<nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Kali (2009-03)" class="md-footer__link md-footer__link--prev" href="../videos/2009-11-23-kali/" rel="prev">
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</div>
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Previous
-              </span>
-              Kali (2009-03)
-            </div>
-</div>
-</a>
-<a aria-label="Next: Extempore extensions" class="md-footer__link md-footer__link--next" href="my-extensions/" rel="next">
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Next
-              </span>
-              Extempore extensions
-            </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
-</div>
-</a>
-</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
-<div class="md-footer-copyright">
-<div class="md-footer-copyright__highlight">
-            © Copyright 2023-2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a>
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      © Copyright 2023-2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a>
 </div>
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
-          Material for MkDocs
-        </a>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
 </div>
 </div>
 </div>
@@ -784,8 +950,9 @@ Received<span class="w"> </span>interrupt<span class="w"> </span>signal<span cla
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
-<script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+<script src="../js/print-site.js"></script>
 <script src="../assets/js/headings-fix.js"></script>
 </body>
 </html>

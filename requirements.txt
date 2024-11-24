@@ -6,3 +6,4 @@ mkdocs-git-revision-date-plugin==0.3.2
 #added to avoid dependency conflict
 jinja2==3.0.3
 mkdocs-enumerate-headings-plugin==0.6.2
+mkdocs-print-site-plugin==2.6.0
