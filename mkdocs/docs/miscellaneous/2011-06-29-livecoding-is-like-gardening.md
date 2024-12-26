@@ -17,8 +17,8 @@ Just ran into this interesting article by [Brian Eno](http://en.wikipedia.org/wi
 
 It's from [http://www.soundonsound.com/sos/oct05/articles/brianeno.htm](http://www.soundonsound.com/sos/oct05/articles/brianeno.htm).
 
-<iframe width="425" height="349" src="http://www.youtube.com/embed/e6K67aaEYA0" frameborder="0" allowfullscreen></iframe>
+<iframe width="425" height="349" src="https://www.youtube.com/embed/e6K67aaEYA0" frameborder="0" allowfullscreen></iframe>
 
 Here is one of the songs from the album Eno is talking about in that article, [Another Day on Earth](http://en.wikipedia.org/wiki/Another_Day_on_Earth).
 
-<iframe width="425" height="349" src="http://www.youtube.com/embed/NBnvRNDAKRc" frameborder="0" allowfullscreen></iframe>
+<iframe width="425" height="349" src="https://www.youtube.com/embed/NBnvRNDAKRc" frameborder="0" allowfullscreen></iframe>

@@ -15,7 +15,7 @@ The slides are very introductory, so I strongly encourage anyone interested to f
 
 **[Livecoding with impromptu](http://www.slideshare.net/mpasin/livecoding-with-impromptu "Livecoding with impromptu")** 
 
-<iframe src="http://www.slideshare.net/slideshow/embed_code/8564854" width="510" height="426" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+<iframe src="https://www.slideshare.net/slideshow/embed_code/8564854" width="510" height="426" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
 
 The other two livecoders who gave talks at the workshop were [Marje Baalman](http://www.nescivi.nl/) and [Dan Stowell](http://www.mcld.co.uk/); both of them do very interesting stuff with [SuperCollider](http://www.audiosynth.com/) (another livecoding environment) so you better check them out too!
 
