@@ -14,3 +14,5 @@ A short movie about [livecoding](http://en.wikipedia.org/wiki/TOPLAP#Organizatio
 <iframe src="https://player.vimeo.com/video/9790850?autoplay=1" width="400" height="300" frameborder="0"></iframe>
 
 Thanks [Stepher Ramsay](http://vimeo.com/user1776782) for doing this!
+
+> **Update 2023**:  unfortunately the video is no longer available :-(  There is an Electronic Book Review essay [Critical Code Studies Week Five Opener – Algorithms are thoughts, Chainsaws are tools](https://electronicbookreview.com/essay/critical-code-studies-week-five-opener-algorithms-are-thoughts-chainsaws-are-tools/) that talks about the original video..
