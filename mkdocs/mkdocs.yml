@@ -41,6 +41,7 @@ plugins:
         increment_across_pages: false
         exclude:
           - index.md
+          - about.md
           - if-you-need-to/test.md
     - print-site:
         add_to_navigation: false
