@@ -1,0 +1,95 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Extempore",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#keywords"
+		},
+		{ 
+			"include": "#operators"
+		},
+		{
+			"include": "#types"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#names"
+		},
+		{
+			"include": "#number"
+		},
+		{
+			"include": "#cstring"
+		},
+		{ 
+			"include": "#xtmsymbol"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [{
+				"name": "comment",
+				"match": ";.*$"
+			}]
+		},
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.extempore",
+				"match": "\\b(alloc|zalloc|halloc|salloc|letz|beginz|vector|vector_ref|tuple|tuple_ref|array|array_ref|begin|cond|else|or|and|void|lambda|define|if|pref-ptr|aref-ptr|tref-ptr|pfill|tfill|aref|tref|pref|aset|tset|pset|set|while|dotimes|let|bind-func|bind-lib|bind-val|bind-type|for-each|callback|dotimes)\\b"
+			}]
+		},
+		"operators": {
+			"patterns": [{
+				"name": "keyword.operator.extempore",
+				"match": "\\b(\\*|\\+)\\b"
+			}]
+		},
+		"types": {
+			"patterns": [{
+				"name": "entity.name.type.extempore",
+				"match": ":[a-zA-Z|/<\\[][a-zA-Z0-9*|/,<>{}\\]]+"
+			}]
+		},
+		"functions": {
+			"patterns": [{
+				"name": "entity.name.function.extempore",
+				"match": "\\b(playchord|play|rotate|onbeat|offbeat|ifbeat|println|ifcdr-notnull|oneof|random|cosr|cosratio|cosrfloor)\\b"
+			}]
+		},
+		"names": {
+			"patterns": [{
+				"name": "entity.name.extempore",
+				"match": "[a-zA-Z][a-zA-Z0-9-_]+"
+			}]
+		},
+		"number": {
+			"patterns": [{
+				"name": "constant.numeric.extempore",
+				"match": "[0-9]+(\\.[0-9]*)?"
+			}]
+		},
+		"cstring": {
+			"name": "string.quoted.double.extempore",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.extempore",
+					"match": "\\\\."
+				}
+			]
+		},
+		"xtmsymbol": {
+			"patterns": [{
+				"name": "string.quoted.single.extempore",
+				"match": "'[^[:space:]()]*"
+			}]
+		}
+	},
+	"scopeName": "source.extempore"
+}

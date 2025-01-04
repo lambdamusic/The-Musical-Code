@@ -1,0 +1,253 @@
+{
+	"parameter_map" : 	{
+		"midi" : 		{
+			"pictctrl[22]" : 			{
+				"srcname" : "70.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[18]" : 			{
+				"srcname" : "71.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[21]" : 			{
+				"srcname" : "72.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[20]" : 			{
+				"srcname" : "73.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[19]" : 			{
+				"srcname" : "74.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[17]" : 			{
+				"srcname" : "75.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[29]" : 			{
+				"srcname" : "76.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[28]" : 			{
+				"srcname" : "77.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[27]" : 			{
+				"srcname" : "78.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[26]" : 			{
+				"srcname" : "79.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[25]" : 			{
+				"srcname" : "80.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[23]" : 			{
+				"srcname" : "81.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[24]" : 			{
+				"srcname" : "82.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[34]" : 			{
+				"srcname" : "83.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[32]" : 			{
+				"srcname" : "84.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[33]" : 			{
+				"srcname" : "85.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[30]" : 			{
+				"srcname" : "86.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[31]" : 			{
+				"srcname" : "87.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[9]" : 			{
+				"srcname" : "88.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[1]" : 			{
+				"srcname" : "89.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[5]" : 			{
+				"srcname" : "90.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[8]" : 			{
+				"srcname" : "91.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[10]" : 			{
+				"srcname" : "92.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[2]" : 			{
+				"srcname" : "93.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[7]" : 			{
+				"srcname" : "94.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[11]" : 			{
+				"srcname" : "95.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[12]" : 			{
+				"srcname" : "96.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[13]" : 			{
+				"srcname" : "97.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[14]" : 			{
+				"srcname" : "98.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[16]" : 			{
+				"srcname" : "99.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[15]" : 			{
+				"srcname" : "100.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[36]" : 			{
+				"srcname" : "101.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[38]" : 			{
+				"srcname" : "102.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[37]" : 			{
+				"srcname" : "103.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[39]" : 			{
+				"srcname" : "104.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+
+		}
+
+	}
+
+}

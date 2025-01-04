@@ -1,0 +1,52 @@
+{
+    "workbench.colorTheme": "Visual Studio Dark",
+    "search.exclude": {
+        "**/backups": true,
+        "**/extras": true
+    },
+    "editor.fontSize": 17,
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "[extempore]": {
+        "editor.wordBasedSuggestions": false,
+        "editor.quickSuggestions": {
+            "other": false,
+            "comments": false,
+            "strings": false
+        }
+      },
+    "editor.quickSuggestionsDelay": 10,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.inlineSuggest.enabled": false,
+    "editor.inlineSuggest.showToolbar": "onHover",
+    "editor.snippetSuggestions": "inline",
+    "editor.suggest.selectionMode": "always",
+    "editor.suggest.showSnippets": true,
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": true,
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "emmet.showAbbreviationSuggestions": false,
+    "emmet.showExpandedAbbreviation": "never",
+    "gitlab.aiAssistedCodeSuggestions.enabled": false,
+    "githubIssues.userCompletions.enabled": false,
+    "githubIssues.issueCompletions.enabled": false,
+    "php.suggest.basic": false,
+    "javascript.suggest.autoImports": false,
+    "javascript.suggest.completeJSDocs": false,
+    "javascript.suggest.enabled": false,
+    "javascript.suggest.names": false,
+    "javascript.suggest.paths": false,
+    "javascript.suggestionActions.enabled": false,
+    "typescript.suggest.autoImports": false,
+    "typescript.suggest.completeJSDocs": false,
+    "typescript.suggest.enabled": false,
+    "typescript.suggest.paths": false,
+    "typescript.suggestionActions.enabled": false,
+    "editor.suggest.showWords": true,
+    "editor.suggest.showKeywords": true,
+    "editor.suggest.matchOnWordStartOnly": false,
+    "editor.wordBasedSuggestions": false
+}

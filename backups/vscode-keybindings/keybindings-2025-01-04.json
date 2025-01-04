@@ -1,0 +1,341 @@
+// Place your key bindings in this file to overwrite the defaults
+// 2024-02-05: updated triggerSuggest, "alt+tab",
+[
+    {
+        "key": "ctrl+alt+l",
+        "command": "md-shortcut.toggleBullets",
+        "when": "editorLangId == 'markdown'"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "md-shortcut.toggleCheckboxes",
+        "when": "editorLangId == 'markdown'"
+    },
+    {
+        "key": "ctrl+m b",
+        "command": "md-shortcut.toggleBold",
+        "when": "editorLangId == 'markdown'"
+    },
+    {
+        "key": "cmd+d",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+shift+]",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "cmd+shift+[",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "cmd+e",
+        "command": "extension.xtmeval",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+cmd+e",
+        "command": "extension.xtmconnect",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "editor.action.showSnippets"
+    },
+    {
+        "key": "ctrl+alt+space",
+        "command": "-toggleSuggestionFocus",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "alt+tab",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+]",
+        "command": "editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+[",
+        "command": "editor.action.outdentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+k 1",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": { "name": "wrap-letbeat" }
+    },
+    {
+        "key": "cmd+k 2",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": { "name": "wrap-onbeat" }
+    },
+    {
+        "key": "cmd+k 3",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": { "name": "wrap-dotimes" }
+    },
+    {
+        "key": "cmd+k 4",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": { "name": "wrap-println" }
+    },       
+    {
+        "key": "cmd+o",
+        "command": "file-browser.open"
+    },
+    {   
+        "key": "shift+cmd+d",           
+        "command": "editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly" 
+    },
+    {   
+        "key": "cmd+r",           
+        "command": "expandLineSelection",
+        "when": "textInputFocus" 
+    },
+    {   
+        "key": "cmd+alt+right",      
+        "command": "editor.action.smartSelect.expand",
+        "when": "editorTextFocus" 
+    },
+    {   
+        "key": "cmd+alt+left",       
+        "command": "editor.action.smartSelect.shrink",
+        "when": "editorTextFocus" 
+    },
+    { 
+        "key": "alt+right",            
+        "command": "cursorWordEndRight",
+        "when": "textInputFocus",
+        "args": {"sticky":false} 
+    },
+    {   
+        "key": "alt+left",              
+        "command": "cursorWordLeft",
+        "when": "textInputFocus" 
+    },
+    {   
+        "key": "cmd+right",             
+        "command": "cursorEnd",
+        "when": "textInputFocus" 
+    },
+    {   
+        "key": "cmd+left",              
+        "command": "cursorHome",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+k cmd+k",
+        "command": "-editor.action.defineKeybinding",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'jsonc'"
+    },
+    {
+        "key": "cmd+k cmd+k",
+        "command": "-keybindings.editor.defineKeybinding",
+        "when": "inKeybindings && keybindingFocus"
+    },
+    {
+        "key": "cmd+k cmd+k",
+        "command": "-editor.action.selectFromAnchorToCursor",
+        "when": "editorTextFocus && selectionAnchorSet"
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "-editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+d",
+        "command": "deleteAllRight",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "-deleteAllRight",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+alt+up",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+       {
+        "key": "ctrl+alt+down",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "pageup",
+        "command": "-cursorPageUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "pagedown",
+        "command": "-cursorPageDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "pagedown",
+        "command": "scrollPageDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+pagedown",
+        "command": "-scrollPageDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "pageup",
+        "command": "scrollPageUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+pageup",
+        "command": "-scrollPageUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "a",
+        "command": "-notebook.cell.insertCodeCellAbove",
+        "when": "config.jupyter.enableKeyboardShortcuts && notebookEditorFocused && !inputFocus && notebookType == 'jupyter-notebook'"
+    },
+    {
+        "key": "b",
+        "command": "-notebook.cell.insertCodeCellBelow",
+        "when": "config.jupyter.enableKeyboardShortcuts && notebookEditorFocused && !inputFocus && notebookType == 'jupyter-notebook'"
+    },
+    {
+        "key": "shift+cmd+enter",
+        "command": "-notebook.cell.insertCodeCellAbove",
+        "when": "notebookCellListFocused && !inputFocus"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "-notebook.cell.insertCodeCellBelow",
+        "when": "notebookCellListFocused && !inputFocus"
+    },
+    {
+        "key": "alt+cmd+down",
+        "command": "notebook.cell.moveDown",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    {
+        "key": "alt+down",
+        "command": "-notebook.cell.moveDown",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    {
+        "key": "alt+escape",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+; a",
+        "command": "-jupyter.insertCellAbove",
+        "when": "editorTextFocus && jupyter.hascodecells && !jupyter.webExtension && !notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+; b",
+        "command": "-jupyter.insertCellBelow",
+        "when": "editorTextFocus && jupyter.hascodecells && !jupyter.webExtension && !notebookEditorFocused"
+    },
+    {
+        "key": "x",
+        "command": "-notebook.cell.cut",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputFocused"
+    },
+    {
+        "key": "ctrl+; s",
+        "command": "-jupyter.insertCellBelowPosition",
+        "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !jupyter.webExtension && !notebookEditorFocused"
+    },
+    {
+        "key": "alt+up",
+        "command": "notebook.cell.insertCodeCellAboveAndFocusContainer",
+        "when": "notebookEditorFocused"
+    },
+    {
+        "key": "alt+down",
+        "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+        "when": "notebookEditorFocused"
+    },
+    {
+        "key": "shift+enter",
+        "command": "notebook.cell.execute",
+        "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-notebook.cell.execute",
+        "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
+    },
+    {
+        "key": "shift+cmd+enter",
+        "command": "notebook.cell.executeCellAndBelow"
+    },
+    {
+        "key": "alt+m",
+        "command": "notebook.cell.changeToMarkdown",
+        "when": "notebookEditorFocused"
+    },
+    {
+        "key": "alt+c",
+        "command": "notebook.cell.changeToCode",
+        "when": "notebookEditorFocused"
+    },
+    {
+        "key": "alt+left",
+        "command": "notebook.cell.delete",
+        "when": "notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+cmd+r",
+        "command": "workbench.action.reloadWindow",
+        "when": "isDevelopment"
+    },
+    {
+        "key": "cmd+r",
+        "command": "-workbench.action.reloadWindow",
+        "when": "isDevelopment"
+    },
+    {
+        "key": "shift+cmd+d",
+        "command": "-workbench.view.debug",
+        "when": "viewContainer.workbench.view.debug.enabled"
+    },
+    {
+        "key": "alt+up",
+        "command": "editorScroll",
+        "args": {
+          "by": "line",
+          "to": "up",
+          "revealCursor": true,
+          "value": 2
+        },
+        "when": "editorTextFocus && !editorReadonly && !notebookEditorFocused"
+    },
+    {
+        "key": "alt+down",
+        "command": "editorScroll",
+        "args": {
+          "by": "line",
+          "to": "down",
+          "revealCursor": true, 
+           "value": 2
+        },
+        "when": "editorTextFocus && !editorReadonly && !notebookEditorFocused"
+    },
+    { 
+        "key": "alt+cmd+k",           
+        "command": "editor.action.formatSelection",
+        "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly"
+    }
+]

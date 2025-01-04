@@ -1,0 +1,85 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "cmd+d",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+shift+]",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "cmd+shift+[",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "cmd+e",
+        "command": "extension.xtmeval",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+cmd+e",
+        "command": "extension.xtmconnect",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+K I",
+        "command": "editor.action.showSnippets"
+    },
+    {
+        "key": "ctrl+alt+space",
+        "command": "-toggleSuggestionFocus",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+]",
+        "command": "editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+[",
+        "command": "editor.action.outdentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+K K",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": { "name": "Wrap With OnBeat" }
+    },
+    {
+        "key": "cmd+o",
+        "command": "file-browser.open"
+    },
+    {   
+        "key": "ctrl+D",           
+        "command": "editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly" 
+    },
+    {   
+        "key": "ctrl+S",           
+        "command": "expandLineSelection",
+        "when": "textInputFocus" 
+    },
+    { "key": "alt+right",            
+        "command": "cursorEnd",
+        "when": "textInputFocus",
+        "args": {"sticky":false} },
+    { "key": "alt+left",              
+        "command": "cursorHome",
+        "when": "textInputFocus" },
+    { "key": "cmd+right",             
+        "command": "cursorWordEndRight",
+        "when": "textInputFocus" },
+    { "key": "cmd+left",              
+        "command": "cursorWordLeft",
+        "when": "textInputFocus" },
+]
+
+

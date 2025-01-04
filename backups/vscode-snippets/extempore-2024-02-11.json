@@ -1,0 +1,1353 @@
+{
+    // Place your snippets for extempore here. Each snippet is defined under a snippet name and has a prefix, body and
+    // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+    // same ids are connected.
+    // Example:
+    // "Print to console": {
+    // 	"prefix": "log",
+    // 	"body": [
+    // 		"console.log('$1');",
+    // 		"$2"
+    // 	],
+    // 	"description": "Log output to console"
+    // }
+    ":setup": {
+        "prefix": ":setup",
+        "body": [
+            "(pm_print_devices)",
+            "(define *mididevice* (pm_create_output_stream (pm_output_device_with_name \"IAC Driver Extempore Bus\")))" ,
+            "(mu:test 38 1) ; MIDI channel defaults to 1",
+            "(mu:testchord '(60 63 67) )",
+        ],
+        "description": "midi setup extempore"
+    },
+    "docs-file-header": {
+        "prefix": "docs-file-header",
+        "body": [
+            ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+            ";; $TM_FILENAME -- $1",
+            ";; ",
+            ";; ",
+            ";; ",
+            ";;",
+            ";; ",
+            ";; ",
+            ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+        ],
+        "description": "file header"
+    },
+    "docs-function": {
+        "prefix": "docs-function",
+        "body": [
+            "; ${1:funname}",
+            ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+            ";",
+            "; Args:",
+            "; -----",
+            ";",
+            ";",
+            ";",
+            "; Example:",
+            "; --------",
+            ";",
+            ";",
+            ";",
+            ";",
+            ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+        ],
+        "description": "function description header"
+    },
+    "metro-get-beat": {
+        "prefix": "metro-get",
+        "body": ["*metro* 'get-beat ${1:4})"],
+        "description": "metro get beat"
+    },
+    "metro-set-tempo": {
+        "prefix": "metro-set",
+        "body": ["*metro* 'set-tempo ${1:120})"],
+        "description": "metro set tempo"
+    },
+    "define-var": {
+        "prefix": "def",
+        "body": ["(define ${1})"],
+        "description": "Define variable"
+    },    
+    "define-lambda": {
+        "prefix": "defla",
+        "body": ["(define ${1:f1}", "\t(lambda ($2)", "\t\t))"],
+        "description": "Define function"
+    },
+    "define-fun-map": {
+        "prefix": "defmap",
+        "body": [
+            "(define ${1:f1}", "\t(lambda (alist)", 
+            "\t\t(map (lambda (x)", "\t\t\t\t$0", "\t\t\t\t)", 
+            "\t\t\talist)", "\t))"
+        ],
+        "description": "Define function with map "
+    },
+    "Loop with inner dur": {
+        "prefix": "defloop",
+        "body": [
+            "(define ${1:lp1}",
+            "\t(lambda (beat)",
+            "\t\t(let ((dur 1/16))",
+            "\t\t\t\t${3}",
+            "\t\t\t(callback (*metro* (+ beat (* 1/2 dur))) \n\t\t\t\t'${1} (+ beat dur)))))",
+            "\n(${1} (*metro* 'get-beat 1))\n"
+        ],
+        "description": "Loop + inner dur"
+    },
+    "Loop with outer dur": {
+        "prefix": "defloop",
+        "body": [
+            "(define ${1:lp1}",
+            "\t(lambda (beat dur)",
+            "\t\t${3}",
+            "\t\t(callback (*metro* (+ beat (* 1/2 dur))) \n\t\t\t\t'${1} (+ beat dur) dur)))",
+            "\n(${1} (*metro* 'get-beat 1) 1)\n"
+        ],
+        "description": "Loop + outer dur"
+    },
+    "Loop with every": {
+        "prefix": "defloop",
+        "body": [
+            "(define ${1:lp1}",
+            "\t(lambda (beat dur lc)",
+            "\t\t${3}",
+            "\t\t(callback (*metro* (+ beat (* 1/2 dur))) \n\t\t\t\t'${1} (+ beat dur) dur (1+ lc))))",
+            "\n(${1} (*metro* 'get-beat 1) 1 1)\n"
+        ],
+        "description": "Loop with every variables"
+    },
+    "Loop with play-map": {
+        "prefix": "defloop",
+        "body": [
+            "(define times (mklist 4 (oneof 1/2 1/4)))",
+            "(define notes (mkchordrandom A3 'm6 4 100))",
+            "(define vols (mklist 4 (oneof 50 90)))\n",
+            "(define ${1:lp1}",
+            "\t(lambda (beat)",
+            "\t\t(let ((dur 1/16))",
+            "\n\t\t\t(map (lambda (t p v)",
+            "\t\t\t\t\t(onbeat t 0 (play ?? p v dur ))", 
+            "\t\t\t\t\t)", 
+            "\t\t\t\ttimes notes vols)$0",
+            "\n\t\t\t(callback (*metro* (+ beat (* 1/2 dur))) \n\t\t\t\t'${1} (+ beat dur)))))",
+            "\n(${1} (*metro* 'get-beat 1))\n"
+        ],
+        "description": "Loop with let and inner play via map"
+    },
+    "Loop with rotate": {
+        "prefix": "defloop",
+        "body": [
+            "(define ${1:lp1}",
+            "\t(lambda (beat notes durs)",
+            "\t\t(let ((p (car notes)) \n\t\t\t\t\t(dur (car durs)))",
+            "\n\t\t\t\t${2:(play ?? p 40 dur)}\n",
+            "\t\t\t(callback (*metro* (+ beat (* 1/2 dur))) \n\t\t\t\t'${1} (+ beat dur)",
+            "\t\t\t\t(rotate notes -1) (rotate durs -1)))))",
+            "\n(${1} (*metro* 'get-beat 1) '(${3:60 67 69}) '(${4:4 2}))\n"
+        ],
+        "description": "Loop with rotating notes and durs"
+    },
+    "Loop with rotate deep": {
+        "prefix": "defloop",
+        "body": [
+            "(define ${1:lp1}",
+            "\t(lambda (beat notes durs)",
+            "\t\t(let ((p (caar notes)) \n\t\t\t\t(dur (car durs)))",
+            "\n\t\t\t${2:(play ?? p 40 dur)}\n",
+            "\t(callback (*metro* (+ beat (* 1/2 dur))) \n\t\t\t\t'${1} (+ beat dur)",
+            "\t\t\t\t(rotatedeep notes -1) (rotate durs -1)))))",
+            "\n(${1} (*metro* 'get-beat 1) '(${3:(60 67 69) (48)}) '(${4:4 2}))\n"
+        ],
+        "description": "Loop with rotating notes and durs"
+    },
+    "Loop with melody/durs": {
+        "prefix": "defloop",
+        "body": [
+            "(define *melody* (mkchord 48 '-))",
+            "(define *durs* (mklist 4 (oneof 1/2 1)))\n",
+            "(define ${1:lp1}",
+            "\t(lambda (beat melody durs)",
+            "\t\t(let ((dur (car durs)) \n\t\t\t\t\t(p (car melody)))",
+            "\n\t\t\t\t(play $0?? p 40 dur )\n",
+            "\t\t\t(callback (*metro* (+ beat (* 1/2 dur))) \n\t\t\t\t'${1} (+ beat dur)",
+            "\t\t\t\t(cdr-or-else melody *melody*)",
+            "\t\t\t\t(cdr-or-else durs *durs*)))))",
+            "\n(${1} (*metro* 'get-beat 1) *melody* *durs*)\n"
+        ],
+        "description": "Loop with outer melody and durs"
+    },
+    "Loop with rect beat": {
+        "prefix": "defloop",
+        "body": [
+            "(define ${1:lp1}",
+            "\t(lambda (beat dur)",
+            "\t\t(let ((t (rectr 1/2 1 1/16 )))",
+            "\n\t\t\t(at t 0",
+            "\t\t\t\t(play $0??",
+            "\t\t\t\tA2",
+            "\t\t\t\t(cosr 60 20 1/2)\n\t\t\t\tt)",
+            "\t\t\t)",
+            "\n\t\t(callback (*metro* (+ beat (* 1/2 dur))) \n\t\t\t\t'${1} (+ beat dur) dur))))",
+            "\n($1 (*metro* 'get-beat 1) 1/16)\n"
+        ],
+        "description": "Loop with rect as downbeat"
+    },
+    "Loop with pitch-vel-dur": {
+        "prefix": "defloop",
+        "body": [
+            "(define ${1:lp1}",
+            "\t(lambda (beat pitch vel dur ch)",
+            "\t\t(let ((dur dur))",
+            "\t\t\t\t(play ?? pitch vel dur )",
+            "\t\t\t(callback (*metro* (+ beat (* .5 dur))) '${1} (+ beat dur)",
+            "\t\t\t\tpitch",
+            "\t\t\t\tvel",
+            "\t\t\t\tdur",
+            "\t\t\t\tch))))",
+            "\n($1 (*metro* 'get-beat ${2:1}) ${3:60} ${4:80} ${5:1/4} ${6:1})\n"
+        ],
+        "description": "Loop with pitch vel etc"
+    },
+    "Loop with assoc chords": {
+        "prefix": "defloop",
+        "body": [
+            "(define pc 0)\n",
+            "(define ${1:lp1}",
+            "\t(lambda (beat degree)",
+            "\t\t(let ((dur ${2:8}))",
+            "\t\t\t(set! pc (pc:diatonic 0 '- degree))",
+            "\t\t\t(for-each (lambda (p)",
+            "\t\t\t\t(play ${3:??} p 10 dur))",
+            "\t\t\t(pc:make-chord 35 70 3 pc))",
+
+            "\t\t(callback (*metro* (+ beat (* 1/2 dur)))", 
+            "\t\t\t\t'$1 (+ beat dur)",
+            "\t\t\t\t(oneof (rest (assoc degree",
+            "\t\t\t\t\t\t\t\t\t\t\t'((i iv)",
+            "\t\t\t\t\t\t\t\t\t\t\t(iv i)",
+            "\t\t\t\t\t\t\t\t\t\t\t))))))))",
+            "\n($1 (*metro* 'get-beat $2) 'i)\n"
+        ],
+        "description": "Loop with assoc chords progression"
+    },
+    "Play Note Midi": {
+        "prefix": "play",
+        "body": ["(play ${0:?inst} C3 90 dur)"],
+        "description": "(play [offset] ch plist vlist dlist )  REQUIRES: beat, *mididevice*"
+    },
+    "Play arpeggio": {
+        "prefix": "playarp",
+        "body": ["(playarp ${1:?inst} ${2:?plist} 90 1)"],
+        "description": "(playarp [offset] inst plist vol-s dur-s ) REQUIRES: beat, *mididevice*. "
+    },
+    "Play Kit Midi": {
+        "prefix": "playk",
+        "body": ["(playk ${1:36} ${2:90})"],
+        "description": "(playk [offset] p vol) // ch=9 default "
+    },
+    "Play Kit-Repeated": {
+        "prefix": "playkr",
+        "body": ["(playkr ${1:60} ${2:hits} ${3:spacing} ${4:vel})"],
+        "description": "(playkr p hits spacing . vol) // ch=9 default"
+    },
+    "Play Pattern": {
+        "prefix": "playp",
+        "body": ["(playp ${1:?inst} ${2:?bars} '(${3:c4}) ${4:90})"],
+        "description": "(playp ch bars [durOffset] [pOffset] plist vols [durs]) REQUIRES: beat, dur, *mididevice*."
+    },
+    "Play Pattern for drums": {
+        "prefix": "playkp",
+        "body": ["(playkp ${1:?bars} '(${2:x41}) ${3:1})"],
+        "description": "(playkp bars [durOffset] [pOffset] plist vols [durs]) // ch=9 default REQUIRES: beat, dur, *mididevice*."
+    },
+    "Play Notes with Map": {
+        "prefix": "mapplay",
+        "body": [
+                "(map (lambda (x)",
+                "\t\t(play ?? x 90 dur )", "\t\t)", "\tnotes)"
+            ],
+        "description": "Play notes using map"
+    },
+    ":bar": {
+        "prefix": ":bar",
+        "body": [
+            "(:bar ${1:4}",
+            "\t(:beat ${2:0} ${3} )",
+            ")"
+        ],
+        "description": ":bar structure for beat procedures"
+    },
+    ":beat": {
+        "prefix": ":beat",
+        "body": [
+            "(:beat ${1:0} ${2} )",
+        ],
+        "description": ":beat structure for :bar procedures"
+    },
+    "add": {
+        "prefix": "add",
+        "body": [
+            "(add ${1:val|atom-or-list} ${2:result|atom-or-list})"
+        ],
+        "description": "add atom-or-list to atom-or-list"
+    },
+    "oneof": {
+        "prefix": "oneof",
+        "body": ["(oneof 1 2)"],
+        "description": "oneof elements"
+    },
+    "octave": {
+        "prefix": "octave",
+        "body": ["(octave ${1:'(60 72)} ${2:4})"],
+        "description": "arg1:pitch-list arg2:min-octave [arg3:max-octave]"
+    },
+    "list": {
+        "prefix": "list",
+        "body": ["(list ${1})"],
+        "description": "list"
+    }, 
+    "at": {
+        "prefix": "at",
+        "body": ["(at $0 0 )"],
+        "description": "at measure downbeat-0-based &procedures"
+    },
+    "atbtw": {
+        "prefix": "atbtw",
+        "body": ["(atbtw $0 0 4)"],
+        "description": "atbtw measure downbeat-0-based &procedures"
+    },
+    "onbeat-play": {
+        "prefix": "at-play",
+        "body": ["(at ${1:4} ${2:0} (play $0?? C3 30 1/8 ))"],
+        "description": "at + play"
+    },    
+    "ifbeat": {
+        "prefix": "ifbeat",
+        "body": ["(ifbeat ${1:4} ${2:0} ${3:function} ${3:elsefunction})"],
+        "description": "ifbeat x y args . elseargs"
+    },
+    "ifbeat-gt": {
+        "prefix": "ifbeatgt",
+        "body": ["(ifbeat-gt ${1:4} ${2:0} ${3:function} ${3:elsefunction})"],
+        "description": "ifbeat-gt x y args . elseargs"
+    },
+    "ifbeat-lt": {
+        "prefix": "ifbeatlt",
+        "body": ["(ifbeat-lt ${1:4} ${2:1} ${3:function} ${3:elsefunction})"],
+        "description": "ifbeat-lt x y args . elseargs"
+    },
+    "ifbeat-btw": {
+        "prefix": "ifbeatbtw",
+        "body": ["(ifbeat-btw ${1:8} ${2:2} ${3:6} ${4:function} ${5:elsefunction})"],
+        "description": "ifbeat-btw - measure downbeat1 downbeat2 procedure &elseprocedure"
+    },
+    "wrap-println": {
+        "prefix": "wrap-println",
+        "body": [
+            "(println $TM_SELECTED_TEXT)"
+        ],
+        "description": "Wrap selected text with println"
+    },
+    "wrap-onbeat": {
+        "prefix": "wrap-at",
+        "body": ["(at ${1:4} ${2:0} $TM_SELECTED_TEXT)"],
+        "description": "Wrap selected text with at"
+    },
+    "wrap-letbeat": {
+        "prefix": "wrap-let",
+        "body": [
+            "(let ((beat (*metro* 'get-beat)))\n\t\t$TM_SELECTED_TEXT\n)"
+        ],
+        "description": "Wrap selected text with let"
+    },
+    "wrap-dotimes": {
+        "prefix": "wrap-dotimes",
+        "body": [
+            "(dotimes (${1:i} ${2:limit})","\t$TM_SELECTED_TEXT\n)"
+        ],
+        "description": "Wrap selected text with dotimes"
+    }, 
+    "println": {
+        "prefix": "println",
+        "body": ["(println $0)"],
+        "description": "println"
+    },
+    "print log": {
+        "prefix": "println-info",
+        "body": [ "(log-info ${1:beat})"],
+        "description": "log-info printing"
+    },
+    "Callback": {
+        "prefix": "callback",
+        "body": ["(callback (*metro* (+ beat (* 1/2 dur))) \n\t\t'${1:loop} (+ beat dur))"],
+        "description": "Callback standard"
+    },
+    "If": {
+        "prefix": "if",
+        "body": ["(if ${1})"],
+        "description": "If basic"
+    },
+    "If cdr or else": {
+        "prefix": "if-cdr-else",
+        "body": ["(if-cdr-else ${1:list1} ${2:list2})"],
+        "description": "If cdr exists, else"
+    },
+    "If cdr not null": {
+        "prefix": "if-cdr-notnull",
+        "body": ["(if-cdr-notnull ${1:list} ${2:proc} ${3:elseproc})"],
+        "description": "If cdr not null , proc elseproc"
+    },
+    "if-mod": {
+        "prefix": "ifmod",
+        "body": ["(if (${1:=} (modulo beat ${2:1})", "\t${3:0})", "\t$0)"],
+        "description": "if modulo beat"
+    },
+    "if-not-null": {
+        "prefix": "ifnotnull",
+        "body": ["(if (not (null? $1)) $0)"],
+        "description": "if not null"
+    },
+    "if-null-set": {
+        "prefix": "ifnull-set",
+        "body": ["(if (null? ${1:x}) (set! $1 $0)"],
+        "description": "if null set!"
+    },
+    "ifr": {
+        "prefix": "ifr",
+        "body": ["(ifr .7 'do 'else)"],
+        "description": "Do proc if random > number - with else"
+    },
+    "if=": {
+        "prefix": "if=",
+        "body": ["(if= $1 $2 $0)"],
+        "description": "(if= 2 3 (print 'ciao) (print 'baby))"
+    },
+    "if<": {
+        "prefix": "if<",
+        "body": ["(if< $1 $2 $0)"],
+        "description": "(if< 2 3 (print 'ciao) (print 'baby))"
+    },
+    "if>": {
+        "prefix": "if>",
+        "body": ["(if> $1 $2 $0)"],
+        "description": "(if> 2 3 (print 'ciao) (print 'baby))"
+    },
+    "cond": {
+        "prefix": "cond ",
+        "body": [
+            "(cond\t((= 2 2)",
+            "\t\t\t\t(println 'proced1))",
+            "\t\t\t(else 0))"
+        ],
+        "description": "cond"
+    },
+    "cond-mod": {
+        "prefix": "cond-modulo",
+        "body": [
+            "(cond ((= (modulo beat ${1:8}) ${2:0})",
+                    "\t\t(play ?? c3 80 1/2))",
+                 "\t\t((= (modulo beat 8) 2)",
+                    "\t\t(play ?? c4 90 1/2))",
+                "\t\t(else 0)) "           
+        ],
+        "description": "conditional on module"
+    },
+    "random in range": {
+        "prefix": "random",
+        "body": ["(random $0)"],
+        "description": "random number from range"
+    },
+    "random-assoc": {
+        "prefix": "randomassoc",
+        "body": ["(random (cdr (assoc ${1:key} '(($0))))"],
+        "description": "random from assoc"
+    },
+    "inc": {
+        "prefix": "inc",
+        "body": ["(set! ${1:var} (${2:+} $1 $0))"],
+        "description": "increment variable via set!"
+    },
+    "set!": {
+        "prefix": "set!",
+        "body": ["(set! $0 1)"],
+        "description": "set var"
+    },
+    "set!rotate": {
+        "prefix": "set!rotate",
+        "body": ["(set! ${1:list} (rotate $1 -1))"],
+        "description": "set list with self rotation"
+    },
+    "rotate": {
+        "prefix": "rotate",
+        "body": ["(rotate $1 -1)"],
+        "description": "(rotate list -1)"
+    },
+    "set!rotatedeep": {
+        "prefix": "setrotatedeep",
+        "body": ["(set! ${1:list} (rotatedeep $1 -1))"],
+        "description": "rotatedeep list and set! it"
+    },
+    "every": {
+        "prefix": "every",
+        "body": ["(every ${1:2} ${2})"],
+        "description": "every X, do sequence of procedures"
+    },
+    "everyelse": {
+        "prefix": "everyelse",
+        "body": ["(everyelse ${1:2} 'do 'else )"],
+        "description": "every X, do procedure, else procedure"
+    },
+    "sortasc": {
+        "prefix": "sort",
+        "body": ["(sortasc ${0:list})"],
+        "description": "sortasc"
+    },
+    "sortdesc": {
+        "prefix": "sort",
+        "body": ["(sortdesc ${0:list})"],
+        "description": "sortdesc"
+    },
+    "cosr": {
+        "prefix": "cosr",
+        "body": ["(cosr ${1:1} ${2:1} ${3:1/4})"],
+        "description": "cosr"
+    },
+    "cosratio": {
+        "prefix": "cosr",
+        "body": ["(cosratio ${1:1} ${2:1} ${3:1/4})"],
+        "description": "cosratio"
+    },
+
+    "cosrfloor": {
+        "prefix": "cosr",
+        "body": ["(cosrfloor ${1:1} ${2:1} ${3:1/4})"],
+        "description": "cosfloor "
+    },
+    "cosr-double": {
+        "prefix": "cosr",
+        "body": ["(cosr (cosr ${1:1} ${2:1} ${3:1/2}) ${2:1} ${3:1/2})"],
+        "description": "cosr double"
+    },
+    "rectr": {
+        "prefix": "rectr",
+        "body": ["(rectr ${1:1} ${2:1} ${3:1/4})"],
+        "description": "rectr"
+    },
+    "rectratio": {
+        "prefix": "rectr",
+        "body": ["(rectratio ${1:1} ${2:1} ${3:1/4})"],
+        "description": "rectratio: min to max , no intervals (max is x1 + x2)"
+    },
+    "rectrfloor": {
+        "prefix": "rectr",
+        "body": ["(rectrfloor ${1:1} ${2:1} ${3:1/4})"],
+        "description": "rectrfloor: min to max , no intervals "
+    },
+    "dotimes": {
+        "prefix": "dotimes",
+        "body": ["(dotimes (i ${0:4})", "\t)"],
+        "description": "dotimes"
+    },
+    "dotimes-play": {
+        "prefix": "dotimesplay",
+        "body": ["(dotimes (i ${0:4})", "\t(play (* i 1/4) ${1:??} ${2:k1} 10 (* dur .7)))"],
+        "description": "dotimes with inner play"
+    },
+    "for each basic": {
+        "prefix": "foreach",
+        "body": [
+            "(for-each (lambda (p)",
+            "\t\t$0)",
+            "\tplist)"
+        ],
+        "description": "for each"
+    },
+    "for each chord": {
+        "prefix": "foreach+chord",
+        "body": [
+            "(for-each (lambda (p)",
+            "\t\t(play ?? p 10 1/8))",
+            "\t(mkchord 48 '-6 4))"
+        ],
+        "description": "for each with pitch/chord"
+    },
+    "for each chord+times": {
+        "prefix": "foreach+times",
+        "body": [
+            "(for-each (lambda (p t)",
+            "\t\t(play t $0?? p 10 1/8 ))",
+            "\t(mkchord 48 '-6 4)",
+            "\t(mklist 4 (oneof 1/8 0)))"
+        ],
+        "description": "for each with pitch and times"
+    },
+    ":mix": {
+        "prefix": "mix",
+        "body": ["(mix ${0:1} '+ 1)"],
+        "description": "(:mix live-track-no '+ 90 [limit])"
+    },
+    ":mix-all": {
+        "prefix": "mixall",
+        "body": ["(mix 'all $0)"],
+        "description": "[opt: 1:val]"
+    },
+    ":tempo": {
+        "prefix": ":tempo",
+        "body": ["(:tempo '+ 1 $0)"],
+        "description": "1:+ 2:val 3:limit"
+    },
+    // "mixer-all": {
+    //     "prefix": "mixer-all",
+    //     "body": ["(:mix 'all 0)"],
+    //     "description": "mixer 1-9 set all of them "
+    // },
+    "midicc": {
+        "prefix": "midicc",
+        "body": ["(mcc ${1:cc} ${2:val})"],
+        "description": "mcc cc val (ch:0)"
+    },
+    "midiccrandom": {
+        "prefix": "midiccrandom",
+        "body": ["(mcc ${1:11} (random 1 100))"],
+        "description": "(mcc 11 (random 1 100))"
+    },
+    // "mcc-helper": {
+    //     "prefix": "mcc-helper",
+    //     "body": [
+    //         "(let ((beat (*metro* 'get-beat)))",
+    //         "\t(mcc 40 90))",
+    //     ],
+    //     "description": "helper to set up a manual midicc alignment with DW host"
+    // },
+    "monitor": {
+        "prefix": "monitor",
+        "body": ["(monitor  ${symbols})"],
+        "description": "[at 2 0] (monitor symbols)"
+    },    
+    "let": {
+        "prefix": "let",
+        "body": ["(let (($1))\n\t\t$0\n\t\t)"],
+        "description": "let - basic "
+    },
+    "let-beat": {
+        "prefix": "let-beat",
+        "body": ["(let ((beat (*metro* 'get-beat)))\n\t\t$0\n\t\t)"],
+        "description": "let with beat "
+    },   
+    "let-named-simple": {
+        "prefix": "letn",
+		"body": [
+			"(let llop ((i 0) (n '(1/2)))",
+				"\t(if (< i 6)",
+			        "\t\t(llop (+ i 1) (append n (list (+ (cl:last n) (oneof 1/2 1 2)))))",
+			        "\t\tn)",
+			     "\t${1|;; do something with llop..|}$0"
+        ],
+        "description": "let named simple"
+    },
+    "let-named-cons": {
+        "prefix": "letn",
+            "body": [
+                "(let loop ((i 0)",
+                        "\t\t(lst '(60)))",
+                    "\t(if (< i 24)",
+                        "\t\t(loop (+ i 1)",
+                                "\t\t\t(cons (+ (car lst) (random (list -1 1))) '(0 2 4 5 7 9 11))",
+                                    "\t\t\tlst))",
+                        "\t\t(println lst))$0"
+        ],
+        "description": "named let with cons"
+    },
+    "map": {
+        "prefix": "map",
+        "body": [
+            "(map (lambda (x)",
+            "\t\t$0)",
+            "\tlista)",
+        ],
+        "description": "map"
+    },
+    "assoc": {
+        "prefix": "assoc ",
+        "body": ["(assoc $1 '(($0)) )"],
+        "description": "assoc"
+    },
+    "sym-chords": {
+        "prefix": "sym-chords",
+        "body": [
+            "'${1:M|m|Msus|M4|M6|M64|M7|M65|M43|M42|M2|M7#4|M9|7|9|65|43|2|42|msus|m4|m6|m64|m7|m65|m43|m42|m2|m9|m7b5|d|d6|d64|d7|d65|d43|d42|d2}"
+        ],
+        "description": "Chord symbols"
+    },
+    "sym-scales": {
+        "prefix": "sym-scales",
+        "body": [
+            "'${1:M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian}"
+        ],
+        "description": "Scales symbols"
+    },
+    "make-list-with-proc": {
+        "prefix": "makel",
+        "body": ["(make-list-with-proc ${1:length} (lambda (x) ${2:(random 10)} )) )"],
+        "description": "make list with proceedings [use mklist instead]"
+    },
+    "mklist": {
+        "prefix": "mklist",
+        "body": ["(mklist ${1:length} (oneof 1 2 3))"],
+        "description": "1:length 2:proc"
+    },    
+    "mkchord": {
+        "prefix": "mkchord",
+        "body": ["(mkchord ${1:pitch} '${2:M|m|Msus|M4|M6|M64|M7|M65|M43|M42|M2|M7#4|M9|7|9|65|43|2|42|msus|m4|m6|m64|m7|m65|m43|m42|m2|m9|m7b5|d|d6|d64|d7|d65|d43|d42|d2} )"],
+        "description": "1:root [opt: 2:mode|M ]"
+    },
+    "mkchordrandom": {
+        "prefix": "mkchordrandom",
+        "body": ["(mkchordrandom ${1:pitch} '${2:M|m|Msus|M4|M6|M64|M7|M65|M43|M42|M2|M7#4|M9|7|9|65|43|2|42|msus|m4|m6|m64|m7|m65|m43|m42|m2|m9|m7b5|d|d6|d64|d7|d65|d43|d42|d2-DEfault-^} ${3:notes-default-3} ${4:upper-limit-120} )"],
+        "description": "1:root [opt: 2:mode|M 3:notes|3 ]"
+    },
+    "mkchordbystep": {
+        "prefix": "mkchordbystep",
+        "body": [ "(mkchordbystep ${1:pitch} '(${2:steps}) '${3:M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian} )"],
+        "description": "1:root 2:steps 3:scale [opt: 4:alt-root ]"
+    },
+    "mkmelody": {
+        "prefix": "mkmelody",
+        "body": ["(mkmelody ${1:4} ${2:60} '${3:M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian} ${4:'(1 -1)} )"],
+        "description": "1:len [opt: 2:root 3:scale 4:variations]"
+    },
+    "mkscale": {
+        "prefix": "mkscale",
+        "body": [ "(mkscale ${1:root} '${2:M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian} )"],
+        "description": "[opt: 1:root|60 2:mode|ionian 3:notes|1octave 4:octaves|1 ]"
+    },
+    "mkint": {
+        "prefix": "mkint",
+        "body": [ "(mkint ${1:root} ${2:interval} '${3:M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian} )"],
+        "description": "1:root 2:int [opt: mode|M ]"
+    },
+    "mkrel": {
+        "prefix": "mkrel",
+        "body": [ "(mkrel ${1:scale-root} ${2:scale-degree} '${3:M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian} )"],
+        "description": "1:root 2:degree 3:mode  (Return a pitch relative to a scale)"
+    },
+    "mkrelscale": {
+        "prefix": "mkrelscale",
+        "body": [ "(mkrelscale ${1:scale-root} ${2:scale-start} '${3:M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian} 8 )"],
+        "description": "1:root 2:degree 3:mode 4:notes"
+    },
+    "mu:test": {
+        "prefix": ":mutest",
+        "body": ["(mu:test 38 1)"],
+        "description": "Midi test single note"
+    },
+    "mu:testkit": {
+        "prefix": ":mutestkit",
+        "body": ["(mu:testkit 9)"],
+        "description": "Midi test Ableton Live samples in a drum kit"
+    },
+    "mu:testchord": {
+        "prefix": ":mutestchord",
+        "body": ["(mu:testchord '(60 63 67) )"],
+        "description": "Midi test with chord"
+    },
+    "mu:testseq": {
+        "prefix": ":mutestseq",
+        "body": ["(mu:testseq '(60 63 67) )"],
+        "description": "Midi test with sequence of notes"
+    },
+    "pcquantize": {
+        "prefix": "pcquantize",
+        "body": ["(pcquantize ${1:pitch-in} '${2:pitch-list-or|M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian}$0)"],
+        "description": "pcquantize pitch in pitch-list or scale symbol"
+    },
+    "pcrandom": {
+        "prefix": "pcrandom",
+        "body": ["(pcrandom ${1:lower} ${2:upper} '${3:pitch-list-or|M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian}$0)"],
+        "description": "pcrandom lower upper in pitch-list or scale symbol"
+    },
+    "pc:chord": {
+        "prefix": "pcchord",
+        "body": [ "(pc:chord ${1:root} '${2:M|m|Msus|M4|M6|M64|M7|M65|M43|M42|M2|M7#4|M9|7|9|65|43|2|42|msus|m4|m6|m64|m7|m65|m43|m42|m2|m9|m7b5|d|d6|d64|d7|d65|d43|d42|d2} )"],
+        "description": "1:root 2:mode"
+    },
+    "pc-diatonic": {
+        "prefix": "pcdia",
+        "body": ["(pc:diatonic ${1:root} '${2:^-} '${3:degree})"],
+        "description": "pc:diatonic standard"
+    },
+    "pc:make-chord-fixed": {
+        "prefix": "pcmakechordfixed",
+        "body": ["(pc:make-chord-fixed ${1:pitch} ${2:number} ${3:pcchord}$0)"],
+        "description": "pc:make-chord-fixed"
+    },
+    "pc:make-chord": {
+        "prefix": "pcmakechord",
+        "body": [ "(pc:make-chord ${1:lower} ${2:upper} ${3:number} ${4:pcchord}$0 )"],
+        "description": "pc:make-chord"
+    },
+    "pc:relative": {
+        "prefix": "pcrel",
+        "body": ["(pc:relative ${1:pitch} ${2:step} pcscale$0)"],
+        "description": "pc:relative"
+    },
+    "pc:scale": {
+        "prefix": "pcscale",
+        "body": [ "(pc:scale ${1:0} '${2:pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian)} )"],
+        "description": "pc:scale"
+    },
+    "example-define-melody-let": {
+        "prefix": "example-melody-let",
+        "body": [
+            "(define melody (let loop ((i 0)",
+            "\t\t\t(lst '(60)))",
+            "\t(if (< i 24)",
+            "\t\t(loop (+ i 1)",
+            "\t\t\t(cons (pc:relative (car lst)",
+            "\t\t\t\t(random '(-1 1))",
+            "\t\t\t\t'(0 2 4 5 7 9 11))",
+            "\t\t\tlst))",
+            "\t\t(cdr (reverse lst)))))"
+        ],
+        "description": "Create melody from loop and scale"
+    },
+    "example-recursion": {
+        "prefix": "example-recursion",
+        "body": [
+            ";;;;;;;;;;",
+            ";; recursion",
+            ";;;;;;;;;;",
+            "(define count-leaves",
+            "\t(lambda (tree)",
+			"\tif (atom? tree) 1",
+            "\t\t(+ (count-leaves (car tree))",
+            "\t\t(or (if (cdr tree) (count-leaves (cdr tree)))",
+            "\t\t1)))))",
+            ";; eg (count-leaves '((a b (c d)) (e) f))",
+            ";;;;;;;;;;;;;;;;;;;;;;;",
+            ";; example #2",
+            "(define remove-all",
+            "\t(lambda (obj lst)",
+            "\t\t(cond ((null? lst)",
+            "\t\t'())",
+            "\t\t((list? (car lst))",
+            "\t\t(cons (remove-all obj (car lst))",
+            "\t\t\t(remove-all obj (cdr lst))))",
+            "\t\t((equal? obj (car lst))",
+            "\t\t(remove-all obj (cdr lst)))",
+            "\t\t(else (cons (car lst) (remove-all obj (cdr lst)))))))$0",
+        ],
+        "description": "recursion example"
+    },
+
+    "zblue-gen-clock*": {
+        "prefix": "zblue-gen-clock*",
+        "body": [
+            "zblue-gen-clock*"
+        ],
+        "description": "(define zblue-gen-clock* 70) "
+    },
+
+
+
+    "zblue-gen-noise*": {
+        "prefix": "zblue-gen-noise*",
+        "body": [
+            "zblue-gen-noise*"
+        ],
+        "description": "(define zblue-gen-noise* 71) ; the red generator in the blue section / modulates clock amp "
+    },
+
+
+
+    "zblue-gen-osc*": {
+        "prefix": "zblue-gen-osc*",
+        "body": [
+            "zblue-gen-osc*"
+        ],
+        "description": "(define zblue-gen-osc* 72) "
+    },
+
+
+
+    "zblue-gen-insta1*": {
+        "prefix": "zblue-gen-insta1*",
+        "body": [
+            "zblue-gen-insta1*"
+        ],
+        "description": "(define zblue-gen-insta1* 73) "
+    },
+
+
+
+    "zblue-gen-insta2*": {
+        "prefix": "zblue-gen-insta2*",
+        "body": [
+            "zblue-gen-insta2*"
+        ],
+        "description": "(define zblue-gen-insta2* 74) "
+    },
+
+
+
+    "zblue-gen-volume*": {
+        "prefix": "zblue-gen-volume*",
+        "body": [
+            "zblue-gen-volume*"
+        ],
+        "description": "(define zblue-gen-volume* 75) "
+    },
+
+
+
+    "zblue-fil-cutoff*": {
+        "prefix": "zblue-fil-cutoff*",
+        "body": [
+            "zblue-fil-cutoff*"
+        ],
+        "description": "(define zblue-fil-cutoff* 76) "
+    },
+
+
+
+    "zblue-fil-resonance*": {
+        "prefix": "zblue-fil-resonance*",
+        "body": [
+            "zblue-fil-resonance*"
+        ],
+        "description": "(define zblue-fil-resonance* 77) "
+    },
+
+
+
+    "zblue-fil-feedback*": {
+        "prefix": "zblue-fil-feedback*",
+        "body": [
+            "zblue-fil-feedback*"
+        ],
+        "description": "(define zblue-fil-feedback* 78) "
+    },
+
+
+
+    "zblue-fil-saturation*": {
+        "prefix": "zblue-fil-saturation*",
+        "body": [
+            "zblue-fil-saturation*"
+        ],
+        "description": "(define zblue-fil-saturation* 79) ;;;"
+    },
+
+
+
+    "zblue-fil-distorsion*": {
+        "prefix": "zblue-fil-distorsion*",
+        "body": [
+            "zblue-fil-distorsion*"
+        ],
+        "description": "(define zblue-fil-distorsion* 80) "
+    },
+
+
+
+    "zblue-fil-cutoff-mod*": {
+        "prefix": "zblue-fil-cutoff-mod*",
+        "body": [
+            "zblue-fil-cutoff-mod*"
+        ],
+        "description": "(define zblue-fil-cutoff-mod* 81) "
+    },
+
+
+
+    "zblue-fil-balance*": {
+        "prefix": "zblue-fil-balance*",
+        "body": [
+            "zblue-fil-balance*"
+        ],
+        "description": "(define zblue-fil-balance* 82) "
+    },
+
+
+
+    "zblue-amp-clock*": {
+        "prefix": "zblue-amp-clock*",
+        "body": [
+            "zblue-amp-clock*"
+        ],
+        "description": "(define zblue-amp-clock* 83) "
+    },
+
+
+
+    "zblue-amp-attack*": {
+        "prefix": "zblue-amp-attack*",
+        "body": [
+            "zblue-amp-attack*"
+        ],
+        "description": "(define zblue-amp-attack* 84) "
+    },
+
+
+
+    "zblue-amp-release*": {
+        "prefix": "zblue-amp-release*",
+        "body": [
+            "zblue-amp-release*"
+        ],
+        "description": "(define zblue-amp-release* 85) "
+    },
+
+
+
+    "zblue-amp-ring*": {
+        "prefix": "zblue-amp-ring*",
+        "body": [
+            "zblue-amp-ring*"
+        ],
+        "description": "(define zblue-amp-ring* 86) "
+    },
+
+
+
+    "zblue-amp-volume*": {
+        "prefix": "zblue-amp-volume*",
+        "body": [
+            "zblue-amp-volume*"
+        ],
+        "description": "(define zblue-amp-volume* 87) "
+    },
+
+
+
+    "zred-gen-clock*": {
+        "prefix": "zred-gen-clock*",
+        "body": [
+            "zred-gen-clock*"
+        ],
+        "description": "(define zred-gen-clock* 88) "
+    },
+
+
+
+    "zred-gen-noise*": {
+        "prefix": "zred-gen-noise*",
+        "body": [
+            "zred-gen-noise*"
+        ],
+        "description": "(define zred-gen-noise* 89) "
+    },
+
+
+
+    "zred-gen-osc*": {
+        "prefix": "zred-gen-osc*",
+        "body": [
+            "zred-gen-osc*"
+        ],
+        "description": "(define zred-gen-osc* 90) "
+    },
+
+
+
+    "zred-gen-insta1*": {
+        "prefix": "zred-gen-insta1*",
+        "body": [
+            "zred-gen-insta1*"
+        ],
+        "description": "(define zred-gen-insta1* 91) "
+    },
+
+
+
+    "zred-gen-insta2*": {
+        "prefix": "zred-gen-insta2*",
+        "body": [
+            "zred-gen-insta2*"
+        ],
+        "description": "(define zred-gen-insta2* 92) "
+    },
+
+
+
+    "zred-gen-volume*": {
+        "prefix": "zred-gen-volume*",
+        "body": [
+            "zred-gen-volume*"
+        ],
+        "description": "(define zred-gen-volume* 93) "
+    },
+
+
+
+    "zred-fil-cutoff*": {
+        "prefix": "zred-fil-cutoff*",
+        "body": [
+            "zred-fil-cutoff*"
+        ],
+        "description": "(define zred-fil-cutoff* 94) "
+    },
+
+
+
+    "zred-fil-resonance*": {
+        "prefix": "zred-fil-resonance*",
+        "body": [
+            "zred-fil-resonance*"
+        ],
+        "description": "(define zred-fil-resonance* 95) "
+    },
+
+
+
+    "zred-fil-feedback*": {
+        "prefix": "zred-fil-feedback*",
+        "body": [
+            "zred-fil-feedback*"
+        ],
+        "description": "(define zred-fil-feedback* 96) "
+    },
+
+
+
+    "zred-fil-saturation*": {
+        "prefix": "zred-fil-saturation*",
+        "body": [
+            "zred-fil-saturation*"
+        ],
+        "description": "(define zred-fil-saturation* 97) ;;;"
+    },
+
+
+
+    "zred-fil-distorsion*": {
+        "prefix": "zred-fil-distorsion*",
+        "body": [
+            "zred-fil-distorsion*"
+        ],
+        "description": "(define zred-fil-distorsion* 98) "
+    },
+
+
+
+    "zred-fil-cutoff-mod*": {
+        "prefix": "zred-fil-cutoff-mod*",
+        "body": [
+            "zred-fil-cutoff-mod*"
+        ],
+        "description": "(define zred-fil-cutoff-mod* 99) "
+    },
+
+
+
+    "zred-fil-balance*": {
+        "prefix": "zred-fil-balance*",
+        "body": [
+            "zred-fil-balance*"
+        ],
+        "description": "(define zred-fil-balance* 100) "
+    },
+
+
+
+    "zred-amp-clock*": {
+        "prefix": "zred-amp-clock*",
+        "body": [
+            "zred-amp-clock*"
+        ],
+        "description": "(define zred-amp-clock* 101) "
+    },
+
+
+    "zred-amp-attack*": {
+        "prefix": "zred-amp-attack*",
+        "body": [
+            "zred-amp-attack*"
+        ],
+        "description": "(define zred-amp-attack* 102) "
+    },
+
+
+
+    "zred-amp-release*": {
+        "prefix": "zred-amp-release*",
+        "body": [
+            "zred-amp-release*"
+        ],
+        "description": "(define zred-amp-release* 103) "
+    },
+
+
+
+    "zred-amp-volume*": {
+        "prefix": "zred-amp-volume*",
+        "body": [
+            "zred-amp-volume*"
+        ],
+        "description": "(define zred-amp-volume* 104) "
+    },
+
+    
+    "LIVE-drumrack-x11": {
+        "prefix": "x11",
+        "body": [
+            "x11"
+        ],
+        "description": "(define x11 48) ; TOP ROW"
+    },
+
+
+    "LIVE-drumrack-x12": {
+        "prefix": "x12",
+        "body": [
+            "x12"
+        ],
+        "description": "(define x12 49) ;"
+    },
+
+
+
+    "LIVE-drumrack-x13": {
+        "prefix": "x13",
+        "body": [
+            "x13"
+        ],
+        "description": "(define x13 50) ;"
+    },
+
+
+
+    "LIVE-drumrack-x14": {
+        "prefix": "x14",
+        "body": [
+            "x14"
+        ],
+        "description": "(define x14 51) ;"
+    },
+
+
+
+    "LIVE-drumrack-x21": {
+        "prefix": "x21",
+        "body": [
+            "x21"
+        ],
+        "description": "(define x21 44) ;  SECOND DOWN"
+    },
+
+
+
+    "LIVE-drumrack-x22": {
+        "prefix": "x22",
+        "body": [
+            "x22"
+        ],
+        "description": "(define x22 45) ;"
+    },
+
+
+
+    "LIVE-drumrack-x23": {
+        "prefix": "x23",
+        "body": [
+            "x23"
+        ],
+        "description": "(define x23 46) ;"
+    },
+
+
+
+    "LIVE-drumrack-x24": {
+        "prefix": "x24",
+        "body": [
+            "x24"
+        ],
+        "description": "(define x24 47) ;"
+    },
+
+
+
+    "LIVE-drumrack-x31": {
+        "prefix": "x31",
+        "body": [
+            "x31"
+        ],
+        "description": "(define x31 40) ; THIRD DOWN"
+    },
+
+
+
+    "LIVE-drumrack-x32": {
+        "prefix": "x32",
+        "body": [
+            "x32"
+        ],
+        "description": "(define x32 41) ;"
+    },
+
+
+
+    "LIVE-drumrack-x33": {
+        "prefix": "x33",
+        "body": [
+            "x33"
+        ],
+        "description": "(define x33 42) ;"
+    },
+
+
+
+    "LIVE-drumrack-x34": {
+        "prefix": "x34",
+        "body": [
+            "x34"
+        ],
+        "description": "(define x34 43) ;"
+    },
+
+
+
+    "LIVE-drumrack-x41": {
+        "prefix": "x41",
+        "body": [
+            "x41"
+        ],
+        "description": "(define x41 36) ; BOTTOM ROW"
+    },
+
+
+
+    "LIVE-drumrack-x42": {
+        "prefix": "x42",
+        "body": [
+            "x42"
+        ],
+        "description": "(define x42 37) ;"
+    },
+
+
+
+    "LIVE-drumrack-x43": {
+        "prefix": "x43",
+        "body": [
+            "x43"
+        ],
+        "description": "(define x43 38) ;"
+    },
+
+
+
+    "LIVE-drumrack-x44": {
+        "prefix": "x44",
+        "body": [
+            "x44"
+        ],
+        "description": "(define x44 39) ;"
+    }
+    
+}

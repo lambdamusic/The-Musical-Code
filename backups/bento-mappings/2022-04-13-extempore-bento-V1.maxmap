@@ -1,0 +1,225 @@
+{
+	"parameter_map" : 	{
+		"midi" : 		{
+			"pictctrl[22]" : 			{
+				"srcname" : "1.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[21]" : 			{
+				"srcname" : "2.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[20]" : 			{
+				"srcname" : "3.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[19]" : 			{
+				"srcname" : "4.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[17]" : 			{
+				"srcname" : "5.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[28]" : 			{
+				"srcname" : "7.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[29]" : 			{
+				"srcname" : "8.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[27]" : 			{
+				"srcname" : "9.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[26]" : 			{
+				"srcname" : "10.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[25]" : 			{
+				"srcname" : "11.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[24]" : 			{
+				"srcname" : "12.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[34]" : 			{
+				"srcname" : "13.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[32]" : 			{
+				"srcname" : "14.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[33]" : 			{
+				"srcname" : "15.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[31]" : 			{
+				"srcname" : "17.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[30]" : 			{
+				"srcname" : "16.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[9]" : 			{
+				"srcname" : "20.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[5]" : 			{
+				"srcname" : "21.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[8]" : 			{
+				"srcname" : "22.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[10]" : 			{
+				"srcname" : "23.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[2]" : 			{
+				"srcname" : "24.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[7]" : 			{
+				"srcname" : "25.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[11]" : 			{
+				"srcname" : "26.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[12]" : 			{
+				"srcname" : "27.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[13]" : 			{
+				"srcname" : "28.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[14]" : 			{
+				"srcname" : "29.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[15]" : 			{
+				"srcname" : "30.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[36]" : 			{
+				"srcname" : "31.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[38]" : 			{
+				"srcname" : "32.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[37]" : 			{
+				"srcname" : "33.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+,
+			"pictctrl[39]" : 			{
+				"srcname" : "34.ctrl.0.chan.midi",
+				"min" : 0.0,
+				"max" : 127.0,
+				"flags" : 2
+			}
+
+		}
+
+	}
+
+}
