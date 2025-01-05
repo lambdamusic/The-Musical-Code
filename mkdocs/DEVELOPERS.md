@@ -8,7 +8,7 @@ This project contains the source files used to build the public Musical Code web
 
 The site is build using [mkdocs](https://www.mkdocs.org/). 
 
-New content is added to the source folder `/mkdocs/docs` and rendered as HTML in `/docs`
+New content is added to the source folder `/mkdocs/src` and rendered as HTML in `/docs`
 
 ### Environment setup
 

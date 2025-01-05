@@ -440,6 +440,13 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../extempore/random/">
+<span class="md-ellipsis">
+    Random
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -787,40 +794,40 @@
 <p>This is extremely useful, to say the least, if you are performing live and want to avoid situations in which a (stupid) typo or parenthesis error will mess up your entire gig. The error hook in many cases will prevent your looping function from crashing, giving you time to fix the error. Really neat.</p>
 <p><a href="http://www.flickr.com/photos/mikele/6619819815/" title="Impromptu: livecoding error hook by MagIcReBirth, on Flickr"><img alt="Impromptu: livecoding error hook" src="../assets/images/6619819815_240eaf85dd_z.jpg"/></a></p>
 <p>Here's an example from the official release notes:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">;; turn on livecoding error hook</span>
-<span class="p">(</span><span class="nf">sys:livecoding-error-hook</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span>
-
-<span class="c1">;; with livecoding-error-hook on   </span>
-<span class="c1">;; this temporal recursion will continue</span>
-<span class="c1">;; to play the second note even though 'pitch</span>
-<span class="c1">;; is an unbound symbol</span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">loop</span>
-<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span><span class="w"> </span>
-<span class="w">      </span><span class="c1">;; symbol a is not bound but loop continues to function</span>
-<span class="w">      </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">piano</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">      </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">piano</span><span class="w"> </span><span class="mi">63</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">      </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="ss">'loop</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="mi">1</span><span class="p">))))</span>
-
-<span class="p">(</span><span class="nf">loop</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">'get-beat</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
-
-<span class="c1">;; by redefining the error hook we can provide</span>
-<span class="c1">;; additional specialisation - such as replacing</span>
-<span class="c1">;; any unbound symbol with 60!</span>
-<span class="c1">;; </span>
-<span class="c1">;; eval below and both notes will play</span>
-<span class="c1">;; 'pitch being replaced by 60</span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">*livecoding-error-hook*</span><span class="w"> </span>
-<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">msg</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span>
-<span class="w">      </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">symbol?</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
-<span class="w">            </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="p">))))</span>
-</code></pre></div>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">;; turn on livecoding error hook</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="p">(</span><span class="nf">sys:livecoding-error-hook</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">;; with livecoding-error-hook on   </span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1">;; this temporal recursion will continue</span>
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="c1">;; to play the second note even though 'pitch</span>
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="c1">;; is an unbound symbol</span>
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">loop</span>
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-0-10"><a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">      </span><span class="c1">;; symbol a is not bound but loop continues to function</span>
+</span><span id="__span-0-11"><a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">      </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">piano</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-12"><a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">      </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">piano</span><span class="w"> </span><span class="mi">63</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-13"><a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">      </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="ss">'loop</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="mi">1</span><span class="p">))))</span>
+</span><span id="__span-0-14"><a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="p">(</span><span class="nf">loop</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">'get-beat</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-0-16"><a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="c1">;; by redefining the error hook we can provide</span>
+</span><span id="__span-0-18"><a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="c1">;; additional specialisation - such as replacing</span>
+</span><span id="__span-0-19"><a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="c1">;; any unbound symbol with 60!</span>
+</span><span id="__span-0-20"><a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="c1">;; </span>
+</span><span id="__span-0-21"><a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="c1">;; eval below and both notes will play</span>
+</span><span id="__span-0-22"><a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="c1">;; 'pitch being replaced by 60</span>
+</span><span id="__span-0-23"><a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">*livecoding-error-hook*</span><span class="w"> </span>
+</span><span id="__span-0-24"><a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">msg</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-0-25"><a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">      </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">symbol?</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
+</span><span id="__span-0-26"><a href="#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">            </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="p">))))</span>
+</span></code></pre></div>
 <p>Happy (and safer) livecoding!</p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="Last update">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-    2024-11-23
+    2025-01-05
   </span>
 </aside>
 </article>
@@ -833,7 +840,7 @@
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
 <div class="md-copyright__highlight">
-      © Copyright 2023-2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a>
+      © Copyright 2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a>
 </div>
   
   
@@ -849,7 +856,7 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
 <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
 <script src="../../js/print-site.js"></script>
 <script src="../../assets/js/headings-fix.js"></script>

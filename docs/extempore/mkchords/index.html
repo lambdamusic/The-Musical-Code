@@ -485,6 +485,13 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../random/">
+<span class="md-ellipsis">
+    Random
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -860,58 +867,58 @@
 <h1 id="making-scales-and-chords"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Making scales and chords</h1>
 <p>A summary of the chords functions available, in the <code>mk</code> namespace, to create harmonic structures like scales and chords. </p>
 <p>All of these functions take either a chord symbol or a scale symbol. </p>
-<div class="highlight"><pre><span></span><code><span class="c1">; sym chords</span>
-<span class="ss">'M|m|Msus|M4|M6|M64|M7|M65|M43|M42|M2|M7</span><span class="o">#</span><span class="nv">4|M9|7|9|65|43|2|42|msus|m4|m6|m64|m7|m65|m43|m42|m2|m9|m7b5|d|d6|d64|d7|d65|d43|d42|d2</span>
-
-<span class="c1">; sym scales</span>
-<span class="ss">'M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian</span>
-</code></pre></div>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">; sym chords</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="ss">'M|m|Msus|M4|M6|M64|M7|M65|M43|M42|M2|M7</span><span class="o">#</span><span class="nv">4|M9|7|9|65|43|2|42|msus|m4|m6|m64|m7|m65|m43|m42|m2|m9|m7b5|d|d6|d64|d7|d65|d43|d42|d2</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">; sym scales</span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="ss">'M|m|pentatonic|wholetone|chromatic|octatonic|messiaen1|messiaen2|messiaen3|messiaen4|messiaen5|messiaen6|messiaen7|ionian|dorian|phrygian|lydian|lydian-dominant|lydian-mixolydian|mixolydian|aeolian|locrian</span>
+</span></code></pre></div>
 <h2 id="chords"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Chords</h2>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">mkchord</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'chordsym</span><span class="w"> </span><span class="p">)</span>
-<span class="p">(</span><span class="nf">mkchordrand</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'chordsym</span><span class="w"> </span><span class="p">)</span>
-<span class="p">(</span><span class="nf">mkchordsteps</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="nv">steps</span><span class="p">)</span><span class="w"> </span><span class="ss">'scalesym</span><span class="w"> </span><span class="p">)</span>
-<span class="p">(</span><span class="nf">mkchordiatonic</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'maj-min</span><span class="w"> </span><span class="ss">'degree</span><span class="p">)</span><span class="w"> </span><span class="c1">; chordsym either M or m TODO</span>
-</code></pre></div>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">(</span><span class="nf">mkchord</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'chordsym</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="p">(</span><span class="nf">mkchordrand</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'chordsym</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">(</span><span class="nf">mkchordsteps</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="nv">steps</span><span class="p">)</span><span class="w"> </span><span class="ss">'scalesym</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="p">(</span><span class="nf">mkchordiatonic</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'maj-min</span><span class="w"> </span><span class="ss">'degree</span><span class="p">)</span><span class="w"> </span><span class="c1">; chordsym either M or m TODO</span>
+</span></code></pre></div>
 <p>These are enhanced versions of the <code>pc</code> functions. </p>
 <p>Deprecated:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">pc:chord</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'chordsym</span><span class="w"> </span><span class="p">)</span>
-<span class="p">(</span><span class="nf">pc:make-chord</span><span class="w"> </span><span class="nv">lower</span><span class="w"> </span><span class="nv">upper</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="nv">pcchord</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">pc:make-chord-fixed</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="nv">pcchord</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">pc:diatonic</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'^-</span><span class="w"> </span><span class="ss">'i</span><span class="p">)</span>
-</code></pre></div>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">(</span><span class="nf">pc:chord</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'chordsym</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="p">(</span><span class="nf">pc:make-chord</span><span class="w"> </span><span class="nv">lower</span><span class="w"> </span><span class="nv">upper</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="nv">pcchord</span><span class="p">)</span>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="p">(</span><span class="nf">pc:make-chord-fixed</span><span class="w"> </span><span class="nv">pitch</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="nv">pcchord</span><span class="p">)</span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">(</span><span class="nf">pc:diatonic</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'^-</span><span class="w"> </span><span class="ss">'i</span><span class="p">)</span>
+</span></code></pre></div>
 <p>The only advantage of pc:make-chord is that it can table a list of pitch classes, while mkchord just chord syms EG</p>
-<div class="highlight"><pre><span></span><code>(pc:make-chord-fixed C4 3 
-        '(0 4 7) 
-)
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>(pc:make-chord-fixed C4 3 
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>        '(0 4 7) 
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>)
+</span></code></pre></div>
 <h2 id="melody"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Melody</h2>
 <p>Makes a melody from a root pitch and a scale.</p>
-<div class="highlight"><pre><span></span><code>(mkmelody 4 60 'm '(1 -1) )
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>(mkmelody 4 60 'm '(1 -1) )
+</span></code></pre></div>
 <h2 id="scales"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> Scales</h2>
-<p><div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">mkscale</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'scale-sym</span><span class="w"> </span><span class="p">)</span>
-<span class="p">(</span><span class="nf">mkscalestep</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="nv">step</span><span class="w"> </span><span class="ss">'scale-sym</span><span class="p">)</span><span class="w"> </span><span class="c1">;; transpose the scale beginning</span>
-</code></pre></div>
+<p><div class="language-scheme highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">(</span><span class="nf">mkscale</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="ss">'scale-sym</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="p">(</span><span class="nf">mkscalestep</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="nv">step</span><span class="w"> </span><span class="ss">'scale-sym</span><span class="p">)</span><span class="w"> </span><span class="c1">;; transpose the scale beginning</span>
+</span></code></pre></div>
 These are enhanced versions of the <code>pc</code> functions IE</p>
-<div class="highlight"><pre><span></span><code><span class="c1">;; snippets deprecated</span>
-<span class="p">(</span><span class="nf">pc:scale</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ss">'scale-sym</span><span class="w"> </span><span class="p">)</span>
-</code></pre></div>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">;; snippets deprecated</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="p">(</span><span class="nf">pc:scale</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ss">'scale-sym</span><span class="w"> </span><span class="p">)</span>
+</span></code></pre></div>
 <h2 id="intervals"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Intervals</h2>
-<div class="highlight"><pre><span></span><code>(mkint C4 3 'scale-sym )
-(mkrandom C3 C6 'pitch-list-or-scale-sym ) ; simple wrapper around pc:random
-(mkquant 61 'pitch-list-or-scale-sym  )
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>(mkint C4 3 'scale-sym )
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>(mkrandom C3 C6 'pitch-list-or-scale-sym ) ; simple wrapper around pc:random
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>(mkquant 61 'pitch-list-or-scale-sym  )
+</span></code></pre></div>
 <p>Deprecated </p>
-<div class="highlight"><pre><span></span><code>(mkrel 60 8 'M ) ; same as mkint
-(pc:random 60 80 'plist)
-(pc:quantize 60 'plist)
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>(mkrel 60 8 'M ) ; same as mkint
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>(pc:random 60 80 'plist)
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>(pc:quantize 60 'plist)
+</span></code></pre></div>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="Last update">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-    2024-04-22
+    2025-01-05
   </span>
 </aside>
 </article>
@@ -924,7 +931,7 @@ These are enhanced versions of the <code>pc</code> functions IE</p>
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
 <div class="md-copyright__highlight">
-      © Copyright 2023-2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a>
+      © Copyright 2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a>
 </div>
   
   
@@ -940,7 +947,7 @@ These are enhanced versions of the <code>pc</code> functions IE</p>
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
 <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
 <script src="../../js/print-site.js"></script>
 <script src="../../assets/js/headings-fix.js"></script>

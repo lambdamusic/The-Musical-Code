@@ -485,6 +485,13 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../random/">
+<span class="md-ellipsis">
+    Random
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -862,44 +869,44 @@
 <p>The built-in <a href="https://extempore.michelepasin.org/def/callback.html">callback function</a> is the main mechanism to build temporal recursions in the Extempore language.</p>
 <h2 id="goal"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Goal</h2>
 <p>Changing</p>
-<div class="highlight"><pre><span></span><code><span class="c1">;; from </span>
-<span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span>
-<span class="w">        </span><span class="ss">'main</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">))</span>
-
-<span class="c1">;; to</span>
-<span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">'main</span><span class="w"> </span><span class="p">)</span>
-</code></pre></div>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">;; from </span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">        </span><span class="ss">'main</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">))</span>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1">;; to</span>
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">'main</span><span class="w"> </span><span class="p">)</span>
+</span></code></pre></div>
 <p>or, if you have more arguments:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">;; from</span>
-<span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span>
-<span class="w">        </span><span class="ss">'main</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">plist</span><span class="p">)</span>
-
-<span class="c1">;; to  </span>
-<span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">'main</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">plist</span><span class="w"> </span><span class="p">)</span>
-</code></pre></div>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">;; from</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">        </span><span class="ss">'main</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">plist</span><span class="p">)</span>
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="c1">;; to  </span>
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">'main</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">plist</span><span class="w"> </span><span class="p">)</span>
+</span></code></pre></div>
 <h2 id="implementation"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Implementation</h2>
-<div class="highlight"><pre><span></span><code><span class="c1">;; first arg is always the time delay for the recursion, then the function</span>
-<span class="p">(</span><span class="nf">impc:aot:do-or-emit</span>
-<span class="w">    </span><span class="p">(</span><span class="k">define-macro</span><span class="w"> </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">fun</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nv">args</span><span class="p">)</span>
-<span class="w">      </span><span class="o">`</span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="o">,</span><span class="nv">dur</span><span class="p">)))</span>
-<span class="w">            </span><span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="p">(</span><span class="k">quote</span><span class="w"> </span><span class="o">,</span><span class="nv">fun</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="o">,</span><span class="nv">dur</span><span class="p">)</span><span class="w"> </span><span class="o">,@</span><span class="nv">args</span><span class="p">)))</span>
-</code></pre></div>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">;; first arg is always the time delay for the recursion, then the function</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="p">(</span><span class="nf">impc:aot:do-or-emit</span>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="p">(</span><span class="k">define-macro</span><span class="w"> </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="nv">fun</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nv">args</span><span class="p">)</span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">      </span><span class="o">`</span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="o">,</span><span class="nv">dur</span><span class="p">)))</span>
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">            </span><span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="p">(</span><span class="k">quote</span><span class="w"> </span><span class="o">,</span><span class="nv">fun</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="o">,</span><span class="nv">dur</span><span class="p">)</span><span class="w"> </span><span class="o">,@</span><span class="nv">args</span><span class="p">)))</span>
+</span></code></pre></div>
 <p>The only <strong>requirement</strong> is to have the <code>beat</code> and <code>*metro*</code> symbols defined. Note: <a href="https://github.com/digego/extempore/blob/v0.8.9/runtime/scheme.xtm"><em>metro</em></a> is available by default with the standard Extempore library.</p>
 <h2 id="example"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> Example</h2>
-<div class="highlight"><pre><span></span><code><span class="c1">;; basically, you can simply omit beat</span>
-<span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">beat</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">'get-beat</span><span class="p">)))</span><span class="w">   </span>
-<span class="w">    </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="ss">'println</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
-
-
-<span class="c1">;; let's play some music </span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">pinco</span>
-<span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span>
-<span class="w">        </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
-<span class="w">      </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">'pinco</span><span class="w"> </span><span class="p">))))</span>
-
-<span class="p">(</span><span class="nf">pinco</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">'get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
-</code></pre></div>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">;; basically, you can simply omit beat</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">beat</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">'get-beat</span><span class="p">)))</span><span class="w">   </span>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="ss">'println</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1">;; let's play some music </span>
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">pinco</span>
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="p">)</span>
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nf">dur</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span>
+</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">        </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
+</span><span id="__span-3-11"><a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">      </span><span class="p">(</span><span class="nf">callback-at</span><span class="w"> </span><span class="nv">dur</span><span class="w"> </span><span class="ss">'pinco</span><span class="w"> </span><span class="p">))))</span>
+</span><span id="__span-3-12"><a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="p">(</span><span class="nf">pinco</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">'get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+</span></code></pre></div>
 <h2 id="see-also"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> See also</h2>
 <ul>
 <li>Original <a href="https://extempore.michelepasin.org/def/callback.html">callback function</a></li>
@@ -911,7 +918,7 @@
 <span class="md-icon" title="Last update">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-    2024-04-22
+    2025-01-05
   </span>
 </aside>
 </article>
@@ -924,7 +931,7 @@
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
 <div class="md-copyright__highlight">
-      © Copyright 2023-2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a>
+      © Copyright 2024 Michele Pasin | <a href="https://www.michelepasin.org/about/index.html">About</a> | <a href="https://www.michelepasin.org/contact.html">Contact</a>
 </div>
   
   
@@ -940,7 +947,7 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
 <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
 <script src="../../js/print-site.js"></script>
 <script src="../../assets/js/headings-fix.js"></script>
