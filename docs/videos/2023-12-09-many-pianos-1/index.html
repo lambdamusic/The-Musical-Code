@@ -34,6 +34,9 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
+<a class="md-skip" href="#full-source">1.1 
+          Skip to content
+        </a>
 </div>
 <div data-md-component="announce">
 </div>
@@ -140,7 +143,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../miscellaneous/2012-03-09-composing-at-the-metalevel/">
+<a class="md-tabs__link" href="../../miscellaneous/2025-03-17-installation-sydney-data-arena/">
           
   
   Miscellaneous
@@ -251,11 +254,32 @@
 </li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Dreamy pianos - Study No 1 in C Minor (2023-12)
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
 <a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     Dreamy pianos - Study No 1 in C Minor (2023-12)
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#full-source">1.1 
+<span class="md-ellipsis">
+      Full source
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../2023-11-18-the-self/">
@@ -575,6 +599,13 @@
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../miscellaneous/2025-03-17-installation-sydney-data-arena/">
+<span class="md-ellipsis">
+    Event: Installation at Sydney data arena
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../miscellaneous/2012-03-09-composing-at-the-metalevel/">
 <span class="md-ellipsis">
     Composing at the metalevel
@@ -778,6 +809,19 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#full-source">1.1 
+<span class="md-ellipsis">
+      Full source
+    </span>
+</a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -790,6 +834,48 @@
 <h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Dreamy pianos - Study No 1 in C Minor (2023-12)</h1>
 <p>Overlapping cosine driven piano lines in C minor.</p>
 <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/MpRG82Yyq4Q?si=MCyauaVxt5wlp94X&amp;autoplay=1&amp;start=210" title="YouTube video player" width="560"></iframe>
+<h2 id="full-source"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Full source</h2>
+<div class="language-scheme highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">; MANY PIANOS IN C MINOR</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="c1">; ---------------------------------</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1">; piano cycles and fun</span>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">; use simple controls modifiers for variations</span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">piano</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">;; ZebraHZ: HS Another Time Another Space</span>
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">piano2</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="c1">;; Zebra2: HS Rough Tongue Bass</span>
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">piano3</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">;; Grand Piano</span>
+</span><span id="__span-0-10"><a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">piano4</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="c1">;; E Piano Rhodes</span>
+</span><span id="__span-0-11"><a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">piano5</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="c1">;; Analog Lab: Acid 2 Water Piano  /TBC</span>
+</span><span id="__span-0-12"><a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">piano6</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="c1">;; Analog Lab: Japanese Home Clean</span>
+</span><span id="__span-0-13"><a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">strings</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="c1">;; LABS: Guitar Harmonics Gieger</span>
+</span><span id="__span-0-14"><a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="p">(</span><span class="nf">:tempo</span><span class="w"> </span><span class="mi">120</span><span class="p">)</span>
+</span><span id="__span-0-16"><a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="nv">C4</span><span class="p">)</span>
+</span><span id="__span-0-18"><a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">mode</span><span class="w"> </span><span class="ss">'m</span><span class="p">)</span>
+</span><span id="__span-0-19"><a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nv">pianos</span>
+</span><span id="__span-0-22"><a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">  </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span>
+</span><span id="__span-0-23"><a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>
+</span><span id="__span-0-24"><a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">piano</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkrel</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/19</span><span class="p">)</span><span class="w"> </span><span class="nv">mode</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">7/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/4</span><span class="p">))</span><span class="w">   </span>
+</span><span id="__span-0-25"><a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">piano2</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkrel</span><span class="w"> </span><span class="nv">C3</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">9/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/29</span><span class="p">)</span><span class="w"> </span><span class="ss">'m</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">15/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/4</span><span class="p">))</span><span class="w">   </span>
+</span><span id="__span-0-26"><a href="#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a>
+</span><span id="__span-0-27"><a href="#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">    </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="p">(</span><span class="nf">oneof</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">1/4</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="nv">piano3</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkrel</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkint</span><span class="w"> </span><span class="nv">root</span><span class="w">  </span><span class="mi">-8</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">.01</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/39</span><span class="p">)</span><span class="w"> </span><span class="nv">mode</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">15/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/2</span><span class="p">))</span><span class="w">   </span>
+</span><span id="__span-0-28"><a href="#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">    </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">piano3</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkrel</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkint</span><span class="w"> </span><span class="nv">root</span><span class="w">  </span><span class="mi">-8</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">.01</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/39</span><span class="p">)</span><span class="w"> </span><span class="ss">'m</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">15/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/2</span><span class="p">))</span><span class="w">   </span>
+</span><span id="__span-0-29"><a href="#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a>
+</span><span id="__span-0-30"><a href="#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">    </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">piano4</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkrel</span><span class="w"> </span><span class="nv">G3</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">.002</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/39</span><span class="p">)</span><span class="w"> </span><span class="nv">mode</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mf">.5</span><span class="p">)</span><span class="w"> </span><span class="mi">1/4</span><span class="p">))</span><span class="w">   </span>
+</span><span id="__span-0-31"><a href="#__codelineno-0-31" id="__codelineno-0-31" name="__codelineno-0-31"></a>
+</span><span id="__span-0-32"><a href="#__codelineno-0-32" id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">    </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">piano5</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkrel</span><span class="w"> </span><span class="nv">C4</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/39</span><span class="p">)</span><span class="w"> </span><span class="nv">mode</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mf">.5</span><span class="p">)</span><span class="w"> </span><span class="mi">1/4</span><span class="p">))</span><span class="w">   </span>
+</span><span id="__span-0-33"><a href="#__codelineno-0-33" id="__codelineno-0-33" name="__codelineno-0-33"></a>
+</span><span id="__span-0-34"><a href="#__codelineno-0-34" id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">    </span><span class="p">(</span><span class="nf">at</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">play</span><span class="w"> </span><span class="nv">strings</span><span class="w"> </span><span class="p">(</span><span class="nf">:mkrel</span><span class="w"> </span><span class="nv">root</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5/2</span><span class="p">)</span><span class="w"> </span><span class="mi">1/39</span><span class="p">)</span><span class="w"> </span><span class="nv">mode</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">cosr</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mf">.01</span><span class="p">)</span><span class="w"> </span><span class="mi">1/2</span><span class="p">))</span><span class="w">   </span>
+</span><span id="__span-0-35"><a href="#__codelineno-0-35" id="__codelineno-0-35" name="__codelineno-0-35"></a>
+</span><span id="__span-0-36"><a href="#__codelineno-0-36" id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">    </span><span class="p">(</span><span class="nf">callback</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">1/2</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span><span class="w"> </span>
+</span><span id="__span-0-37"><a href="#__codelineno-0-37" id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">        </span><span class="ss">'pianos</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">beat</span><span class="w"> </span><span class="nv">dur</span><span class="p">)</span><span class="w"> </span><span class="nv">dur</span><span class="p">)))</span>
+</span><span id="__span-0-38"><a href="#__codelineno-0-38" id="__codelineno-0-38" name="__codelineno-0-38"></a>
+</span><span id="__span-0-39"><a href="#__codelineno-0-39" id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="p">(</span><span class="nf">pianos</span><span class="w"> </span><span class="p">(</span><span class="nf">*metro*</span><span class="w"> </span><span class="ss">'get-beat</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">1/16</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Also on <a href="https://github.com/lambdamusic/The-Musical-Code/blob/main/works/2023-11-many-pianos-in-c-minor.xtm">GitHub</a>.</p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="Last update">
